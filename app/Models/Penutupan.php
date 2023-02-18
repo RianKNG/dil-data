@@ -13,7 +13,7 @@ class Penutupan extends Model
     protected $guarded = [];
     protected $table = 'penutupan';
     protected $tableKey = 'id';
-    protected $fillable = ['id','id_dil','tanggal_tutup','alasan','created_at'];
+    protected $fillable = ['id','id_dil','nama','tanggal_tutup','alasan','created_at'];
     
     // public function allData()
     // {

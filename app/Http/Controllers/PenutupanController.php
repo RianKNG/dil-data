@@ -16,7 +16,7 @@ class PenutupanController extends Controller
             $data = DB::table('penutupan')
                    ->leftJoin('tbl_dil','penutupan.id_dil','=','tbl_dil.id')
                    // jangan select id parentnya karena akan terpanggil parent nya
-                    ->select('penutupan.id','penutupan.tanggal_tutup','penutupan.alasan','tbl_dil.no_sambungan','tbl_dil.nama','tbl_dil.alamat','tbl_dil.no_sambungan')
+                    ->select('penutupan.id','penutupan.tanggal_tutup','penutupan.alasan','penutupan.id_dil','tbl_dil.status','tbl_dil.nama','tbl_dil.alamat','tbl_dil.id_merek')
                     ->orderBy('id','desc')
                     ->paginate(5);
         //   dd($data);

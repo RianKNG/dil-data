@@ -41,7 +41,7 @@
                     <td>{{ $k->id }}</td>
                     <td>{{ $k->tanggal_tutup }}</td>
                     <td>{{ $k->alasan }}</td>
-                    <td>{{ $k->no_sambungan }}</td>
+                    <td>{{ $k->id_dil }}</td>
                     <td>{{ $k->nama }}</td>
                     <td>{{ $k->alamat }}</td>
                     <td>
@@ -106,7 +106,7 @@
               @csrf
                 <!-- /.card-header -->
                   <div class="form-group">
-                      <label for="id_dil" class="col-sm-8 col-form-label">id_dil</label>
+                      <label for="id_dil" class="col-sm-8 col-form-label">masukkan No Sambungan</label>
                       <div class="col-sm-12">
                         <input 
                         type="integer" 
@@ -125,15 +125,16 @@
                         class="form-control">
                       </div>
                     </div> 
-                    <div class="form-group row">
-                      <label for="alasan" class="col-sm-8 col-form-label">alasan</label>
-                      <div class="col-sm-4">
-                        <input
-                        type="text" 
-                        name="alasan" 
-                        class="form-control">
-                      </div>
-                    </div> 
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1">alasan</label>
+                      <select class="custom-select" name="alasan">
+                       <option selected>Pilih alasan</option>
+                       <option value="nunggak">nunggak</option>
+                       <option value="mengundurkan diri">mengundurkan diri</option>
+                      
+                     </select>
+                    
+                    </div>
                    
                     <div class="form-group">
                       <button class="btn btn-primary">simpan</button>

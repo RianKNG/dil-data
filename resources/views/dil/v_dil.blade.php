@@ -37,9 +37,10 @@
           <th>No Sambungan</th>
           <th>Nama</th>
           <th>Alamat</th>
+          <th>H1</th>
+          <th>H2</th>
           <th>Merek</th>
           <th>Aktip/Non Aktipkan</th>
-          {{-- <th>Status</th> --}}
           <th width="25%">Aksi</th>
         </tr>
       </thead>
@@ -48,11 +49,14 @@
         @foreach ($data as $index => $k)
         <tr>
           <td>{{ $loop->iteration }}</td>
+          
           <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-success btn-xs' : 'btn-danger btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
-            <td>{{ $k->no_sambungan }}</td>
-            <td>{{ $k->nama }}</td>
+          <td>{{ $k->id }}</td>  
+          <td>{{ $k->nama }}</td>
             <td>{{ $k->alamat }}</td>
-            <td>{{ $k->merek }}</td>
+            <td>{{ $k->created_at }}</td>
+            <td>{{ $k->updated_at }}</td>
+            <td>{{ $k->id_merek }}</td>
            
             <td>
               @if ($k->status == 1)
@@ -122,12 +126,14 @@
 @endsection
 @section('script')
 <script>
-$(function () {
-  $("#table").DataTable({
-    "responsive": true,
-    "autoWidth": false,
-    "data-page-length": "800",
+$(document).ready(function () {
+  $('#table').DataTable({
+    "responsive": true,"autoWidth": false,
+      lengthMenu: [
+          [2, 25, 50,100, -1],
+          [2, 25, 50,100, 'All'],
+      ],
   });
-})
+});
 </script>
 @endsection

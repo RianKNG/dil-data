@@ -40,7 +40,7 @@
                     <td>{{ $k->id }}</td>
                     {{-- <td>{{ $k->penutupan_id }}</td> --}}
                     <td>{{ $k->nama }}</td>
-                    <td>{{ $k->no_sambungan }}</td>
+                    <td>{{ $k->id_dil }}</td>
                     <td>{{ $k->alasan }}</td>
                     <td>
                       {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}

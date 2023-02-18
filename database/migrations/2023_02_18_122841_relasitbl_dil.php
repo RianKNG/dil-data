@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Relasisambung extends Migration
+class RelasitblDil extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class Relasisambung extends Migration
      */
     public function up()
     {
-        Schema::table('sambung', function (Blueprint $table) {
-           $table->unsignedInteger('id_dil');
-           $table->foreign('id_dil')->references('id')->on('tbl_dil')->onDelete('Cascade');   
+        Schema::table('tbl_dil', function (Blueprint $table) {
+            $table->unsignedInteger('id_merek');
+            $table->foreign('id_merek')->references('id')->on('merek')->nullable();  
         });
     }
 
@@ -26,7 +26,7 @@ class Relasisambung extends Migration
      */
     public function down()
     {
-        Schema::table('sambung', function (Blueprint $table) {
+        Schema::table('tbl_dil', function (Blueprint $table) {
             //
         });
     }

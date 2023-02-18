@@ -65,7 +65,7 @@ class DilController extends Controller
         // $data = DilModel::find($id);
         $data = DilModel::select('status')->where('id',$id)->first();
         if ($data->status == 1) {
-            $status = 0;
+            $status = 2;
         } else {
             $status = 1;
         }

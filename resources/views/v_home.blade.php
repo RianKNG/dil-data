@@ -72,7 +72,7 @@
     
               <div class="info-box-content">
                 <span class="info-box-text">Penggantian</span>
-                <span class="info-box-number">{{ $data }}</span>
+                <span class="info-box-number">0</span>
               </div>
               <!-- /.info-box-content -->
             </div>
