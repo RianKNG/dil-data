@@ -35,13 +35,34 @@
           <th width="5%">No</th>
           <th>Status Sekarang</th>
           <th>No Sambungan</th>
-          <th>Nama</th>
-          <th>Alamat</th>
-          <th>H1</th>
-          <th>H2</th>
-          <th>Merek</th>
+          <th>Rek</th>
+          <th>Nama Sekarang</th>
+          <th>Nama Pemilik</th>
+          {{-- <th>No Rumah</th>
+          <th>Rt</th>
+          <th>Rw</th>
+          <th>Blok</th>
+          <th>Dusun</th> --}}
+          {{-- <th>Kecamatan</th> 
+          <th>Status Milik</th>
+          <th>Jiwa Tetap</th> --}}
+          <th>Jiwa Tidak Tetap</th>
+          <th>Tanggal Pasang</th>
+          <th>Id Merek</th>
+          {{-- <th>Segel</th> --}}
+          
+          {{-- <th>Stop Kran</th> 
+          <th>Ceck Valve</th>
+          <th>Kopling</th>
+          <th>Plug Kran</th>
+          <th>Bulan Billing</th>
+          <th>Tahun Billing</th>
+          <th>Sumber Lain</th>
+          <th>Jenis Usaha</th> --}}
           <th>Aktip/Non Aktipkan</th>
-          <th width="25%">Aksi</th>
+          <th width="20%">Aksi</th>
+          
+         
         </tr>
       </thead>
       <tbody>
@@ -52,32 +73,52 @@
           
           <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-success btn-xs' : 'btn-danger btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
           <td>{{ $k->id }}</td>  
-          <td>{{ $k->nama }}</td>
-            <td>{{ $k->alamat }}</td>
-            <td>{{ $k->created_at }}</td>
-            <td>{{ $k->updated_at }}</td>
-            <td>{{ $k->id_merek }}</td>
+          <td>{{ $k->no_rekening }}</td>
+          <td>{{ $k->nama_sekarang }}</td>
+          <td>{{ $k->nama_pemilik }}</td>
+          {{-- <td>{{ $k->no_rumah }}</td>
+          <td>{{ $k->rt }}</td>
+          <td>{{ $k->rw }}</td>
+          <td>{{ $k->blok }}</td>
+          <td>{{ $k->dusun }}</td> --}}
+          {{-- <td>{{ $k->kecamatan}}</td>
+          <td>{{ $k->status_milik }}</td>
+          <td>{{ $k->jml_jiwa_tetap }}</td> --}}
+          <td>{{ $k->jml_jiwa_tidak_tetap}}</td>
+          <td>{{ $k->tanggal_pasang }}</td>
+          <td>{{ $k->id_merek }}</td>
+          {{-- <td>{{ $k->segel }}</td> --}}
+          {{-- <td>{{ $k->stop_kran }}</td>
+          <td>{{ $k->ceck_valve }}</td>
+          <td>{{ $k->kopling}}</td>
+          <td>{{ $k->plugran }}</td> --}}
+          {{-- <td>{{ $k->box }}</td> --}}
+          {{-- <td>{{ $k->bln_billing }}</td>
+          <td>{{ $k->thn_billing }}</td>
+          <td>{{ $k->sumber_lain}}</td>
+          <td>{{ $k->jenis_usaha }}</td> --}}
+          
+          {{-- <td>{{ $k->timestamp}}</td> --}}
+         
            
             <td>
               @if ($k->status == 1)
                 <a href="/dil/status/{{ $k->id }}" class="btn btn-xs btn-danger">Non Aktip Kan.</a>
-                {{-- @csrf --}}
               @else
                 <a href="/dil/status/{{ $k->id }}" class="btn btn-xs btn-success">Aktip Kan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</a>
-                {{-- @csrf --}}
               @endif
             </td>
             <td>
-             
-              <a href="dil/edit/{{ $k->id }}" class="btn btn-warning btn-xs">Edit</a>
-              
-             
-              <a href="#" class="btn btn-success btn-xs">Detail</a>
+              <a href="dil/edit/{{ $k->id }}" class="btn btn-warning btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="btn btn-success btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
               <a href="dil/hapus/{{ $k->id }}" 
                 class="btn btn-danger btn-xs" 
                 data-toggle="modal" 
                 data-target="#delete{{ $k->id }}">
-                Delete
+                <i class="fa fa-trash" aria-hidden="true"></i>
+
               </a>
           </td>
         </tr>

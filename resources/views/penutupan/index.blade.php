@@ -29,9 +29,9 @@
                   <th>tanggal_tutup</th>
                   <th>alasan</th>
                   <th>no sambungan</th>
-                  <th>nama</th>
-                  <th>alamat</th>
-                  <th width="25%">Aksi</th>
+                  <th>nama_sekarang</th>
+                  <th>segel</th>
+                  <th width="50%">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -42,8 +42,8 @@
                     <td>{{ $k->tanggal_tutup }}</td>
                     <td>{{ $k->alasan }}</td>
                     <td>{{ $k->id_dil }}</td>
-                    <td>{{ $k->nama }}</td>
-                    <td>{{ $k->alamat }}</td>
+                    <td>{{ $k->nama_sekarang }}</td>
+                    <td>{{ $k->segel}}</td>
                     <td>
                       {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
                       
@@ -65,13 +65,13 @@
               <div class="modal-dialog">
                 <div class="modal-content bg-danger">
                   <div class="modal-header">
-                    <h4 class="modal-title">{{ $k->nama }}</h4>
+                    <h4 class="modal-title">{{ $k->nama_sekarang }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <p>Apakah anda yakin ingin hapus data ini?&hellip;{{ $k->nama }}</p>
+                    <p>Apakah anda yakin ingin hapus data ini?&hellip;{{ $k->nama_sekarang }}</p>
                   </div>
                   <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>

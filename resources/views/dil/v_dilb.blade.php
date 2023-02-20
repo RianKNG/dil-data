@@ -35,7 +35,17 @@
               <th width="5%">No</th>
               <th>Status Sekarang</th>
               <th>No Sambungan</th>
-              <th>Nama</th>
+              <th>Rek</th>
+              <th>Nama Sekarang</th>
+              <th>Nama Pemilik</th>
+              <th>No Rumah</th>
+              <th>Rt</th>
+              <th>Rw</th>
+              <th>Blok</th>
+              <th>Dusun</th>
+              <th></th> 
+              <th></th>
+              <th></th>
               <th>Alamat</th>
               <th>Merek</th>
               <th>Aktip/Non Aktipkan</th>
