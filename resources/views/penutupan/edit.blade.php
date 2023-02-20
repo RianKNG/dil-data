@@ -45,6 +45,16 @@
                     class="form-control">
                   </div>
                 </div> 
+                <div class="form-group row">
+                  <label for="nama_sekarang" class="col-sm-2 col-form-label">alasan</label>
+                  <div class="col-sm-10">
+                    <input class="btn-info btn-sm"
+                    type="text" 
+                    value="{{ $data->id_dil }}"
+                    name="nama_sekarang" 
+                    class="form-control"readOnly=true>
+                  </div>
+                </div> 
                 <div class="form-group">
                   <button class="btn btn-primary">simpan</button>
                  </div> 

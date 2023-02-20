@@ -10,15 +10,26 @@ use Illuminate\Support\Facades\DB;
 class PenutupanController extends Controller
 {
   
-    public function index()
+    public function index(Request $request)
     {
-            
+
+        //ilmu baru pencarian dari joint table
+        if ($request->has('search')) {
+            $data = DB::table('penutupan')
+            ->leftJoin('tbl_dil','penutupan.id_dil','=','tbl_dil.id')
+            ->where('status','LIKE','%'.$request->search.'%')
+            ->get();
+        } else {
             $data = DB::table('penutupan')
                    ->leftJoin('tbl_dil','penutupan.id_dil','=','tbl_dil.id')
                    // jangan select id parentnya karena akan terpanggil parent nya
                     ->select('penutupan.id','penutupan.tanggal_tutup','penutupan.alasan','penutupan.id_dil','tbl_dil.status','tbl_dil.nama_sekarang','tbl_dil.nama_pemilik','tbl_dil.id_merek','tbl_dil.segel')
                     ->orderBy('id','desc')
                     ->paginate(5);
+        }
+        
+            
+           
         //   dd($data);
         return view('penutupan.index', compact('data'));
     }
