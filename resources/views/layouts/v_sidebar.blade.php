@@ -7,21 +7,29 @@
       <li class="nav-item menu-open">
         <a href="/" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-            <p>Home</p>
+            <p class="btn-xs">Home</p>
           </a>
       </li>
       <li class="nav-item">
         <a href="/dil" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
-          <p>
+          <p class="btn-xs">
             Master DIL
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/dil/add" class="nav-link">
+          <i class="nav-icon fas fa-th"></i>
+          <p class="btn-xs">
+            Layanan Tambah DIl
           </p>
         </a>
       </li>
       <li class="nav-item">
         <a href="/penutupan" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
-          <p>
+          <p class="btn-xs">
             Layanan Penutupan
           </p>
         </a>
@@ -37,7 +45,7 @@
       <li class="nav-item">
         <a href="/penyambungan" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
-          <p>
+          <p class="btn-xs">
             Layanan Penyambungan
           </p>
         </a>
@@ -45,7 +53,7 @@
       <li class="nav-item">
         <a href="/dil" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
-          <p>
+          <p class="btn-xs">
             Layanan Penggantian
           </p>
         </a>
@@ -53,7 +61,7 @@
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
-          <p>
+          <p class="btn-xs">
             Layanan Balik Nama
           </p>
         </a>
@@ -62,7 +70,7 @@
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="fas fa-circle nav-icon"></i>
-          <p>logout</p>
+          <p class="btn-xs">logout</p>
         </a>
       </li>
     </ul>

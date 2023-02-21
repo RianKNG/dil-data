@@ -32,11 +32,14 @@ class DilController extends Controller
     public function insert(Request $request)
     {
         // ini cara baru tapi mau coba lama dulu
-        // DilModel::create($request->all());
+        DilModel::create($request->all());
+        
         // ini cara lama
-        $data = new DilModel();
-        $data::create($request->all());
+        // $data = new DilModel();
+        // $data::create($request->all());
+        // dd($data);
         return redirect()->route('dil')->with('success','data berhasil ditambahkan');
+        // return view('dil.v_dil', compact('data'));
     }
     public function edit($id)
     {
@@ -71,7 +74,7 @@ class DilController extends Controller
         }
         DilModel::where('id',$id)->update(['status'=>$status]);
         // return $data;
-    return redirect()->route('dil')->with('success','status pelanggan berhasil diubah');
+    return redirect()->route('dil')->with('success','berhasil diubah');
 
     }
     public function jumlah(Request $request)

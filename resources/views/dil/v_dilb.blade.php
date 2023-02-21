@@ -132,4 +132,5 @@
   </div>
 </div>
 <!-- /.row -->
+</section>
 @endsection

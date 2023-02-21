@@ -35,7 +35,7 @@
               <th>no sambungan</th>
               <th>nama_sekarang</th>
               <th>segel</th>
-              <th width="25%">Aksi</th>
+              <th width="20%">Aksi</th>
             </tr>
           </thead>
           <tbody>

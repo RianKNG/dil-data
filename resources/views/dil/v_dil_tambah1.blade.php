@@ -1,10 +1,8 @@
-
 @extends('layouts.v_template')
 @section('title','Tambah Data')
 @section('content')
 <section class="content btn-xs">
-  <div class="container-fluid">
-    
+<div class="container-fluid">
 <form action="/dil/insert" method="post" enctype="multipart/form-data">
   @csrf
 
@@ -14,7 +12,7 @@
             <!-- general form elements disabled -->
             <div class="card card-warning">
               <div class="card-header">
-                <h6 >Form Tambah Data Dil</h6>
+                <h3 class="card-title">Form Tambah Data Dil</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -29,11 +27,10 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Status</label>
-                        <select class="form-control" name="status">
-                          <option value ="1">Aktip</option>
-                          <option  value ="0">None</option>
-                        </select>
+                        <label>status</label>
+                        <option  class="form-control" name="status" value="1" disabled>Aktip</option>
+                        <input type="text" name="status" class="form-control" >
+
                       </div>
                     </div>
                   </div>
@@ -254,4 +251,3 @@
           </div>
           <form>
 @endsection
-
