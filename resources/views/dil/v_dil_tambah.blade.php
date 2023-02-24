@@ -12,7 +12,7 @@
 
     </div>
             <!-- general form elements disabled -->
-            <div class="card card-warning">
+            <div class="card card-warning card-outline">
               <div class="card-header">
                 <h6 >Form Tambah Data Dil</h6>
               </div>

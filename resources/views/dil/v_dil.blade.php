@@ -3,26 +3,27 @@
 @section('title','Master Dil')
 @section('content')
 @if ($message = Session::get('success'))
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-success" role="alert">
   {{ $message }},
 </div>
 @endif
+
 <div class="container-fluid btn-xs">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
+       
+        <div class="card-header btn btn-info">
+          <h6>Form Tambah Data Dil</h6>
+          </div>
+          <div class="card-body">
         
-        <div class="card-header">
-          
-          <h6>Tabel Daftar Induk Langganan</h6>
-          
-        
-
+           
               <div class="card-body table-responsive p-0" style="height: 500px;">
                 <table id="table" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th width="5%">No</th>
+                    <th>No</th>
                     <th>Status Sekarang</th>
                     <th>No Sambungan</th>
                     <th>Rek</th>
@@ -50,7 +51,7 @@
                     <th>Sumber Lain</th>
                     <th>Jenis Usaha</th> --}}
                     <th>Aktip/Non Aktipkan</th>
-                    <th width="20%">Aksi</th>
+                    <th width="15%">Aksi</th>
                     
                   
                   </tr>
@@ -116,35 +117,37 @@
               @endforeach
                 
               </tbody>
-
+            
               </table>
+              
     {{-- *// ini adalah modal denger --}}
     @foreach ($data as $index => $k)
     <div class="modal fade" id="delete{{ $k->id }}">
       <div class="modal-dialog">
-        <div class="modal-content bg-danger">
+        <div class="modal-content bg-info">
           <div class="modal-header">
-            <h4 class="modal-title">{{ $k->nama }}</h4>
+            <h4 class="modal-title">No Sambungan&hellip;{{ $k->id}}</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p>Apakah anda yakin ingin hapus data ini?&hellip;{{ $k->nama }}</p>
+            <p>Apakah anda yakin ingin hapus Data? {{ $k->nama_sekarang}}</p>
           </div>
           <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-            <a href="dil/hapus/{{ $k->id }}" class="btn btn-outline-light">Hapus</a>
+            <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Batal</button>
+            <a href="dil/hapus/{{ $k->id }}" class="btn btn-danger btn-sm">Hapus</a>
           </div>
         </div>
       </div>
     </div>
+    
     @endforeach
     </table>
   </div>
 </div>
 </div>
-</div>
+
 @endsection
 @section('script')
 <script>

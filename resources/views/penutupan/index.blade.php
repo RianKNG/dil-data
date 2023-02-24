@@ -25,7 +25,7 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0" style="height: 300px;">
-        <table class="table table-head-fixed text-nowrap">
+        <table class="table table-head-fixed text-nowrap btn-xs">
           <thead>
             <tr>
               <th width="5%">No.</th>
@@ -101,15 +101,16 @@
      <div class="col-md-4">
         <!-- Form Element sizes -->
         <div class="card card-warning">
-          <div class="card-header">
-            <h3 class="card-title">Form Penutupan</h3>
+          <div class="card-header btn-xs">
+            <h6 class="card-title"><span class="btn btn-small">Form Penutupan</span></h6>
+            
           </div>
           <div class="card-body">
             <form action="/penutupan/insert" method="post" enctype="multipart/form-data">
               @csrf
                 <!-- /.card-header -->
                   <div class="form-group">
-                      <label for="id_dil" class="col-sm-8 col-form-label">masukkan No Sambungan</label>
+                      <h1 for="id_dil" class="col-sm-8 col-form-label">masukkan No Sambungan</h1>
                       <div class="col-sm-12">
                         <input 
                         type="integer" 
@@ -118,9 +119,9 @@
                       </div>
                     </div> 
                     <div>
-                    </div>
+                    {{-- </div> --}}
                     <div class="form-group row">
-                      <label for="tanggal_tutup" class="col-sm-8 col-form-label">tanggal_ditutup</label>
+                      <h1 for="tanggal_tutup" class="col-sm-8 col-form-label">tanggal_ditutup</h1>
                       <div class="col-sm-4">
                         <input
                         type="date" 
@@ -129,9 +130,9 @@
                       </div>
                     </div> 
                     <div class="mb-3">
-                      <label for="exampleInputEmail1">alasan</label>
+                      <h1 class="col-sm-8 col-form-label">alasan</h1>
                       <select class="custom-select" name="alasan">
-                       <option selected>Pilih alasan</option>
+                       <option selected><span class="btn btn-sm">Pilih alasan</span></option>
                        <option value="nunggak">nunggak</option>
                        <option value="mengundurkan diri">mengundurkan diri</option>
                       
@@ -140,7 +141,7 @@
                     </div>
                    
                     <div class="form-group">
-                      <button class="btn btn-primary">simpan</button>
+                      <button class="btn btn-primary btn btn-sm">simpan</button>
                      </div> 
                   </div>
             <form>
