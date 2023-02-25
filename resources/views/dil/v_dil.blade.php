@@ -8,13 +8,15 @@
 </div>
 @endif
 
+
+
 <div class="container-fluid btn-xs">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
        
-        <div class="card-header btn btn-info">
-          <h6>Form Tambah Data Dil</h6>
+        <div class="card card-outline card-warning">
+          <div class="mt-2"> ----- Data Induk Pelanggan Master ----- <div>
           </div>
           <div class="card-body">
         

@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
+use App\Http\Controllers\WmController;
 use App\Http\Controllers\DilController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenutupanController;
+use App\Http\Controllers\PenggantianController;
 use App\Http\Controllers\PenyambunganController;
 // use App\Http\Controllers\PenyambunganController;
 
@@ -41,10 +43,20 @@ Route::get('/penutupan/edit/{id}',[PenutupanController::class,'edit']);
 Route::post('/penutupan/update/{id}',[PenutupanController::class,'update']);
 //Penyambungan
 Route::get('/penyambungan', [PenyambunganController::class,'index'])->name('penyambungan');
-// Route::get('/penutupan/add', [PenyambunganController::class,'add']);
-// Route::get('/penutupan/hapus/{id}', [PenyambunganController::class,'hapus']);
+Route::get('/penyambungan/add', [PenyambunganController::class,'add']);
+Route::post('/penyambungan/insert', [PenyambunganController::class,'insert']);
 // Route::get('/penutupan/edit/{id}',[PenyambunganController::class,'edit']);
 // Route::post('/penutupan/update/{id}',[PenyambunganController::class,'update']);
+
+//penggantian
+Route::get('/penggantian', [PenggantianController::class,'index'])->name('penggantian');
+Route::get('/penggantian/add', [PenggantianController::class,'add']);
+Route::post('/penggantian/insert', [PenggantianController::class,'insert']);
+
+//watermeter
+Route::get('/watermeter', [WmController::class,'index'])->name('watermeter');
+Route::post('/watermeter/insert', [WmController::class,'insert']);
+
 
 
 

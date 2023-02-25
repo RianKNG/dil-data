@@ -13,8 +13,10 @@ class CreateBbnsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bbns', function (Blueprint $table) {
-            $table->id();
+        Schema::create('bbn', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('tanggal_bbn')->nullable();
+            $table->string('nama_baru')->nullable();
             $table->timestamps();
         });
     }

@@ -51,7 +51,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/dil" class="nav-link">
+        <a href="/penggantian" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
           <p class="btn-xs">
             Layanan Penggantian
@@ -63,6 +63,14 @@
           <i class="nav-icon fas fa-th"></i>
           <p class="btn-xs">
             Layanan Balik Nama
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/watermeter" class="nav-link">
+          <i class="nav-icon fas fa-th"></i>
+          <p class="btn-xs">
+            Water Meter
           </p>
         </a>
       </li>

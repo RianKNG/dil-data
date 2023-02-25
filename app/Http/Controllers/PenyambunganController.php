@@ -12,12 +12,20 @@ class PenyambunganController extends Controller
     {
         $data = DB::table('sambung')
         ->leftJoin('tbl_dil','sambung.id_dil','=','tbl_dil.id')
-        // jangan select id parentnya karena akan terpanggil parent nya
-         ->select('sambung.id','sambung.tanggal_sambung','sambung.alasan','sambung.id_dil','tbl_dil.status','tbl_dil.nama','tbl_dil.alamat','tbl_dil.id_merek')
+         ->select('sambung.id','sambung.tanggal_sambung','sambung.alasan','sambung.id_dil','tbl_dil.nama_sekarang','tbl_dil.dusun')
         //  ->orderBy('id','desc')
         //  ->paginate(5);
            ->get();
         // dd($data);
         return view('penyambungan.v_sambung',compact('data')); 
+    }
+    public function add()
+    {
+        return view('penyambungan.v_sambung');
+    }
+    public function insert(Request $request)
+    {
+        Sambung::create($request->all());
+        return redirect('penyambungan')->with('success','data berhsil ditambahkan');
     }
 }

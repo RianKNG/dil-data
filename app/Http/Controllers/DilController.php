@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\DilModel;
 use Illuminate\Http\Request;
 
+
 class DilController extends Controller
 {
     public function index(Request $request)
@@ -31,16 +32,75 @@ class DilController extends Controller
     }
     public function insert(Request $request)
     {
-        // ini cara baru tapi mau coba lama dulu
-        DilModel::create($request->all());
-        
+        $this->validate($request,[
+          'id' => 'required|unique:tbl_dil,id|min:10|max:10',
+          'status' => 'required',
+          'no_rekening' => 'required|unique:tbl_dil,no_rekening|min:5|max:5',
+          'nama_sekarang' => 'required',
+          'nama_pemilik' => 'required',
+          'no_rumah' => 'required',
+          'rt' => 'required|numeric',
+          'rw' => 'required|numeric',
+          'blok' => 'required',
+          'dusun' => 'required',
+          'kecamatan' => 'required',
+          'status_milik' => 'required',
+          'jml_jiwa_tetap' => 'required|numeric',
+          'jml_jiwa_tidak_tetap' => 'required|numeric',
+          'tanggal_pasang' => 'required',
+          'segel' => 'required',
+          'stop_kran' => 'required',
+          'ceck_valve' => 'required',
+          'kopling' => 'required',
+          'plugran' => 'required',
+          'box' => 'required',
+          'bln_billing' => 'required|min:2|max:2',
+          'thn_billing' => 'required|min:4|max:4',
+          'sumber_lain' => 'required',
+          'jenisusaha' => 'required',
+          'id_merek',
+
+        ]);
+  
+        DilModel::create([
+          
+          'id' => $request->id,
+          'status' => $request->status,
+          'no_rekening' => $request->no_rekening,
+          'nama_sekarang' => $request->nama_sekarang,
+          'nama_pemilik' => $request->nama_pemilik,
+          'no_rumah' => $request->no_rumah,
+          'rt' => $request->rt,
+          'rw' => $request->rw,
+          'blok' => $request->blok,
+          'dusun' => $request->dusun,
+          'kecamatan' => $request->kecamatan,
+          'status_milik' => $request->status_milik,
+          'jml_jiwa_tetap' => $request->jml_jiwa_tetap,
+          'jml_jiwa_tidak_tetap' => $request->jml_jiwa_tidak_tetap,
+          'tanggal_pasang' => $request->tanggal_pasang,
+          'segel' => $request->segel,
+          'stop_kran' => $request->stop_kran,
+          'ceck_valve' => $request->ceck_valve,
+          'kopling' => $request->kopling,
+          'plugran' => $request->plugran,
+          'box' => $request->box,
+          'bln_billing' => $request->bln_billing,
+          'thn_billing' => $request->thn_billing,
+          'sumber_lain' => $request->sumber_lain,
+          'jenisusaha' => $request->jenisusaha,
+          'id_merek' => $request->id_merek,
+        ]);
+      
+        return redirect()->route('dil')->with('success','data berhasil ditambahkan');
+      }  
         // ini cara lama
         // $data = new DilModel();
         // $data::create($request->all());
         // dd($data);
-        return redirect()->route('dil')->with('success','data berhasil ditambahkan');
+        
         // return view('dil.v_dil', compact('data'));
-    }
+
     public function edit($id)
     {
        // ini cara baru

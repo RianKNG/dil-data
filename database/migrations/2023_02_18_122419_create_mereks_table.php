@@ -15,7 +15,7 @@ class CreateMereksTable extends Migration
     {
         Schema::create('merek', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('merek', ['Linflow','Barindo','Actaris','Bestini','lainnya'])->nullable();
+            $table->string('merek')->nullable();
             $table->timestamps();
         });
     }

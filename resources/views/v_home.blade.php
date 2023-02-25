@@ -6,7 +6,7 @@
         <!-- Info boxes -->
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
+            <div class="info-box btn-xs">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
     
               <div class="info-box-content">
@@ -24,7 +24,7 @@
           <div class="clearfix hidden-md-up"></div>
 
           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
+            <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-book"></i></span>
 
               <div class="info-box-content">
@@ -37,7 +37,7 @@
           </div>
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
+            <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-book"></i></span>
 
               <div class="info-box-content">
@@ -50,7 +50,7 @@
           </div>
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
+            <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-book"></i></span>
 
               <div class="info-box-content">
@@ -67,7 +67,7 @@
           <div class="clearfix hidden-md-up"></div>
     
           <div class="col-12 col-sm-6 col-md-6">
-            <div class="info-box mb-3">
+            <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
     
               <div class="info-box-content">
@@ -80,11 +80,11 @@
           </div>
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-6">
-            <div class="info-box mb-3">
+            <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
     
               <div class="info-box-content">
-                <span class="info-box-text">BBN</span>
+                <span class="info-box-text">Bbn</span>
                 <span class="info-box-number">0</span>
               </div>
               <!-- /.info-box-content -->

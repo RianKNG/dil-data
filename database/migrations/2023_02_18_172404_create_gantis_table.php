@@ -13,8 +13,11 @@ class CreateGantisTable extends Migration
      */
     public function up()
     {
-        Schema::create('gantis', function (Blueprint $table) {
-            $table->id();
+        Schema::create('ganti', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('tanggal_ganti')->nullable();
+            $table->string('merek_baru')->nullable();
+            $table->string('no_wmbaru')->nullable();
             $table->timestamps();
         });
     }

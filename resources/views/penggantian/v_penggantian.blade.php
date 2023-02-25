@@ -18,18 +18,16 @@
         <!-- general form elements -->
         <div class="card card-primary ">
           <div class="card-header">
-            <h3 class="card-title">Tabel Penyambungan</h3>
+            <h3 class="card-title">Tabel Penggantian</h3>
           </div>
           {{-- <div class="card-body table-responsive p-0" style="height: 400px;"> --}}
             <table class="table table-head-fixed text-nowrap">
               <thead>
                 <tr>
                   <th width="5%">No.</th>
-                  <th>Id Sambung</th>
-                  <th>Id Tutup</th>
-                  <th>spk</th>
-                  <th>tanggal_sambung</th>
-                  <th>alasan</th>
+                  <th>Id Ganti</th>
+                  <th>tanggal ganti</th>
+                  <th>id dil</th>
                   <th width="25%">Aksi</th>
                 </tr>
               </thead>
@@ -41,9 +39,8 @@
                     {{-- <td>{{ $k->penutupan_id }}</td> --}}
                     
                     <td>{{ $k->id_dil }}</td>
-                    <td>{{ $k->alasan }}</td>
-                    <td>{{ $k->nama_sekarang }}</td>
-                    <td>{{ $k->dusun }}</td>
+                    <td>{{ $k->merek_baru }}</td>
+                   
                     <td>
                       {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
                       
@@ -117,20 +114,20 @@
                     <div>
                     </div>
                     <div class="form-group row">
-                      <label for="tanggal_sambung" class="col-sm-8 col-form-label">tanggal penyambungan</label>
+                      <label for="tanggal_ganti" class="col-sm-8 col-form-label">tanggal pengganian</label>
                       <div class="col-sm-4">
                         <input
                         type="date" 
-                        name="tanggal_sambung" 
+                        name="tanggal_ganti" 
                         class="form-control">
                       </div>
                     </div> 
                     <div class="form-group row">
-                      <label for="alasan" class="col-sm-8 col-form-label">alasan</label>
+                      <label for="merek_baru" class="col-sm-8 col-form-label">Merek Baru</label>
                       <div class="col-sm-4">
                         <input
                         type="text" 
-                        name="alasan" 
+                        name="merek_baru" 
                         class="form-control">
                       </div>
                     </div> 
