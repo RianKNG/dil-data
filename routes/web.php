@@ -57,6 +57,12 @@ Route::post('/penggantian/insert', [PenggantianController::class,'insert']);
 Route::get('/watermeter', [WmController::class,'index'])->name('watermeter');
 Route::post('/watermeter/insert', [WmController::class,'insert']);
 
+//export
+Route::get('/exportexcel', [DilController::class,'exportexcel'])->name('exportexcel');
+//import
+Route::post('/importexcel', [DilController::class,'importexcel'])->name('importexcel');
+
+
 
 
 

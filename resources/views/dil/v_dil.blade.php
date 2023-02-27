@@ -16,7 +16,14 @@
       <div class="card">
        
         <div class="card card-outline card-warning">
-          <div class="mt-2"> ----- Data Induk Pelanggan Master ----- <div>
+          <div class="mt-2"> ----- Data Induk Pelanggan Master ----- 
+            
+             <a href="/exportexcel">ExportExel</a>
+                <div>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
+                    IMPORT
+                </button>
+               
           </div>
           <div class="card-body">
         
@@ -149,7 +156,27 @@
   </div>
 </div>
 </div>
-
+<!-- modal -->
+<div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         
+          <form action="/importexcel" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label>PILIH FILE</label>
+                      <input type="file" name="file" class="form-control" required>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
+                  <button type="submit" class="btn btn-success">IMPORT</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
 @endsection
 @section('script')
 <script>

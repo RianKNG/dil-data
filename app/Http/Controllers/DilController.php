@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Models\DilModel;
+use App\Exports\DilExport;
+use App\Imports\DilImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class DilController extends Controller
@@ -146,5 +149,18 @@ class DilController extends Controller
         // dd($data);
        return view('v_home',compact('data'));
     }
-  
+
+   public function exportexcel()
+   {
+     return Excel::download(new DilExport, 'datadil.xlsx');
+   }
+   public function importexcel(Request $request)
+   {
+    $data = $request->file('file');
+    $namafile = $data->getClientOriginalName();
+    $data->move('Pelanggan',$namafile);
+
+    Excel::import(new DilImport, \public_path('/Pelanggan/'. $namafile));
+    return redirect()->back();
+   }
 }
