@@ -3,40 +3,44 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Merek;
 use App\Models\DilModel;
+use PDF;
 use App\Exports\DilExport;
 use App\Imports\DilImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 
 class DilController extends Controller
 {
     public function index(Request $request)
+   
     {
-        if ($request->has('search')) {
-            $data = DilModel::where('nama','LIKE','%'.$request->search.'%')
-            ->orWhere('nama','LIKE','%'.$request->search.'%')
-            ->orWhere('status','LIKE','%'.$request->search.'%')
+
+        // sudah oke jangan dihapus
+            $data = DB::table('tbl_dil')
+            ->leftJoin('merek','tbl_dil.id_merek','=','merek.id')
+            ->select('tbl_dil.id','tbl_dil.cabang','tbl_dil.no_rekening','tbl_dil.status','tbl_dil.nama_sekarang','tbl_dil.nama_pemilik','tbl_dil.jml_jiwa_tetap',
+            'tbl_dil.jml_jiwa_tidak_tetap',
+            'tbl_dil.tanggal_pasang','tbl_dil.id_merek','merek.merek')
             ->get();
-            //agar has carinya kebawa
-            $data->appends($request->all());
-        } else {
-            $data = DilModel::get();
-        }
-        
+           
         return view('dil.v_dil', compact('data'));
     }
     public function add()
     {
-
-        return view('dil.v_dil_tambah');
+        $mer = Merek::all();
+        return view('dil.v_dil_tambah',compact('mer'));
 
     }
     public function insert(Request $request)
     {
         $this->validate($request,[
           'id' => 'required|unique:tbl_dil,id|min:10|max:10',
+          'cabang'=>'required',
           'status' => 'required',
           'no_rekening' => 'required|unique:tbl_dil,no_rekening|min:5|max:5',
           'nama_sekarang' => 'required',
@@ -57,7 +61,7 @@ class DilController extends Controller
           'kopling' => 'required',
           'plugran' => 'required',
           'box' => 'required',
-          'bln_billing' => 'required|min:2|max:2',
+          'bln_billing' => 'required|max:2',
           'thn_billing' => 'required|min:4|max:4',
           'sumber_lain' => 'required',
           'jenisusaha' => 'required',
@@ -68,6 +72,7 @@ class DilController extends Controller
         DilModel::create([
           
           'id' => $request->id,
+          'cabang' => $request->cabang,
           'status' => $request->status,
           'no_rekening' => $request->no_rekening,
           'nama_sekarang' => $request->nama_sekarang,
@@ -94,20 +99,17 @@ class DilController extends Controller
           'jenisusaha' => $request->jenisusaha,
           'id_merek' => $request->id_merek,
         ]);
-      
+       
         return redirect()->route('dil')->with('success','data berhasil ditambahkan');
       }  
         // ini cara lama
         // $data = new DilModel();
         // $data::create($request->all());
-        // dd($data);
-        
-        // return view('dil.v_dil', compact('data'));
-
     public function edit($id)
     {
        // ini cara baru
         $data = DilModel::find($id);
+        // dd($data);
         return view('dil.v_editdil',compact('data'));
     }
     public function update(Request $request,$id)
@@ -129,7 +131,9 @@ class DilController extends Controller
     public function status($id)
     {
         // $data = DilModel::find($id);
+        // $data = DilModel::all();
         $data = DilModel::select('status')->where('id',$id)->first();
+        // dd($data);
         if ($data->status == 1) {
             $status = 0;
         } else {
@@ -153,14 +157,37 @@ class DilController extends Controller
    public function exportexcel()
    {
      return Excel::download(new DilExport, 'datadil.xlsx');
+      
+   }
+   public function exportpdf()
+   {
+        $data = DilModel::select('*')
+        ->where('status', 1)
+        ->get();
+        // return $data;
+        view()->share('data', $data);
+        $pdf = PDF::loadView('coba');
+        return $pdf->download('dataDIL.pdf');
+      
    }
    public function importexcel(Request $request)
    {
+    $this->validate($request, [
+        'file' => 'required|mimes:csv,xls,xlsx'
+    ]);
     $data = $request->file('file');
     $namafile = $data->getClientOriginalName();
     $data->move('Pelanggan',$namafile);
+    
 
-    Excel::import(new DilImport, \public_path('/Pelanggan/'. $namafile));
-    return redirect()->back();
+    $import = Excel::import(new DilImport, \public_path('/Pelanggan/'. $namafile));
+ 
+    if($import) {
+        //redirect
+        return redirect()->route('dil')->with(['success' => 'Data Berhasil Diimport!']);
+    } else {
+        //redirect
+        return redirect()->route('dil')->with(['error' => 'Data Gagal Diimport!']);
+    }
    }
 }

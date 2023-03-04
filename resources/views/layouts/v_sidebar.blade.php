@@ -19,6 +19,14 @@
         </a>
       </li>
       <li class="nav-item">
+        <a href="/watermeter" class="nav-link">
+          <i class="nav-icon fas fa-th"></i>
+          <p class="btn-xs">
+            Water Meter
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="/dil/add" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
           <p class="btn-xs">
@@ -67,18 +75,10 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/watermeter" class="nav-link">
+        <a href="/layanan" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
           <p class="btn-xs">
-            Water Meter
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/import" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
-          <p class="btn-xs">
-            Import
+            Laynan Data
           </p>
         </a>
       </li>

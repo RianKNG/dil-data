@@ -4,11 +4,7 @@
 
  <form action="/dil/update/{{ $data->id }}" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="row">
-      <!-- /.col -->
-              <!-- /.col -->
-           
-   
+          <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <div class="form-group row">

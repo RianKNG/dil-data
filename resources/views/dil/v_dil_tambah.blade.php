@@ -5,9 +5,6 @@
 <div class="container-fluid">
   <form action="/dil/insert/" method="post" enctype="multipart/form-data">
     @csrf
-
-  <!-- SELECT2 EXAMPLE -->
-
     </div>
             <!-- general form elements disabled -->
             <div class="card card-warning">
@@ -23,14 +20,39 @@
                       <div class="form-group">
                         <label>No Sambungan</label>
                         <input type="integer" class="form-control" name="id">
+                        @error('id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>cabang</label>
+                        <select name="cabang" class="form-control">
+                          <option selected>PengirimCab</option>
+                          <option value="1">Tomo</option>
+                          <option value="2">Paseh</option>
+                          <option value="3">Cimalaka</option>
+                          <option value="4">Tanjungkerta</option>
+                          <option value="5">Situraja</option>
+                          <option value="6">Wado</option>
+                          <option value="7">Sumedang Selatan</option>
+                          <option value="8">Jatinangor</option>
+                        </select>
+                          @error('cabang')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
+                      </div>
+                  
+                    </div>
+                    <div class="col-sm-6>
                       <div class="form-group">
                         <label>status</label>
-                        <option  class="form-control" name="status" value="1" disabled>Aktip</option>
-                        {{-- <input type="text" name="status" class="form-control" > --}}
-
+                          <input type="integer" class="form-control" name="status" value="1">
+                          @error('status')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                   </div>
@@ -40,24 +62,36 @@
                       <div class="form-group">
                         <label>No Rekening</label>
                         <input type="integer" name="no_rekening" class="form-control" >
+                        @error('no_rekening')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>Nama Sekarang</label>
                         <input type="text" class="form-control" name="nama_sekarang">
+                        @error('nama_sekarang')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>Nama Pemilik</label>
                         <input type="text" class="form-control" name="nama_pemilik">
+                        @error('nama_pemilik')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                     <div class="col-sm-2">
                       <div class="form-group">
                         <label>No Rumah</label>
                         <input type="text" class="form-control" name="no_rumah">
+                        @error('no_rumah')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                   </div>
@@ -67,30 +101,45 @@
                       <div class="form-group">
                         <label>RT</label>
                         <input type="integer" class="form-control" name="rt">
+                        @error('rt')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                     <div class="col-sm-2">
                       <div class="form-group">
                         <label>RW</label>
                         <input type="integer" class="form-control" name="rw">
+                        @error('rw')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                     <div class="col-sm-2">
                       <div class="form-group">
                         <label>Blok</label>
                         <input type="text" class="form-control" name="blok">
+                        @error('blok')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                     <div class="col-sm-2">
                       <div class="form-group">
                         <label>Dusun</label>
                         <input type="text" class="form-control" name="dusun">
+                        @error('dusun')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>Kecamatan</label>
                         <input type="text" class="form-control" name="kecamatan">
+                        @error('kecamatan')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                   </div>
@@ -108,15 +157,21 @@
                     </div>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <label>RW</label>
+                        <label>jml_jiwa_tetap</label>
                         <input type="integer" class="form-control" name="jml_jiwa_tetap">
+                        @error('jml_jiwa_tetap')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
 
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <label>RW</label>
+                        <label>jml_jiwa_tidak_tetap</label>
                         <input type="integer" class="form-control" name="jml_jiwa_tidak_tetap">
+                        @error('jml_jiwa_tidak_tetap')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                   </div>
@@ -128,6 +183,9 @@
                         <div class="form-input">
                          <label>Tanggal Pasang</label>
                           <input type="date" class="form-control" name="tanggal_pasang">
+                          @error('tanggal_pasang')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                       </div>
                     </div>
@@ -206,12 +264,18 @@
                       <div class="form-group">
                         <label>Bulan Billing</label>
                         <input type="text" name="bln_billing" class="form-control" >
+                        @error('bln_billing')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Tahun Billing</label>
                         <input type="text" name="thn_billing" class="form-control">
+                        @error('thn_billing')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                   </div>
@@ -221,12 +285,18 @@
                       <div class="form-group">
                         <label>Sumber Lain</label>
                         <input type="text" name="sumber_lain" class="form-control">
+                        @error('sumber_lain')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Jenis Usaha</label>
                         <input type="text" name="jenisusaha" class="form-control">
+                        @error('jenisusaha')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
                   </div>
@@ -235,19 +305,19 @@
                       <!-- Select multiple-->
                       <div class="form-group">
                         <label>Merek Warter Meter</label>
-                        <select multiple class="form-control" name="id_merek">
-                          <option value="1">Barindo</option>
-                          <option value="2">Linflow</option>
-                         
+                        <select name="id_merek" class="form-control">
+                          <option value="">--- Merek ---</option>
+                          @foreach($mer as $item)
+                              <option value="{{ $item->id }}">{{ $item->merek }}</option>
+                          @endforeach    
                         </select>
                       </div>
                     </div>
                   </div>
-              
               <div class="form-group">
-                <button class="btn btn-primary">simpan</button>
-               </div> 
-            </div>
+              <button class="btn btn-primary">simpan</button>
+            </div> 
+          </div>
           </div>
           <form>
 @endsection

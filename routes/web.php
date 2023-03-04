@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WmController;
 use App\Http\Controllers\DilController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\PenutupanController;
 use App\Http\Controllers\PenggantianController;
 use App\Http\Controllers\PenyambunganController;
@@ -57,10 +58,14 @@ Route::post('/penggantian/insert', [PenggantianController::class,'insert']);
 Route::get('/watermeter', [WmController::class,'index'])->name('watermeter');
 Route::post('/watermeter/insert', [WmController::class,'insert']);
 
+
+Route::get('/layanan', [LayananController::class,'index'])->name('layanan');
 //export
 Route::get('/exportexcel', [DilController::class,'exportexcel'])->name('exportexcel');
 //import
 Route::post('/importexcel', [DilController::class,'importexcel'])->name('importexcel');
+//import
+Route::get('/exportpdf', [DilController::class,'exportpdf'])->name('exportpdf');
 
 
 

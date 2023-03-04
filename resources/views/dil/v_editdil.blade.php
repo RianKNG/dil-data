@@ -27,10 +27,17 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
+                        <label>cabang</label>
+                          <input type="text" class="form-control" name="cabang" value="{{ $data->cabang }}">
+                          @error('cabang')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
+                      </div>
+                  </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
                         <label>status</label>
                         <option  class="form-control" name="status"  value="{{ $data->no_rekening }}" disabled>Aktip</option>
-                        {{-- <input type="text" name="status" class="form-control" > --}}
-
                       </div>
                     </div>
                   </div>

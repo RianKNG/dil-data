@@ -29,12 +29,12 @@
           <thead>
             <tr>
               <th width="5%">No.</th>
-              <th>Id Penutupan</th>
+              <th>No Sambungan</th>
               <th>tanggal_tutup</th>
-              <th>alasan</th>
-              <th>no sambungan</th>
               <th>nama_sekarang</th>
-              <th>segel</th>
+              <th>alasan</th>
+              <th>Status</th>
+             
               <th width="20%">Aksi</th>
             </tr>
           </thead>
@@ -42,10 +42,10 @@
             @foreach ($data as $index => $k)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $k->id }}</td>
-                <td>{{ $k->tanggal_tutup }}</td>
-                <td>{{ $k->alasan }}</td>
                 <td>{{ $k->id_dil }}</td>
+                <td>{{ $k->tanggal_tutup }}</td>
+                <td>{{ $k->nama_sekarang }}</td>
+                <td>{{ $k->alasan }}</td>
                 <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-info btn-xs' : 'btn-info btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
                
                 <td>
@@ -59,7 +59,7 @@
                     Delete
                   </a>
               </td>
-              <td>{{ $k->nama_sekarang }}</td>
+            
     
             </tr> 
          @endforeach

@@ -14,4 +14,11 @@ class Merek extends Model
 
     protected $tableKey = ['id'];
     protected $fillable = ['id','merek','created_at','updated_at'];
+
+    // public function dilmodell()
+    // {
+
+    //     return $this->hasMany(DilModel::class);
+    // }
+
 }
