@@ -4,8 +4,9 @@
  <h6><span> <i><b>Dashboard</b></i></span></h6>
 @endsection
     @php
-      $tanggal = date("m-Y");
+      $tanggal = date('F Y');;
     @endphp
+  
     @section('content')
     <div class="container">
         <!-- Info boxes -->

@@ -9,25 +9,21 @@
 </div>
 @endif
  <!-- Main content -->
- <section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <!-- left column -->
-      <div class="col-md-8">
-        
-        <!-- general form elements -->
-        <div class="card card-primary ">
-          <div class="card-header">
-            <h3 class="card-title">Tabel Penyambungan</h3>
+ <div class="container-fluid">
+ <div class="row">
+  <div class="col-md-8">
+    {{-- <div class="card"> --}}
+      <div class="card-header">
+            <h6 class="card-title"> <span>Tabel Penyambungan</span></h6>
           </div>
-          {{-- <div class="card-body table-responsive p-0" style="height: 400px;"> --}}
+          <div class="card-body table-responsive p-0" style="height: 200px;">
             <table class="table table-head-fixed text-nowrap">
               <thead>
                 <tr>
                   <th width="5%">No.</th>
-                  <th>Id Sambung</th>
-                  <th>Id Tutup</th>
-                  <th>spk</th>
+                  <th>Id Dil</th>
+                  <th>nama</th>
+                  <th>alasan</th>
                   <th>tanggal_sambung</th>
                   <th>alasan</th>
                   <th width="25%">Aksi</th>
@@ -36,13 +32,11 @@
               <tbody>
                 @foreach ($data as $index => $k)
                 <tr>
-                    <td>#</td>
-                    <td>{{ $k->id }}</td>
-                    {{-- <td>{{ $k->penutupan_id }}</td> --}}
-                    
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $k->id_dil }}</td>
-                    <td>{{ $k->alasan }}</td>
                     <td>{{ $k->nama_sekarang }}</td>
+                    <td>{{ $k->alasan }}</td>
+                    <td>{{ $k->tanggal_sambung }}</td>
                     <td>{{ $k->dusun }}</td>
                     <td>
                       {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
@@ -99,14 +93,15 @@
         <!-- Form Element sizes -->
         <div class="card card-warning">
           <div class="card-header">
-            <h3 class="card-title">Form Penyambungan</h3>
+            <h6 class="card-title"><span class="btn btn-small">Form Penyambungan</span></h6>
           </div>
           <div class="card-body">
             <form action="penyambungan/insert" method="post" enctype="multipart/form-data">
               @csrf
                 <!-- /.card-header -->
                   <div class="form-group">
-                      <label for="id" class="col-sm-8 col-form-label">id_dil</label>
+                      {{-- <label for="id" class="col-sm-8 col-form-label">id_dil</label> --}}
+                      <h6 for="id" class="col-sm-8 col-form-label">Uniq Number</h6>
                       <div class="col-sm-12">
                         <input 
                         type="integer" 
@@ -116,27 +111,30 @@
                     </div> 
                     <div>
                     </div>
-                    <div class="form-group row">
-                      <label for="tanggal_sambung" class="col-sm-8 col-form-label">tanggal penyambungan</label>
-                      <div class="col-sm-4">
+                    <div class="form-group">
+                      <h6 for="tanggal_sambung" class="col-sm-8 col-form-label">tanggal_sambung</h6>
+                      <div class="col-sm-12">
                         <input
                         type="date" 
                         name="tanggal_sambung" 
                         class="form-control">
                       </div>
                     </div> 
-                    <div class="form-group row">
-                      <label for="alasan" class="col-sm-8 col-form-label">alasan</label>
-                      <div class="col-sm-4">
-                        <input
-                        type="text" 
-                        name="alasan" 
-                        class="form-control">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>cabang</label>
+                        <select name="alasan" class="form-control btn-xs">
+                          <option selected>alasan ditutup</option>
+                          <option value="1">Butuh</option>
+                          <option value="2">Sudah Ada Uang</option>
+                        </select>
+                          @error('alasan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
-                    </div> 
                    
                     <div class="form-group">
-                      <button class="btn btn-primary">simpan</button>
+                      <button class="btn btn-primary btn-small">simpan</button>
                      </div> 
                   </div>
             <form>

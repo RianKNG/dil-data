@@ -46,6 +46,7 @@
           <div class="col-sm-6">
             <h6 class="m-0">@yield('title')</h6>
          <!-- /.col -->
+         
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               {{-- <li class="breadcrumb-item">Home</li>
@@ -54,6 +55,7 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
+    </div>
     </div>
     <!-- /.content-header -->
 

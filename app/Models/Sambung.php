@@ -11,5 +11,5 @@ class Sambung extends Model
     protected $guarded = [];
     protected $table = 'sambung';
     protected $tableKey = 'id';
-    protected $fillable = ['id','id_dil','tanggal_sambungan','alasan','created_at'];
+    protected $fillable = ['id','id_dil','tanggal_sambung','alasan','created_at'];
 }

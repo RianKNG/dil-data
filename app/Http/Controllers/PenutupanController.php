@@ -30,7 +30,7 @@ class PenutupanController extends Controller
         }
         
             
-           
+        
         //   dd($data);
         return view('penutupan.index', compact('data'));
     }
