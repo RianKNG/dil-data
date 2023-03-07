@@ -1,5 +1,5 @@
 
-@extends('layouts.v_template')
+@extends('templates.v_template')
 @section('title','Master Dil')
 @section('content')
 @if ($message = Session::get('success'))
@@ -16,8 +16,8 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h6 class="card-title">Rabel Water Meter</h6>
-
+              <h6 class="card-title"> <span class="btn-xs">Tabel Water Meter</span></h6>
+             
               <div class="card-tools">
                 <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal">
                     <span class = "btn-xs">Tambah WM (+)</span>
@@ -39,7 +39,7 @@
                 <thead>
                   <tr>
                     <th width="5%">No</th>
-                    <th>id</th>
+                    <th>No WM</th>
                     <th>Merek</th>
                     <th width="25%">Aksi</th>
                     
@@ -77,8 +77,13 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <div class="card-outline card-warning">
+        <div class="modal-header ">
+          {{-- <div class="card"> --}}
+       
+            
+      
+          <h5 class="modal-title">Tambah Data</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -88,18 +93,18 @@
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="integer" name="id" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <label class="btn-xs">No Merek Teregistrasi</label>
+                    <input type="integer" name="id" class="form-control" id="exampleInputEmail1">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="text" name="merek" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label class="btn-xs">Merek Water Meter</label>
+                    <input type="text" name="merek" class="form-control" id="exampleInputPassword1">
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
               </form>
             </div>
@@ -107,7 +112,29 @@
       </div>
     </div>
   </div>
-  
+ {{-- *// ini adalah modal denger --}}
+ @foreach ($data as $index => $k)
+ <div class="modal fade" id="delete{{ $k->id }}">
+   <div class="modal-dialog">
+     <div class="modal-content bg-info">
+       <div class="modal-header">
+         <h4 class="modal-title">No Sambungan&hellip;{{ $k->id}}</h4>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <p>Apakah anda yakin ingin hapus Data? {{ $k->merek}}</p>
+       </div>
+       <div class="modal-footer justify-content-between">
+         <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Batal</button>
+         <a href="dil/hapus/{{ $k->id }}" class="btn btn-danger btn-sm">Hapus</a>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+ @endforeach
 @endsection
 @section('script')
 <script>

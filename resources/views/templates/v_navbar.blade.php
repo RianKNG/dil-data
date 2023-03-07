@@ -15,12 +15,34 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
-    <li class="nav-item">
+   
 
-    </li>
+   
 
     <!-- Messages Dropdown Menu -->
+    <a class="nav-link">
+      <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <li class="nav-item">
+        <button class="btn-dark btn-xs" type="submit">Log Out</button>
+        </li>
+      </form>
+      
+    </a>
+   
+     
+    
+     
+   
+    <li class="nav-item">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt"></i>
+      </a>
+    </li>
 
+  </ul>
+</nav>
+<!-- /.navbar -->
     <!-- Notifications Dropdown Menu -->
 
     <li class="nav-item">

@@ -7,7 +7,7 @@
       <li class="nav-item menu-open">
         <a href="/" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-            <p class="btn-xs">Home</p>
+            <p class="btn-xs">Dashboard</p>
           </a>
       </li>
       <li class="nav-item">

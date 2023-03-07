@@ -1,4 +1,4 @@
-@extends('layouts.v_template')
+@extends('templates.v_template')
 @section('title','layanan')
 @section('content')
 <section class="content">
@@ -23,11 +23,11 @@
         <div class="col-md-4">
             <div class="card card-outline card-warning">
             <div class="card-header">
-                <h3 class="card-title">Expor Data DIL</h3>
+                <h3 class="card-title">Download DIL</h3>
             </div>
             <div class="card-body">
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#export">
-                    Export
+                    Download
                 </button>
             </div>
             </div>

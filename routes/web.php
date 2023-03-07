@@ -12,6 +12,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\PenutupanController;
 use App\Http\Controllers\PenggantianController;
 use App\Http\Controllers\PenyambunganController;
+use Illuminate\Support\Facades\Auth;
 // use App\Http\Controllers\PenyambunganController;
 
 /*
@@ -27,7 +28,7 @@ use App\Http\Controllers\PenyambunganController;
 //DIL
 // Route::get('/', [HomeController::class,'index'])->name('guru');
 Route::get('/', [HomeController::class,'index']);
-Route::get('/dil', [DilController::class,'index'])->name('dil');
+// Route::get('/dil', [DilController::class,'index'])->name('dil');
 Route::get('/dil/add', [DilController::class,'add']);
 Route::post('/dil/insert', [DilController::class,'insert']);
 Route::get('/dil/edit/{id}', [DilController::class,'edit']);
@@ -42,6 +43,7 @@ Route::post('/penutupan/insert', [PenutupanController::class,'insert']);
 Route::get('/penutupan/hapus/{id}', [PenutupanController::class,'hapus']);
 Route::get('/penutupan/edit/{id}',[PenutupanController::class,'edit']);
 Route::post('/penutupan/update/{id}',[PenutupanController::class,'update']);
+Route::get('/penutupan/hitung', [PenutupanController::class,'hitung']);
 //Penyambungan
 Route::get('/penyambungan', [PenyambunganController::class,'index'])->name('penyambungan');
 Route::get('/penyambungan/add', [PenyambunganController::class,'add']);
@@ -57,6 +59,7 @@ Route::post('/penggantian/insert', [PenggantianController::class,'insert']);
 //watermeter
 Route::get('/watermeter', [WmController::class,'index'])->name('watermeter');
 Route::post('/watermeter/insert', [WmController::class,'insert']);
+Route::get('/watermeter/hapus/{id}', [WmController::class,'hapus']);
 
 
 Route::get('/layanan', [LayananController::class,'index'])->name('layanan');
@@ -72,3 +75,11 @@ Route::get('/exportpdf', [DilController::class,'exportpdf'])->name('exportpdf');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dil', [DilController::class,'index'])->name('dil');  
+});

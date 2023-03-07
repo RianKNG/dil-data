@@ -1,4 +1,4 @@
-@extends('layouts.v_template')
+@extends('templates.v_template')
 @section('title','edit_guru')
 @section('content')
 

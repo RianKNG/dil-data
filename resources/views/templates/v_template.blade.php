@@ -28,9 +28,9 @@
 
   <!-- Navbar -->
 
-      @include('layouts.v_navbar')
+      @include('templates.v_navbar')
       <!-- Sidebar Menu -->
-        @include('layouts.v_sidebar')
+        @include('templates.v_sidebar')
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -45,11 +45,11 @@
         <div class="row mb-0">
           <div class="col-sm-6">
             <h6 class="m-0">@yield('title')</h6>
-          </div><!-- /.col -->
+         <!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active">Profile</li>
+              {{-- <li class="breadcrumb-item">Home</li>
+              <li class="breadcrumb-item active">Profile</li> --}}
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

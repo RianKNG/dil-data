@@ -1,4 +1,4 @@
-@extends('layouts.v_template')
+@extends('templates.v_template')
 @section('title','Tambah Data')
 @section('content')
 <section class="content btn-xs">

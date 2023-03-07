@@ -1,5 +1,5 @@
 
-@extends('layouts.v_template')
+@extends('templates.v_template')
 @section('title','Master Dil')
 @section('content')
 @if ($message = Session::get('success'))

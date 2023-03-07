@@ -22,4 +22,13 @@ class WmController extends Controller
 
       
     }
+    public function hapus($id)
+    {
+        $data = Merek::find($id);
+        $data->delete();
+        
+        return redirect()->route('watermeter')->with('success','data berhasil ditambahkan');
+
+      
+    }
 }

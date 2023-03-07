@@ -1,4 +1,4 @@
-@extends('layout.v_template')
+@extends('templates.v_template')
 @section('title','detail')
 @section('content')
 <div class="row">

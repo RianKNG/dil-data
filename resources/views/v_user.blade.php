@@ -1,4 +1,4 @@
-@extends('layout.v_template')
+@extends('templates.v_template')
 @section('title','user')
 @section('content')
 <h1>Ini Halaman User</h1>

@@ -1,14 +1,22 @@
 
-@extends('layouts.v_template')
-@section('title','Home')
+@extends('templates.v_template')
+@section('title')
+ <h6><span> <i><b>Dashboard</b></i></span></h6>
+@endsection
+    @php
+      $tanggal = date("m-Y");
+    @endphp
     @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <!-- Info boxes -->
+       
+        <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ $tanggal }}</b></i></span></h6>
         <div class="row">
+          
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box btn-xs">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-    
+              
               <div class="info-box-content">
                 <span class="info-box-text">Penutupan</span>
                 <span class="info-box-number">
@@ -28,8 +36,8 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-book"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Penyambungan</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-text">Penutupan</span>
+                <span class="info-box-number">{{ $data }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>

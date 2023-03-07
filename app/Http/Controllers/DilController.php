@@ -9,8 +9,9 @@ use PDF;
 use App\Exports\DilExport;
 use App\Imports\DilImport;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -19,14 +20,32 @@ class DilController extends Controller
     public function index(Request $request)
    
     {
+        // ini contoh 1 sudaj oke id paren jangan dibawa ke ID master karena kan tertimpah id oleh ID chil
+        // $data = DB::table('tbl_dil AS d')
+        // ->select([
+        //     'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
+        //     'd.ceck_valve','d.kopling','d.plugran','d.box','d.bln_billing','d.thn_billing','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+        //     'm.merek'
+        // ])
+        // ->leftJoin('merek as m','d.id_merek','=','m.id')
+        // ->where('cabang','=','2')
+        // ->leftJoin('merek as m','m.id','m.merek','d.id','=','m.id_merek')
 
-        // sudah oke jangan dihapus
-            $data = DB::table('tbl_dil')
-            ->leftJoin('merek','tbl_dil.id_merek','=','merek.id')
-            ->select('tbl_dil.id','tbl_dil.cabang','tbl_dil.no_rekening','tbl_dil.status','tbl_dil.nama_sekarang','tbl_dil.nama_pemilik','tbl_dil.jml_jiwa_tetap',
-            'tbl_dil.jml_jiwa_tidak_tetap',
-            'tbl_dil.tanggal_pasang','tbl_dil.id_merek','merek.merek')
+    // ini contoh 2 sudaj oke dengan query
+    $dataquery = DB::table('tbl_dil as d')
+    ->select([
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
+            'd.ceck_valve','d.kopling','d.plugran','d.box','d.bln_billing','d.thn_billing','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+            'm.merek'
+        ])
+            ->join('merek as m',function($join){
+                $join->on('m.id','=','d.id_merek');
+                // ->where('d.cabang','=',2);
+            })
             ->get();
+//  $data = $dataquery->where('cabang','=',4);
+ $data = $dataquery->all();
+
            
         return view('dil.v_dil', compact('data'));
     }
@@ -54,7 +73,7 @@ class DilController extends Controller
           'status_milik' => 'required',
           'jml_jiwa_tetap' => 'required|numeric',
           'jml_jiwa_tidak_tetap' => 'required|numeric',
-          'tanggal_pasang' => 'required',
+          'tanggal_pasang' => 'date_format:Y-m-d',
           'segel' => 'required',
           'stop_kran' => 'required',
           'ceck_valve' => 'required',
@@ -65,7 +84,7 @@ class DilController extends Controller
           'thn_billing' => 'required|min:4|max:4',
           'sumber_lain' => 'required',
           'jenisusaha' => 'required',
-          'id_merek',
+          'id_merek' => 'required',
 
         ]);
   

@@ -1,4 +1,4 @@
-@extends('layouts.v_template')
+@extends('templates.v_template')
 @section('title','Tambah Data')
 @section('content')
 <section class="content btn-xs">
@@ -7,7 +7,7 @@
     @csrf
     </div>
             <!-- general form elements disabled -->
-            <div class="card card-warning">
+            <div class="card-outline card-danger">
               <div class="card-header">
                 <h3 class="card-title">Form Tambah Data Dil</h3>
               </div>
@@ -29,9 +29,17 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>cabang</label>
-                        <select name="cabang" class="form-control">
-                          <option selected>PengirimCab</option>
+                        <select name="cabang" class="form-control btn-xs">
+                          <option selected>cab||unit</option>
                           <option value="1">Tomo</option>
+                          <option value="9">Ujungjaya</option>
+                          <option value="10">Darmaraja</option>
+                          <option value="11">Cisitu</option>
+                          <option value="12">Cimanggung</option>
+                          <option value="12">Tanjungsari</option>
+                          <option value="13">Pamulihan</option>
+                          <option value="14">Sumedang Utara</option>
+                          
                           <option value="2">Paseh</option>
                           <option value="3">Cimalaka</option>
                           <option value="4">Tanjungkerta</option>

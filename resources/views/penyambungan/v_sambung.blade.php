@@ -1,5 +1,5 @@
 
-@extends('layouts.v_template')
+@extends('templates.v_template')
 @section('title','Penutupan Dil')
 @section('content')
 

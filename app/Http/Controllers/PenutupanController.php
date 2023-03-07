@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Penutupan;
+use Carbon\Carbon;
 
+use App\Models\Penutupan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +42,8 @@ class PenutupanController extends Controller
     public function insert(Request $request)
     {
         // ini cara baru tapi mau coba lama dulu
-       Penutupan::create($request->all());
+       $data = Penutupan::create($request->all());
+     
         // ini cara lama
         // $data = new DilModel();
         // $data::create($request->all());
@@ -93,5 +95,39 @@ class PenutupanController extends Controller
     // return view('penutupan.index', compact('data','dataa','datab'));
          
     // }
-    
+    public function hitung()
+    {
+        // $tanggal = date('Y-m-d');
+        $datahitung = DB::table('penutupan as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        // jangan select id parentnya karena akan terpanggil parent nya
+        // ->select('a.id','a.tanggal_tutup','a.alasan','a.id_dil','b.status','b.nama_sekarang','b.nama_pemilik','b.id_merek','b.segel');
+        
+         ->select('a.*','b.status','b.nama_sekarang','b.nama_pemilik','b.id_merek','b.segel','b.cabang');
+        //  ->get();
+        //  ->orderBy('id','desc')
+         
+            // ->where('a.tanggal_tutup','=',"2023-03-07")
+            $data = $datahitung
+            ->where('b.status','=',1) 
+            // ->orderBy('tanggal_tutup')
+            // ->where('b.cabang','=', 6) 
+            // oke ini
+        //     ->groupBy(function($val) {
+        //         return Carbon::parse($val->tanggal_tutup)->format('m');
+        //  });
+        // sampesini
+            // ->GroupBy(DB::raw("MONTH(tanggal_tutup)"))
+            // ->pluck('datahitung');
+            ->whereMonth('tanggal_tutup', Carbon::now()->month)
+
+            ->count();
+            
+        //    dd($data);
+            
+            // return($data);
+            
+    //     dd($data, $tanggal);
+    return view('v_home',compact('data'));
+    }
 }

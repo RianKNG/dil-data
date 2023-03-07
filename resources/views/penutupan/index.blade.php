@@ -1,5 +1,5 @@
 
-@extends('layouts.v_template')
+@extends('templates.v_template')
 @section('title','Penutupan Dil')
 @section('content')
 <div class="container-fluid">
@@ -129,16 +129,18 @@
                         class="form-control">
                       </div>
                     </div> 
-                    <div class="mb-3">
-                      <h1 class="col-sm-8 col-form-label">alasan</h1>
-                      <select class="custom-select" name="alasan">
-                       <option selected><span class="btn btn-sm">Pilih alasan</span></option>
-                       <option value="nunggak">nunggak</option>
-                       <option value="mengundurkan diri">mengundurkan diri</option>
-                      
-                     </select>
-                    
-                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>cabang</label>
+                        <select name="alasan" class="form-control btn-xs">
+                          <option selected>Alasan</option>
+                          <option value="1">Butuh</option>
+                          <option value="2">Sudah Ada Uang</option>
+                        </select>
+                          @error('alasan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
+                      </div>
                    
                     <div class="form-group">
                       <button class="btn btn-primary btn btn-sm">simpan</button>
