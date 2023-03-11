@@ -10,8 +10,16 @@ class PenggantianController extends Controller
 {
     public function index()
     {
-        $data = Ganti::get();
-        return view('penggantian.v_penggantian',compact('data'));
+        $data = DB::table('ganti as a')
+        ->select([
+                'a.*','d.*'
+            ])
+                ->join('tbl_dil as d',function($join){
+                    $join->on('d.id','=','a.id_dil');
+                    // ->where('d.cabang','=',2);
+                })
+                ->get();
+        return view('penggantian.v_index',compact('data'));
     }
     public function add()
     {

@@ -7,6 +7,10 @@
     @csrf
     </div>
             <!-- general form elements disabled -->
+            <div class="container-fluid btn-xs">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
             <div class="card-outline card-danger">
               <div class="card-header">
                 <h3 class="card-title">Form Tambah Data Dil</h3>
@@ -263,12 +267,11 @@
                     </div>
                   </div>
                   </div>
-                 
 
-                
+
                   <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
+                    <div class="col-sm-2">
+                      <!-- textarea -->
                       <div class="form-group">
                         <label>Bulan Billing</label>
                         <input type="text" name="bln_billing" class="form-control" >
@@ -277,7 +280,7 @@
                       @enderror
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <label>Tahun Billing</label>
                         <input type="text" name="thn_billing" class="form-control">
@@ -286,10 +289,7 @@
                           @enderror
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
+                    <div class="col-sm-4">
                       <div class="form-group">
                         <label>Sumber Lain</label>
                         <input type="text" name="sumber_lain" class="form-control">
@@ -298,7 +298,8 @@
                           @enderror
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <label>Jenis Usaha</label>
                         <input type="text" name="jenisusaha" class="form-control">
@@ -307,10 +308,7 @@
                       @enderror
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <!-- Select multiple-->
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <label>Merek Warter Meter</label>
                         <select name="id_merek" class="form-control">
@@ -321,7 +319,7 @@
                         </select>
                       </div>
                     </div>
-                  </div>
+                    </div>
               <div class="form-group">
               <button class="btn btn-primary">simpan</button>
             </div> 

@@ -13,7 +13,7 @@
                 
                 <div>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
-                    IMPORT
+                    Import
                 </button>
                
           </div>
@@ -38,7 +38,7 @@
                 <h3 class="card-title">Expor Data Pdf</h3>
             </div>
             <div class="card-body">
-                <a href="/exportpdf" class="btn btn-primary">Export</a>     
+                <a href="/exportpdf" class="btn btn-primary">Download Pdf</a>     
             </div>
             </div>
         </div>

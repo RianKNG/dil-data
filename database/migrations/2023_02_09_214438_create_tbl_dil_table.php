@@ -16,6 +16,7 @@ class CreateTblDilTable extends Migration
         Schema::create('tbl_dil', function (Blueprint $table) {
             $table->increments('id');
             $table->string('status')->nullable();
+            $table->string('cabang');
             $table->integer('no_rekening');
             $table->string('nama_sekarang');
             $table->string('nama_pemilik');

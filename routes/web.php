@@ -1,18 +1,20 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
+
+
+
 use Illuminate\Support\Facades\Route;
-
-
-
-
 use App\Http\Controllers\WmController;
+use App\Http\Controllers\BbnController;
 use App\Http\Controllers\DilController;
+use App\Http\Controllers\CobaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\PenutupanController;
 use App\Http\Controllers\PenggantianController;
 use App\Http\Controllers\PenyambunganController;
-use Illuminate\Support\Facades\Auth;
 // use App\Http\Controllers\PenyambunganController;
 
 /*
@@ -50,6 +52,15 @@ Route::get('/penyambungan/add', [PenyambunganController::class,'add']);
 Route::post('/penyambungan/insert', [PenyambunganController::class,'insert']);
 // Route::get('/penutupan/edit/{id}',[PenyambunganController::class,'edit']);
 // Route::post('/penutupan/update/{id}',[PenyambunganController::class,'update']);
+
+//bbn
+Route::get('/bbn',[BbnController::class,'index'])->name('bbn');
+Route::post('/bbn/store', [BbnController::class,'store']);
+Route::get('/bbn/add', [BbnController::class,'add']);
+
+
+Route::get('/coba',[CobaController::class,'index'])->name('coba');
+
 
 //penggantian
 Route::get('/penggantian', [PenggantianController::class,'index'])->name('penggantian');

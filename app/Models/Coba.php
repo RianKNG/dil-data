@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bbn extends Model
+class Coba extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table ='bbn';
-    protected $key ='id';
-    protected $fillable =['id','id_dil','tanggal_bbn','nama_baru','created_at','updated_at'];
+    
+    protected $table = 'coba';
+
+    protected $tableKey = ['id'];
+    protected $fillable =['id','id_penutupan','id_ganti','id_sambung','id_bbn'];
     
 }

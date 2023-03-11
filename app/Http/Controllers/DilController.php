@@ -43,6 +43,8 @@ class DilController extends Controller
                 // ->where('d.cabang','=',2);
             })
             ->get();
+            // dd($dataquery);
+            // 
 //  $data = $dataquery->where('cabang','=',4);
  $data = $dataquery->all();
 

@@ -7,16 +7,17 @@
   {{ $message }},
 </div>
 @endif
-
 <div class="container-fluid btn-xs">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-       
-        <div class="card card-outline card-warning">
-          <div class="mt-2"> ----- Data Induk Pelanggan Master ----- 
-          </div>
-          <div class="card-body">
+<div class="card-outline card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Data Dil</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+          {{-- <div class="card-body"> --}}
            
               <div class="card-body table-responsive p-0" style="height: 500px;">
                 <table id="table" class="table table-bordered table-striped">

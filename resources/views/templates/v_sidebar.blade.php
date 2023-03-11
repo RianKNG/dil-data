@@ -67,7 +67,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="/bbn" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
           <p class="btn-xs">
             Layanan Balik Nama
@@ -80,13 +80,6 @@
           <p class="btn-xs">
             Laynan Data
           </p>
-        </a>
-      </li>
-      <li class="nav-header">Admin</li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="fas fa-circle nav-icon"></i>
-          <p class="btn-xs">logout</p>
         </a>
       </li>
     </ul>
