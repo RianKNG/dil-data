@@ -16,21 +16,28 @@
           <h3 class="card-title">Tabel Penutupan</h3>
 
           <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
+            <div class="input-group input-group-sm" style="width: 200px; ">
               {{-- <input type="search" name="search" class="form-control float-right" placeholder="search"> --}}
-              <form action="/penutupan" method="GET">
-                <input type="search" class="form-control" name="search" placeholder="Cari ">
+              <div class="input-group mt-2 float-right mr-auto">
+                <form class="form" method="get" action="penyambungan/search">
+                  <div class="form-group w-100 mb-3">
+                      {{-- <label for="search" class="d-block mr-2">Pencarian</label> --}}
+                      <input type="text" name="search" class="form-control w-100 d-inline" id="search" placeholder="Masukkan keyword">
+                      {{-- <button type="submit" class="btn btn-primary mr-3">Cari</button> --}}
+                  </div>
               </form>
             </div>
           </div>
         </div>
         
+        <a href="/penyambungan" class="btn btn-success mr-2 justify-content-center float-right mt-1"><i class="fas fa-sync-alt">Kembali</i></a>
+      </div>
         <form action="/penyambungan" method="GET">
           <div class="input-group mb-3 mr-3">
               <input type="date" class="form-control mr-2" name="start_date">
               <input type="date" class="form-control mr-2" name="end_date">
               <button class="btn btn-primary mr-1" type="submit">Cari</button>
-              <a href="/penyambungan" class="btn btn-success mr-2">Kembali</a>
+              
           </div>
       </form>
         <!-- /.card-header -->

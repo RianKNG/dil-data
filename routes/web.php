@@ -52,7 +52,7 @@ Route::get('/penutupan/hitung', [PenutupanController::class,'hitung']);
 Route::get('/penyambungan', [PenyambunganController::class,'index'])->name('penyambungan');
 Route::get('/penyambungan/add', [PenyambunganController::class,'add']);
 Route::post('/penyambungan/insert', [PenyambunganController::class,'insert']);
-// Route::get('/penutupan/edit/{id}',[PenyambunganController::class,'edit']);
+Route::get('/penyambungan/search', [PenyambunganController::class,'search']);
 // Route::post('/penutupan/update/{id}',[PenyambunganController::class,'update']);
 
 //bbn

@@ -51,4 +51,10 @@ class PenyambunganController extends Controller
         Sambung::create($request->all());
         return redirect('penyambungan')->with('success','data berhsil ditambahkan');
     }
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $data = Sambung::where('alasan', 'like', "%" . $keyword . "%")->get();
+        return view('penyambungan.v_sambung',compact('data')); 
+    }
 }
