@@ -15,11 +15,6 @@
             <form action="/penutupan" method="GET">
               <input type="search" class="form-control" name="search" placeholder="Cari ">
             </form>
-            {{-- <div class="input-group-append">
-              <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
-              </button>
-            </div> --}}
           </div>
         </div>
       </div>
@@ -49,8 +44,6 @@
                 <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-info btn-xs' : 'btn-info btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
                
                 <td>
-                  {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
-                  
                   <a href="penutupan/edit/{{ $k->id }}" class="btn btn-success btn-xs">Edit</a>
                   <a href="penutupan/hapus/{{ $k->id }}" 
                     class="btn btn-danger btn-xs" 

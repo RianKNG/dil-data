@@ -132,9 +132,9 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-3">
+                  <div class="col-md-6">
                     <p class="text-center">
-                      <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                      <strong>{{ $tanggal }}</strong>
                     </p>
 
                     <div class="chart">
@@ -144,9 +144,9 @@
                     <!-- /.chart-responsive -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-md-3">
+                  <div class="col-md-6">
                     <p class="text-center">
-                      <strong>Goal Completion</strong>
+                      <strong>{{ $tanggal }}</strong>
                     </p>
 
                     <div class="progress-group">
@@ -205,10 +205,10 @@
         type: 'column'
     },
     title: {
-        text: 'Monthly Average Rainfall'
+        text: 'Grafik Batang'
     },
     subtitle: {
-        text: 'Source: WorldClimate.com'
+        text: 'Sejatinya Tukang Ledeng Sejati'
     },
     xAxis: {
         categories: {!! json_encode($categories) !!},

@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Login E-DIL</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	{{-- <link rel="stylesheet" type="text/css" href="css/style.css"> --}}
+	<link rel="stylesheet" href="{{ asset('adminLTE') }}/dist/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,12 +12,13 @@
 	{{-- <img class="wave" src="img/wave.png"> --}}
 	<div class="container">
 		<div class="img">
-			<img src="img/bg.svg">
+			{{-- <img src="img/bg.svg"> --}}
+			<img src="{{ asset('adminLTE/dist/img/a.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 		</div>
 		<div class="login-content">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-				<img src="img/avatar.svg">
+				<img src="{{ asset('adminLTE/dist/img/avatar.svg') }}">
 				<h2 class="title"></h2>
                 <h1><span>Selamat Datang di E-DIL</span></h1>
 				
@@ -44,6 +46,6 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
+	<script src="{{ asset('adminLTE') }}/dist/js/main.js"></script>
 </body>
 </html>

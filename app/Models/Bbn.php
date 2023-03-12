@@ -11,6 +11,6 @@ class Bbn extends Model
     protected $guarded = [];
     protected $table ='bbn';
     protected $key ='id';
-    protected $fillable =['id','id_dil','tanggal_bbn','nama_baru','created_at','updated_at'];
+    protected $fillable =['id','id_dil','tanggal_bbn','nama_baru','created_at','updated_at','merek'];
     
 }

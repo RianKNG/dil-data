@@ -26,14 +26,14 @@ class BbnController extends Controller
        
         // ->leftJoin('tbl_dil as d','d.id','=','b.id_dil')
         // ->get();
-
+        ->get();
     
         // dd($data);
         
         
         
         
-        ->get();
+       
 // dd($data);
         return view ('bbn.index',compact('data'));
     }

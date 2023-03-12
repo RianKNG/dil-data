@@ -124,7 +124,7 @@
                       <td>
                         <a href="dil/edit/{{ $k->id }}" class="btn btn-warning btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn btn-success btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <a href="dil/detail/{{ $k->id }}" class="btn btn-success btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i>
                         </a>
                         <a href="dil/hapus/{{ $k->id }}" 
                           class="btn btn-danger btn-xs" 

@@ -8,18 +8,36 @@
   {{ $message }}
 </div>
 @endif
- <!-- Main content -->
- <div class="container-fluid">
- <div class="row">
-  <div class="col-md-8">
-    {{-- <div class="card"> --}}
-      <div class="card-header">
-            <h6 class="card-title"> <span>Tabel Penyambungan</span></h6>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Tabel Penutupan</h3>
+
+          <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+              {{-- <input type="search" name="search" class="form-control float-right" placeholder="search"> --}}
+              <form action="/penutupan" method="GET">
+                <input type="search" class="form-control" name="search" placeholder="Cari ">
+              </form>
+            </div>
           </div>
-          <div class="card-body table-responsive p-0" style="height: 200px;">
-            <table class="table table-head-fixed text-nowrap">
-              <thead>
-                <tr>
+        </div>
+        
+        <form action="/penyambungan" method="GET">
+          <div class="input-group mb-3 mr-3">
+              <input type="date" class="form-control mr-2" name="start_date">
+              <input type="date" class="form-control mr-2" name="end_date">
+              <button class="btn btn-primary mr-1" type="submit">Cari</button>
+              <a href="/penyambungan" class="btn btn-success mr-2">Kembali</a>
+          </div>
+      </form>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0" style="height: 300px;">
+          <table class="table table-head-fixed text-nowrap btn-xs">
+            <thead>
+              <tr>
                   <th width="5%">No.</th>
                   <th>Id Dil</th>
                   <th>nama</th>
@@ -53,6 +71,7 @@
              @endforeach
             </tbody>
             </table>
+
             {{-- modal --}}
             @foreach ($data as $index => $k)
             <div class="modal fade" id="#">
@@ -72,28 +91,18 @@
                     <a href=#" class="btn btn-outline-light">Hapus</a>
                   </div>
                 </div>
-                <!-- /.modal-content -->
               </div>
-              <!-- /.modal-dialog -->
             </div>
-            <!-- /.modal -->
             @endforeach
-          {{-- <form>
-            <div class="card-body">
-              <div class="form-group">
-
-              </div>
-            </div>
-          </form> --}}
         </div>
       </div>
-      <!--/.col (left) -->
-      <!-- right column -->
+    </div>
+     <!-- right column -->
       <div class="col-md-4">
         <!-- Form Element sizes -->
         <div class="card card-warning">
-          <div class="card-header">
-            <h6 class="card-title"><span class="btn btn-small">Form Penyambungan</span></h6>
+          <div class="card-header btn-xs">
+            <h6 class="card-title"><span class="btn btn-small">Form Penutupan</span></h6> 
           </div>
           <div class="card-body">
             <form action="penyambungan/insert" method="post" enctype="multipart/form-data">
@@ -138,7 +147,8 @@
                      </div> 
                   </div>
             <form>
-              
+            </div>
+          </div>
               
           </div>
         </div>

@@ -30,6 +30,7 @@ use App\Http\Controllers\PenyambunganController;
 //DIL
 // Route::get('/', [HomeController::class,'index'])->name('guru');
 Route::get('/', [HomeController::class,'index']);
+Route::get('/test', [HomeController::class,'test']);
 // Route::get('/dil', [DilController::class,'index'])->name('dil');
 Route::get('/dil/add', [DilController::class,'add']);
 Route::post('/dil/insert', [DilController::class,'insert']);
@@ -38,6 +39,7 @@ Route::post('/dil/update/{id}', [DilController::class,'update']);
 Route::get('/dil/hapus/{id}', [DilController::class,'hapus']);
 Route::get('/dil/status/{id}', [DilController::class,'status']);
 Route::get('/dil/jumlah', [DilController::class,'jumlah']);
+Route::get('/dil/detail/{id}', [DilController::class,'detail']);
 
 //Penutupan
 Route::get('/penutupan', [PenutupanController::class,'index'])->name('penutupan');

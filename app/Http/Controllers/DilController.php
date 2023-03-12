@@ -211,4 +211,11 @@ class DilController extends Controller
         return redirect()->route('dil')->with(['error' => 'Data Gagal Diimport!']);
     }
    }
+   public function detail(Request $request, $id)
+   {
+    $dataz = DilModel::find($id);
+    // dd($dataz);
+    // return view('dil.v_editdil',compact('data'));
+    return view('dil.v_detail',compact('dataz'));
+   }
 }

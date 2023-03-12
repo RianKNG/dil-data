@@ -1,13 +1,13 @@
 
 @extends('templates.v_template')
-@section('title','Penggantian Dil')
+@section('title','BBN Dil')
 @section('content')
 <div class="container-fluid">
 <div class="row">
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Tabel Penggantian</h3>
+        <h3 class="card-title">Tabel BBN</h3>
 
         <div class="card-tools">
           <div class="input-group input-group-sm" style="width: 150px;">
@@ -33,7 +33,8 @@
               <th>tanggal_ganti</th>
               <th>merek Lama</th>
               <th>merek Baru</th>
-              <th>no WM Baru</th>
+              <th>Mo Lama</th>
+              <th>Mo Baru</th>
               <th>Status</th>
               <th width="20%">Aksi</th>
             </tr>
@@ -44,7 +45,9 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $k->id_dil }}</td>
                 <td>{{ $k->tanggal_bbn }}</td>
-                <td>{{ $k->nama_baru }}</td>
+                <td>{{ $k->id_merek }}</td>
+                <td>{{ $k->no_rekening}}</td>
+                <td>{{ $k->nama_baru}}</td>
              
 
                 <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-info btn-xs' : 'btn-info btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>

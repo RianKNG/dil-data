@@ -121,4 +121,18 @@ class HomeController extends Controller
             
                return view('v_home',compact('datadil','data','dataz','datat','datas','datagan','datac','datad','categories'));
     }
+     public function test()
+     {
+      $datahitungh = DB::table('sambung as t')
+      ->join('tbl_dil as h','h.id','=','t.id_dil')
+       ->select('t.*','h.*');
+      
+          $datalaporan = $datahitungh
+          ->where('status','=',1) 
+          ->whereMonth('tanggal_sambung', Carbon::now()->month)
+          ->count();
+          // ->get();
+          // dd($dataz);
+      return view('test',compact('datalaporan'));
+    }
 }
