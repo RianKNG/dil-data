@@ -7,7 +7,21 @@
       $tanggal = date('F Y');
       $tahun = date('Y');
     @endphp
-  
+@section('tet')
+
+     @php
+    if (isset($_server['HTTPS']) && $_SERVER['HTTPS'] ==='on') {
+      $url="https://";
+    } else {
+      $url="http://";
+      $url.=$_SERVER['HTTP_HOST'];
+      $url.=$_SERVER['REQUEST_URI'];
+      $url;
+    }
+    $page=$url;
+    $sec="5";
+    @endphp
+@endsection
     @section('content')
     <div class="container">
         <!-- Info boxes -->
@@ -22,7 +36,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Dil Baru</span>
                 <span class="info-box-number">
-                  {{ $datadil }}
+                  {{ $databill }}
                   <small></small>
                 </span>
               </div>
@@ -35,11 +49,11 @@
 
           <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-book"></i></span>
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Penutupan</span>
-                <span class="info-box-number">{{ $data }}</span>
+                <span class="info-box-number">{{ $dataz }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -48,7 +62,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-book"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-plus-square"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Penyambungan</span>
@@ -77,11 +91,11 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-    
+              <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-edit"></i></span>
+   
               <div class="info-box-content">
                 <span class="info-box-text">Bbn</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-number">{{ $datad }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -90,10 +104,10 @@
           <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-    
+  
               <div class="info-box-content">
                 <span class="info-box-text">Total DIL</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-number">{{ $jumlahdil }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -111,19 +125,7 @@
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
-                  </button>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                      <i class="fas fa-wrench"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" role="menu">
-                      <a href="#" class="dropdown-item">Action</a>
-                      <a href="#" class="dropdown-item">Another action</a>
-                      <a href="#" class="dropdown-item">Something else here</a>
-                      <a class="dropdown-divider"></a>
-                      <a href="#" class="dropdown-item">Separated link</a>
-                    </div>
-                  </div>
+                  </button>     
                   <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
                   </button>
@@ -196,10 +198,7 @@
       <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     
     <script type="text/javascript">
-    // let a =  {!! json_encode($datat) !!};
-    let b =  {!! json_encode($datas) !!};
-    // let c =  {!! json_encode($datac) !!};
-    // let d =  {!! json_encode($datad) !!};
+    let b =  {!! json_encode($datac) !!};
     Highcharts.chart('container', {
     chart: {
         type: 'column'
@@ -235,14 +234,14 @@
         }
     },
     series: [{
-        name: 'Penyambungan',
+        name: 'Penggantian',
         data: b
     }]
        
 });
 </script>
     <script type="text/javascript">
-    let a =  {!! json_encode($datat) !!};
+    let a =  {!! json_encode($datas) !!};
     // let b =  {!! json_encode($datas) !!};
     // let c =  {!! json_encode($datac) !!};
     // let d =  {!! json_encode($datad) !!};

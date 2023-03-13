@@ -48,6 +48,8 @@ class DilController extends Controller
 //  $data = $dataquery->where('cabang','=',4);
  $data = $dataquery->all();
 
+
+
            
         return view('dil.v_dil', compact('data'));
     }

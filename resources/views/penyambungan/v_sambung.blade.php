@@ -8,6 +8,7 @@
   {{ $message }}
 </div>
 @endif
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8">
@@ -30,16 +31,21 @@
           </div>
         </div>
         
-        <a href="/penyambungan" class="btn btn-success mr-2 justify-content-center float-right mt-1"><i class="fas fa-sync-alt">Kembali</i></a>
+        
       </div>
         <form action="/penyambungan" method="GET">
-          <div class="input-group mb-3 mr-3">
-              <input type="date" class="form-control mr-2" name="start_date">
-              <input type="date" class="form-control mr-2" name="end_date">
-              <button class="btn btn-primary mr-1" type="submit">Cari</button>
+          <div class="input-group col-md-12 mr-2">
+              <input type="date" class="form-control mr-0" name="start_date">
+              <input type="date" class="form-control mr-0" name="end_date" width="10px">
+              <button class="btn btn-primary plus mr-2" type="submit"> <span data-feather="plus"></span>Cari</button>
+              <a href="/penyambungan" class="btn btn-success plus mr-2"><i class="fas fa-sync-alt">Kembali</i></a>
+             
               
           </div>
       </form>
+     <div class="mt-0">
+     <br>
+     </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0" style="height: 300px;">
           <table class="table table-head-fixed text-nowrap btn-xs">

@@ -36,7 +36,59 @@ class HomeController extends Controller
         $categories[] = $mp->tanggal_sambung;
 
       }
+      //data DIL baru
+      $databill = DB::table('tbl_dil as a')
+        ->select('a.*')
+        ->where('bln_billing','=',4) 
+        ->count();
+
+      //data penutupan
+      $datahitungtanggat = DB::table('penutupan as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select('a.*','b.status','b.nama_sekarang','b.nama_pemilik','b.id_merek','b.segel','b.cabang');
+      $datat = $datahitungtanggat
+          ->select(DB::raw('count(b.id) as d'))
+          // ->whereMonth('tanggal_tutup', Carbon::now()->month)
+          ->groupBy(DB::raw("Month(tanggal_tutup)"))
+          // ->where('status','=','1')
+          ->pluck('d');
       
+      //data Penyambungan
+      $datahitungp = DB::table('sambung as t')
+        ->join('tbl_dil as h','h.id','=','t.id_dil')
+        ->select('t.*','h.*');
+      $dataz = $datahitungp
+          ->where('status','=',1) 
+          ->whereMonth('tanggal_sambung', Carbon::now()->month)
+          ->count();
+
+      //data Penggantian
+      $datahitunggan = DB::table('ganti as a')
+      ->join('tbl_dil as b','a.id_dil','=','b.id')
+       ->select('a.*','b.*');
+          $datagan = $datahitunggan
+          ->where('b.status','=',1) 
+          ->whereMonth('tanggal_ganti', Carbon::now()->month)
+          ->count();
+      
+      //data Jumlah DIL
+      $datajum = DB::table('tbl_dil as a')
+        ->get();
+          $jumlahdil = $datajum->count();
+
+      //untuk BBN
+      $datahitunggan = DB::table('bbn as s')
+      // ->join('tbl_dil as b','b.id','=','s.id_dil')
+       ->select('s.*');
+      $datad = $datahitunggan
+      // ->select(DB::raw('count(s.id) as e'))
+      ->whereMonth('tanggal_bbn', Carbon::now()->month)
+      //  ->groupBy(DB::raw("Month(tanggal_bbn)"))
+      // ->where('status','=','1')
+      // ->pluck('e');
+      ->count();
+      // dd($datad);
+    
 
       // dd(json_encode($categories));
       $datahitungdil = DB::table('tbl_dil as a')
@@ -50,51 +102,27 @@ class HomeController extends Controller
               $datahitung = DB::table('penutupan as a')
               ->join('tbl_dil as b','a.id_dil','=','b.id')
                ->select('a.*','b.status','b.nama_sekarang','b.nama_pemilik','b.id_merek','b.segel','b.cabang');
+
                   $data = $datahitung
                   ->where('b.status','=',1) 
                   ->whereMonth('tanggal_tutup', Carbon::now()->month)
                   ->count();
-              $datahitungp = DB::table('sambung as t')
-              ->join('tbl_dil as h','h.id','=','t.id_dil')
-               ->select('t.*','h.*');
-              
-                  $dataz = $datahitungp
-                  ->where('status','=',1) 
-                  ->whereMonth('tanggal_sambung', Carbon::now()->month)
-                  ->count();
-                  // ->get();
-                  // dd($dataz);
-              $datahitunggan = DB::table('ganti as a')
-              ->join('tbl_dil as b','a.id_dil','=','b.id')
-               ->select('a.*','b.*');
-                  $datagan = $datahitunggan
-                  ->where('b.status','=',1) 
-                  ->whereMonth('tanggal_ganti', Carbon::now()->month)
-                  ->count();
 
-            $datahitungtanggat = DB::table('penutupan as a')
+            //tabel penyambungan
+            $datas = DB::table('sambung as a')
               ->join('tbl_dil as b','a.id_dil','=','b.id')
-               ->select('a.*','b.status','b.nama_sekarang','b.nama_pemilik','b.id_merek','b.segel','b.cabang');
-              $datat = $datahitungtanggat
-              ->select(DB::raw('count(b.id) as d'))
-              // ->whereMonth('tanggal_tutup', Carbon::now()->month)
-              ->groupBy(DB::raw("Month(tanggal_tutup)"))
-              // ->where('status','=','1')
-              ->pluck('d');
-              //  return view('v_home',compact('data','datat'));
-              // penyambungan
-              // dd($datat);
-            $datahitungtanggas = DB::table('sambung as a')
-              ->join('tbl_dil as b','a.id_dil','=','b.id')
-               ->select('a.*','b.*');
-              $datas = $datahitungtanggas
+              //  ->select('a.stat','b.*');
+              // $datas = $datahitungtanggas
               ->select(DB::raw('count(b.id) as e'))
               // ->select(DB::raw("DATE_FORMAT(tanggal_sambung,'%M %Y') as months"),)
               // ->whereMonth('tanggal_sambung', Carbon::now()->month)
-              ->groupBy(DB::raw("DATE_FORMAT(tanggal_sambung,'%M %Y')"),)
-              // ->where('status','=','1')
+              // ->groupBy(DB::raw("DATE_FORMAT(tanggal_sambung,'%M %Y')"),)
+              ->groupBy(DB::raw("Month(tanggal_sambung)"))
+              ->where('status','=','1')
               ->pluck('e');
               // dd($datas);
+
+            //table penggantian
             $datahitunggan = DB::table('ganti as s')
               ->join('tbl_dil as b','b.id','=','s.id_dil')
                ->select('s.*','b.*');
@@ -104,22 +132,8 @@ class HomeController extends Controller
               ->groupBy(DB::raw("Month(tanggal_ganti)"))
               // ->where('status','=','1')
               ->pluck('e');
-              // ->get();
-              // dd($datac);
-              $data = 3;
-            $datahitunggan = DB::table('bbn as s')
-              ->join('tbl_dil as b','b.id','=','s.id_dil')
-               ->select('s.*','b.*');
-              $datad = $datahitunggan
-              ->select(DB::raw('count(s.id) as e'))
-              // ->whereMonth('tanggal_sambung', Carbon::now()->month)
-               ->groupBy(DB::raw("Month(tanggal_bbn)"));
-              // ->where('status','=','1')
-              // ->pluck('e');
-              // ->get();
-              // dd($datad);
-            
-               return view('v_home',compact('datadil','data','dataz','datat','datas','datagan','datac','datad','categories'));
+
+               return view('v_home',compact('datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill'));
     }
      public function test()
      {
