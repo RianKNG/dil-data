@@ -36,7 +36,40 @@
               <div class="info-box-content">
                 <span class="info-box-text">Dil Baru</span>
                 <span class="info-box-number">
-                  {{ $databill }}
+                  {{ $databilling }}
+                  <small></small>
+                </span>
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box mb-3 btn-xs">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Penutupan</span>
+                <span class="info-box-number">{{ $jumlahtutup }}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box btn-xs">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              
+              <div class="info-box-content">
+                <span class="info-box-text">Dil Baru</span>
+                <span class="info-box-number">
+                  {{ $databilling }}
                   <small></small>
                 </span>
               </div>
@@ -88,6 +121,7 @@
             </div>
             <!-- /.info-box -->
           </div>
+         
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3 btn-xs">
@@ -189,6 +223,66 @@
         </div>
         <!-- /.row -->
       </div><!--/. container-fluid -->
+      <div class="modal fade" id="modal-xl">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Detail Konsumen</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table>
+                <tr>
+                  <thead>
+                    <tr>
+                      <th width="5%">No.</th>
+                      <th>No Sambungan</th>
+                      <th>tanggal_ganti</th>
+                      <th>merek Lama</th>
+                      <th>merek Baru</th>
+                      <th>no WM Baru</th>
+                      <th>Status</th>
+                      <th width="20%">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    @foreach ($databill as $index => $k)
+                   
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $k->id }}</td>
+                        <td>{{ $k->nama_sekarang }}</td>
+                        <td>{{ $k->cabang }}</td>
+                     
+                        <td>{{ $k->id_merek }}</td>
+                        {{-- <td>{{ $k->merek }}</td> --}}
+                       
+                    
+        
+                             
+                    </tr> 
+                   
+                 @endforeach
+                
+                   
+                  </tbody>
+                </table>
+                </tr>
+              </table>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
     
   
       <script src="https://code.highcharts.com/highcharts.js"></script>

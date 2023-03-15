@@ -187,9 +187,9 @@
                     <div>plug</div>
                     <div class="form-group">
                       <div class="form-check">
-                        <label class="form-check-label"> <input class="form-check-input" name="plugran" value="ada" type="checkbox">ada</label>
+                        <label class="form-check-label"> <input class="form-check-input" name="plugran" value="ada" type="checkbox" {{  ($data->box == 'ada' ? ' checked' : '') }}>ada</label>
                         <div></div>
-                        <label class="form-check-label"> <input class="form-check-input" name="plugran" value="tidak ada" type="checkbox">tidak ada</label>
+                        <label class="form-check-label"> <input class="form-check-input" name="plugran" value="tidak ada" type="checkbox" {{  ($data->box == 'tidak ada' ? ' checked' : '') }}>tidak ada</label>
                       </div>
                     </div>
                   </div>
@@ -197,9 +197,9 @@
                     <div>box</div>
                     <div class="form-group">
                       <div class="form-check">
-                        <label class="form-check-label"> <input class="form-check-input" name="box" value="ada" type="checkbox">ada</label>
-                        <div></div>
-                        <label class="form-check-label"> <input class="form-check-input" name="box" value="tidak ada" type="checkbox">tidak ada</label>
+                        <label class="form-check-label"><input class="form-check-input" type="checkbox" name="box" id="box" value="ada" {{  ($data->box == 'ada' ? ' checked' : '') }}>ada</label>
+                         <div></div>
+                        <label class="form-check-label"><input class="form-check-input" type="checkbox" name="box" id="box" value="tidak ada" {{  ($data->box == 'tidak ada' ? ' checked' : '') }}>tidak ada</label>
                       </div>
                     </div>
                   </div>

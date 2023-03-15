@@ -25,7 +25,7 @@
                         <label>No Sambungan</label>
                         <input type="integer" class="form-control" name="id">
                         @error('id')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="alert text-danger">harus berisi 10 karakter</div>
                         @enderror
                       </div>
                     </div>
@@ -43,7 +43,6 @@
                           <option value="12">Tanjungsari</option>
                           <option value="13">Pamulihan</option>
                           <option value="14">Sumedang Utara</option>
-                          
                           <option value="2">Paseh</option>
                           <option value="3">Cimalaka</option>
                           <option value="4">Tanjungkerta</option>
@@ -60,8 +59,8 @@
                     </div>
                     <div class="col-sm-6>
                       <div class="form-group">
-                        <label>status</label>
-                          <input type="integer" class="form-control" name="status" value="1">
+                        <label>status*(langsung aktip)</label>
+                          <input type="integer" class="form-control" name="status" value="1" readonly placeholder="aktip">
                           @error('status')
                             <div class="alert alert-danger">{{ $message }}</div>
                           @enderror

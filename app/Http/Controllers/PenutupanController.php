@@ -42,7 +42,7 @@ class PenutupanController extends Controller
     public function insert(Request $request)
     {
         // ini cara baru tapi mau coba lama dulu
-       $data = Penutupan::create($request->all());
+       Penutupan::create($request->all());
      
         // ini cara lama
         // $data = new DilModel();

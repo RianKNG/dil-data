@@ -37,9 +37,22 @@ class HomeController extends Controller
 
       }
       //data DIL baru
-      $databill = DB::table('tbl_dil as a')
+       $databill = DB::table('tbl_dil as a')
+        ->where('status','=',1) 
+        ->whereMonth('updated_at', Carbon::now()->month)
+        ->get();
+      // $databill = DB::table('penutupan as a')
+      // ->join('tbl_dil as b','a.id_dil','=','b.id')
+     
+      //   ->select('a.*','b.*')
+      //   // ->where('bln_billing','=',4) 
+      //   ->get();
+        // return($databill);
+        $databilling =  $databill
+        ->count();
+      $jumlahtutup = DB::table('penutupan as a')
         ->select('a.*')
-        ->where('bln_billing','=',4) 
+        ->whereMonth('tanggal_tutup', Carbon::now()->month)
         ->count();
 
       //data penutupan
@@ -120,7 +133,7 @@ class HomeController extends Controller
               ->groupBy(DB::raw("Month(tanggal_sambung)"))
               ->where('status','=','1')
               ->pluck('e');
-              // dd($datas);
+             
 
             //table penggantian
             $datahitunggan = DB::table('ganti as s')
@@ -133,7 +146,7 @@ class HomeController extends Controller
               // ->where('status','=','1')
               ->pluck('e');
 
-               return view('v_home',compact('datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill'));
+               return view('v_home',compact('datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
     }
      public function test()
      {
