@@ -10,20 +10,23 @@
         <h3 class="card-title">Tabel Penutupan</h3>
 
         <div class="card-tools">
-          <div class="input-group input-group-sm" style="width: 150px;">
-            {{-- <input type="search" name="search" class="form-control float-right" placeholder="search"> --}}
+          {{-- <div class="input-group input-group-sm" style="width: 150px;">
+            <input type="search" name="search" class="form-control float-right" placeholder="search">
             <form action="/penutupan" method="GET">
               <input type="search" class="form-control" name="search" placeholder="Cari ">
             </form>
-          </div>
+          </div> --}}
         </div>
       </div>
       <!-- /.card-header -->
-      <div class="card-body table-responsive p-0" style="height: 300px;">
-        <table class="table table-head-fixed text-nowrap btn-xs">
-          <thead>
+
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="table" class="table table-bordered table-striped">
+            <thead>
             <tr>
               <th width="5%">No.</th>
+              <th>Status</th>
               <th>No Sambungan</th>
               <th>tanggal_tutup</th>
               <th>nama_sekarang</th>
@@ -37,11 +40,12 @@
             @foreach ($data as $index => $k)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td><label class=" badge {{ ($k->status == 1 ) ? 'badge-danger' : 'badge-success'}}">{{ ($k->status == 1 ) ? 'sudah disambung' : 'Non Aktip' }}</label></td>
                 <td>{{ $k->id_dil }}</td>
                 <td>{{ $k->tanggal_tutup }}</td>
                 <td>{{ $k->nama_sekarang }}</td>
                 <td>{{ $k->alasan }}</td>
-                <td><label class=" badge {{ ($k->status == 1 ) ? 'badge-danger' : 'badge-success'}}">{{ ($k->status == 1 ) ? 'salah' : 'Non Aktip' }}</label></td>
+                <td><label class=" badge {{ ($k->status == 1 ) ? 'badge-danger' : 'badge-success'}}">{{ ($k->status == 1 ) ? 'sudah disambung' : 'Non Aktip' }}</label></td>
                
                 <td>
                   <a href="penutupan/edit/{{ $k->id }}" class="btn btn-success btn-xs">Edit</a>
@@ -127,8 +131,8 @@
                         <label>cabang</label>
                         <select name="alasan" class="form-control btn-xs">
                           <option selected>alasan ditutup</option>
-                          <option value="1">Butuh</option>
-                          <option value="2">Sudah Ada Uang</option>
+                          <option value="1">Nunggak</option>
+                          <option value="2">Mengundurkan Diri</option>
                         </select>
                           @error('alasan')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -144,3 +148,35 @@
 <!-- /.row -->
 </section>
 @endsection
+{{-- @section('close')
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+@endsection --}}
+@push('scripts')
+<script>
+  $(document).ready(function () {
+    $('#table').DataTable({
+      "responsive": true,"autoWidth": false,
+        lengthMenu: [
+            [15, 25, 50,100, -1],
+            [15, 25, 50,100, 'All'],
+        ],
+    });
+  });
+  </script>
+@endpush

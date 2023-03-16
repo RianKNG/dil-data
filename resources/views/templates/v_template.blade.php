@@ -116,6 +116,7 @@
 <script src="{{ asset('adminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 
 @yield('script')
+@stack('scripts')
 
 </body>
 </html>
