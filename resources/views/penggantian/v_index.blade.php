@@ -34,7 +34,7 @@
               <th>merek Lama</th>
               <th>merek Baru</th>
               <th>no WM Baru</th>
-              <th>Status</th>
+              
               <th width="20%">Aksi</th>
             </tr>
           </thead>
@@ -48,7 +48,7 @@
                 <td>{{ $k->merek_baru }}</td>
                 <td>{{ $k->no_wmbaru }}</td>
 
-                <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-info btn-xs' : 'btn-info btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
+               
                
                 <td>
                   {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}

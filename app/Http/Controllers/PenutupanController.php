@@ -18,7 +18,7 @@ class PenutupanController extends Controller
         if ($request->has('search')) {
             $data = DB::table('penutupan')
             ->leftJoin('tbl_dil','penutupan.id_dil','=','tbl_dil.id')
-            ->where('status','LIKE','%'.$request->search.'%')
+            ->where('id_dil','LIKE','%'.$request->search.'%')
             ->get();
         } else {
             $data = DB::table('penutupan')

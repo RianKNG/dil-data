@@ -107,9 +107,9 @@
                       <div>tatus Milik</div>
                       <div class="form-group">
                         <div class="form-check">
-                          <label class="form-check-label"> <input class="form-check-input" name="status_milik" value="sewa" type="checkbox">sewa</label>
+                          <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" id="status_milik" value="sewa" {{  ($data->status_milik == 'sewa' ? ' checked' : '') }}>Sewa</label>
                           <div></div>
-                          <label class="form-check-label"> <input class="form-check-input" name="status_milik" value="hak_milik" type="checkbox">Hak Milik</label>
+                         <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" id="status_milik" value="hak milik" {{  ($data->status_milik == 'Hak Milik' ? ' checked' : '') }}>Hak Milik</label>
                         </div>
                       </div>
                     </div>
@@ -146,9 +146,9 @@
                     <div>segel</div>
                     <div class="form-group">
                       <div class="form-check">
-                        <label class="form-check-label"> <input class="form-check-input" name="segel" value="ada" type="checkbox">ada</label>
+                        <label class="form-check-label"><input class="form-check-input" type="checkbox" name="segel" id="segel" value="ada" {{  ($data->segel == 'ada' ? ' checked' : '') }}>ada</label>
                         <div></div>
-                        <label class="form-check-label"> <input class="form-check-input" name="segel" value="tidak ada" type="checkbox">tidak ada</label>
+                       <label class="form-check-label"><input class="form-check-input" type="checkbox" name="segel" id="segel" value="tidak ada" {{  ($data->segel == 'tidak ada' ? ' checked' : '') }}>tidak ada</label>
                       </div>
                     </div>
                   </div>
@@ -156,9 +156,9 @@
                     <div>stop kran</div>
                     <div class="form-group">
                       <div class="form-check">
-                        <label class="form-check-label"> <input class="form-check-input" name="stop_kran" value="ada" type="checkbox">ada</label>
+                        <label class="form-check-label"><input class="form-check-input" type="checkbox" name="stop_kran" id="stop_kran" value="ada" {{  ($data->stop_kran == 'ada' ? ' checked' : '') }}>ada</label>
                         <div></div>
-                        <label class="form-check-label"> <input class="form-check-input" name="stop_kran" value="tidak ada" type="checkbox">tidak ada</label>
+                       <label class="form-check-label"><input class="form-check-input" type="checkbox" name="stop_kran" id="stop_kran" value="tidak ada" {{  ($data->stop_kran == 'tidak ada' ? ' checked' : '') }}>tidak ada</label>
                       </div>
                     </div>
                   </div>
@@ -166,9 +166,9 @@
                     <div>ceck valve</div>
                     <div class="form-group">
                       <div class="form-check">
-                        <label class="form-check-label"> <input class="form-check-input" name="ceck_valve" value="ada" type="checkbox">ada</label>
+                        <label class="form-check-label"><input class="form-check-input" type="checkbox" name="ceck_valve" id="ceck_valve" value="ada" {{  ($data->ceck_valve == 'ada' ? ' checked' : '') }}>ada</label>
                         <div></div>
-                        <label class="form-check-label"> <input class="form-check-input" name="ceck_valve" value="tidak ada" type="checkbox">tidak ada</label>
+                       <label class="form-check-label"><input class="form-check-input" type="checkbox" name="ceck_valve" id="ceck_valve" value="tidak ada" {{  ($data->ceck_valve == 'tidak ada' ? ' checked' : '') }}>tidak ada</label>
                       </div>
                     </div>
                   </div>
@@ -177,9 +177,9 @@
                     <div>kopling</div>
                     <div class="form-group">
                       <div class="form-check">
-                        <label class="form-check-label"> <input class="form-check-input" name="kopling" value="ada" type="checkbox">ada</label>
+                        <label class="form-check-label"><input class="form-check-input" type="checkbox" name="kopling" id="kopling" value="ada" {{  ($data->kopling == 'ada' ? ' checked' : '') }}>ada</label>
                         <div></div>
-                        <label class="form-check-label"> <input class="form-check-input" name="kopling" value="tidak ada" type="checkbox">tidak ada</label>
+                       <label class="form-check-label"><input class="form-check-input" type="checkbox" name="kopling" id="kopling" value="tidak ada" {{  ($data->kopling == 'tidak ada' ? ' checked' : '') }}>tidak ada</label>
                       </div>
                     </div>
                   </div>
@@ -242,9 +242,12 @@
                       <!-- Select multiple-->
                       <div class="form-group">
                         <label>Merek Warter Meter</label>
-                        <select multiple class="form-control" name="id_merek">
-                          <option value="1">Barindo</option>
-                          <option value="2">Linflow</option>
+                        <select class="form-control" name="id_merek">
+                          <option value="id_merek" {{($data->type === 1) ? 'selected' : ''}}> Linflow </option>
+                          <option value="id_merek" {{($data->type === 2) ? 'selected' : ''}}> Barindo </option>
+                          {{-- <option value="{{$data->id_merek}}"{{ $data->id_merek == 1 ? 'selected' : '' }}> {{ $data->merek }}1</option>
+                          <option value="{{$data->id_merek}}"{{ $data->id_merek == 2 ? 'selected' : '' }}> {{ $data->merek }}2</option> --}}
+                          
                          
                         </select>
                       </div>

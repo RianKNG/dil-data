@@ -336,7 +336,7 @@
 </script>
     <script type="text/javascript">
     let a =  {!! json_encode($datas) !!};
-    // let b =  {!! json_encode($datas) !!};
+   
     // let c =  {!! json_encode($datac) !!};
     // let d =  {!! json_encode($datad) !!};
     Highcharts.chart('x', {
