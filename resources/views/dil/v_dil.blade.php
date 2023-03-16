@@ -4,7 +4,7 @@
 @section('content')
 @if ($message = Session::get('success'))
 <div class="alert alert-success" role="alert">
-  {{ $message }},
+ {{ $message }}
 </div>
 @endif
 <div class="container-fluid btn-xs">

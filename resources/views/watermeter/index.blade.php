@@ -39,7 +39,7 @@
                 <thead>
                   <tr>
                     <th width="5%">No</th>
-                    <th>No WM</th>
+                    <th>Kode WM</th>
                     <th>Merek</th>
                     <th width="25%">Aksi</th>
                     
@@ -50,15 +50,15 @@
           
                   @foreach ($data as $index => $k)
                   <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $k->id }}</td>  
+                    <td>{{ $loop->iteration }}</td> 
+                    <td>{{ $k->kode }}</td> 
                     <td>{{ $k->merek }}</td>
                       <td>
                         <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>
                         </a>
                         <a href="#" class="btn btn-success btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i>
                         </a>
-                        <a href="dil/hapus/{{ $k->id }}" 
+                        <a href="watermeter/hapus/{{ $k->id }}" 
                           class="btn btn-danger btn-xs" 
                           data-toggle="modal" 
                           data-target="#delete{{ $k->id }}">
@@ -88,17 +88,18 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+     
         <div class="modal-body">
             <form action="/watermeter/insert" method="post">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label class="btn-xs">No Merek Teregistrasi</label>
-                    <input type="integer" name="id" class="form-control" id="exampleInputEmail1">
+                    <input type="text" name="kode" class="form-control" value="{{ $kode }}" readonly>
                   </div>
                   <div class="form-group">
                     <label class="btn-xs">Merek Water Meter</label>
-                    <input type="text" name="merek" class="form-control" id="exampleInputPassword1">
+                    <input type="text" name="merek" class="form-control" placeholder="ketikan disini" required">
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -118,7 +119,7 @@
    <div class="modal-dialog">
      <div class="modal-content bg-info">
        <div class="modal-header">
-         <h4 class="modal-title">No Sambungan&hellip;{{ $k->id}}</h4>
+         <h4 class="modal-title">No Sambungan_{{ $k->kode}}</h4>
          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
          </button>
@@ -128,7 +129,7 @@
        </div>
        <div class="modal-footer justify-content-between">
          <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Batal</button>
-         <a href="dil/hapus/{{ $k->id }}" class="btn btn-danger btn-sm">Hapus</a>
+         <a href="watermeter/hapus/{{ $k->id }}" class="btn btn-danger btn-sm">Hapus</a>
        </div>
      </div>
    </div>

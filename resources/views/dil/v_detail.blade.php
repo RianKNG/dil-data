@@ -13,46 +13,63 @@
           </button>
         </div>
       </div>
-<div class="card-group">
-  <div class="card">
-    <div class="card-body">
-      <p class="card-text"><small class="text-muted">Nama : {{ $dataz->nama_sekarang }}</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <p class="card-text"><small class="text-muted">Nama : {{ $dataz->nama_sekarang }}</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
-
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              @foreach ($lain as $index => $k)
+              @endforeach
+              <p class="card-text"><span class="text-muted">No Sambungan : {{ $k->id }}</span></p>
+              <p class="card-text"><span class="text-muted">Nama : 
+                @if ($k->cabang == 1)
+                Tomo
+                @elseif($k->cabang == 2)
+                        Paseh
+                @elseif($k->cabang == 3)
+                Cimalaka
+                @elseif($k->cabang == 4)
+                Tanjungkerta
+                @elseif($k->cabang == 5)
+                Situraja
+                @elseif($k->cabang == 6)
+                Wado
+                @elseif($k->cabang == 7)
+                Sumedang Selatan
+                @elseif($k->cabang == 2)
+                Jatinangor
+                @else
+                        Darmaraja
+                @endif
+              </p>
+              <p class="card-text"><span class="text-muted">Status : {{ $k->status == 1 ? 'Aktip' : 'non aktip' }}</span></p>
+              <p class="card-text"><span class="text-muted">No Rekening{{ $k->no_rekening }}</span></p>
+              <p class="card-text"><span class="text-muted">Nama Sekarang{{ $k->nama_sekarang }}</span></p>
+              <p class="card-text"><span class="text-muted">Nama Pemilik{{ $k->nama_pemilik }}</span></p>
+              <p class="card-text"><span class="text-muted">No Rumah{{ $k->no_rumah }}</span></p>
+              <p class="card-text"><span class="text-muted">RT{{ $k->rt }}</span></p>
+              <p class="card-text"><span class="text-muted">{{ $k->rw }}</span></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text"><span class="text-muted">Nama : {{ $k->blok }}</span></p>
+              <p class="card-text"><span class="text-muted">Dusun : {{ $k->dusun }}</span></p>
+              <p class="card-text"><span class="text-muted">Kecamatan : {{ $k->kecamatan }}</span></p>
+              <p class="card-text"><span class="text-muted">Status Milik : {{ $k->status_milik }}</span></p>
+              <p class="card-text"><span class="text-muted">Jumlah Jiwa Tetap : {{ $k->jml_jiwa_tetap }}</span></p>
+              <p class="card-text"><span class="text-muted">Jumlah Jiwa Tidak Tetap :{{ $k->jml_jiwa_tidak_tetap }}</span></p>
+              <p class="card-text"><span class="text-muted">Tanggal Pasang : {{ $k->tanggal_pasang }}</span></p>
+              <p class="card-text"><span class="text-muted">Segel : {{ $k->segel }}</span></p>
+              <p class="card-text"><span class="text-muted">Ceck Valve : {{ $k->ceck_valve }}</span></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text"><span class="text-muted">Sumber_lain : {{ $k->sumber_lain }}</span></p>
+              <p class="card-text"><span class="text-muted">Jenis_usaha : {{ $k->jenisusaha }}</span></p>
+              <p class="card-text"><span class="text-muted">Merek : {{ $k->merek }}</span></p>
+            </div>
+          </div>
+        </div>
       <!-- /.card-header -->
       <div class="card-footer text-center">
         <a href="/dil" class="btn btn-sm btn-info text-center">Kembali Ke Halaman Utama</a>
@@ -65,12 +82,6 @@
   <!-- /.col -->
 </div>
 <!-- /.row -->
-
-
-
-
-
- 
 </div>
 @endsection
 {{-- @section('javascript')

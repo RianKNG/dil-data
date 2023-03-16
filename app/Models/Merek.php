@@ -13,7 +13,7 @@ class Merek extends Model
     protected $table = 'merek';
 
     protected $tableKey = ['id'];
-    protected $fillable = ['id','merek','created_at','updated_at'];
+    protected $fillable = ['id','kode','merek','created_at','updated_at'];
 
     // public function dilmodell()
     // {

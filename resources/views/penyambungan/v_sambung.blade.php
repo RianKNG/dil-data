@@ -60,6 +60,10 @@
                   <th width="25%">Aksi</th>
                 </tr>
               </thead>
+              
+             
+              
+             
               <tbody>
                 @foreach ($data as $index => $k)
                 <tr>
@@ -68,7 +72,8 @@
                     <td>{{ $k->nama_sekarang }}</td>
                     <td>{{ $k->alasan }}</td>
                     <td>{{ $k->tanggal_sambung }}</td>
-                    <td>{{ $k->dusun }}</td>
+
+                    <td><label class=" badge {{ ($k->status == 0 ) ? 'badge-success badge-xs' : 'badge-danger badge-xs'}}">{{ ($k->status == 0 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
                     <td>
                       {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
                       

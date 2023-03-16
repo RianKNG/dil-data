@@ -41,7 +41,7 @@
                 <td>{{ $k->tanggal_tutup }}</td>
                 <td>{{ $k->nama_sekarang }}</td>
                 <td>{{ $k->alasan }}</td>
-                <td><label class=" btn {{ ($k->status == 0 ) ? 'btn-info btn-xs' : 'btn-info btn-xs'}}">{{ ($k->status == 0 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
+                <td><label class=" badge {{ ($k->status == 1 ) ? 'badge-danger' : 'badge-success'}}">{{ ($k->status == 1 ) ? 'salah' : 'Non Aktip' }}</label></td>
                
                 <td>
                   <a href="penutupan/edit/{{ $k->id }}" class="btn btn-success btn-xs">Edit</a>
@@ -118,7 +118,7 @@
                       <div class="col-sm-12">
                         <input
                         type="date" 
-                        name="tanggal_tutup" 
+                         required name="tanggal_tutup" 
                         class="form-control">
                       </div>
                     </div> 
