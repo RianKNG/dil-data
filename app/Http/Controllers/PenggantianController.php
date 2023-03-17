@@ -2,24 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Ganti;
+use App\Models\Merek;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PenggantianController extends Controller
 {
     public function index()
+    
     {
-        $data = DB::table('ganti as a')
+        // $data = DB::table('ganti as a')
+        // ->select([
+        //         'a.*','d.*'
+        //     ])
+        //         ->join('tbl_dil as d',function($join){
+        //             $join->on('d.id','=','a.id_dil');
+        //             // ->where('d.cabang','=',2);
+        //         })
+        //         ->get();
+        $mer = Merek::all();
+        $data = DB::table('ganti AS d')
         ->select([
-                'a.*','d.*'
-            ])
-                ->join('tbl_dil as d',function($join){
-                    $join->on('d.id','=','a.id_dil');
-                    // ->where('d.cabang','=',2);
-                })
-                ->get();
-        return view('penggantian.v_index',compact('data'));
+            'd.*','m.*','n.*',
+        ])
+        ->leftJoin('merek as m','d.id_merek','=','m.id')
+        ->leftJoin('tbl_dil as n','d.id_dil','=','n.id')
+        // ->where('cabang','=','2')
+        ->get();
+        // dd($data);
+
+        return view('penggantian.v_index',compact('data','mer'));
     }
     public function add()
     {
@@ -27,6 +40,7 @@ class PenggantianController extends Controller
     }
     public function insert(Request $request)
     {
+        
         Ganti::create($request->all());
         return redirect('penggantian')->with('success','data berhasil di tambahkan');
     }

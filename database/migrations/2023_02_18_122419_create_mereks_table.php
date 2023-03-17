@@ -15,6 +15,7 @@ class CreateMereksTable extends Migration
     {
         Schema::create('merek', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('kode')->nullable();
             $table->string('merek')->nullable();
             $table->timestamps();
         });

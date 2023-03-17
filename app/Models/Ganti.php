@@ -9,5 +9,5 @@ class Ganti extends Model
 {
     use HasFactory;
     protected $table = 'ganti';
-    protected $fillable = ['id','tanggal_ganti','merek_baru','id_dil'];
+    protected $fillable = ['id','tanggal_ganti','no_wmbaru','id_dil','id_merek'];
 }

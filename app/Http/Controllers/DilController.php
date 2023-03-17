@@ -35,7 +35,7 @@ class DilController extends Controller
     $dataquery = DB::table('tbl_dil as d')
     ->select([
             'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
-            'd.ceck_valve','d.kopling','d.plugran','d.box','d.bln_billing','d.thn_billing','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
             'm.merek'
         ])
             ->join('merek as m',function($join){
@@ -222,7 +222,7 @@ class DilController extends Controller
    
      ->select([
             'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
-            'd.ceck_valve','d.kopling','d.plugran','d.box','d.bln_billing','d.thn_billing','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
             'm.merek'
         ])
             ->join('merek as m',function($join){

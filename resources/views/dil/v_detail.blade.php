@@ -21,23 +21,37 @@
               <p class="card-text"><span class="text-muted">No Sambungan : {{ $k->id }}</span></p>
               <p class="card-text"><span class="text-muted">Nama : 
                 @if ($k->cabang == 1)
-                Tomo
+                Sumedang Utara
                 @elseif($k->cabang == 2)
-                        Paseh
-                @elseif($k->cabang == 3)
-                Cimalaka
-                @elseif($k->cabang == 4)
                 Tanjungkerta
-                @elseif($k->cabang == 5)
+                @elseif($k->cabang == 3)
+                Darmaraja
+                @elseif($k->cabang == 4)
                 Situraja
-                @elseif($k->cabang == 6)
-                Wado
-                @elseif($k->cabang == 7)
-                Sumedang Selatan
-                @elseif($k->cabang == 2)
+                @elseif($k->cabang == 5)
                 Jatinangor
+                @elseif($k->cabang == 6)
+                Tanjungsari
+                @elseif($k->cabang == 7)
+                Paseh
+                @elseif($k->cabang == 8)
+                Cimalaka
+                @elseif($k->cabang == 9)
+                Tomo
+                @elseif($k->cabang == 10)
+                Ujungjaya
+                @elseif($k->cabang == 11)
+                Wado
+                @elseif($k->cabang == 12)
+                Cisitu
+                @elseif($k->cabang == 13)
+                Pamulihan
+                @elseif($k->cabang == 14)
+                Cimanggung
+                @elseif($k->cabang == 40)
+                Mol Pelayanan Publik
                 @else
-                        Darmaraja
+                        Tidak ada 
                 @endif
               </p>
               <p class="card-text"><span class="text-muted">Status : {{ $k->status == 1 ? 'Aktip' : 'non aktip' }}</span></p>

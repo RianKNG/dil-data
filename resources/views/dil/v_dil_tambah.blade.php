@@ -19,7 +19,7 @@
               <div class="card-body">
                 <form>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label>No Sambungan</label>
@@ -29,27 +29,28 @@
                         @enderror
                       </div>
                     </div>
-                    <div class="row">
+                    
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>cabang</label>
                         <select name="cabang" class="form-control btn-xs">
                           <option selected>cab||unit</option>
-                          <option value="1">Tomo</option>
-                          <option value="9">Ujungjaya</option>
-                          <option value="10">Darmaraja</option>
-                          <option value="11">Cisitu</option>
-                          <option value="12">Cimanggung</option>
-                          <option value="12">Tanjungsari</option>
+                          <option value="9">Tomo</option>
+                          <option value="10">Ujungjaya</option>
+                          <option value="3">Darmaraja</option>
+                          <option value="12">Cisitu</option>
+                          <option value="14">Cimanggung</option>
+                          <option value="6">Tanjungsari</option>
                           <option value="13">Pamulihan</option>
-                          <option value="14">Sumedang Utara</option>
-                          <option value="2">Paseh</option>
-                          <option value="3">Cimalaka</option>
-                          <option value="4">Tanjungkerta</option>
-                          <option value="5">Situraja</option>
-                          <option value="6">Wado</option>
-                          <option value="7">Sumedang Selatan</option>
-                          <option value="8">Jatinangor</option>
+                          <option value="1">Sumedang Utara</option>
+                          <option value="7">Paseh</option>
+                          <option value="8">Cimalaka</option>
+                          <option value="2">Tanjungkerta</option>
+                          <option value="4">Situraja</option>
+                          <option value="11">Wado</option>
+                          <option value="31">Sumedang Selatan</option>
+                          <option value="5">Jatinangor</option>
+                          <option value="40">Mol Pelayan Publik</option>
                         </select>
                           @error('cabang')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -57,7 +58,7 @@
                       </div>
                   
                     </div>
-                    <div class="col-sm-6>
+                    <div class="col-sm-4">
                       <div class="form-group">
                         <label>status*(langsung aktip)</label>
                           <input type="integer" class="form-control" name="status" value="1" readonly placeholder="aktip">
@@ -68,7 +69,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                       <!-- textarea -->
                       <div class="form-group">
                         <label>No Rekening</label>
@@ -96,7 +97,9 @@
                       @enderror
                       </div>
                     </div>
-                    <div class="col-sm-2">
+                  </div>
+                    <div class="row">
+                      <div class="col-sm-2">
                       <div class="form-group">
                         <label>No Rumah</label>
                         <input type="text" class="form-control" name="no_rumah">
@@ -105,8 +108,7 @@
                           @enderror
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
+                
                     <div class="col-sm-2">
                       <!-- textarea -->
                       <div class="form-group">
@@ -123,10 +125,10 @@
                         <input type="integer" class="form-control" name="rw">
                         @error('rw')
                         <div class="alert alert-danger">{{ $message }}</div>
-                      @enderror
+                        @enderror
                       </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <div class="form-group">
                         <label>Blok</label>
                         <input type="text" class="form-control" name="blok">
@@ -135,7 +137,8 @@
                           @enderror
                       </div>
                     </div>
-                    <div class="col-sm-2">
+                  
+                    <div class="col-sm-3">
                       <div class="form-group">
                         <label>Dusun</label>
                         <input type="text" class="form-control" name="dusun">
@@ -144,7 +147,9 @@
                       @enderror
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                  </div>
+                    <div class="row">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label>Kecamatan</label>
                         <input type="text" class="form-control" name="kecamatan">
@@ -153,11 +158,9 @@
                       @enderror
                       </div>
                     </div>
-                  </div>
-              
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div>tatus Milik</div>
+                 
+                    <div class="col-md-2">
+                      <div>status Milik</div>
                       <div class="form-group">
                         <div class="form-check">
                           <label class="form-check-label"> <input class="form-check-input" name="status_milik" value="sewa" type="checkbox">sewa</label>
@@ -166,7 +169,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <label>jml_jiwa_tetap</label>
                         <input type="integer" class="form-control" name="jml_jiwa_tetap">
@@ -176,7 +179,7 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <label>jml_jiwa_tidak_tetap</label>
                         <input type="integer" class="form-control" name="jml_jiwa_tidak_tetap">
@@ -186,75 +189,70 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="row">
-                    <div class="col-md-12">
-                      <!-- checkbox -->
-                      <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Tanggal Pasang</label>
                         <div class="form-input">
-                         <label>Tanggal Pasang</label>
                           <input type="date" class="form-control" name="tanggal_pasang">
                           @error('tanggal_pasang')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         </div>
                       </div>
-                    </div>
-                </div>
-             
-          
-                <div class="row">
+
+                      <div class="row">
                   <div class="col-md-2">
                     <div>segel</div>
-                    <div class="form-group">
+                  
                       <div class="form-check">
                         <label class="form-check-label"> <input class="form-check-input" name="segel" value="ada" type="checkbox">ada</label>
                         <div></div>
                         <label class="form-check-label"> <input class="form-check-input" name="segel" value="tidak ada" type="checkbox">tidak ada</label>
                       </div>
                     </div>
-                  </div>
+                
                   <div class="col-md-2">
                     <div>stop kran</div>
-                    <div class="form-group">
+                    
                       <div class="form-check">
                         <label class="form-check-label"> <input class="form-check-input" name="stop_kran" value="ada" type="checkbox">ada</label>
                         <div></div>
                         <label class="form-check-label"> <input class="form-check-input" name="stop_kran" value="tidak ada" type="checkbox">tidak ada</label>
                       </div>
                     </div>
-                  </div>
+                
                   <div class="col-md-2">
                     <div>ceck valve</div>
-                    <div class="form-group">
+                  
                       <div class="form-check">
                         <label class="form-check-label"> <input class="form-check-input" name="ceck_valve" value="ada" type="checkbox">ada</label>
                         <div></div>
                         <label class="form-check-label"> <input class="form-check-input" name="ceck_valve" value="tidak ada" type="checkbox">tidak ada</label>
                       </div>
                     </div>
-                  </div>
+                
                   
                   <div class="col-md-2">
                     <div>kopling</div>
-                    <div class="form-group">
+               
                       <div class="form-check">
                         <label class="form-check-label"> <input class="form-check-input" name="kopling" value="ada" type="checkbox">ada</label>
                         <div></div>
                         <label class="form-check-label"> <input class="form-check-input" name="kopling" value="tidak ada" type="checkbox">tidak ada</label>
                       </div>
                     </div>
-                  </div>
+          
                   <div class="col-md-2">
                     <div>plug</div>
-                    <div class="form-group">
+                   
                       <div class="form-check">
                         <label class="form-check-label"> <input class="form-check-input" name="plugran" value="ada" type="checkbox">ada</label>
                         <div></div>
                         <label class="form-check-label"> <input class="form-check-input" name="plugran" value="tidak ada" type="checkbox">tidak ada</label>
                       </div>
                     </div>
-                  </div>
+            
                   <div class="col-md-2">
                     <div>box</div>
                     <div class="form-group">
@@ -266,29 +264,10 @@
                     </div>
                   </div>
                   </div>
-
-
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Bulan Billing</label>
-                        <input type="text" name="bln_billing" class="form-control" >
-                        @error('bln_billing')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                      @enderror
-                      </div>
-                    </div>
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <label>Tahun Billing</label>
-                        <input type="text" name="thn_billing" class="form-control">
-                        @error('thn_billing')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                          @enderror
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
+                </div>
+             
+               
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label>Sumber Lain</label>
                         <input type="text" name="sumber_lain" class="form-control">
@@ -298,7 +277,7 @@
                       </div>
                     </div>
                     
-                    <div class="col-sm-2">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label>Jenis Usaha</label>
                         <input type="text" name="jenisusaha" class="form-control">
@@ -307,7 +286,7 @@
                       @enderror
                       </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <label>Merek Warter Meter</label>
                         <select name="id_merek" class="form-control">
@@ -318,8 +297,9 @@
                         </select>
                       </div>
                     </div>
-                    </div>
-              <div class="form-group">
+                  </div>
+                </div>
+           
               <button class="btn btn-primary">simpan</button>
             </div> 
           </div>

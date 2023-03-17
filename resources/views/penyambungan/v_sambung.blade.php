@@ -128,7 +128,7 @@
                 <!-- /.card-header -->
                   <div class="form-group">
                       {{-- <label for="id" class="col-sm-8 col-form-label">id_dil</label> --}}
-                      <h6 for="id" class="col-sm-8 col-form-label">Uniq Number</h6>
+                      <h6 for="id" class="col-sm-8 col-form-label">no sambungan</h6>
                       <div class="col-sm-12">
                         <input 
                         type="integer" 
@@ -149,7 +149,7 @@
                     </div> 
                     <div class="col-sm-12">
                       <div class="form-group">
-                        <label>cabang</label>
+                        <label>alasan</label>
                         <select name="alasan" class="form-control btn-xs">
                           <option selected>alasan ditutup</option>
                           <option value="1">Butuh</option>

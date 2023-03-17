@@ -44,8 +44,8 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $k->id_dil }}</td>
                 <td>{{ $k->tanggal_ganti }}</td>
-                <td>{{ $k->id_merek }}</td>
-                <td>{{ $k->merek_baru }}</td>
+                <td>{{ $k->kode }}</td>
+                <td>{{ $k->no_wmbaru }}</td>
                 <td>{{ $k->no_wmbaru }}</td>
 
                
@@ -131,16 +131,19 @@
                         class="form-control">
                       </div>
                     </div> 
-                    <div class="form-group">
-                      <h6 for="merek_baru" class="col-sm-8 col-form-label">Merek Baru</h6>
-                      <div class="col-sm-12">
-                        <input 
-                        type="text" 
-                        name="merek_baru" 
-                        class="form-control">
+
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                        <label>Merek Warter Meter</label>
+                        <select name="id_merek" class="form-control">
+                          <option value="">--- Merek ---</option>
+                          @foreach($mer as $item)
+                              <option value="{{ $item->id }}">{{ $item->merek }}</option>
+                          @endforeach    
+                        </select>
                       </div>
+                    
                     </div> 
-                    <div>
                     <div class="form-group">
                       <h6 for="no_wmbaru" class="col-sm-8 col-form-label">Noseri Baru</h6>
                       <div class="col-sm-12">
@@ -151,6 +154,7 @@
                       </div>
                     </div> 
                     <div>
+                      <div>
                     {{-- <div class="col-sm-12">
                       <div class="form-group">
                         <label>cabang</label>

@@ -65,23 +65,37 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>
                       @if ($k->cabang == 1)
-                              Tomo
+                              Sumedang Utara
                       @elseif($k->cabang == 2)
-                              Paseh
+                              Tanjungkerta
                       @elseif($k->cabang == 3)
-                      Cimalaka
-                      @elseif($k->cabang == 4)
-                      Tanjungkerta
-                      @elseif($k->cabang == 5)
-                      Situraja
-                      @elseif($k->cabang == 6)
-                      Wado
-                      @elseif($k->cabang == 7)
-                      Sumedang Selatan
-                      @elseif($k->cabang == 2)
-                      Jatinangor
-                      @else
                               Darmaraja
+                      @elseif($k->cabang == 4)
+                      Situraja
+                      @elseif($k->cabang == 5)
+                      Jatinangor
+                      @elseif($k->cabang == 6)
+                      Tanjungsari
+                      @elseif($k->cabang == 7)
+                      Paseh
+                      @elseif($k->cabang == 8)
+                      Cimalaka
+                      @elseif($k->cabang == 9)
+                      Tomo
+                      @elseif($k->cabang == 10)
+                      Ujungjaya
+                      @elseif($k->cabang == 11)
+                      Wado
+                      @elseif($k->cabang == 12)
+                      Cisitu
+                      @elseif($k->cabang == 13)
+                      Pamulihan
+                      @elseif($k->cabang == 14)
+                      Cimanggung
+                      @elseif($k->cabang == 40)
+                      Mol Pelayanan Publik
+                      @else
+                              Tidak ada 
                       @endif
                     </td>
                     <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-success btn-xs' : 'btn-danger btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>

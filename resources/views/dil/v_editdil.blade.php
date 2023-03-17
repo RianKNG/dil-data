@@ -18,14 +18,14 @@
               <div class="card-body">
                 <form>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label>No Sambungan</label>
                         <input type="integer" class="form-control" name="id" value="{{ $data->id }}">
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="form-group">
                         <label>cabang</label>
                           <input type="text" class="form-control" name="cabang" value="{{ $data->cabang }}">
@@ -34,7 +34,7 @@
                           @enderror
                       </div>
                   </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="form-group">
                         <label>status</label>
                         <option  class="form-control" name="status"  value="{{ $data->no_rekening }}" disabled>Aktip</option>
@@ -203,24 +203,6 @@
                       </div>
                     </div>
                   </div>
-                  </div>
-                 
-
-                
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Bulan Billing</label>
-                        <input type="text" name="bln_billing" class="form-control" value="{{ $data->bln_billing }}">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Tahun Billing</label>
-                        <input type="text" name="thn_billing" class="form-control" value="{{ $data->thn_billing }}">
-                      </div>
-                    </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-6">

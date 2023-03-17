@@ -180,9 +180,9 @@
                     <!-- /.chart-responsive -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-md-6">
+                  <div class="col-md-3">
                     <p class="text-center">
-                      <strong>{{ $tanggal }}</strong>
+                      <strong>Grafik Batang</strong>
                     </p>
 
                     <div class="progress-group">
@@ -292,7 +292,9 @@
       <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     
     <script type="text/javascript">
-    let b =  {!! json_encode($datac) !!};
+    let a =  {!! json_encode($datas) !!};
+    // let b =  {!! json_encode($datac) !!};
+    let c =  {!! json_encode($coba) !!};
     Highcharts.chart('container', {
     chart: {
         type: 'column'
@@ -301,10 +303,10 @@
         text: 'Grafik Batang'
     },
     subtitle: {
-        text: 'Sejatinya Tukang Ledeng Sejati'
+        text: 'Sejatinya Tukang Ledeng Sejatirrrr'
     },
     xAxis: {
-        categories: {!! json_encode($categories) !!},
+        categories: c,
         crosshair: true
     },
     yAxis: {
@@ -328,16 +330,15 @@
         }
     },
     series: [{
-        name: 'Penggantian',
-        data: b
+        name: 'Penyambungan',
+        data: a
     }]
-       
 });
 </script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
     let a =  {!! json_encode($datas) !!};
-   
-    // let c =  {!! json_encode($datac) !!};
+    let b =  {!! json_encode($datac) !!};
+    let c =  {!! json_encode($coba) !!};
     // let d =  {!! json_encode($datad) !!};
     Highcharts.chart('x', {
     chart: {
@@ -351,7 +352,7 @@
             'Sejatinya tukang ledeng sejati'
     },
     xAxis: {
-        categories: {!! json_encode($categories) !!},
+        categories: c,
         crosshair: true
       
     },
@@ -371,9 +372,12 @@
     series: [{
         name: 'Penyambungan',
         data: a
+    },{
+        name: 'Penggantuann',
+        data: b
     }]
 });
-</script>
+</script> --}}
    
     
     @endsection

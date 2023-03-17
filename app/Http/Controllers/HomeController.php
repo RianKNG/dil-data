@@ -126,13 +126,23 @@ class HomeController extends Controller
               ->join('tbl_dil as b','a.id_dil','=','b.id')
               //  ->select('a.stat','b.*');
               // $datas = $datahitungtanggas
-              ->select(DB::raw('count(b.id) as e'))
+              ->select(DB::raw('count(b.id) as total_sambung'))
               // ->select(DB::raw("DATE_FORMAT(tanggal_sambung,'%M %Y') as months"),)
               // ->whereMonth('tanggal_sambung', Carbon::now()->month)
               // ->groupBy(DB::raw("DATE_FORMAT(tanggal_sambung,'%M %Y')"),)
               ->groupBy(DB::raw("Month(tanggal_sambung)"))
-              ->where('status','=','1')
-              ->pluck('e');
+              
+              ->where('status','=','0')
+              ->pluck('total_sambung');
+              // ->get();
+              // dd($datas);
+
+              $coba = DB::table('sambung as a')
+              ->join('tbl_dil as b','a.id_dil','=','b.id')
+              ->select(DB::raw("MonthName(tanggal_sambung) as bulan"))
+              ->groupBy(DB::raw("MonthName(tanggal_sambung)"))
+              ->pluck('bulan');
+              // dd($coba);
              
 
             //table penggantian
@@ -145,8 +155,9 @@ class HomeController extends Controller
               ->groupBy(DB::raw("Month(tanggal_ganti)"))
               // ->where('status','=','1')
               ->pluck('e');
+              // dd($datac);
 
-               return view('v_home',compact('datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
+               return view('v_home',compact('coba','datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
     }
      public function test()
      {

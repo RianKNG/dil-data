@@ -38,13 +38,11 @@ class DilImport implements ToModel
                    'kopling'=> $row[19],
                    'plugran'=> $row[20],
                    'box'=> $row[21],
-                   'bln_billing'=> $row[22], 
-                   'thn_billing' => $row[23],
-                   'sumber_lain'=> $row[24],
-                   'jenisusaha'=> $row[25],
-                   'created_at'=> $row[26],
-                   'updated_at'=> $row[27],
-                   'id_merek'=> $row[28],
+                   'sumber_lain'=> $row[22],
+                   'jenisusaha'=> $row[23],
+                   'created_at'=> $row[24],
+                   'updated_at'=> $row[25],
+                   'id_merek'=> $row[26],
                   
 
              

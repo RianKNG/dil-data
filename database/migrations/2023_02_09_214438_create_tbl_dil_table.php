@@ -36,8 +36,6 @@ class CreateTblDilTable extends Migration
             $table->string('kopling')->nullable();
             $table->string('plugran')->nullable();
             $table->string('box')->nullable();
-            $table->string('bln_billing'); 
-            $table->string('thn_billing'); 
             $table->string('sumber_lain');
             $table->string('jenisusaha');
             $table->timestamps();
