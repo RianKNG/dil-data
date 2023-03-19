@@ -12,7 +12,7 @@
       </li>
       <li class="nav-item">
         <a href="/dil" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+          <i class="nav-icon far fa-circle text-danger"></i>
           <p class="btn-xs">
             Master DIL
           </p>
@@ -20,7 +20,7 @@
       </li>
       <li class="nav-item">
         <a href="/watermeter" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+          <i class="nav-icon far fa-circle text-warning"></i>
           <p class="btn-xs">
             Water Meter
           </p>
@@ -28,7 +28,7 @@
       </li>
       <li class="nav-item">
         <a href="/dil/add" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+          <i class="nav-icon far fa-circle text-primary"></i>
           <p class="btn-xs">
             Layanan Tambah DIl
           </p>
@@ -36,7 +36,7 @@
       </li>
       <li class="nav-item">
         <a href="/penutupan" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+          <i class="nav-icon far fa-circle text-blue"></i>
           <p class="btn-xs">
             Layanan Penutupan
           </p>
@@ -52,7 +52,7 @@
       </li> --}}
       <li class="nav-item">
         <a href="/penyambungan" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+          <i class="nav-icon far fa-circle text-success"></i>
           <p class="btn-xs">
             Layanan Penyambungan
           </p>
@@ -60,7 +60,7 @@
       </li>
       <li class="nav-item">
         <a href="/penggantian" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+          <i class="nav-icon far fa-circle text-white"></i>
           <p class="btn-xs">
             Layanan Penggantian
           </p>
@@ -68,7 +68,7 @@
       </li>
       <li class="nav-item">
         <a href="/bbn" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+          <i class="nav-icon far fa-circle text-green"></i>
           <p class="btn-xs">
             Layanan Balik Nama
           </p>
@@ -76,7 +76,7 @@
       </li>
       <li class="nav-item">
         <a href="/layanan" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+          <i class="nav-icon fas fa-user"></i>
           <p class="btn-xs">
             Laynan Data
           </p>

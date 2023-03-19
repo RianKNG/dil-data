@@ -5,10 +5,11 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Home</a>
+      <a href="#" class="nav-link"><span class="text-warning">Tim HUMAS   &   VDPR</span></a>
+      
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Profil</a>
+      <a href="#" class="nav-link"></a>
     </li>
   </ul>
 

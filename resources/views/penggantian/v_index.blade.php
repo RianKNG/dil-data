@@ -43,8 +43,9 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $k->id_dil }}</td>
+                <td>{{ $k->id }}</td>
                 <td>{{ $k->tanggal_ganti }}</td>
-                <td>{{ $k->kode }}</td>
+               
                 <td>{{ $k->no_wmbaru }}</td>
                 <td>{{ $k->no_wmbaru }}</td>
 
@@ -74,17 +75,17 @@
           <div class="modal-dialog">
             <div class="modal-content bg-danger">
               <div class="modal-header">
-                <h4 class="modal-title">{{ $k->nama_sekarang }}</h4>
+                <h4 class="modal-title">{{ $k->no_wmbaru }}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <p>Apakah anda yakin ingin hapus data ini?&hellip;{{ $k->nama_sekarang }}</p>
+                <p>Apakah anda yakin ingin hapus data ini?&hellip;{{ $k->no_wmbaru }}</p>
               </div>
               <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-                <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-outline-light">Hapus</a>
+                <a href="penggantian/hapus/{{ $k->id }}" class="btn btn-outline-light">Hapus</a>
               </div>
             </div>
             <!-- /.modal-content -->

@@ -6,7 +6,9 @@ use Carbon\Carbon;
 use App\Models\Sambung;
 use App\Models\Penutupan;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\ElseIf_;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
       Penutupan::all();
       Sambung::all();
@@ -65,6 +67,8 @@ class HomeController extends Controller
           ->groupBy(DB::raw("Month(tanggal_tutup)"))
           // ->where('status','=','1')
           ->pluck('d');
+         
+          
       
       //data Penyambungan
       $datahitungp = DB::table('sambung as t')
@@ -74,7 +78,7 @@ class HomeController extends Controller
           ->where('status','=',1) 
           ->whereMonth('tanggal_sambung', Carbon::now()->month)
           ->count();
-
+          
       //data Penggantian
       $datahitunggan = DB::table('ganti as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
@@ -132,18 +136,45 @@ class HomeController extends Controller
               // ->groupBy(DB::raw("DATE_FORMAT(tanggal_sambung,'%M %Y')"),)
               ->groupBy(DB::raw("Month(tanggal_sambung)"))
               
-              ->where('status','=','0')
+              ->where('status','=','1')
               ->pluck('total_sambung');
               // ->get();
-              // dd($datas);
+              $cobacabang = DB::table('sambung as a')
+              ->join('tbl_dil as b','a.id_dil','=','b.id')
+              ->select(DB::raw("b.cabang as cabang"))
+              ->groupBy(DB::raw("cabang"))
+              // ->groupBy(DB::raw("MonthName(tanggal_sambung)"))
+              
+              ->pluck('cabang');
+              
+           
+              
 
+     
+              $now = Carbon::now();
               $coba = DB::table('sambung as a')
               ->join('tbl_dil as b','a.id_dil','=','b.id')
               ->select(DB::raw("MonthName(tanggal_sambung) as bulan"))
-              ->groupBy(DB::raw("MonthName(tanggal_sambung)"))
-              ->pluck('bulan');
-              // dd($coba);
+              ->groupBy([DB::raw("MonthName(tanggal_sambung)")])
+              ->orderBy('bulan');
+              $coba = collect( range(1, $now->month) )->map( function($month) use ($now) {
+                return Carbon::createFromDate($now->year, $month)->format('F');
+            })->toArray();
+              // ->pluck('bulan')
+              // ->toArray($coba);
              
+        
+              // if ( $coba[0] == "January") {
+              //   $coba = "1. January";
+              // } elseif($coba[1] == "February") {
+              //   $coba = "2. February";
+              // }else{
+              //   'April';
+              // }
+              
+           
+// dd($coba);
+            
 
             //table penggantian
             $datahitunggan = DB::table('ganti as s')
@@ -153,11 +184,10 @@ class HomeController extends Controller
               ->select(DB::raw('count(s.id) as e'))
               // ->whereMonth('tanggal_sambung', Carbon::now()->month)
               ->groupBy(DB::raw("Month(tanggal_ganti)"))
-              // ->where('status','=','1')
               ->pluck('e');
-              // dd($datac);
+              
 
-               return view('v_home',compact('coba','datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
+               return view('v_home',compact('cobacabang','coba','datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
     }
      public function test()
      {

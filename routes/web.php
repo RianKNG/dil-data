@@ -68,6 +68,7 @@ Route::get('/coba',[CobaController::class,'index'])->name('coba');
 Route::get('/penggantian', [PenggantianController::class,'index'])->name('penggantian');
 Route::get('/penggantian/add', [PenggantianController::class,'add']);
 Route::post('/penggantian/insert', [PenggantianController::class,'insert']);
+Route::get('/penggantian/hapus/{id}', [PenggantianController::class,'hapus']);
 
 //watermeter
 Route::get('/watermeter', [WmController::class,'index'])->name('watermeter');

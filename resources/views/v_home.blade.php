@@ -5,7 +5,8 @@
 @endsection
     @php
       $tanggal = date('F Y');
-      $tahun = date('Y');
+      $tahun = date('Y s');
+      $jam = date("h:i:sa");
     @endphp
 @section('tet')
 
@@ -29,9 +30,9 @@
         <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ $tanggal }}</b></i></span></h6>
         <div class="row">
           
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box btn-xs">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-restroom"></i></span>
               
               <div class="info-box-content">
                 <span class="info-box-text">Dil Baru</span>
@@ -39,7 +40,7 @@
                   {{ $databilling }}
                   <small></small>
                 </span>
-                <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-xl">
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
                   Sync Data
                 </button>
               </div>
@@ -50,56 +51,69 @@
           <!-- /.col -->
           <div class="clearfix hidden-md-up"></div>
 
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thumbs-up"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-nurse"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Penutupan</span>
                 <span class="info-box-number">{{ $jumlahtutup }}</span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
-          <div class="col-12 col-sm-6 col-md-4">
+         
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box btn-xs">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-copy"></i></span>
               
               <div class="info-box-content">
-                <span class="info-box-text">Dil Baru</span>
+                <span class="info-box-text">Pelanggan Aktip</span>
                 <span class="info-box-number">
                   {{ $databilling }}
                   <small></small>
                 </span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="clearfix hidden-md-up"></div>
+          {{-- <div class="clearfix hidden-md-up"></div>
 
           <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thumbs-up"></i></span>
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user-nurse"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Penutupan</span>
                 <span class="info-box-number">{{ $dataz }}</span>
+                <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-          </div>
+          </div> --}}
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-plus-square"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Penyambungan</span>
                 <span class="info-box-number">{{ $dataz }}</span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -109,13 +123,16 @@
           <!-- fix for small devices only -->
           <div class="clearfix hidden-md-up"></div>
     
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user"></i></span>
     
               <div class="info-box-content">
                 <span class="info-box-text">Penggantian</span>
                 <span class="info-box-number">{{ $datagan }}</span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -123,25 +140,48 @@
           </div>
          
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-edit"></i></span>
    
               <div class="info-box-content">
                 <span class="info-box-text">Bbn</span>
                 <span class="info-box-number">{{ $datad }}</span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3 btn-xs">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-briefcase"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Pelanggan Non aktip</span>
+                <span class="info-box-number">{{ $jumlahtutup }}</span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3 btn-xs">
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
   
               <div class="info-box-content">
                 <span class="info-box-text">Total DIL</span>
                 <span class="info-box-number">{{ $jumlahdil }}</span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  Sync Data
+                </button>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -149,17 +189,22 @@
           </div>
           <!-- /.col -->
         </div>
-        <!-- /.row -->
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Monthly Recap Report</h5>
+                <h5 class="card-title">Sekarang : {{ $tanggal }}||{{ $jam }}</h5>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
-                  </button>     
+                  </button>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                      <i class="fas fa-wrench"></i>
+                    </button>
+                    
+                  </div>
                   <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
                   </button>
@@ -170,32 +215,26 @@
                 <div class="row">
                   <div class="col-md-6">
                     <p class="text-center">
-                      <strong>{{ $tanggal }}</strong>
+                      {{-- <strong>{{ $tanggal }}</strong> --}}
                     </p>
 
                     <div class="chart">
-                      <!-- Sales Chart Canvas -->
-                     <div id="x"></div>
+                      <!-- Sales Chart div -->
+                      <div id="container" height="180" style="height: 300px;"></div>
                     </div>
                     <!-- /.chart-responsive -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-md-3">
+                  <div class="col-md-6">
                     <p class="text-center">
-                      <strong>Grafik Batang</strong>
+                      {{-- <strong>Goal Completion</strong> --}}
                     </p>
 
-                    <div class="progress-group">
-                      <div id="container"></div>
+                    <div class="chart">
+                      <div id="x" height="180" style="height: 300px;"></div>
                     </div>
-                    <!-- /.progress-group -->
 
-                
 
-                    <!-- /.progress-group -->
-                   
-
-                   
                     <!-- /.progress-group -->
                   </div>
                   <!-- /.col -->
@@ -203,7 +242,6 @@
                 <!-- /.row -->
               </div>
               <!-- ./card-body -->
-        <!-- /.row -->
     
         <!-- Main row -->
         <div class="row">
@@ -283,9 +321,151 @@
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
-    
-  
+
       <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
+      <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+      <script type="text/javascript">
+        let a =  {!! json_encode($datas) !!};
+        let b =  {!! json_encode($cobacabang) !!};
+        let c =  {!! json_encode($coba) !!};
+const chart = new Highcharts.Chart({
+    chart: {
+        renderTo: 'container',
+        type: 'column',
+        options3d: {
+            enabled: true,
+            alpha: 25,
+            beta: 5,
+            depth: 50,
+            viewDistance: 25
+        }
+    },
+    xAxis: {
+        categories: c,
+    },
+    yAxis: {
+        title: {
+            enabled: false
+        }
+    },
+    tooltip: {
+        headerFormat: '<b>{point.key}</b><br>',
+        pointFormat: 'Jumlah: {point.y}'
+    },
+    title: {
+        text: 'Grafik 3D DIL',
+        align: 'center'
+    },
+    subtitle: {
+        text: 'Sejatinya ' +
+            'Tukang Ledeng' +
+            'Sejati',
+        align: 'center'
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        column: {
+            depth: 25
+        }
+    },
+    series: [{
+        data: a,
+        colorByPoint: true
+    }]
+});
+
+function showValues() {
+    document.getElementById('alpha-value').innerHTML = chart.options.chart.options3d.alpha;
+    document.getElementById('beta-value').innerHTML = chart.options.chart.options3d.beta;
+    document.getElementById('depth-value').innerHTML = chart.options.chart.options3d.depth;
+}
+
+// Activate the sliders
+document.querySelectorAll('#sliders input').forEach(input => input.addEventListener('input', e => {
+    chart.options.chart.options3d[e.target.id] = parseFloat(e.target.value);
+    showValues();
+    chart.redraw(false);
+}));
+
+showValues();
+
+<!-- #END# Bar Chart -->
+
+</script>
+<script type="text/javascript">
+                var s = {{ $dataz }};
+                var t = {{ $jumlahtutup }};
+                var u = {{ $databilling }};
+                var v = {{ $datagan }};
+                var w = {{ $datagan }};
+                var x = {{ $jumlahdil }};
+
+
+Highcharts.chart('x', {
+  chart: {
+      type: 'pie',
+      options3d: {
+          enabled: true,
+          alpha: 45,
+          beta: 0
+      }
+  },
+  title: {
+      text: 'Grafk Lingkaran',
+      align: 'center'
+  },
+  subtitle: {
+      text: '{{ $tanggal }}'  +
+          '' +
+          '',
+      align: 'center'
+  },
+  accessibility: {
+      point: {
+          valueSuffix: '%'
+      }
+  },
+  tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          depth: 35,
+          dataLabels: {
+              enabled: true,
+              format: '{point.name}'
+          }
+      }
+  },
+  series: [{
+      type: 'pie',
+      name: 'DIL',
+      data: [
+          ['Data Rekening Aktip', s],
+          ['Penutupan', t],
+          {
+              name: 'Penyambungan',
+              y: s,
+              sliced: true,
+              selected: true
+          },
+          ['penggantian', v],
+          ['Dil Aktip', w],
+          
+      ]
+  }]
+});
+</script>  
+
+
+      {{-- <script src="https://code.highcharts.com/highcharts.js"></script>
       <script src="https://code.highcharts.com/modules/series-label.js"></script>
       <script src="https://code.highcharts.com/modules/exporting.js"></script>
       <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -293,7 +473,7 @@
     
     <script type="text/javascript">
     let a =  {!! json_encode($datas) !!};
-    // let b =  {!! json_encode($datac) !!};
+    let b =  {!! json_encode($cobacabang) !!};
     let c =  {!! json_encode($coba) !!};
     Highcharts.chart('container', {
     chart: {
@@ -306,8 +486,9 @@
         text: 'Sejatinya Tukang Ledeng Sejatirrrr'
     },
     xAxis: {
+        // categories: c,
         categories: c,
-        crosshair: true
+        crosshair: false
     },
     yAxis: {
         min: 0,
@@ -335,6 +516,58 @@
     }]
 });
 </script>
+</script> --}}
+      {{-- <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/series-label.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
+      <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    
+    <script type="text/javascript">
+    let a =  {!! json_encode($datas) !!};
+    let b =  {!! json_encode($cobacabang) !!};
+    let c =  {!! json_encode($coba) !!};
+    Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grafik Batang'
+    },
+    subtitle: {
+        text: 'Sejatinya Tukang Ledeng Sejatirrrr'
+    },
+    xAxis: {
+        // categories: c,
+        categories: c,
+        crosshair: false
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Rainfall (mm)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Penyambungan',
+        data: a
+    }]
+});
+</script> --}}
     {{-- <script type="text/javascript">
     let a =  {!! json_encode($datas) !!};
     let b =  {!! json_encode($datac) !!};

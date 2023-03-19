@@ -24,6 +24,7 @@ class PenutupanController extends Controller
             $data = DB::table('penutupan')
                    ->leftJoin('tbl_dil','penutupan.id_dil','=','tbl_dil.id')
                    // jangan select id parentnya karena akan terpanggil parent nya
+                   // kalou manggil data all function makan callbact function null(*)
                     ->select('penutupan.id','penutupan.tanggal_tutup','penutupan.alasan','penutupan.id_dil','tbl_dil.status','tbl_dil.nama_sekarang','tbl_dil.nama_pemilik','tbl_dil.id_merek','tbl_dil.segel')
                     ->orderBy('id','desc')
                     ->get();

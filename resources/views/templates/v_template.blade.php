@@ -77,10 +77,11 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="#">V D P R</a>.</strong>
-    All rights reserved.
+   
+    <strong class="text-warning">&copy; 2023</strong>
+    <span class="text-white">Tim H U M A S || بسم الله</span>
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
+      <b class="text-white"></b>
     </div>
   </footer>
 </div>

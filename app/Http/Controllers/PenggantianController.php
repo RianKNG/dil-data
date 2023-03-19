@@ -23,11 +23,13 @@ class PenggantianController extends Controller
         //         ->get();
         $mer = Merek::all();
         $data = DB::table('ganti AS d')
-        ->select([
-            'd.*','m.*','n.*',
-        ])
         ->leftJoin('merek as m','d.id_merek','=','m.id')
         ->leftJoin('tbl_dil as n','d.id_dil','=','n.id')
+        ->select([
+            'd.id','d.tanggal_ganti','d.no_wmbaru','d.id_dil','d.id_merek'
+        ])
+       
+        
         // ->where('cabang','=','2')
         ->get();
         // dd($data);
@@ -43,5 +45,16 @@ class PenggantianController extends Controller
         
         Ganti::create($request->all());
         return redirect('penggantian')->with('success','data berhasil di tambahkan');
+    }
+    public function hapus($id)
+    {
+
+        
+        $data = ganti::find($id);
+      
+        $data->delete();
+       
+
+        return redirect()->route('penggantian')->with('success','data d berhasil dithapus');
     }
 }
