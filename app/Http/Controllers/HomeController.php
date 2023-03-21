@@ -40,12 +40,13 @@ class HomeController extends Controller
       }
       //data DIL baru
        $databill = DB::table('tbl_dil as a')
-        ->where('status','=',1) 
-        ->whereMonth('updated_at', Carbon::now()->month)
+       //sementara
+        // ->where('status','=',1) 
+        ->whereMonth('tanggal_pasang', Carbon::now()->month)
         ->get();
       // $databill = DB::table('penutupan as a')
       // ->join('tbl_dil as b','a.id_dil','=','b.id')
-     
+     //sementara
       //   ->select('a.*','b.*')
       //   // ->where('bln_billing','=',4) 
       //   ->get();
@@ -53,8 +54,12 @@ class HomeController extends Controller
         $databilling =  $databill
         ->count();
       $jumlahtutup = DB::table('penutupan as a')
-        ->select('a.*')
+      ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select('a.*','b.*')
         ->whereMonth('tanggal_tutup', Carbon::now()->month)
+        ->get();
+       
+        $datatutupjumlah=  $jumlahtutup
         ->count();
 
       //data penutupan
@@ -141,36 +146,42 @@ class HomeController extends Controller
               // ->get();
               $cobacabang = DB::table('sambung as a')
               ->join('tbl_dil as b','a.id_dil','=','b.id')
-              ->select(DB::raw("b.cabang as cabang"))
+              // ->select(DB::raw("b.cabang as cabang",))
+              ->select(DB::raw("(  (count(b.cabang)  ) )  as `cabang` "))
               ->groupBy(DB::raw("cabang"))
               // ->groupBy(DB::raw("MonthName(tanggal_sambung)"))
-              
               ->pluck('cabang');
+              // ->get();
               
-           
+          //  dd($cobacabang);
               
 
-     
-              $now = Carbon::now();
+              // $monthsArray=[1,2,3,4,5,6,7,8,9,10,11,12];
+              // $now = Carbon::now();
+                // $cobaa = ['January','February','April'];
+              // $startMonth = Carbon::now()->addMonth($now)->day(1)->format("Y-m-d");
+              // dd($startMonth);
               $coba = DB::table('sambung as a')
               ->join('tbl_dil as b','a.id_dil','=','b.id')
               ->select(DB::raw("MonthName(tanggal_sambung) as bulan"))
               ->groupBy([DB::raw("MonthName(tanggal_sambung)")])
-              ->orderBy('bulan');
-              $coba = collect( range(1, $now->month) )->map( function($month) use ($now) {
-                return Carbon::createFromDate($now->year, $month)->format('F');
-            })->toArray();
-              // ->pluck('bulan')
-              // ->toArray($coba);
+              ->orderBy('bulan')
+              // ->pluck('bulan');
+              ->pluck('bulan');
+              // $coba=array_map(
+              //   function($monthNumber){
+              //        return date("F", mktime(0, 0, 0, $monthNumber));
+              //        }
+              //  ,$monthsArray);
+            //   $coba = collect( range(1, $now->month) )->map( function($month) use ($now) {
+            //     return Carbon::createFromDate($now->year, $month)->format('F');
+            // })->toArray();
              
-        
-              // if ( $coba[0] == "January") {
-              //   $coba = "1. January";
-              // } elseif($coba[1] == "February") {
-              //   $coba = "2. February";
-              // }else{
-              //   'April';
-              // }
+              // ->toArray($coba);
+              // $games =  $coba->merge($cobaa);
+          
+            
+              // dd($coba);
               
            
 // dd($coba);
@@ -187,7 +198,7 @@ class HomeController extends Controller
               ->pluck('e');
               
 
-               return view('v_home',compact('cobacabang','coba','datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
+               return view('v_home',compact('datatutupjumlah','cobacabang','coba','datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
     }
      public function test()
      {

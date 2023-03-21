@@ -78,7 +78,7 @@
         <a href="/layanan" class="nav-link">
           <i class="nav-icon fas fa-user"></i>
           <p class="btn-xs">
-            Laynan Data
+            Report
           </p>
         </a>
       </li>

@@ -1,14 +1,16 @@
 
 @extends('templates.v_template')
 @section('title',)
+
  <h6><span> <i><b>Dashboard</b></i></span></h6>
+
 @endsection
     @php
       $tanggal = date('F Y');
       $tahun = date('Y s');
       $jam = date("h:i:sa");
     @endphp
-@section('tet')
+@section('tabel')
 
      @php
     if (isset($_server['HTTPS']) && $_SERVER['HTTPS'] ==='on') {
@@ -57,8 +59,8 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Penutupan</span>
-                <span class="info-box-number">{{ $jumlahtutup }}</span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                <span class="info-box-number">{{ $datatutupjumlah }}</span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-t">
                   Sync Data
                 </button>
               </div>
@@ -163,7 +165,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Pelanggan Non aktip</span>
-                <span class="info-box-number">{{ $jumlahtutup }}</span>
+                <span class="info-box-number">#</span>
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
                   Sync Data
                 </button>
@@ -297,15 +299,63 @@
                      
                         <td>{{ $k->id_merek }}</td>
                         {{-- <td>{{ $k->merek }}</td> --}}
-                       
-                    
-        
-                             
                     </tr> 
-                   
                  @endforeach
-                
+
+                  </tbody>
+                </table>
+                </tr>
+              </table>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      {{-- Modal-t --}}
+      <div class="modal fade" id="modal-t">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Detail Konsumen</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table>
+                <tr>
+                  <thead>
+                    <tr>
+                      <th width="5%">No.</th>
+                      <th>No Sambungan</th>
+                      <th>tanggal_ganti</th>
+                      <th>merek Lama</th>
+                      <th>merek Baru</th>
+                      <th>no WM Baru</th>
+                      <th>Status</th>
+                      <th width="20%">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    @foreach ($jumlahtutup as $index => $k)
                    
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $k->id }}</td>
+                        <td>{{ $k->nama_sekarang }}</td>
+                        <td>{{ $k->cabang }}</td>
+                     
+                        <td>{{ $k->id_merek }}</td>
+                        {{-- <td>{{ $k->merek }}</td> --}}
+                    </tr> 
+                 @endforeach
+
                   </tbody>
                 </table>
                 </tr>
@@ -399,7 +449,7 @@ showValues();
 </script>
 <script type="text/javascript">
                 var s = {{ $dataz }};
-                var t = {{ $jumlahtutup }};
+                // var t = {{ $jumlahtutup }};
                 var u = {{ $databilling }};
                 var v = {{ $datagan }};
                 var w = {{ $datagan }};
@@ -449,7 +499,7 @@ Highcharts.chart('x', {
       name: 'DIL',
       data: [
           ['Data Rekening Aktip', s],
-          ['Penutupan', t],
+          // ['Penutupan', t],
           {
               name: 'Penyambungan',
               y: s,
@@ -612,5 +662,5 @@ Highcharts.chart('x', {
 });
 </script> --}}
    
-    
-    @endsection
+   
+@endsection

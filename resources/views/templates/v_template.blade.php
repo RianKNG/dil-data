@@ -65,6 +65,9 @@
     <section class="content">
         @yield('content')
     </section>
+    <section class="tabel">
+        @yield('tabel')
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
