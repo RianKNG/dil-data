@@ -17,7 +17,7 @@ class BbnController extends Controller
     {
         $data = DB::table('bbn as b')
         ->select([
-            'b.*','d.*'
+            'b.*','d.nama_sekarang','d.id_merek','d.no_rekening'
         ])
         ->join('tbl_dil as d',function($join){
             $join->on('d.id','=','b.id_dil');
@@ -104,5 +104,12 @@ class BbnController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function hapus($id)
+    {
+        $data = Bbn::find($id);
+        $data->delete();
+
+        return redirect()->route('bbn')->with('success','data penutupan berhasil dithapus');
     }
 }

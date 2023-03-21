@@ -53,12 +53,14 @@ Route::get('/penyambungan', [PenyambunganController::class,'index'])->name('peny
 Route::get('/penyambungan/add', [PenyambunganController::class,'add']);
 Route::post('/penyambungan/insert', [PenyambunganController::class,'insert']);
 Route::get('/penyambungan/search', [PenyambunganController::class,'search']);
+Route::get('/penyambungan/hapus/{id}', [PenyambunganController::class,'hapus']);
 // Route::post('/penutupan/update/{id}',[PenyambunganController::class,'update']);
 
 //bbn
 Route::get('/bbn',[BbnController::class,'index'])->name('bbn');
 Route::post('/bbn/store', [BbnController::class,'store']);
 Route::get('/bbn/add', [BbnController::class,'add']);
+Route::get('/bbn/hapus/{id}', [BbnController::class,'hapus']);
 
 
 Route::get('/coba',[CobaController::class,'index'])->name('coba');

@@ -379,7 +379,7 @@
       <script src="https://code.highcharts.com/modules/accessibility.js"></script>
       <script type="text/javascript">
         let a =  {!! json_encode($datas) !!};
-        let b =  {!! json_encode($cobacabang) !!};
+        // let b =  {!! json_encode($cobacabang) !!};
         let c =  {!! json_encode($coba) !!};
 const chart = new Highcharts.Chart({
     chart: {

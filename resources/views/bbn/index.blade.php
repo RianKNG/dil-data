@@ -55,7 +55,7 @@
                   {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
                   
                   <a href="penggantian/edit/{{ $k->id }}" class="btn btn-success btn-xs">Edit</a>
-                  <a href="penggantian/hapus/{{ $k->id }}" 
+                  <a href="bbn/hapus/{{ $k->id }}" 
                     class="btn btn-danger btn-xs" 
                     data-toggle="modal" 
                     data-target="#delete{{ $k->id }}">
@@ -85,7 +85,7 @@
               </div>
               <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-                <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-outline-light">Hapus</a>
+                <a href="bbn/hapus/{{ $k->id }}" class="btn btn-outline-light">Hapus</a>
               </div>
             </div>
             <!-- /.modal-content -->

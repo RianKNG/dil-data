@@ -44,6 +44,7 @@ class HomeController extends Controller
         // ->where('status','=',1) 
         ->whereMonth('tanggal_pasang', Carbon::now()->month)
         ->get();
+        
       // $databill = DB::table('penutupan as a')
       // ->join('tbl_dil as b','a.id_dil','=','b.id')
      //sementara
@@ -53,6 +54,7 @@ class HomeController extends Controller
         // return($databill);
         $databilling =  $databill
         ->count();
+        // dd($databilling);
       $jumlahtutup = DB::table('penutupan as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
         ->select('a.*','b.*')

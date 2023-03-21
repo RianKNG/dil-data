@@ -18,8 +18,8 @@ class PenyambunganController extends Controller
     ])
     ->join('tbl_dil as m',function($join){
         $join->on('m.id','=','d.id_dil');
-    })
-   ;
+    });
+
 
         $start_date = date('Y-m-d 00:00:00', strtotime($request->get('start_date')));
 
@@ -87,10 +87,17 @@ $data = $data->get();
     {
         return view('penyambungan.v_sambung');
     }
+    public function hapus($id)
+    {
+        $data = Sambung::find($id);
+        $data->delete();
+
+        return redirect()->route('penyambungan')->with('success','data penutupan berhasil dithapus');
+    }
     public function insert(Request $request)
     {
         Sambung::create($request->all());
-        return redirect('penyambungan')->with('success','data berhsil ditambahkan');
+        return redirect()->route('penyambungan')->with('success','data berhsil ditambahkan');
     }
     public function search(Request $request)
     {

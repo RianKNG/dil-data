@@ -129,7 +129,7 @@
                   </div>
                   
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <!-- checkbox -->
                       <div class="form-group">
                         <div class="form-input">
@@ -138,9 +138,8 @@
                         </div>
                       </div>
                     </div>
-                </div>
-                  <div class="row">
-                    <div class="col-md-12">
+              
+                    <div class="col-md-6">
                       <!-- checkbox -->
                       <div class="form-group">
                         <div class="form-input">
