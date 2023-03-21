@@ -200,6 +200,18 @@
                         @enderror
                         </div>
                       </div>
+                    </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Tanggal File</label>
+                        <div class="form-input">
+                          <input type="date" class="form-control" name="tanggal_file">
+                          @error('tanggal_file')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        </div>
+                      </div>
 
                       <div class="row">
                   <div class="col-md-2">

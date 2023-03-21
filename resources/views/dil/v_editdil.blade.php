@@ -139,6 +139,17 @@
                       </div>
                     </div>
                 </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!-- checkbox -->
+                      <div class="form-group">
+                        <div class="form-input">
+                         <label>Tanggal File</label>
+                          <input type="date" class="form-control" name="tanggal_file" value="{{ $data->tanggal_file }}">
+                        </div>
+                      </div>
+                    </div>
+                </div>
              
           
                 <div class="row">

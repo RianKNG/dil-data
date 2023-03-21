@@ -34,7 +34,7 @@ class DilController extends Controller
     // ini contoh 2 sudaj oke dengan query
     $dataquery = DB::table('tbl_dil as d')
     ->select([
-            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
             'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
             'm.merek'
         ])
@@ -61,10 +61,11 @@ class DilController extends Controller
     }
     public function insert(Request $request)
     {
+        // dd($request->all()); 
         $this->validate($request,[
           'id' => 'required|unique:tbl_dil,id|min:10|max:10',
-          'cabang'=>'required',
           'status' => 'required',
+          'cabang'=>'required',
           'no_rekening' => 'required|unique:tbl_dil,no_rekening|min:5|max:5',
           'nama_sekarang' => 'required',
           'nama_pemilik' => 'required',
@@ -78,14 +79,13 @@ class DilController extends Controller
           'jml_jiwa_tetap' => 'required|numeric',
           'jml_jiwa_tidak_tetap' => 'required|numeric',
           'tanggal_pasang' => 'date_format:Y-m-d',
+          'tanggal_file' => 'date_format:Y-m-d',
           'segel' => 'required',
           'stop_kran' => 'required',
           'ceck_valve' => 'required',
           'kopling' => 'required',
           'plugran' => 'required',
           'box' => 'required',
-          'bln_billing' => 'required|max:2',
-          'thn_billing' => 'required|min:4|max:4',
           'sumber_lain' => 'required',
           'jenisusaha' => 'required',
           'id_merek' => 'required',
@@ -95,8 +95,8 @@ class DilController extends Controller
         DilModel::create([
           
           'id' => $request->id,
-          'cabang' => $request->cabang,
           'status' => $request->status,
+          'cabang' => $request->cabang,
           'no_rekening' => $request->no_rekening,
           'nama_sekarang' => $request->nama_sekarang,
           'nama_pemilik' => $request->nama_pemilik,
@@ -110,14 +110,13 @@ class DilController extends Controller
           'jml_jiwa_tetap' => $request->jml_jiwa_tetap,
           'jml_jiwa_tidak_tetap' => $request->jml_jiwa_tidak_tetap,
           'tanggal_pasang' => $request->tanggal_pasang,
+          'tanggal_file' => $request->tanggal_file,
           'segel' => $request->segel,
           'stop_kran' => $request->stop_kran,
           'ceck_valve' => $request->ceck_valve,
           'kopling' => $request->kopling,
           'plugran' => $request->plugran,
           'box' => $request->box,
-          'bln_billing' => $request->bln_billing,
-          'thn_billing' => $request->thn_billing,
           'sumber_lain' => $request->sumber_lain,
           'jenisusaha' => $request->jenisusaha,
           'id_merek' => $request->id_merek,

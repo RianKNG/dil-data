@@ -30,6 +30,7 @@ class CreateTblDilTable extends Migration
             $table->integer('jml_jiwa_tetap');
             $table->integer('jml_jiwa_tidak_tetap');
             $table->date('tanggal_pasang');
+            $table->date('tanggal_file');
             $table->string('segel')->nullable();
             $table->string('stop_kran')->nullable();
             $table->string('ceck_valve')->nullable();
