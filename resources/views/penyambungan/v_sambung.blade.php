@@ -50,7 +50,7 @@
                     <td>{{ $k->id_dil }}</td>
                     <td>{{ $k->nama_sekarang }}</td>
                     <td>{{ $k->alasan }}</td>
-                    <td>{{ $k->tanggal_sambung }}</td>
+                    <td>{{ bulankita($k->tanggal_sambung) }}</td>
 
                     <td><label class=" badge {{ ($k->status == 0 ) ? 'badge-success badge-xs' : 'badge-danger badge-xs'}}">{{ ($k->status == 0 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
                     <td>

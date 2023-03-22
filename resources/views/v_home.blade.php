@@ -2,6 +2,7 @@
 @extends('templates.v_template')
 @section('title',)
 
+{{ bulankita('2021-02-02') }}
  <h6><span> <i><b>Dashboard</b></i></span></h6>
 
 @endsection
@@ -42,7 +43,7 @@
                   {{ $databilling }}
                   <small></small>
                 </span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-x">
                   Sync Data
                 </button>
               </div>
@@ -263,23 +264,21 @@
         </div>
         <!-- /.row -->
       </div><!--/. container-fluid -->
-      <div class="modal fade" id="modal-xl">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Detail Konsumen</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <table>
-                <tr>
-                  <thead>
+ <!-- Main content -->
+ <div class="modal fade" id="modal-x">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Dil Baru</h4>
+      </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
                     <tr>
                       <th width="5%">No.</th>
                       <th>No Sambungan</th>
-                      <th>tanggal_ganti</th>
+                      <th>Nama Sekarang</th>
                       <th>merek Lama</th>
                       <th>merek Baru</th>
                       <th>no WM Baru</th>
@@ -308,27 +307,26 @@
               </table>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-success col sm-12" data-dismiss="modal">kembali</button>
+              
+              {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
             </div>
           </div>
           <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
       </div>
+      
       {{-- Modal-t --}}
       <div class="modal fade" id="modal-t">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Detail Konsumen</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
-            <div class="modal-body">
-              <table>
-                <tr>
+            
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover"> 
                   <thead>
                     <tr>
                       <th width="5%">No.</th>
@@ -349,6 +347,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $k->id }}</td>
                         <td>{{ $k->nama_sekarang }}</td>
+                        <td>{{ bulankita($k->tanggasambung) }}</td>
                         <td>{{ $k->cabang }}</td>
                      
                         <td>{{ $k->id_merek }}</td>
@@ -380,7 +379,7 @@
       <script type="text/javascript">
         let a =  {!! json_encode($datas) !!};
         // let b =  {!! json_encode($cobacabang) !!};
-        let c =  {!! json_encode($coba) !!};
+        let c =  {!! json_encode($cobaa) !!};
 const chart = new Highcharts.Chart({
     chart: {
         renderTo: 'container',
@@ -398,7 +397,7 @@ const chart = new Highcharts.Chart({
     },
     yAxis: {
         title: {
-            enabled: false
+            enabled: true
         }
     },
     tooltip: {
@@ -420,7 +419,7 @@ const chart = new Highcharts.Chart({
     },
     plotOptions: {
         column: {
-            depth: 25
+            depth: 50
         }
     },
     series: [{

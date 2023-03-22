@@ -8,6 +8,7 @@ use App\Models\Penutupan;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\ElseIf_;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\Helper;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -163,14 +164,31 @@ class HomeController extends Controller
                 // $cobaa = ['January','February','April'];
               // $startMonth = Carbon::now()->addMonth($now)->day(1)->format("Y-m-d");
               // dd($startMonth);
-              $coba = DB::table('sambung as a')
+            
+              
+              $cobaa = DB::table('sambung as a')
               ->join('tbl_dil as b','a.id_dil','=','b.id')
-              ->select(DB::raw("MonthName(tanggal_sambung) as bulan"))
-              ->groupBy([DB::raw("MonthName(tanggal_sambung)")])
-              ->orderBy('bulan')
-              // ->pluck('bulan');
-              ->pluck('bulan');
-              // $coba=array_map(
+              ->select(DB::raw("Month(tanggal_sambung) as bulan"))
+              // ->whereIn(DB::raw('MONTH(tanggal_sambung)'), [1,2,3])
+              ->groupBy([DB::raw("Month(tanggal_sambung)")])
+              ->orderBy('bulan','asc')
+            ->pluck('bulan');
+
+             
+              // ->get();
+             
+              // dd($coba);
+              // ->get();
+             
+            //  if ( $coba == [0=>"March"]) {
+            //    $coba = "3. Marert";
+            //  } else {
+            //    $coba ="gregreg";
+            //  }
+             
+            // dd($coba);
+      
+;              // $coba=array_map(
               //   function($monthNumber){
               //        return date("F", mktime(0, 0, 0, $monthNumber));
               //        }
@@ -200,7 +218,7 @@ class HomeController extends Controller
               ->pluck('e');
               
 
-               return view('v_home',compact('datatutupjumlah','cobacabang','coba','datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
+               return view('v_home',compact('cobaa','datatutupjumlah','cobacabang','coba','datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
     }
      public function test()
      {

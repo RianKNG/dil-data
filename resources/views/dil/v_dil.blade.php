@@ -63,40 +63,8 @@
                   @foreach ($data as $index => $k)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>
-                      @if ($k->cabang == 1)
-                              Sumedang Utara
-                      @elseif($k->cabang == 2)
-                              Tanjungkerta
-                      @elseif($k->cabang == 3)
-                              Darmaraja
-                      @elseif($k->cabang == 4)
-                      Situraja
-                      @elseif($k->cabang == 5)
-                      Jatinangor
-                      @elseif($k->cabang == 6)
-                      Tanjungsari
-                      @elseif($k->cabang == 7)
-                      Paseh
-                      @elseif($k->cabang == 8)
-                      Cimalaka
-                      @elseif($k->cabang == 9)
-                      Tomo
-                      @elseif($k->cabang == 10)
-                      Ujungjaya
-                      @elseif($k->cabang == 11)
-                      Wado
-                      @elseif($k->cabang == 12)
-                      Cisitu
-                      @elseif($k->cabang == 13)
-                      Pamulihan
-                      @elseif($k->cabang == 14)
-                      Cimanggung
-                      @elseif($k->cabang == 40)
-                      Mol Pelayanan Publik
-                      @else
-                              Tidak ada 
-                      @endif
+                    <td>{{ duka($k->cabang) }}
+                    
                     </td>
                     <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-success btn-xs' : 'btn-danger btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
                     <td>{{ $k->id }}</td>  
@@ -112,7 +80,7 @@
                     <td>{{ $k->status_milik }}</td>
                     <td>{{ $k->jml_jiwa_tetap }}</td> --}}
                     <td>{{ $k->jml_jiwa_tidak_tetap}}</td>
-                    <td>{{ $k->tanggal_pasang }}</td>
+                    <td>{{ bulankita($k->tanggal_pasang) }}</td>
                     <td> {{ $k->merek}}</td>
                     {{-- <td>{{ $k->segel }}</td> --}}
                     {{-- <td>{{ $k->stop_kran }}</td>
