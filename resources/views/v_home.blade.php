@@ -2,13 +2,13 @@
 @extends('templates.v_template')
 @section('title',)
 
-{{ bulankita('2021-02-02') }}
+{{-- {{ bulankita('2021-02-02') }} --}}
  <h6><span> <i><b>Dashboard</b></i></span></h6>
 
 @endsection
     @php
-      $tanggal = date('F Y');
-      $tahun = date('Y s');
+      $tanggal = date('Y m d');
+      $tahun = date('M Y');
       $jam = date("h:i:sa");
     @endphp
 @section('tabel')
@@ -30,7 +30,7 @@
     <div class="container">
         <!-- Info boxes -->
        
-        <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ $tanggal }}</b></i></span></h6>
+        <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ bulankita($tanggal) }}</b></i></span></h6>
         <div class="row">
           
           <div class="col-12 col-sm-6 col-md-3">
@@ -43,7 +43,7 @@
                   {{ $databilling }}
                   <small></small>
                 </span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-x">
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-a">
                   Sync Data
                 </button>
               </div>
@@ -61,7 +61,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Penutupan</span>
                 <span class="info-box-number">{{ $datatutupjumlah }}</span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-t">
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-b">
                   Sync Data
                 </button>
               </div>
@@ -69,6 +69,58 @@
             </div>
             <!-- /.info-box -->
           </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3 btn-xs">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-plus-square"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Penyambungan</span>
+                <span class="info-box-number">{{ $dataz }}</span>
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-c">
+                  Sync Data
+                </button>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+           <!-- fix for small devices only -->
+           <div class="clearfix hidden-md-up"></div>
+    
+           <div class="col-12 col-sm-6 col-md-3">
+             <div class="info-box mb-3 btn-xs">
+               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user"></i></span>
+     
+               <div class="info-box-content">
+                 <span class="info-box-text">Penggantian</span>
+                 <span class="info-box-number">{{ $datatest }}</span>
+                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-d">
+                  Sync Data
+                </button>
+               </div>
+               <!-- /.info-box-content -->
+             </div>
+             <!-- /.info-box -->
+           </div>
+             <!-- /.col -->
+             <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3 btn-xs">
+                <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-edit"></i></span>
+     
+                <div class="info-box-content">
+                  <span class="info-box-text">Bbn</span>
+                  <span class="info-box-number">{{ $datad }}</span>
+                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                    Sync Data
+                  </button>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <div class="clearfix hidden-md-up"></div>
          
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box btn-xs">
@@ -88,77 +140,10 @@
             </div>
             <!-- /.info-box -->
           </div>
-          <!-- /.col -->
-          {{-- <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-4">
-            <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user-nurse"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Penutupan</span>
-                <span class="info-box-number">{{ $dataz }}</span>
-                <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-xl">
-                  Sync Data
-                </button>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div> --}}
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-plus-square"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Penyambungan</span>
-                <span class="info-box-number">{{ $dataz }}</span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
-                  Sync Data
-                </button>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-    
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user"></i></span>
-    
-              <div class="info-box-content">
-                <span class="info-box-text">Penggantian</span>
-                <span class="info-box-number">{{ $datagan }}</span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
-                  Sync Data
-                </button>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
+        
          
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3 btn-xs">
-              <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-edit"></i></span>
-   
-              <div class="info-box-content">
-                <span class="info-box-text">Bbn</span>
-                <span class="info-box-number">{{ $datad }}</span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
-                  Sync Data
-                </button>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <div class="clearfix hidden-md-up"></div>
+         
+       
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3 btn-xs">
@@ -196,7 +181,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Sekarang : {{ $tanggal }}||{{ $jam }}</h5>
+                <h5 class="card-title">Sekarang : {{ bulankita($tanggal) }}|</h5>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -265,11 +250,11 @@
         <!-- /.row -->
       </div><!--/. container-fluid -->
  <!-- Main content -->
- <div class="modal fade" id="modal-x">
+ <div class="modal fade" id="modal-a">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Dil Baru</h4>
+        <h4 class="modal-title">Data Dil Baru {{ $tahun }}</h4>
       </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -278,12 +263,13 @@
                     <tr>
                       <th width="5%">No.</th>
                       <th>No Sambungan</th>
-                      <th>Nama Sekarang</th>
-                      <th>merek Lama</th>
-                      <th>merek Baru</th>
-                      <th>no WM Baru</th>
-                      <th>Status</th>
-                      <th width="20%">Aksi</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>Sumber Lain</th>
+                      <th>Jenis Usaha</th>
+                      <th>Merek</th>
+                      <th>Tanggal File</th>
+                      {{-- <th width="20%">Aksi</th> --}}
                     </tr>
                   </thead>
                   <tbody>
@@ -294,9 +280,11 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $k->id }}</td>
                         <td>{{ $k->nama_sekarang }}</td>
-                        <td>{{ $k->cabang }}</td>
-                     
-                        <td>{{ $k->id_merek }}</td>
+                        <td>{{ $k->kecamatan }}</td>
+                        <td>{{ $k->sumber_lain }}</td>
+                        <td>{{ $k->jenisusaha }}</td>
+                        <td>{{ $k->no_rekening }}</td>
+                        <td>{{ bulankita($k->tanggal_file) }}</td>
                         {{-- <td>{{ $k->merek }}</td> --}}
                     </tr> 
                  @endforeach
@@ -318,11 +306,11 @@
       </div>
       
       {{-- Modal-t --}}
-      <div class="modal fade" id="modal-t">
+      <div class="modal fade" id="modal-b">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Detail Konsumen</h4>
+              <h4 class="modal-title">Data Dil Ditutup {{ $tahun }}</h4>
             </div>
             
             <div class="card-body">
@@ -331,12 +319,13 @@
                     <tr>
                       <th width="5%">No.</th>
                       <th>No Sambungan</th>
-                      <th>tanggal_ganti</th>
-                      <th>merek Lama</th>
-                      <th>merek Baru</th>
-                      <th>no WM Baru</th>
-                      <th>Status</th>
-                      <th width="20%">Aksi</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>Sumber Lain</th>
+                      <th>Jenis Usaha</th>
+                      <th>Merek</th>
+                      <th>Tanggal File</th>
+                      {{-- <th width="20%">Aksi</th> --}}
                     </tr>
                   </thead>
                   <tbody>
@@ -347,18 +336,18 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $k->id }}</td>
                         <td>{{ $k->nama_sekarang }}</td>
-                        <td>{{ bulankita($k->tanggasambung) }}</td>
-                        <td>{{ $k->cabang }}</td>
-                     
-                        <td>{{ $k->id_merek }}</td>
+                        <td>{{ $k->kecamatan }}</td>
+                        <td>{{ $k->sumber_lain }}</td>
+                        <td>{{ $k->jenisusaha }}</td>
+                        <td>{{ $k->no_rekening }}</td>
+                        <td>{{ bulankita($k->tanggal_tutup) }}</td>
                         {{-- <td>{{ $k->merek }}</td> --}}
                     </tr> 
                  @endforeach
 
                   </tbody>
                 </table>
-                </tr>
-              </table>
+
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -370,6 +359,111 @@
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
+      <div class="modal fade" id="modal-c">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Data Dil Disambung {{ $tahun }}</h4>
+            </div>
+            
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover"> 
+                  <thead>
+                    <tr>
+                      <th width="5%">No.</th>
+                      <th>No Sambungan</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>Sumber Lain</th>
+                      <th>Jenis Usaha</th>
+                      <th>Merek</th>
+                      <th>Tanggal File</th>
+                      {{-- <th width="20%">Aksi</th> --}}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    @foreach ($datahitungp as $index => $k)
+                   
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $k->id }}</td>
+                        <td>{{ $k->nama_sekarang }}</td>
+                        <td>{{ $k->kecamatan }}</td>
+                        <td>{{ $k->sumber_lain }}</td>
+                        <td>{{ $k->jenisusaha }}</td>
+                        <td>{{ $k->no_rekening }}</td>
+                        <td>{{ bulankita($k->tanggal_sambung) }}</td>
+                        {{-- <td>{{ $k->merek }}</td> --}}
+                    </tr> 
+                 @endforeach
+
+                  </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+      <div class="modal fade" id="modal-d">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Data Dil Ganti {{ $tahun }}</h4>
+            </div>
+            
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover"> 
+                  <thead>
+                    <tr>
+                      <th width="5%">No.</th>
+                      <th>No Sambungan</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>Sumber Lain</th>
+                      <th>Jenis Usaha</th>
+                      <th>Merek</th>
+                      <th>Tanggal File</th>
+                      {{-- <th width="20%">Aksi</th> --}}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    @foreach ($datahitunganganti as $index => $k)
+                   
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $k->id_dil }}</td>
+                        <td>{{ $k->nama_sekarang }}</td>
+                        <td>{{ $k->kecamatan }}</td>
+                        <td>{{ $k->sumber_lain }}</td>
+                        <td>{{ $k->jenisusaha }}</td>
+                        <td>{{ $k->no_rekening }}</td>
+                        <td>{{ bulankita($k->tanggal_ganti) }}</td>
+                        {{-- <td>{{ $k->merek }}</td> --}}
+                    </tr> 
+                 @endforeach
+
+                  </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 
       <script src="https://code.highcharts.com/highcharts.js"></script>
       <script src="https://code.highcharts.com/highcharts-3d.js"></script>
@@ -380,6 +474,7 @@
         let a =  {!! json_encode($datas) !!};
         // let b =  {!! json_encode($cobacabang) !!};
         let c =  {!! json_encode($cobaa) !!};
+        
 const chart = new Highcharts.Chart({
     chart: {
         renderTo: 'container',
@@ -393,7 +488,7 @@ const chart = new Highcharts.Chart({
         }
     },
     xAxis: {
-        categories: c,
+        categories:c,
     },
     yAxis: {
         title: {
@@ -450,8 +545,8 @@ showValues();
                 var s = {{ $dataz }};
                 // var t = {{ $jumlahtutup }};
                 var u = {{ $databilling }};
-                var v = {{ $datagan }};
-                var w = {{ $datagan }};
+                var v = {{ $databilling }};
+                var w = {{ $databilling }};
                 var x = {{ $jumlahdil }};
 
 

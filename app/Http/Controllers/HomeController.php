@@ -41,7 +41,6 @@ class HomeController extends Controller
       }
       //data DIL baru
        $databill = DB::table('tbl_dil as a')
-       //sementara
         // ->where('status','=',1) 
         ->whereMonth('tanggal_pasang', Carbon::now()->month)
         ->get();
@@ -55,17 +54,35 @@ class HomeController extends Controller
         // return($databill);
         $databilling =  $databill
         ->count();
-        // dd($databilling);
+        
+      //data penutupan
       $jumlahtutup = DB::table('penutupan as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
         ->select('a.*','b.*')
         ->whereMonth('tanggal_tutup', Carbon::now()->month)
         ->get();
-       
-        $datatutupjumlah=  $jumlahtutup
+        $datatutupjumlah = $jumlahtutup
         ->count();
 
-      //data penutupan
+      //data Penyambungan
+      $datahitungp = DB::table('sambung as t')
+        ->join('tbl_dil as h','h.id','=','t.id_dil')
+        ->select('t.*','h.*')
+        ->whereMonth('tanggal_sambung', Carbon::now()->month)
+        ->get();
+      $dataz = $datahitungp
+          ->count();
+          
+      //data Penggantian
+      $datahitunganganti = DB::table('ganti as a')
+      ->join('tbl_dil as b','a.id_dil','=','b.id')
+       ->select('a.*','b.*')
+       ->whereMonth('tanggal_ganti', Carbon::now()->month)
+       ->get();
+      $datatest = $datahitunganganti
+          ->count();
+      // dd( $datahitunganganti);
+          
       $datahitungtanggat = DB::table('penutupan as a')
         ->join('tbl_dil as b','a.id_dil','=','b.id')
         ->select('a.*','b.status','b.nama_sekarang','b.nama_pemilik','b.id_merek','b.segel','b.cabang');
@@ -76,26 +93,7 @@ class HomeController extends Controller
           // ->where('status','=','1')
           ->pluck('d');
          
-          
-      
-      //data Penyambungan
-      $datahitungp = DB::table('sambung as t')
-        ->join('tbl_dil as h','h.id','=','t.id_dil')
-        ->select('t.*','h.*');
-      $dataz = $datahitungp
-          ->where('status','=',1) 
-          ->whereMonth('tanggal_sambung', Carbon::now()->month)
-          ->count();
-          
-      //data Penggantian
-      $datahitunggan = DB::table('ganti as a')
-      ->join('tbl_dil as b','a.id_dil','=','b.id')
-       ->select('a.*','b.*');
-          $datagan = $datahitunggan
-          ->where('b.status','=',1) 
-          ->whereMonth('tanggal_ganti', Carbon::now()->month)
-          ->count();
-      
+
       //data Jumlah DIL
       $datajum = DB::table('tbl_dil as a')
         ->get();
@@ -218,7 +216,7 @@ class HomeController extends Controller
               ->pluck('e');
               
 
-               return view('v_home',compact('cobaa','datatutupjumlah','cobacabang','coba','datadil','data','dataz','datat','datas','datagan','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
+               return view('v_home',compact('datahitungp','datatest','datahitunganganti','cobaa','datatutupjumlah','cobacabang','coba','datadil','data','dataz','datat','datas','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
     }
      public function test()
      {

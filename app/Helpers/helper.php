@@ -9,10 +9,10 @@ function duka($angka){
     return $duka;
 }
 function bulankita($tgl){
-    $nama_bulan= array(1=>'Januari','Febuari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Nopember','Desember');
+    $nama_bulan= array(1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Nopember','Desember');
     //2023-03-01
     $tahun =substr($tgl, 0,4);
-    $bulan = $nama_bulan[(int) substr($tgl,5, 2)];
+    $bulan = $nama_bulan[(int) substr($tgl,6, 2)];
     $tanggal = substr($tgl,5, 2);
     $text ='';
     $text .="$tanggal $bulan $tahun";

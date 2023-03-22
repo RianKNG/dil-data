@@ -113,7 +113,7 @@
               @csrf
                 <!-- /.card-header -->
                   <div class="form-group">
-                      <h6 for="id_dil" class="col-sm-8 col-form-label">masukkan No Sambungan</h6>
+                      <h6 for="id_dil" class="col-sm-8 col-form-label">Masukkan No Sambungan</h6>
                       <div class="col-sm-12">
                         <input 
                         type="integer" 
@@ -133,7 +133,7 @@
                       </div>
                     </div> 
                     <div class="form-group">
-                      <h6 for="nama_baru" class="col-sm-8 col-form-label">Merek Baru</h6>
+                      <h6 for="nama_baru" class="col-sm-8 col-form-label">Nama Baru</h6>
                       <div class="col-sm-12">
                         <input 
                         type="text" 
