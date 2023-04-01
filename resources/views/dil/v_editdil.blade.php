@@ -235,11 +235,11 @@
                       <div class="form-group">
                         <label>Merek Warter Meter</label>
                         <select class="form-control" name="id_merek">
-                          <option value="id_merek" {{($data->type === 1) ? 'selected' : ''}}> Linflow </option>
-                          <option value="id_merek" {{($data->type === 2) ? 'selected' : ''}}> Barindo </option>
-                          {{-- <option value="{{$data->id_merek}}"{{ $data->id_merek == 1 ? 'selected' : '' }}> {{ $data->merek }}1</option>
-                          <option value="{{$data->id_merek}}"{{ $data->id_merek == 2 ? 'selected' : '' }}> {{ $data->merek }}2</option> --}}
-                          
+                          {{-- <option value="id_merek" {{($data->id_merek === 1) ? 'selected' : ''}}> Linflow </option>
+                          <option value="id_merek" {{($data->id_merek === 2) ? 'selected' : ''}}> Barindo </option> --}}
+                          <option value="{{$data->id_merek}}"{{ $data->id_merek == 1 ? 'selected' : '' }}> {{ $data->merek }}Linflow</option>
+                          <option value="{{$data->id_merek}}"{{ $data->id_merek == 2 ? 'selected' : '' }}> {{ $data->merek }}Barindo</option>
+                          {{-- <input type="text" name="id_merek" class="form-control" value="{{ $data->id_merek }}"> --}}
                          
                         </select>
                       </div>

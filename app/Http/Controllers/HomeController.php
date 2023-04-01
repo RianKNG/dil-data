@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Sambung;
 use App\Models\Penutupan;
+use App\Models\Bbn;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\ElseIf_;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class HomeController extends Controller
     {
       Penutupan::all();
       Sambung::all();
+     Bbn::all();
             
       $coba = Sambung::all();
       $categories = [];
@@ -44,14 +46,6 @@ class HomeController extends Controller
         // ->where('status','=',1) 
         ->whereMonth('tanggal_pasang', Carbon::now()->month)
         ->get();
-        
-      // $databill = DB::table('penutupan as a')
-      // ->join('tbl_dil as b','a.id_dil','=','b.id')
-     //sementara
-      //   ->select('a.*','b.*')
-      //   // ->where('bln_billing','=',4) 
-      //   ->get();
-        // return($databill);
         $databilling =  $databill
         ->count();
         
@@ -81,7 +75,6 @@ class HomeController extends Controller
        ->get();
       $datatest = $datahitunganganti
           ->count();
-      // dd( $datahitunganganti);
           
       $datahitungtanggat = DB::table('penutupan as a')
         ->join('tbl_dil as b','a.id_dil','=','b.id')
@@ -92,28 +85,35 @@ class HomeController extends Controller
           ->groupBy(DB::raw("Month(tanggal_tutup)"))
           // ->where('status','=','1')
           ->pluck('d');
-         
-
-      //data Jumlah DIL
-      $datajum = DB::table('tbl_dil as a')
-        ->get();
-          $jumlahdil = $datajum->count();
 
       //untuk BBN
-      $datahitunggan = DB::table('bbn as s')
-      // ->join('tbl_dil as b','b.id','=','s.id_dil')
-       ->select('s.*');
-      $datad = $datahitunggan
-      // ->select(DB::raw('count(s.id) as e'))
-      ->whereMonth('tanggal_bbn', Carbon::now()->month)
-      //  ->groupBy(DB::raw("Month(tanggal_bbn)"))
-      // ->where('status','=','1')
-      // ->pluck('e');
-      ->count();
-      // dd($datad);
-    
+      $datahitungan = DB::table('bbn as h')
+        ->join('tbl_dil as t','h.id_dil','=','t.id')
+        ->select('t.*','h.*')
+        ->whereMonth('tanggal_bbn', Carbon::now()->month)
+        ->get();
+        $datat = $datahitungan
+        ->count();
+        
+      //untuk Pelanggan Aktip
+      $datajum = DB::table('tbl_dil as a')
+      ->whereStatus('1')
+        ->get();
+          $jumlahdil = $datajum->count();
+         
+       //untuk Pelanggan Non Aktip
+       $datanon = DB::table('tbl_dil as a')
+       ->whereStatus('0')
+         ->get();
+           $jumlahnon = $datanon->count();
 
-      // dd(json_encode($categories));
+      //untuk Total Dil
+       $totdil = DB::table('tbl_dil as a')
+         ->get();
+           $totdilcount = $totdil->count();
+
+
+     
       $datahitungdil = DB::table('tbl_dil as a')
       ->join('merek as b','b.id','=','a.id_merek')
        ->select('a.*','b.*');
@@ -206,17 +206,49 @@ class HomeController extends Controller
             
 
             //table penggantian
-            $datahitunggan = DB::table('ganti as s')
+            $datahitunggandd = DB::table('ganti as s')
               ->join('tbl_dil as b','b.id','=','s.id_dil')
                ->select('s.*','b.*');
-              $datac = $datahitunggan
+              $datac = $datahitunggandd
               ->select(DB::raw('count(s.id) as e'))
               // ->whereMonth('tanggal_sambung', Carbon::now()->month)
               ->groupBy(DB::raw("Month(tanggal_ganti)"))
               ->pluck('e');
+
+               //data Grafik DIL baru
+            $grafik1 = DB::table('tbl_dil')->whereMonth('tanggal_file','01')->count();
+            $grafik2 = DB::table('tbl_dil')->whereMonth('tanggal_file','02')->count();
+            $grafik3 = DB::table('tbl_dil')->whereMonth('tanggal_file','03')->count();
+            $grafik4 = DB::table('tbl_dil')->whereMonth('tanggal_file','04')->count();
+            $grafik5 = DB::table('tbl_dil')->whereMonth('tanggal_file','05')->count();
+            $grafik6 = DB::table('tbl_dil')->whereMonth('tanggal_file','06')->count();
+            $grafik7 = DB::table('tbl_dil')->whereMonth('tanggal_file','07')->count();
+            $grafik8 = DB::table('tbl_dil')->whereMonth('tanggal_file','08')->count();
+            $grafik9 = DB::table('tbl_dil')->whereMonth('tanggal_file','09')->count();
+            $grafik10 = DB::table('tbl_dil')->whereMonth('tanggal_file','10')->count();
+            $grafik11 = DB::table('tbl_dil')->whereMonth('tanggal_file','11')->count();
+            $grafik12 = DB::table('tbl_dil')->whereMonth('tanggal_file','12')->count();
+             
               
 
-               return view('v_home',compact('datahitungp','datatest','datahitunganganti','cobaa','datatutupjumlah','cobacabang','coba','datadil','data','dataz','datat','datas','datac','datad','categories','jumlahdil','databill','databilling','jumlahtutup'));
+               return view('v_home',compact('grafik1','grafik2',
+                 'grafik3',
+                 'grafik4',
+                 'grafik5',
+                 'grafik6',
+                 'grafik7',
+                 'grafik8',
+                 'grafik9',
+                 'grafik10',
+                 'grafik11',
+                 'grafik12',
+
+
+
+
+                 'totdil','totdilcount','datanon','jumlahnon','datahitungp','datatest','datahitunganganti','cobaa','datatutupjumlah','cobacabang','coba','datadil','data','dataz','datat','datas','datac','categories','jumlahdil','databill','databilling','jumlahtutup','datahitungan'));
+                 
+                 
     }
      public function test()
      {

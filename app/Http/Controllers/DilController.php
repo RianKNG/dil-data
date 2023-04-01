@@ -130,9 +130,10 @@ class DilController extends Controller
     public function edit($id)
     {
        // ini cara baru
+       $mer = Merek::all();
         $data = DilModel::find($id);
         // dd($data);
-        return view('dil.v_editdil',compact('data'));
+        return view('dil.v_editdil',compact('data','mer'));
     }
     public function update(Request $request,$id)
     {

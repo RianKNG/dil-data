@@ -24,8 +24,8 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Cabang</th>
                     <th>Status Sekarang</th>
+                    <th>Cabang</th>
                     <th>No Sambungan</th>
                     <th>Rek</th>
                     <th>Nama Sekarang</th>
@@ -40,6 +40,7 @@
                     <th>Jiwa Tetap</th> --}}
                     <th>Jiwa Tidak Tetap</th>
                     <th>Tanggal Pasang</th>
+                    <th>Tanggal File</th>
                     <th>Id Merek</th>
                     {{-- <th>Segel</th> --}}
                     
@@ -63,10 +64,9 @@
                   @foreach ($data as $index => $k)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ duka($k->cabang) }}
-                    
                     </td>
                     <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-success btn-xs' : 'btn-danger btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
+                    <td>{{ duka($k->cabang) }}
                     <td>{{ $k->id }}</td>  
                     <td>{{ $k->no_rekening }}</td>
                     <td>{{ $k->nama_sekarang }}</td>
@@ -81,6 +81,7 @@
                     <td>{{ $k->jml_jiwa_tetap }}</td> --}}
                     <td>{{ $k->jml_jiwa_tidak_tetap}}</td>
                     <td>{{ bulankita($k->tanggal_pasang) }}</td>
+                    <td>{{ bulankita($k->tanggal_file) }}</td>
                     <td> {{ $k->merek}}</td>
                     {{-- <td>{{ $k->segel }}</td> --}}
                     {{-- <td>{{ $k->stop_kran }}</td>

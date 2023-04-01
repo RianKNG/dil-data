@@ -111,8 +111,8 @@
      
                 <div class="info-box-content">
                   <span class="info-box-text">Bbn</span>
-                  <span class="info-box-number">{{ $datad }}</span>
-                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
+                  <span class="info-box-number">{{ $datat }}</span>
+                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-ecz">
                     Sync Data
                   </button>
                 </div>
@@ -120,7 +120,7 @@
               </div>
               <!-- /.info-box -->
             </div>
-            <div class="clearfix hidden-md-up"></div>
+            {{-- <div class="clearfix hidden-md-up"></div> --}}
          
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box btn-xs">
@@ -129,7 +129,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Pelanggan Aktip</span>
                 <span class="info-box-number">
-                  {{ $databilling }}
+                  {{ $jumlahdil }}
                   <small></small>
                 </span>
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
@@ -151,7 +151,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Pelanggan Non aktip</span>
-                <span class="info-box-number">#</span>
+                <span class="info-box-number">{{ $jumlahnon }}</span>
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
                   Sync Data
                 </button>
@@ -166,7 +166,7 @@
   
               <div class="info-box-content">
                 <span class="info-box-text">Total DIL</span>
-                <span class="info-box-number">{{ $jumlahdil }}</span>
+                <span class="info-box-number">{{ $totdilcount }}</span>
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
                   Sync Data
                 </button>
@@ -296,8 +296,6 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-success col sm-12" data-dismiss="modal">kembali</button>
-              
-              {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
             </div>
           </div>
           <!-- /.modal-content -->
@@ -350,8 +348,7 @@
 
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-success col sm-12" data-dismiss="modal">kembali</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -403,8 +400,7 @@
 
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-success col sm-12" data-dismiss="modal">kembali</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -456,72 +452,209 @@
 
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-success col sm-12" data-dismiss="modal">kembali</button>
             </div>
           </div>
           <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
       </div>
+      <div class="modal fade" id="modal-ecz">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Data Dil BBN {{ $tahun }}</h4>
+            </div>
 
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover"> 
+                  <thead>
+                    <tr>
+                      <th width="5%">No.</th>
+                      <th>No Sambungan</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>Sumber Lain</th>
+                      <th>Jenis Usaha</th>
+                      <th>Merek</th>
+                      <th>Tanggal File</th>
+                      {{-- <th width="20%">Aksi</th> --}}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    @foreach ($datahitungan as $index => $k)
+                   
+                    <tr>
+                        <td>{{ $k->id }}</td>
+                        <td>{{ $k->id_dil }}</td> 
+                        <td>{{ $k->nama_sekarang }}</td>
+                        <td>{{ $k->status }}</td>
+                     
+                        <td>{{ bulankita($k->tanggal_bbn) }}</td>
+                     
+                    </tr> 
+                 @endforeach
+
+                  </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-success col sm-12" data-dismiss="modal">kembali</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
       <script src="https://code.highcharts.com/highcharts.js"></script>
       <script src="https://code.highcharts.com/highcharts-3d.js"></script>
       <script src="https://code.highcharts.com/modules/exporting.js"></script>
       <script src="https://code.highcharts.com/modules/export-data.js"></script>
       <script src="https://code.highcharts.com/modules/accessibility.js"></script>
       <script type="text/javascript">
-        let a =  {!! json_encode($datas) !!};
-        // let b =  {!! json_encode($cobacabang) !!};
-        let c =  {!! json_encode($cobaa) !!};
+       
+       let a =  {!! json_encode($grafik1) !!};
+       let b =  {!! json_encode($grafik2) !!};
+       let c =  {!! json_encode($grafik3) !!};
+       let d =  {!! json_encode($grafik4) !!};
+       let e =  {!! json_encode($grafik5) !!};
+       let f =  {!! json_encode($grafik5) !!};
+       let g =  {!! json_encode($grafik7) !!};
+       let h =  {!! json_encode($grafik8) !!};
+       let i =  {!! json_encode($grafik9) !!};
+       let j =  {!! json_encode($grafik10) !!};
+       let k =  {!! json_encode($grafik11) !!};
+       let l =  {!! json_encode($grafik12) !!};
+       Highcharts.chart('container', {
+
+                  title: {
+                      text: 'Grafik Garis',
+                      align: 'center'
+                  },
+
+                  subtitle: {
+                      text: 'Status Pelanggan',
+                      align: 'center'
+                  },
+
+                  yAxis: {
+                    title: {
+                        text: 'Interval'
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value + '';
+                        }
+                    }
+                },
+
+                    xAxis: {
+                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                      accessibility: {
+                          description: 'Months of the year'
+                      }
+                  },
+
+                  legend: {
+                      layout: 'vertical',
+                      align: 'right',
+                      verticalAlign: 'middle'
+                  },
+
+
+                  series: [{
+                      name: 'Dil Baru',
+                      data: [a,b,c,d,e,f,g,h,i,j,k,l]
+                  }],
+
+                  responsive: {
+                      rules: [{
+                          condition: {
+                              maxWidth: 500
+                          },
+                          chartOptions: {
+                              legend: {
+                                  layout: 'horizontal',
+                                  align: 'center',
+                                  verticalAlign: 'bottom'
+                              }
+                          }
+                      }]
+                  }
+
+                  });
         
-const chart = new Highcharts.Chart({
-    chart: {
-        renderTo: 'container',
-        type: 'column',
-        options3d: {
-            enabled: true,
-            alpha: 25,
-            beta: 5,
-            depth: 50,
-            viewDistance: 25
-        }
-    },
-    xAxis: {
-        categories:c,
-    },
-    yAxis: {
-        title: {
-            enabled: true
-        }
-    },
-    tooltip: {
-        headerFormat: '<b>{point.key}</b><br>',
-        pointFormat: 'Jumlah: {point.y}'
-    },
-    title: {
-        text: 'Grafik 3D DIL',
-        align: 'center'
-    },
-    subtitle: {
-        text: 'Sejatinya ' +
-            'Tukang Ledeng' +
-            'Sejati',
-        align: 'center'
-    },
-    legend: {
-        enabled: false
-    },
-    plotOptions: {
-        column: {
-            depth: 50
-        }
-    },
-    series: [{
-        data: a,
-        colorByPoint: true
-    }]
-});
+// const chart = new Highcharts.Chart({
+//     chart: {
+//         renderTo: 'container',
+//         type: 'line',
+//         options3d: {
+//             enabled: true,
+//             alpha: 25,
+//             beta: 5,
+//             depth: 50,
+//             viewDistance: 25
+//         }
+//     },
+//     xAxis: {
+//         categories:['Januari','februari','Maret','April','mei','juni','juli','agustus','sep','okt','nov','des'],
+//     },
+//     yAxis: {
+//         title: {
+//             enabled: true
+//         }
+//     },
+//     tooltip: {
+//         headerFormat: '<b>{point.key}</b><br>',
+//         pointFormat: 'Jumlah: {point.y}'
+//     },
+//     title: {
+//         text: 'Grafik 3D DIL',
+//         align: 'center'
+//     },
+//     subtitle: {
+//         text: 'Sejatinya ' +
+//             'Tukang Ledeng' +
+//             'Sejati',
+//         align: 'center'
+//     },
+//     legend: {
+//         enabled: false
+//     },
+//     plotOptions: {
+//         column: {
+//             depth: 50
+//         }
+//     },
+//     series: [{
+//         name: 'Pemasangan Baru',
+//         data: [a,b,c,d,e,f,g,h,i,j,k,l],
+//         colorByPoint: true
+//     },{
+//       name: 'Test',
+//         data: [a,b,c,d,e,f,g,h,i,j,k,l],
+//         colorByPoint: true
+//     }],
+//     responsive: {
+//         rules: [{
+//             condition: {
+//                 maxWidth: 500
+//             },
+//             chartOptions: {
+//                 legend: {
+//                     layout: 'horizontal',
+//                     align: 'center',
+//                     verticalAlign: 'bottom'
+//                 }
+//             }
+//         }]
+//     }
+
+// });
+
 
 function showValues() {
     document.getElementById('alpha-value').innerHTML = chart.options.chart.options3d.alpha;
