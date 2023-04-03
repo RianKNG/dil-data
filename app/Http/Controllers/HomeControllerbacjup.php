@@ -76,6 +76,16 @@ class HomeController extends Controller
       $datatest = $datahitunganganti
           ->count();
           
+      $datahitungtanggat = DB::table('penutupan as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select('a.*','b.status','b.nama_sekarang','b.nama_pemilik','b.id_merek','b.segel','b.cabang');
+      $datat = $datahitungtanggat
+          ->select(DB::raw('count(b.id) as d'))
+          // ->whereMonth('tanggal_tutup', Carbon::now()->month)
+          ->groupBy(DB::raw("Month(tanggal_tutup)"))
+          // ->where('status','=','1')
+          ->pluck('d');
+
       //untuk BBN
       $datahitungan = DB::table('bbn as h')
         ->join('tbl_dil as t','h.id_dil','=','t.id')
@@ -102,6 +112,108 @@ class HomeController extends Controller
          ->get();
            $totdilcount = $totdil->count();
 
+
+     
+      $datahitungdil = DB::table('tbl_dil as a')
+      ->join('merek as b','b.id','=','a.id_merek')
+       ->select('a.*','b.*');
+          $datadil = $datahitungdil
+          // ->where('status','=',1) 
+          ->whereMonth('a.created_at', Carbon::now()->month)
+          ->count();
+
+              $datahitung = DB::table('penutupan as a')
+              ->join('tbl_dil as b','a.id_dil','=','b.id')
+               ->select('a.*','b.status','b.nama_sekarang','b.nama_pemilik','b.id_merek','b.segel','b.cabang');
+
+                  $data = $datahitung
+                  ->where('b.status','=',1) 
+                  ->whereMonth('tanggal_tutup', Carbon::now()->month)
+                  ->count();
+
+            //tabel penyambungan
+            $datas = DB::table('sambung as a')
+              ->join('tbl_dil as b','a.id_dil','=','b.id')
+              //  ->select('a.stat','b.*');
+              // $datas = $datahitungtanggas
+              ->select(DB::raw('count(b.id) as total_sambung'))
+              // ->select(DB::raw("DATE_FORMAT(tanggal_sambung,'%M %Y') as months"),)
+              // ->whereMonth('tanggal_sambung', Carbon::now()->month)
+              // ->groupBy(DB::raw("DATE_FORMAT(tanggal_sambung,'%M %Y')"),)
+              ->groupBy(DB::raw("Month(tanggal_sambung)"))
+              
+              ->where('status','=','1')
+              ->pluck('total_sambung');
+              // ->get();
+              $cobacabang = DB::table('sambung as a')
+              ->join('tbl_dil as b','a.id_dil','=','b.id')
+              // ->select(DB::raw("b.cabang as cabang",))
+              ->select(DB::raw("(  (count(b.cabang)  ) )  as `cabang` "))
+              ->groupBy(DB::raw("cabang"))
+              // ->groupBy(DB::raw("MonthName(tanggal_sambung)"))
+              ->pluck('cabang');
+              // ->get();
+              
+          //  dd($cobacabang);
+              
+
+              // $monthsArray=[1,2,3,4,5,6,7,8,9,10,11,12];
+              // $now = Carbon::now();
+                // $cobaa = ['January','February','April'];
+              // $startMonth = Carbon::now()->addMonth($now)->day(1)->format("Y-m-d");
+              // dd($startMonth);
+            
+              
+              $cobaa = DB::table('sambung as a')
+              ->join('tbl_dil as b','a.id_dil','=','b.id')
+              ->select(DB::raw("Month(tanggal_sambung) as bulan"))
+              // ->whereIn(DB::raw('MONTH(tanggal_sambung)'), [1,2,3])
+              ->groupBy([DB::raw("Month(tanggal_sambung)")])
+              ->orderBy('bulan','asc')
+            ->pluck('bulan');
+
+             
+              // ->get();
+             
+              // dd($coba);
+              // ->get();
+             
+            //  if ( $coba == [0=>"March"]) {
+            //    $coba = "3. Marert";
+            //  } else {
+            //    $coba ="gregreg";
+            //  }
+             
+            // dd($coba);
+      
+;              // $coba=array_map(
+              //   function($monthNumber){
+              //        return date("F", mktime(0, 0, 0, $monthNumber));
+              //        }
+              //  ,$monthsArray);
+            //   $coba = collect( range(1, $now->month) )->map( function($month) use ($now) {
+            //     return Carbon::createFromDate($now->year, $month)->format('F');
+            // })->toArray();
+             
+              // ->toArray($coba);
+              // $games =  $coba->merge($cobaa);
+          
+            
+              // dd($coba);
+              
+           
+// dd($coba);
+            
+
+            //table penggantian
+            $datahitunggandd = DB::table('ganti as s')
+              ->join('tbl_dil as b','b.id','=','s.id_dil')
+               ->select('s.*','b.*');
+              $datac = $datahitunggandd
+              ->select(DB::raw('count(s.id) as e'))
+              // ->whereMonth('tanggal_sambung', Carbon::now()->month)
+              ->groupBy(DB::raw("Month(tanggal_ganti)"))
+              ->pluck('e');
 
                //data Grafik DIL baru
             $grafik1 = DB::table('tbl_dil')->whereMonth('tanggal_file','01')->count();
@@ -219,14 +331,11 @@ class HomeController extends Controller
                   'dataz',
                   'datahitunganganti',
                   'datatest',
-                  'datahitungan',
-                  'totdil',
-                  'totdilcount',
-                  'datanon','jumlahnon',
-                  'coba',
-                  'datat',
-                  'categories',
-                  'jumlahdil'));
+
+
+
+
+                 'totdil','totdilcount','datanon','jumlahnon','cobaa','cobacabang','coba','datadil','data','datat','datas','datac','categories','jumlahdil','datahitungan'));
                  
                  
     }

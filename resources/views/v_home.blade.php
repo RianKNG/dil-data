@@ -127,14 +127,10 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-copy"></i></span>
               
               <div class="info-box-content">
-                <span class="info-box-text">Pelanggan Aktip</span>
-                <span class="info-box-number">
-                  {{ $jumlahdil }}
-                  <small></small>
-                </span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
-                  Sync Data
-                </button>
+                <span class="info-box-text"> Total Pelanggan Aktip</span>
+                <span class="info-box-number"></span>
+                  <h3 class="btn btn-info"><span>{{ $jumlahdil }}</span></h3>
+
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -150,11 +146,9 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-briefcase"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Pelanggan Non aktip</span>
-                <span class="info-box-number">{{ $jumlahnon }}</span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
-                  Sync Data
-                </button>
+                <span class="info-box-text">Total Pelanggan Non aktip</span>
+                <span class="info-box-number"></span>
+                <h3 class="btn btn-info"><span>{{ $jumlahnon }}</span></h3>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -166,10 +160,9 @@
   
               <div class="info-box-content">
                 <span class="info-box-text">Total DIL</span>
-                <span class="info-box-number">{{ $totdilcount }}</span>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-xl">
-                  Sync Data
-                </button>
+                <span class="info-box-number"></span>
+                <h3 class="btn btn-info"><span>{{ $totdilcount }}</span></h3>
+
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -527,13 +520,59 @@
        let j =  {!! json_encode($grafik10) !!};
        let k =  {!! json_encode($grafik11) !!};
        let l =  {!! json_encode($grafik12) !!};
+       let aa =  {!! json_encode($tutup1) !!};
+       let bb =  {!! json_encode($tutup2) !!};
+       let cc =  {!! json_encode($tutup3) !!};
+       let dd =  {!! json_encode($tutup4) !!};
+       let ee =  {!! json_encode($tutup5) !!};
+       let ff =  {!! json_encode($tutup5) !!};
+       let gg =  {!! json_encode($tutup7) !!};
+       let hh =  {!! json_encode($tutup8) !!};
+       let ii =  {!! json_encode($tutup9) !!};
+       let jj =  {!! json_encode($tutup10) !!};
+       let kk =  {!! json_encode($tutup11) !!};
+       let ll =  {!! json_encode($tutup12) !!};
+
+       let aaa =  {!! json_encode($sambung1) !!};
+       let bbb =  {!! json_encode($sambung2) !!};
+       let ccc =  {!! json_encode($sambung3) !!};
+       let ddd =  {!! json_encode($sambung4) !!};
+       let eee =  {!! json_encode($sambung5) !!};
+       let fff =  {!! json_encode($sambung5) !!};
+       let ggg =  {!! json_encode($sambung7) !!};
+       let hhh =  {!! json_encode($sambung8) !!};
+       let iii =  {!! json_encode($sambung9) !!};
+       let jjj =  {!! json_encode($sambung10) !!};
+       let kkk =  {!! json_encode($sambung11) !!};
+       let lll =  {!! json_encode($sambung12) !!};
+
+       let aaaa =  {!! json_encode($ganti1) !!};
+       let bbbb =  {!! json_encode($ganti2) !!};
+       let cccc =  {!! json_encode($ganti3) !!};
+       let dddd =  {!! json_encode($ganti4) !!};
+       let eeee =  {!! json_encode($ganti5) !!};
+       let ffff =  {!! json_encode($ganti5) !!};
+       let gggg =  {!! json_encode($ganti7) !!};
+       let hhhh =  {!! json_encode($ganti8) !!};
+       let iiii =  {!! json_encode($ganti9) !!};
+       let jjjj =  {!! json_encode($ganti10) !!};
+       let kkkk =  {!! json_encode($ganti11) !!};
+       let llll =  {!! json_encode($ganti12) !!};
        Highcharts.chart('container', {
-
-                  title: {
-                      text: 'Grafik Garis',
-                      align: 'center'
-                  },
-
+  chart: {
+      type: 'line',
+      // options3d: {
+      //     enabled: true,
+      //     alpha: 45,
+      //     beta: 0
+      // }
+  },
+  title: {
+      text: 'Grafk Lingkaran',
+      align: 'center'
+  },
+      
+  
                   subtitle: {
                       text: 'Status Pelanggan',
                       align: 'center'
@@ -568,6 +607,15 @@
                   series: [{
                       name: 'Dil Baru',
                       data: [a,b,c,d,e,f,g,h,i,j,k,l]
+                  },{
+                    name: 'Penutupan',
+                      data: [aa,bb,cc,dd,ee,ff,gg,hh,ii,jj,kk,ll]
+                  },{
+                    name: 'Penyambungan',
+                      data: [aaa,bbb,ccc,ddd,eee,fff,ggg,hhh,iii,jjj,kkk,lll]
+                  },{
+                    name: 'Penggantian',
+                      data: [aaaa,bbbb,cccc,dddd,eeee,ffff,gggg,hhhh,iiii,jjjj,kkkk,llll]
                   }],
 
                   responsive: {
@@ -675,12 +723,13 @@ showValues();
 
 </script>
 <script type="text/javascript">
-                var s = {{ $dataz }};
-                // var t = {{ $jumlahtutup }};
-                var u = {{ $databilling }};
-                var v = {{ $databilling }};
-                var w = {{ $databilling }};
-                var x = {{ $jumlahdil }};
+                var s = {{ $jumlahdil }};//dil aktip
+                var t = {{ $jumlahnon }};//Dil non
+                var u = {{ $databilling }};//dilbaru
+                var v = {{ $datatutupjumlah }};//penutupan
+                var w = {{ $dataz }};//penyambungan
+                var x = {{ $datatest }};//penggantian
+                var y = {{ $datat }};//bbn
 
 
 Highcharts.chart('x', {
@@ -721,21 +770,22 @@ Highcharts.chart('x', {
           }
       }
   },
+
   series: [{
       type: 'pie',
       name: 'DIL',
       data: [
-          ['Data Rekening Aktip', s],
-          // ['Penutupan', t],
+          ['Bbn', y],
+          // ['Jumlah Dil Non Aktip', t],
           {
-              name: 'Penyambungan',
-              y: s,
+              name: 'Dil Baru',
+              y: u,
               sliced: true,
               selected: true
           },
-          ['penggantian', v],
-          ['Dil Aktip', w],
-          
+          ['Penutupan', v],
+          ['Penyambungan', w],
+          ['Penggantian', x],
       ]
   }]
 });
