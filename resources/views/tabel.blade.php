@@ -8,7 +8,7 @@
 @endsection
     @php
       $tanggal = date('Y m d');
-      $tahun = date('Y');
+      $tahun = date('M Y');
       $jam = date("h:i:sa");
     @endphp
 @section('tabel')
@@ -174,12 +174,18 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                Grafik DIL Baru||Penutupan||Penyambungan||Penggantian {{ $tahun }}
+                <h5 class="card-title">Sekarang : {{ bulankita($tanggal) }}|</h5>
+                <a href="#">layanan data pecabang</a>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
-                 
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                      <i class="fas fa-wrench"></i>
+                    </button>
+                    
+                  </div>
                   <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
                   </button>
@@ -932,193 +938,6 @@ Highcharts.chart('x', {
     }]
 });
 </script> --}}
-{{-- //untuk Dil Baru --}}
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title">Rekap DIL Baru {{ $tahun }}</h5>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            
-            <div class="card-body">
-              <div class="row">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <table class="table table-bordered">
-                          <thead class = "btn btn-primary">
-                            <tr>
-                              <th width="500px">Cabang</th>
-                             
-                            </tr>
-                          </thead>
-                          <tbody>
-                            @foreach ($tdatabill as $data)
-                              <tr>
-                              <td>{{ duka($data)}}</td> 
-                          </tr>
-                              @endforeach
-                            
-                          </tbody>
-                        </table>
-                    
-                      </div>
-                    </div>
-                  </div>
-                    <div class="col-sm-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title"></h5>
-                          <table class="table table-bordered">
-                            <thead class = "btn btn-primary">
-                              <tr>
-                                <th width="500px">Bulan</th>
-                               
-                              </tr>
-                            </thead>
-                            <tbody>
-                              @foreach ($tttdatabill as $data)
-                                <tr>
-                                <td>{{ $data }}</td> 
-                            </tr>
-                                @endforeach
-                              
-                            </tbody>
-                          </table>
-                      
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title"></h5>
-                          <table class="table table-bordered">
-                            <thead class = "btn btn-primary">
-                              <tr>
-                                <th style="width: 500px">Jumlah</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              @foreach ($ttdatabill as $index => $k)
-                                <tr>
-                                <td>{{ $k }}</td> 
-                            </tr>
-                                @endforeach
-                              
-                            </tbody>
-                          </table>
-                      
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-          {{-- //untuk Penutupan --}}
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title">Rekap Penutupan {{ $tahun }}</h5>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-                <!-- /.card-header -->
-                
-                <div class="card-body">
-                  <div class="row">
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title"></h5>
-                            <table class="table table-bordered">
-                              <thead class = "btn btn-warning">
-                                <tr>
-                                  <th width="500px">Cabang</th>
-                                
-                                </tr>
-                              </thead>
-                              <tbody>
-                                @foreach ($pdatabill as $data)
-                                  <tr>
-                                  <td>{{ duka($data)}}</td> 
-                              </tr>
-                                  @endforeach
-                                
-                              </tbody>
-                            </table>
-                        
-                          </div>
-                        </div>
-                      </div>
-                        <div class="col-sm-4">
-                          <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title"></h5>
-                              <table class="table table-bordered">
-                                <thead class = "btn btn-warning">
-                                  <tr>
-                                    <th width="500px">Bulan</th>
-                                  
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  @foreach ($pppdatabill as $data)
-                                    <tr>
-                                    <td>{{ $data }}</td> 
-                                </tr>
-                                    @endforeach
-                                  
-                                </tbody>
-                              </table>
-                          
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-4">
-                          <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title"></h5>
-                              <table class="table table-bordered">
-                                <thead class = "btn btn-warning">
-                                  <tr>
-                                    <th style="width: 500px">Jumlah</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  @foreach ($ppdatabill as $index => $k)
-                                    <tr>
-                                    <td>{{ $k }}</td> 
-                                </tr>
-                                    @endforeach
-                                  
-                                </tbody>
-                              </table>
-                          
-                            </div>
-                          </div>
-                        </div>
-
-
+   
    
 @endsection
-
-

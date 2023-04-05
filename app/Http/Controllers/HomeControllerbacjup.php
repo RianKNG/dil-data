@@ -57,7 +57,6 @@ class HomeController extends Controller
         ->get();
         $datatutupjumlah = $jumlahtutup
         ->count();
-
       //data Penyambungan
       $datahitungp = DB::table('sambung as t')
         ->join('tbl_dil as h','h.id','=','t.id_dil')
@@ -272,70 +271,17 @@ class HomeController extends Controller
               
 
                return view('v_home',compact(
-                 'grafik1',
-                 'grafik2',
-                 'grafik3',
-                 'grafik4',
-                 'grafik5',
-                 'grafik6',
-                 'grafik7',
-                 'grafik8',
-                 'grafik9',
-                 'grafik10',
-                 'grafik11',
-                 'grafik12',
+                 'grafik1', 'grafik2', 'grafik3','grafik4','grafik5','grafik6','grafik7','grafik8','grafik9','grafik10','grafik11','grafik12',
                  //tutup
-                 'tutup1',
-                 'tutup2',
-                 'tutup3',
-                 'tutup4',
-                 'tutup5',
-                 'tutup6',
-                 'tutup7',
-                 'tutup8',
-                 'tutup9',
-                 'tutup10',
-                 'tutup11',
-                 'tutup12',
+                 'tutup1','tutup2','tutup3','tutup4','tutup5','tutup6','tutup7','tutup8','tutup9','tutup10','tutup11','tutup12',
                  //samubng
-                 'sambung1',
-                 'sambung2',
-                 'sambung3',
-                 'sambung4',
-                 'sambung5',
-                 'sambung6',
-                 'sambung7',
-                 'sambung8',
-                 'sambung9',
-                 'sambung10',
-                 'sambung11',
-                 'sambung12',
+                 'sambung1','sambung2','sambung3','sambung4','sambung5','sambung6','sambung7','sambung8','sambung9','sambung10','sambung11','sambung12',
                   //ganti
-                  'ganti1',
-                  'ganti2',
-                  'ganti3',
-                  'ganti4',
-                  'ganti5',
-                  'ganti6',
-                  'ganti7',
-                  'ganti8',
-                  'ganti9',
-                  'ganti10',
-                  'ganti11',
-                  'ganti12',
-                  'databill',
-                  'databilling',
-                  'jumlahtutup',
-                  'datatutupjumlah',
-                  'datahitungp',
-                  'dataz',
-                  'datahitunganganti',
-                  'datatest',
-
-
-
-
-                 'totdil','totdilcount','datanon','jumlahnon','cobaa','cobacabang','coba','datadil','data','datat','datas','datac','categories','jumlahdil','datahitungan'));
+                  'ganti1','ganti2','ganti3','ganti4','ganti5','ganti6','ganti7','ganti8','ganti9','ganti10','ganti11','ganti12',
+                  //lainnya
+                  'databill','databilling','jumlahtutup','datatutupjumlah','datahitungp','dataz','datahitunganganti','datatest',
+                  'totdil','totdilcount','datanon','jumlahnon','cobaa','cobacabang','coba','datadil','data','datat','datas','datac',
+                  'categories','jumlahdil','datahitungan'));
                  
                  
     }
@@ -353,4 +299,5 @@ class HomeController extends Controller
           // dd($dataz);
       return view('test',compact('datalaporan'));
     }
+    
 }

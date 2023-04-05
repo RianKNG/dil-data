@@ -130,3 +130,26 @@
         </div>
     </body>
 </html>
+<tr>Cabang</tr>
+@foreach ($tdatabill as $data)
+     <tr>{{ duka($data)}}</tr> 
+ @endforeach
+
+ <tr></tr>
+ <td>2</td>
+ <td>Jumlah Dil Baru</td>
+ @foreach ($ttdatabill as $index => $k)
+     <tr>{{ $k }}</tr> 
+ @endforeach
+ <tr>-</tr>
+
+ <tr></tr>
+ <tr>3</tr>
+ <tr>Bulan</tr>
+ @foreach ($tttdatabill as $data)
+     <tr>{{ $data}}</tr> 
+ @endforeach
+ <td>-</td>
+
+
+  
