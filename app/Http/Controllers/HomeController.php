@@ -109,7 +109,31 @@ class HomeController extends Controller
         ->get();
       $dataz = $datahitungp
           ->count();
-          
+           //untuk tabel Penyambungan
+        $sdatabill = DB::table('sambung as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("(b.cabang)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_sambung)"))
+        ->whereYear('tanggal_sambung',Carbon::now()->format('Y'))
+        ->pluck('cabang');
+       
+        $ssdatabill = DB::table('sambung as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("count(a.tanggal_sambung)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_sambung)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('cabang');
+      
+        $sssdatabill =  DB::table('sambung as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("MonthName(tanggal_sambung) as bulan "))
+        ->GroupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("MonthName(tanggal_sambung)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('bulan');
+        
       //data Penggantian
       $datahitunganganti = DB::table('ganti as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
@@ -119,6 +143,31 @@ class HomeController extends Controller
       $datatest = $datahitunganganti
           ->count();
           
+      //untuk tabel Penggantian
+        $gdatabill = DB::table('ganti as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("(b.cabang)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_ganti)"))
+        ->whereYear('tanggal_ganti',Carbon::now()->format('Y'))
+        ->pluck('cabang');
+       
+        $ggdatabill = DB::table('ganti as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("count(a.tanggal_ganti)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_ganti)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('cabang');
+       
+        $gggdatabill =  DB::table('ganti as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("MonthName(tanggal_ganti) as bulan "))
+        ->GroupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("MonthName(tanggal_ganti)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('bulan');
+        
       //untuk BBN
       $datahitungan = DB::table('bbn as h')
         ->join('tbl_dil as t','h.id_dil','=','t.id')
@@ -209,8 +258,10 @@ class HomeController extends Controller
                 'pdatabill','ppdatabill','pppdatabill',
                 //samubng
                 'sambung1','sambung2','sambung3','sambung4','sambung5','sambung6','sambung7','sambung8','sambung9','sambung10','sambung11','sambung12',
+                'sdatabill','ssdatabill','sssdatabill',
                  //ganti
                  'ganti1','ganti2','ganti3','ganti4','ganti5','ganti6','ganti7','ganti8','ganti9','ganti10','ganti11','ganti12',
+                 'gdatabill','ggdatabill','gggdatabill',
                  //lainnya
                   'databill','databilling','jumlahtutup','datatutupjumlah','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
                   'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','ttdatabill','tttdatabill'));

@@ -1116,6 +1116,200 @@ Highcharts.chart('x', {
                             </div>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                                  {{-- //untuk Penyambungan --}}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Rekap Penyambungan {{ $tahun }}</h5>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                
+                <div class="card-body">
+                  <div class="row">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <table class="table table-bordered">
+                              <thead class = "btn btn-info">
+                                <tr>
+                                  <th width="500px">Cabang</th>
+                                
+                                </tr>
+                              </thead>
+                              <tbody>
+                                @foreach ($sdatabill as $data)
+                                  <tr>
+                                  <td>{{ duka($data)}}</td> 
+                              </tr>
+                                  @endforeach
+                                
+                              </tbody>
+                            </table>
+                        
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col-sm-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title"></h5>
+                              <table class="table table-bordered">
+                                <thead class = "btn btn-info">
+                                  <tr>
+                                    <th width="500px">Bulan</th>
+                                  
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($sssdatabill as $data)
+                                    <tr>
+                                    <td>{{ $data }}</td> 
+                                </tr>
+                                    @endforeach
+                                  
+                                </tbody>
+                              </table>
+                          
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title"></h5>
+                              <table class="table table-bordered">
+                                <thead class = "btn btn-info">
+                                  <tr>
+                                    <th style="width: 500px">Jumlah</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($ssdatabill as $index => $k)
+                                    <tr>
+                                    <td>{{ $k }}</td> 
+                                </tr>
+                                    @endforeach
+                                  
+                                </tbody>
+                              </table>
+                          
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                                                  {{-- //untuk Penggantian --}}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Rekap Penggantian {{ $tahun }}</h5>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                
+                <div class="card-body">
+                  <div class="row">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <table class="table table-bordered">
+                              <thead class = "btn btn-danger">
+                                <tr>
+                                  <th width="500px">Cabang</th>
+                                
+                                </tr>
+                              </thead>
+                              <tbody>
+                                @foreach ($gdatabill as $data)
+                                  <tr>
+                                  <td>{{ duka($data)}}</td> 
+                              </tr>
+                                  @endforeach
+                                
+                              </tbody>
+                            </table>
+                        
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col-sm-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title"></h5>
+                              <table class="table table-bordered">
+                                <thead class = "btn btn-danger">
+                                  <tr>
+                                    <th width="500px">Bulan</th>
+                                  
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($gggdatabill as $data)
+                                    <tr>
+                                    <td>{{ $data }}</td> 
+                                </tr>
+                                    @endforeach
+                                  
+                                </tbody>
+                              </table>
+                          
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title"></h5>
+                              <table class="table table-bordered">
+                                <thead class = "btn btn-danger">
+                                  <tr>
+                                    <th style="width: 500px">Jumlah</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($ggdatabill as $index => $k)
+                                    <tr>
+                                    <td>{{ $k }}</td> 
+                                </tr>
+                                    @endforeach
+                                  
+                                </tbody>
+                              </table>
+                          
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
 
    
