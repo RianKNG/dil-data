@@ -7,10 +7,9 @@ use App\Models\Sambung;
 use App\Models\Penutupan;
 use App\Models\Bbn;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\ElseIf_;
 use Illuminate\Support\Facades\DB;
-use App\Helpers\Helper;
-use Illuminate\Support\Facades\Validator;
+// use App\Helpers\Helper;
+// use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -193,6 +192,7 @@ class HomeController extends Controller
        $totdil = DB::table('tbl_dil as a')
          ->get();
            $totdilcount = $totdil->count();
+    
 
 
                //data Grafik DIL baru

@@ -10,6 +10,12 @@
             <p class="btn-xs">Dashboard</p>
           </a>
       </li>
+      <li class="nav-item menu-open">
+        <a href="/test" class="nav-link">
+            <i class="nav-icon far fa-circle text-info"></i>
+            <p class="btn-xs">Dashboard Accesories</p>
+          </a>
+      </li>
       <li class="nav-item">
         <a href="/dil" class="nav-link">
           <i class="nav-icon far fa-circle text-danger"></i>
