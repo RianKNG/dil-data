@@ -2,17 +2,17 @@
 
 namespace App\Exports;
 
-use App\Models\DilModel;
+use App\Models\Penutupan;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class DilExport implements FromCollection
+class PenutupanExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return DilModel::all();
+        return Penutupan::all();
        
     }
     

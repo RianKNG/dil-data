@@ -82,6 +82,14 @@
       </li>
       <li class="nav-item">
         <a href="/layanan" class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p class="btn-xs">
+            Layanan
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
           <i class="nav-icon fas fa-user"></i>
           <p class="btn-xs">
             Report

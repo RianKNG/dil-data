@@ -9,9 +9,33 @@ use Illuminate\Support\Facades\DB;
 
 class PenggantianController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     
     {
+
+        if ($request->has('search')) {
+            $mer = Merek::all();
+            $data = DB::table('ganti AS d')
+            ->leftJoin('merek as m','d.id_merek','=','m.id')
+            ->leftJoin('tbl_dil as n','d.id_dil','=','n.id')
+            ->select([
+                'd.id','d.tanggal_ganti','d.no_wmbaru','d.id_dil','d.id_merek'
+            ])
+            ->where('id_dil','LIKE','%'.$request->search.'%')
+            ->get();
+                   
+        } else {
+            $mer = Merek::all();
+            $data = DB::table('ganti AS d')
+            ->leftJoin('merek as m','d.id_merek','=','m.id')
+            ->leftJoin('tbl_dil as n','d.id_dil','=','n.id')
+            ->select([
+                'd.id','d.tanggal_ganti','d.no_wmbaru','d.id_dil','d.id_merek'
+            ])
+    
+            ->get();
+        }
+        
         // $data = DB::table('ganti as a')
         // ->select([
         //         'a.*','d.*'
@@ -21,18 +45,7 @@ class PenggantianController extends Controller
         //             // ->where('d.cabang','=',2);
         //         })
         //         ->get();
-        $mer = Merek::all();
-        $data = DB::table('ganti AS d')
-        ->leftJoin('merek as m','d.id_merek','=','m.id')
-        ->leftJoin('tbl_dil as n','d.id_dil','=','n.id')
-        ->select([
-            'd.id','d.tanggal_ganti','d.no_wmbaru','d.id_dil','d.id_merek'
-        ])
-       
-        
-        // ->where('cabang','=','2')
-        ->get();
-        // dd($data);
+    
 
         return view('penggantian.v_index',compact('data','mer'));
     }

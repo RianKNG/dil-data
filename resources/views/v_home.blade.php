@@ -27,7 +27,7 @@
     @endphp
 @endsection
     @section('content')
-    <div class="container">
+    {{-- <div class="container"> --}}
         <!-- Info boxes -->
        
         <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ bulankita($tanggal) }}</b></i></span></h6>
@@ -562,7 +562,7 @@
       // }
   },
   title: {
-      text: 'Grafk Lingkaran',
+      text: 'Grafk Garis',
       align: 'center'
   },
       

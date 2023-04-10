@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 
+use App\Models\DilModel;
 use App\Models\Penutupan;
+
 use Illuminate\Http\Request;
+use App\Exports\PenutupanExport;
+use App\Imports\PenutupanImport;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PenutupanController extends Controller
 {
@@ -131,4 +137,29 @@ class PenutupanController extends Controller
     //     dd($data, $tanggal);
     return view('v_home',compact('data'));
     }
+    public function exportexcelp()
+    {
+        return Excel::download(new PenutupanExport, 'dataPenutupan.xlsx');
+    }
+    public function importexcelp(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+        $data = $request->file('file');
+        $namafile = $data->getClientOriginalName();
+        $data->move('Pelanggan',$namafile);
+        
+    
+        $import = Excel::import(new PenutupanImport, \public_path('/Pelanggan/'. $namafile));
+     
+        if($import) {
+            //redirect
+            return redirect()->route('penutupan')->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect
+            return redirect()->route('penutupan')->with(['error' => 'Data Gagal Diimport!']);
+        }
+    }
+    
 }

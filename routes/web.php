@@ -40,6 +40,17 @@ Route::get('/test/ada', [AccesoriesController::class,'ada']);
 Route::get('/test/tidakada', [AccesoriesController::class,'tidakada']);
 Route::get('/test/sada', [AccesoriesController::class,'sada']);
 Route::get('/test/stidakada', [AccesoriesController::class,'stidakada']);
+Route::get('/test/cvada', [AccesoriesController::class,'cvada']);
+Route::get('/test/cvtidakada', [AccesoriesController::class,'cvtidakada']);
+Route::get('/test/kpada', [AccesoriesController::class,'kpada']);
+Route::get('/test/kptada', [AccesoriesController::class,'kptada']);
+Route::get('/test/pkada', [AccesoriesController::class,'pkada']);
+Route::get('/test/pktada', [AccesoriesController::class,'pktada']);
+Route::get('/test/bxada', [AccesoriesController::class,'bxada']);
+Route::get('/test/bxtada', [AccesoriesController::class,'bxtada']);
+Route::get('/test/rada', [AccesoriesController::class,'rada']);
+Route::get('/test/rtada', [AccesoriesController::class,'rtada']);
+
 // Route::get('/dil', [DilController::class,'index'])->name('dil');
 Route::get('/dil/add', [DilController::class,'add']);
 Route::post('/dil/insert', [DilController::class,'insert']);
@@ -57,6 +68,9 @@ Route::get('/penutupan/hapus/{id}', [PenutupanController::class,'hapus']);
 Route::get('/penutupan/edit/{id}',[PenutupanController::class,'edit']);
 Route::post('/penutupan/update/{id}',[PenutupanController::class,'update']);
 Route::get('/penutupan/hitung', [PenutupanController::class,'hitung']);
+Route::get('/exportexcelp', [PenutupanController::class,'exportexcelp'])->name('exportexcelp');
+Route::post('/importexcelp', [PenutupanController::class,'importexcelp'])->name('importexcelp');
+
 //Penyambungan
 Route::get('/penyambungan', [PenyambunganController::class,'index'])->name('penyambungan');
 Route::get('/penyambungan/add', [PenyambunganController::class,'add']);
