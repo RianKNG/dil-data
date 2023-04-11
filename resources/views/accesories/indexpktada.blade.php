@@ -34,14 +34,9 @@
               <div class="card-header">
                 Accesories {{ $tahun }}
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                 
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
+                  <div class="card-tools">
+                    <a href="/test"><span class ="fa fa-arrow-left">Kembali</span></a>
+                  </div>
               </div>
               <!-- /.card-header -->
           
@@ -71,7 +66,7 @@
                       </div>
                     </div>
                  
-                    <div class="row">
+                    
                         <div class="col-md-6">
                         <div class="card">
                           <div class="card-body">

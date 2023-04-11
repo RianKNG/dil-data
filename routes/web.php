@@ -11,6 +11,7 @@ use App\Http\Controllers\BbnController;
 use App\Http\Controllers\DilController;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\PenutupanController;
 use App\Http\Controllers\AccesoriesController;
@@ -34,6 +35,8 @@ Route::get('/', [HomeController::class,'index']);
 Route::get('/test', [HomeController::class,'test']);
 // Route::get('/tabel', [HomeController::class,'tabel']);
 //dashboard accesories
+//user
+Route::get('/user', [UserController::class,'index']);
 // Route::get('/', [HomeController::class,'index'])->name('guru');
 Route::get('/test', [AccesoriesController::class,'index']);
 Route::get('/test/ada', [AccesoriesController::class,'ada']);
@@ -77,6 +80,8 @@ Route::get('/penyambungan/add', [PenyambunganController::class,'add']);
 Route::post('/penyambungan/insert', [PenyambunganController::class,'insert']);
 Route::get('/penyambungan/search', [PenyambunganController::class,'search']);
 Route::get('/penyambungan/hapus/{id}', [PenyambunganController::class,'hapus']);
+Route::get('/exportsambung',[PenyambunganController::class,'exportsambung'])->name('exportsambung');
+Route::post('/importsambung', [PenyambunganController::class,'importsambung'])->name('importsambung');
 // Route::post('/penutupan/update/{id}',[PenyambunganController::class,'update']);
 
 //bbn
@@ -84,7 +89,8 @@ Route::get('/bbn',[BbnController::class,'index'])->name('bbn');
 Route::post('/bbn/store', [BbnController::class,'store']);
 Route::get('/bbn/add', [BbnController::class,'add']);
 Route::get('/bbn/hapus/{id}', [BbnController::class,'hapus']);
-
+Route::get('/exportbbn',[BbnController::class,'exportbbn'])->name('exportbbn');
+Route::post('/importbbn', [BbnController::class,'importbbn'])->name('importbbn');
 
 Route::get('/coba',[CobaController::class,'index'])->name('coba');
 
@@ -94,6 +100,8 @@ Route::get('/penggantian', [PenggantianController::class,'index'])->name('pengga
 Route::get('/penggantian/add', [PenggantianController::class,'add']);
 Route::post('/penggantian/insert', [PenggantianController::class,'insert']);
 Route::get('/penggantian/hapus/{id}', [PenggantianController::class,'hapus']);
+Route::get('/exportganti',[PenggantianController::class,'exportganti'])->name('exportganti');
+Route::post('/importganti', [PenggantianController::class,'importganti'])->name('importganti');
 
 //watermeter
 Route::get('/watermeter', [WmController::class,'index'])->name('watermeter');

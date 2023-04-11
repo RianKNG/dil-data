@@ -18,5 +18,12 @@ function bulankita($tgl){
     $text .="$tanggal $bulan $tahun";
     return $text;
 }
+function mrk($angka){
+    // $angka = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,31,40);
+    $merek= array('','Linflow','Barindo','Bestini');
+    
+   $mrk =$merek[(int)($angka)];
+    return $mrk;
+}
     
 ?>

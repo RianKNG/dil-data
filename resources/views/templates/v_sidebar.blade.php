@@ -1,22 +1,30 @@
 
-  
+
   <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-      <li class="nav-item menu-open">
+           <li class="{{ Request::is('/')? "active":"" }}">
         <a href="/" class="nav-link">
             <i class="nav-icon far fa-circle text-info"></i>
             <p class="btn-xs">Dashboard</p>
           </a>
       </li>
-      <li class="nav-item menu-open">
+      <li class="{{ Request::is('/test')? "active":"" }}">
         <a href="/test" class="nav-link">
             <i class="nav-icon far fa-circle text-info"></i>
             <p class="btn-xs">Dashboard Accesories</p>
           </a>
       </li>
-      <li class="nav-item">
+      <li class="{{ Request::is('/user')? "active":"" }}">
+        <a href="/user" class="nav-link">
+          <i class="nav-icon far fa-circle text-danger"></i>
+          <p class="btn-xs">
+            Master User
+          </p>
+        </a>
+      </li>
+      <li class="{{ Request::is('/dil')? "active":"" }}">
         <a href="/dil" class="nav-link">
           <i class="nav-icon far fa-circle text-danger"></i>
           <p class="btn-xs">
@@ -24,27 +32,28 @@
           </p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="{{ Request::is('/dil/add')? "active":"" }}">
+        <a href="/dil/add" class="nav-link">
+          <i class="nav-icon fa fa-plus text-danger"></i>
+          <p class="btn-xs">
+            Tambah DIl
+          </p>
+        </a>
+      </li>
+      <li class="{{ Request::is('/watermeter')? "active":"" }}">
         <a href="/watermeter" class="nav-link">
           <i class="nav-icon far fa-circle text-warning"></i>
           <p class="btn-xs">
-            Water Meter
+            Master WM
           </p>
         </a>
       </li>
-      <li class="nav-item">
-        <a href="/dil/add" class="nav-link">
-          <i class="nav-icon far fa-circle text-primary"></i>
-          <p class="btn-xs">
-            Layanan Tambah DIl
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
+      <li class="{{ Request::is('/penutupan')? "active":"" }}">
         <a href="/penutupan" class="nav-link">
-          <i class="nav-icon far fa-circle text-blue"></i>
+          {{-- <i class="nav-icon far fa-circle text-blue"></i> --}}
+          <i class="nav-icon far fa-circle text-danger"></i>
           <p class="btn-xs">
-            Layanan Penutupan
+            Penutupan
           </p>
         </a>
       </li>
@@ -56,31 +65,35 @@
           </p>
         </a>
       </li> --}}
-      <li class="nav-item">
+      <li class="{{ Request::is('/penyambungan')? "active":"" }}">
         <a href="/penyambungan" class="nav-link">
+          {{-- <i class="nav-icon far fa-circle text-success"></i> --}}
           <i class="nav-icon far fa-circle text-success"></i>
           <p class="btn-xs">
-            Layanan Penyambungan
+            Penyambungan
           </p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="{{ Request::is('/penggantian')? "active":"" }}">
         <a href="/penggantian" class="nav-link">
-          <i class="nav-icon far fa-circle text-white"></i>
+          {{-- <i class="nav-icon far fa-circle text-white"></i> --}}
+          <i class="nav-icon far fa-circle text-warning"></i>
           <p class="btn-xs">
-            Layanan Penggantian
+            Penggantian
           </p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="{{ Request::is('/bbn')? "active":"" }}">
         <a href="/bbn" class="nav-link">
-          <i class="nav-icon far fa-circle text-green"></i>
+          {{-- <i class="nav-icon far fa-circle text-green"></i> --}}
+          <i class="nav-icon far fa-circle text-primary"></i>
           <p class="btn-xs">
-            Layanan Balik Nama
+            Balik Nama
           </p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="{{ Request::is('/layanan')? "active":"" }}">
+      {{-- <li class="nav-item"> --}}
         <a href="/layanan" class="nav-link">
           <i class="nav-icon fas fa-book"></i>
           <p class="btn-xs">

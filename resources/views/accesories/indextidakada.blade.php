@@ -11,22 +11,7 @@
       $tahun = date('Y');
       $jam = date("h:i:sa");
     @endphp
-@section('tabel')
-
-     @php
-    if (isset($_server['HTTPS']) && $_SERVER['HTTPS'] ==='on') {
-      $url="https://";
-    } else {
-      $url="http://";
-      $url.=$_SERVER['HTTP_HOST'];
-      $url.=$_SERVER['REQUEST_URI'];
-      $url;
-    }
-    $page=$url;
-    $sec="5";
-    @endphp
-@endsection
-    @section('content')
+@section('content')
 
         <div class="row">
           <div class="col-md-12">
@@ -34,13 +19,7 @@
               <div class="card-header">
                 Accesories {{ $tahun }}
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                 
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
+                  <a href="/test"><span class ="fa fa-arrow-left">Kembali</span></a>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -71,15 +50,16 @@
                       </div>
                     </div>
                  
-                    <div class="row">
-                        <div class="col-md-6">
+                 
+                      <div class="col-sm-6">
                         <div class="card">
                           <div class="card-body">
                             <h5 class="card-title"></h5>
                             <table class="table table-bordered">
                               <thead class = "btn btn-danger">
                                 <tr>
-                                  <th style="width: 500px">Jumlah</th>
+                                  <th width="500px">Jumlah</th>
+                                
                                 </tr>
                               </thead>
                               <tbody>
@@ -95,11 +75,8 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
           
 @endsection
+
 
 

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bbn;
+use App\Exports\BbnExport;
+use App\Imports\BbnImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BbnController extends Controller
 {
@@ -17,7 +20,7 @@ class BbnController extends Controller
     {
         $data = DB::table('bbn as b')
         ->select([
-            'b.*','d.nama_sekarang','d.id_merek','d.no_rekening'
+            'b.*','d.nama_sekarang','d.nama_pemilik','d.id_merek','d.no_rekening'
         ])
         ->join('tbl_dil as d',function($join){
             $join->on('d.id','=','b.id_dil');
@@ -111,5 +114,29 @@ class BbnController extends Controller
         $data->delete();
 
         return redirect()->route('bbn')->with('success','data penutupan berhasil dithapus');
+    }
+    public function exportbbn()
+    {
+        return Excel::download(new BbnExport, 'dataBbn.xlsx');
+    }
+    public function importbbn(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+        $data = $request->file('file');
+        $namafile = $data->getClientOriginalName();
+        $data->move('Pelanggan',$namafile);
+        
+    
+        $import = Excel::import(new BbnImport, \public_path('/Pelanggan/'. $namafile));
+     
+        if($import) {
+            //redirect
+            return redirect()->route('bbn')->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect
+            return redirect()->route('bbn')->with(['error' => 'Data Gagal Diimport!']);
+        }
     }
 }

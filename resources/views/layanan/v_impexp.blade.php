@@ -33,12 +33,12 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-outline card-warning">
+            <div class="card card-outline card-danger">
             <div class="card-header">
                 <h3 class="card-title">Expor Data Pdf</h3>
             </div>
             <div class="card-body">
-                <a href="/exportpdf" class="btn btn-primary">Download Pdf</a>     
+                <a href="/exportpdf" class="btn btn-danger">Download Pdf</a>     
             </div>
             </div>
         </div>

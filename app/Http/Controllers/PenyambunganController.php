@@ -6,6 +6,10 @@ use App\Models\Sambung;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Exports\PenyambunganExport;
+use App\Imports\PenyambunganImport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PenyambunganController extends Controller
 {
@@ -104,5 +108,29 @@ $data = $data->get();
         $keyword = $request->search;
         $data = Sambung::where('alasan', 'like', "%" . $keyword . "%")->get();
         return view('penyambungan.v_sambung',compact('data')); 
+    }
+    public function exportsambung()
+    {
+        return Excel::download(new PenyambunganExport, 'dataPenyambungan.xlsx');
+    }
+    public function importsambung(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+        $data = $request->file('file');
+        $namafile = $data->getClientOriginalName();
+        $data->move('Pelanggan',$namafile);
+        
+    
+        $import = Excel::import(new PenyambunganImport, \public_path('/Pelanggan/'. $namafile));
+     
+        if($import) {
+            //redirect
+            return redirect()->route('penyambungan')->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect
+            return redirect()->route('penyambungan')->with(['error' => 'Data Gagal Diimport!']);
+        }
     }
 }

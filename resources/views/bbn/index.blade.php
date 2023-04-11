@@ -2,6 +2,46 @@
 @extends('templates.v_template')
 @section('title','BBN Dil')
 @section('content')
+<div class="col-md-6">
+  <div class="card card-primary card-outline">
+    <div class="card-header">
+      <h3 class="card-title">Kebutuhan Data</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <a href="/exportbbn" class="btn btn-info">Export Bbn</a>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
+        Import Bbn
+    </button>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+<div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         
+        <form action="/importbbn" method="POST" enctype="multipart/form-data">
+          @csrf
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label>PILIH FILE</label>
+                      <input type="file" name="file" class="form-control" required>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
+                  <button type="submit" class="btn btn-success">IMPORT</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<!-- modal -->
 <div class="container-fluid">
 <div class="row">
   <div class="col-md-8">
@@ -30,10 +70,10 @@
             <tr>
               <th width="5%">No.</th>
               <th>No Sambungan</th>
-              <th>tanggal_ganti</th>
-              <th>merek Lama</th>
-              <th>merek Baru</th>
-              <th>Mo Lama</th>
+              <th>tanggal_bbn</th>
+              <th>Nama Lama</th>
+              <th>Nama Pemilik</th>
+              <th>No Baru</th>
              
 
               <th width="20%">Aksi</th>
@@ -45,8 +85,8 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $k->id_dil }}</td>
                 <td>{{ $k->tanggal_bbn }}</td>
-                <td>{{ $k->id_merek }}</td>
-                <td>{{ $k->no_rekening}}</td>
+                <td>{{ $k->nama_sekarang }}</td>
+                <td>{{ $k->nama_pemilik}}</td>
                 <td>{{ $k->nama_baru}}</td>
              
 

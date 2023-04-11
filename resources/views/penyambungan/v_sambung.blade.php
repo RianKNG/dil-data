@@ -2,6 +2,46 @@
 @extends('templates.v_template')
 @section('title','Penutupan Dil')
 @section('content')
+<div class="col-md-6">
+  <div class="card card-primary card-outline">
+    <div class="card-header">
+      <h3 class="card-title">Kebutuhan Data</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <a href="/exportsambung" class="btn btn-info">Export Penyambungann</a>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
+        Import Penyambungan
+    </button>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+<div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         
+        <form action="/importsambung" method="POST" enctype="multipart/form-data">
+          @csrf
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label>PILIH FILE</label>
+                      <input type="file" name="file" class="form-control" required>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
+                  <button type="submit" class="btn btn-success">IMPORT</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<!-- modal -->
 @if ($message = Session::get('success'))
 <div class="alert alert-success" role="alert">
  {{ $message }}
