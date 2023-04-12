@@ -109,7 +109,7 @@
                         <div class="form-check">
                           <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" id="status_milik" value="sewa" {{  ($data->status_milik == 'sewa' ? ' checked' : '') }}>Sewa</label>
                           <div></div>
-                         <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" id="status_milik" value="hak milik" {{  ($data->status_milik == 'Hak Milik' ? ' checked' : '') }}>Hak Milik</label>
+                         <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" id="status_milik" value="Hak Milik" {{  ($data->status_milik == 'Hak Milik' ? ' checked' : '') }}>Hak Milik</label>
                         </div>
                       </div>
                     </div>

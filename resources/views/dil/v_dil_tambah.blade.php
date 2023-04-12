@@ -156,12 +156,12 @@
             <div>tatus Milik</div>
             <div class="form-group">
               <div class="form-check">
-                <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" id="status_milik">Sewa</label>
+                <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" value="sewa" id="status_milik">Sewa</label>
                 @error('status_milik')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <div></div>
-               <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" id="status_milik">Hak Milik</label>
+               <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" value="Hak Milik" id="status_milik">Hak Milik</label>
                @error('status_milik')
                <div class="alert alert-danger">{{ $message }}</div>
                @enderror
@@ -223,12 +223,12 @@
           <div>segel</div>
           <div class="form-group">
             <div class="form-check">
-              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="segel" id="segel">ada</label>
+              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="segel" value="ada" id="segel">ada</label>
               @error('segel')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
               <div></div>
-             <label class="form-check-label"><input class="form-check-input" type="checkbox" name="segel" id="segel">tidak ada</label>
+             <label class="form-check-label"><input class="form-check-input" type="checkbox" name="segel" value="tidak ada" id="segel">tidak ada</label>
              @error('segel')
              <div class="alert alert-danger">{{ $message }}</div>
              @enderror
@@ -239,7 +239,7 @@
           <div>stop kran</div>
           <div class="form-group">
             <div class="form-check">
-              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="stop_kran" id="stop_kran">ada</label>
+              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="stop_kran" value="ada"id="stop_kran">ada</label>
               @error('stop_kran')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
@@ -255,12 +255,12 @@
           <div>ceck valve</div>
           <div class="form-group">
             <div class="form-check">
-              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="ceck_valve" id="ceck_valve">ada</label>
+              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="ceck_valve" value="ada" id="ceck_valve">ada</label>
               @error('ceck_valve')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
               <div></div>
-             <label class="form-check-label"><input class="form-check-input" type="checkbox" name="ceck_valve" id="ceck_valve">tidak ada</label>
+             <label class="form-check-label"><input class="form-check-input" type="checkbox" name="ceck_valve" value="tidak ada"id="ceck_valve">tidak ada</label>
              @error('ceck_valve')
              <div class="alert alert-danger">{{ $message }}</div>
              @enderror
@@ -304,12 +304,12 @@
           <div>box</div>
           <div class="form-group">
             <div class="form-check">
-              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="box" id="box">ada</label>
+              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="box" value="ada" id="box">ada</label>
               @error('box')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
                <div></div>
-              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="box" id="box">tidak ada</label>
+              <label class="form-check-label"><input class="form-check-input" type="checkbox" name="box" value="tidak ada" id="box">tidak ada</label>
               @error('box')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror

@@ -73,6 +73,18 @@ class PenggantianController extends Controller
 
         return redirect()->route('penggantian')->with('success','data d berhasil dithapus');
     }
+    public function edit($id)
+    {
+        $mer = Merek::all();
+        $data = Ganti::find($id);
+        return view('penggantian.edit', compact('data','mer'));
+    }
+    public function update(Request $request, $id)
+    {
+        $data = Ganti::find($id);
+        $data->update($request->all());
+        return redirect()->route('penggantian')->with('success','data penggantian berhasil dirubah');
+    }
     public function exportganti()
     {
         return Excel::download(new PenggantianExport, 'dataPenggantian.xlsx');

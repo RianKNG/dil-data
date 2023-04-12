@@ -78,8 +78,8 @@ class DilController extends Controller
           'status_milik' => 'required',
           'jml_jiwa_tetap' => 'required|numeric',
           'jml_jiwa_tidak_tetap' => 'required|numeric',
-          'tanggal_pasang' => 'date_format:Y-m-d',
-          'tanggal_file' => 'date_format:Y-m-d',
+          'tanggal_pasang' => 'required|date:d/m/Y',
+          'tanggal_file' => 'required|date:d/m/Y',
           'segel' => 'required',
           'stop_kran' => 'required',
           'ceck_valve' => 'required',
@@ -216,6 +216,7 @@ class DilController extends Controller
    }
    public function detail(Request $request, $id)
    {
+       
     $dataz = DilModel::find($id);
     $lain = DB::table('tbl_dil as d')
     

@@ -16,74 +16,76 @@
         <div class="card-group">
           <div class="card">
             <div class="card-body">
-              @foreach ($lain as $index => $k)
-              @endforeach
-              <p class="card-text"><span class="text-muted">No Sambungan : {{ $k->id }}</span></p>
+             
+             
+              <p class="card-text"><span class="text-muted">No Sambungan : {{ $dataz->id }}</span></p>
               <p class="card-text"><span class="text-muted">Nama : 
-                @if ($k->cabang == 1)
+                @if ($dataz->cabang == 1)
                 Sumedang Utara
-                @elseif($k->cabang == 2)
+                @elseif($dataz->cabang == 2)
                 Tanjungkerta
-                @elseif($k->cabang == 3)
+                @elseif($dataz->cabang == 3)
                 Darmaraja
-                @elseif($k->cabang == 4)
+                @elseif($dataz->cabang == 4)
                 Situraja
-                @elseif($k->cabang == 5)
+                @elseif($dataz->cabang == 5)
                 Jatinangor
-                @elseif($k->cabang == 6)
+                @elseif($dataz->cabang == 6)
                 Tanjungsari
-                @elseif($k->cabang == 7)
+                @elseif($dataz->cabang == 7)
                 Paseh
-                @elseif($k->cabang == 8)
+                @elseif($dataz->cabang == 8)
                 Cimalaka
-                @elseif($k->cabang == 9)
+                @elseif($dataz->cabang == 9)
                 Tomo
-                @elseif($k->cabang == 10)
+                @elseif($dataz->cabang == 10)
                 Ujungjaya
-                @elseif($k->cabang == 11)
+                @elseif($dataz->cabang == 11)
                 Wado
-                @elseif($k->cabang == 12)
+                @elseif($dataz->cabang == 12)
                 Cisitu
-                @elseif($k->cabang == 13)
+                @elseif($dataz->cabang == 13)
                 Pamulihan
-                @elseif($k->cabang == 14)
+                @elseif($dataz->cabang == 14)
                 Cimanggung
-                @elseif($k->cabang == 40)
+                @elseif($dataz->cabang == 40)
                 Mol Pelayanan Publik
                 @else
                         Tidak ada 
                 @endif
+                
               </p>
-              <p class="card-text"><span class="text-muted">Status : {{ $k->status == 1 ? 'Aktip' : 'non aktip' }}</span></p>
-              <p class="card-text"><span class="text-muted">No Rekening{{ $k->no_rekening }}</span></p>
-              <p class="card-text"><span class="text-muted">Nama Sekarang{{ $k->nama_sekarang }}</span></p>
-              <p class="card-text"><span class="text-muted">Nama Pemilik{{ $k->nama_pemilik }}</span></p>
-              <p class="card-text"><span class="text-muted">No Rumah{{ $k->no_rumah }}</span></p>
-              <p class="card-text"><span class="text-muted">RT{{ $k->rt }}</span></p>
-              <p class="card-text"><span class="text-muted">{{ $k->rw }}</span></p>
+              <p class="card-text"><span class="text-muted">Status : {{ $dataz->status == 1 ? 'Aktip' : 'non aktip' }}</span></p>
+              <p class="card-text"><span class="text-muted">No Rekening{{ $dataz->no_rekening }}</span></p>
+              <p class="card-text"><span class="text-muted">Nama Sekarang{{ $dataz->nama_sekarang }}</span></p>
+              <p class="card-text"><span class="text-muted">Nama Pemilik{{ $dataz->nama_pemilik }}</span></p>
+              <p class="card-text"><span class="text-muted">No Rumah{{ $dataz->no_rumah }}</span></p>
+              <p class="card-text"><span class="text-muted">RT{{ $dataz->rt }}</span></p>
+              <p class="card-text"><span class="text-muted">{{ $dataz->rw }}</span></p>
             </div>
           </div>
           <div class="card">
             <div class="card-body">
-              <p class="card-text"><span class="text-muted">Nama : {{ $k->blok }}</span></p>
-              <p class="card-text"><span class="text-muted">Dusun : {{ $k->dusun }}</span></p>
-              <p class="card-text"><span class="text-muted">Kecamatan : {{ $k->kecamatan }}</span></p>
-              <p class="card-text"><span class="text-muted">Status Milik : {{ $k->status_milik }}</span></p>
-              <p class="card-text"><span class="text-muted">Jumlah Jiwa Tetap : {{ $k->jml_jiwa_tetap }}</span></p>
-              <p class="card-text"><span class="text-muted">Jumlah Jiwa Tidak Tetap :{{ $k->jml_jiwa_tidak_tetap }}</span></p>
-              <p class="card-text"><span class="text-muted">Tanggal Pasang : {{ $k->tanggal_pasang }}</span></p>
-              <p class="card-text"><span class="text-muted">Segel : {{ $k->segel }}</span></p>
-              <p class="card-text"><span class="text-muted">Ceck Valve : {{ $k->ceck_valve }}</span></p>
+              <p class="card-text"><span class="text-muted">Nama : {{ $dataz->blok }}</span></p>
+              <p class="card-text"><span class="text-muted">Dusun : {{ $dataz->dusun }}</span></p>
+              <p class="card-text"><span class="text-muted">Kecamatan : {{ $dataz->kecamatan }}</span></p>
+              <p class="card-text"><span class="text-muted">Status Milik : {{ $dataz->status_milik }}</span></p>
+              <p class="card-text"><span class="text-muted">Jumlah Jiwa Tetap : {{ $dataz->jml_jiwa_tetap }}</span></p>
+              <p class="card-text"><span class="text-muted">Jumlah Jiwa Tidak Tetap :{{ $dataz->jml_jiwa_tidak_tetap }}</span></p>
+              <p class="card-text"><span class="text-muted">Tanggal Pasang : {{ $dataz->tanggal_pasang }}</span></p>
+              <p class="card-text"><span class="text-muted">Segel : {{ $dataz->segel }}</span></p>
+              <p class="card-text"><span class="text-muted">Ceck Valve : {{ $dataz->ceck_valve }}</span></p>
             </div>
           </div>
           <div class="card">
             <div class="card-body">
-              <p class="card-text"><span class="text-muted">Sumber_lain : {{ $k->sumber_lain }}</span></p>
-              <p class="card-text"><span class="text-muted">Jenis_usaha : {{ $k->jenisusaha }}</span></p>
-              <p class="card-text"><span class="text-muted">Merek : {{ $k->merek }}</span></p>
+              <p class="card-text"><span class="text-muted">Sumber_lain : {{ $dataz->sumber_lain }}</span></p>
+              <p class="card-text"><span class="text-muted">Jenis_usaha : {{ $dataz->jenisusaha }}</span></p>
+              <p class="card-text"><span class="text-muted">Merek : {{ mrk($dataz->id_merek) }}</span></p>
             </div>
           </div>
         </div>
+   
       <!-- /.card-header -->
       <div class="card-footer text-center">
         <a href="/dil" class="btn btn-sm btn-info text-center">Kembali Ke Halaman Utama</a>

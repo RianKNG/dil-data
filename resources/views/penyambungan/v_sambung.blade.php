@@ -96,7 +96,7 @@
                     <td>
                       {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
                       
-                      <a href="#" class="btn btn-success btn-xs">Edit</a>
+                      <a href="/penyambungan/edit/{{ $k->id }}" class="btn btn-success btn-xs">Edit</a>
                       <a href="penyambungan/hapus/{{ $k->id }}" 
                         class="btn btn-danger btn-xs" 
                         data-toggle="modal" 
@@ -179,14 +179,13 @@
                       <label>alasan</label>
                       <select name="alasan" class="form-control btn-xs">
                         <option selected>alasan ditutup</option>
-                        <option value="1">Butuh</option>
-                        <option value="2">Sudah Ada Uang</option>
+                        <option @if($k->alasan == "butuh") selected @endif>Butuh</option>
+                        <option @if($k->alasan == "sudah ada uang") selected @endif>sudah ada uang</option>
                       </select>
                         @error('alasan')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                 
                   <div class="form-group">
                     <button class="btn btn-primary btn-small">simpan</button>
                    </div> 

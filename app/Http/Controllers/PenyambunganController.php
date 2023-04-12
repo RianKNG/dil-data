@@ -23,24 +23,17 @@ class PenyambunganController extends Controller
     ->join('tbl_dil as m',function($join){
         $join->on('m.id','=','d.id_dil');
     });
-
-
         $start_date = date('Y-m-d 00:00:00', strtotime($request->get('start_date')));
 
 $end_date = date('Y-m-d 23:59:59', strtotime($request->get('end_date')));
-
-
 if($request->has('start_date')) 
 {
-
        $data->where('tanggal_sambung', '>=', $start_date);
 }
-
 if ($request->has('end_date')) 
 {
        $data->where('tanggal_sambung', '<=', $end_date);
 }
-
 $data = $data->get();
 //elequent
        
@@ -102,6 +95,18 @@ $data = $data->get();
     {
         Sambung::create($request->all());
         return redirect()->route('penyambungan')->with('success','data berhsil ditambahkan');
+    }
+    public function edit($id)
+    {
+        $data = Sambung::find($id);
+        
+        return view('penyambungan.edit', compact('data'));
+    }
+    public function update(Request $request, $id)
+    {
+        $data = Sambung::find($id);
+        $data->update($request->all());
+        return redirect()->route('penyambungan')->with('success','data penyambungan berhasil dirubah');
     }
     public function search(Request $request)
     {

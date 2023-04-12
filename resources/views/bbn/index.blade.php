@@ -94,7 +94,7 @@
                 <td>
                   {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
                   
-                  <a href="penggantian/edit/{{ $k->id }}" class="btn btn-success btn-xs">Edit</a>
+                  <a href="bbn/edit/{{ $k->id }}" class="btn btn-success btn-xs">Edit</a>
                   <a href="bbn/hapus/{{ $k->id }}" 
                     class="btn btn-danger btn-xs" 
                     data-toggle="modal" 
