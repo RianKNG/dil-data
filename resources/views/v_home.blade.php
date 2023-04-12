@@ -168,6 +168,34 @@
             </div>
             <!-- /.info-box -->
           </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3 btn-xs">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+  
+              <div class="info-box-content">
+                <span class="info-box-text">Total Jumlah Jiwa Tetap</span>
+                <span class="info-box-number"></span>
+                <h3 class="btn btn-info"><span>{{ $jmlt }}</span></h3>
+
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3 btn-xs">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+  
+              <div class="info-box-content">
+                <span class="info-box-text">Total Jumlah Jiwa Tidak Tetap</span>
+                <span class="info-box-number"></span>
+                <h3 class="btn btn-info"><span>{{ $jmltt }}</span></h3>
+
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
           <!-- /.col -->
         </div>
         <div class="row">

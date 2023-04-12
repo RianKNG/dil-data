@@ -192,6 +192,12 @@ class HomeController extends Controller
        $totdil = DB::table('tbl_dil as a')
          ->get();
            $totdilcount = $totdil->count();
+            //jumlah Jiwa Dil
+       $jmlt = DB::table('tbl_dil')
+       ->sum('jml_jiwa_tetap');
+       $jmltt = DB::table('tbl_dil')
+       ->sum('jml_jiwa_tidak_tetap');
+
     
 
 
@@ -264,7 +270,7 @@ class HomeController extends Controller
                  'gdatabill','ggdatabill','gggdatabill',
                  //lainnya
                   'databill','databilling','jumlahtutup','datatutupjumlah','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
-                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','ttdatabill','tttdatabill'));
+                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','ttdatabill','tttdatabill','jmlt','jmltt'));
                  
                  
     }
