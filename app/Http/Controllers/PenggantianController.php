@@ -64,13 +64,8 @@ class PenggantianController extends Controller
     }
     public function hapus($id)
     {
-
-        
         $data = ganti::find($id);
-      
         $data->delete();
-       
-
         return redirect()->route('penggantian')->with('success','data d berhasil dithapus');
     }
     public function edit($id)

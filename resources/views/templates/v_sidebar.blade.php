@@ -102,10 +102,10 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="/report" class="nav-link">
           <i class="nav-icon fas fa-user"></i>
           <p class="btn-xs">
-            Report
+            Report Pelanggan
           </p>
         </a>
       </li>

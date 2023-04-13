@@ -12,6 +12,7 @@ use App\Http\Controllers\DilController;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\PenutupanController;
 use App\Http\Controllers\AccesoriesController;
@@ -99,6 +100,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/importbbn', [BbnController::class,'importbbn'])->name('importbbn');
 
     Route::get('/coba',[CobaController::class,'index'])->name('coba');
+    // bbn
+    Route::get('/report',[ReportController::class,'index'])->name('report');
+    Route::post('/report/search',[ReportController::class,'search'])->name('dilsearch');
 
 
     //penggantian
