@@ -35,10 +35,30 @@
         <div class="col-md-4">
             <div class="card card-outline card-danger">
             <div class="card-header">
-                <h3 class="card-title">Expor Data Pdf</h3>
+                <h3 class="card-title">Download All Data Status Pdf</h3>
             </div>
             <div class="card-body">
-                <a href="/exportpdf" class="btn btn-danger">Download Pdf</a>     
+                <a href="/exportpdf" class="btn btn-danger">Download Pdf All Data Status</a>     
+            </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-outline card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Expor Data Pdf Aktip</h3>
+            </div>
+            <div class="card-body">
+                <a href="/exportpdfa" class="btn btn-danger">Download Pdf Aktip</a>     
+            </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-outline card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Expor Data Pdf Non Aktip</h3>
+            </div>
+            <div class="card-body">
+                <a href="/exportpdfn" class="btn btn-primary">Download Pdf Non Aktip</a>     
             </div>
             </div>
         </div>

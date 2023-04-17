@@ -32,12 +32,12 @@
                     <option selected>cab||unit</option>
                     <option value="9" @if (old('cabang') == "9") {{ 'selected' }} @endif>Tomo</option>
                     <option value="10" @if (old('cabang') == "10") {{ 'selected' }} @endif>Ujungjaya</option>
-                    <option value="3" @if (old('cabang') == "3") {{ 'selected' }} @endif>Darmaraja</option>
+                    <option value="3" @if (old('cabang') == "41") {{ 'selected' }} @endif>Darmaraja</option>
                     <option value="12" @if (old('cabang') == "12") {{ 'selected' }} @endif>Cisitu</option>
                     <option value="14" @if (old('cabang') == "14") {{ 'selected' }} @endif>Cimanggung</option>
                     <option value="6" @if (old('cabang') == "6") {{ 'selected' }} @endif>Tanjungsari</option>
                     <option value="13" @if (old('cabang') == "13") {{ 'selected' }} @endif>Pamulihan</option>
-                    <option value="1" @if (old('cabang') == "1") {{ 'selected' }} @endif>Sumedang Utara</option>
+                    <option value="1" @if (old('cabang') == "42") {{ 'selected' }} @endif>Sumedang Utara</option>
                     <option value="7" @if (old('cabang') == "7") {{ 'selected' }} @endif>Paseh</option>
                     <option value="8" @if (old('cabang') == "8") {{ 'selected' }} @endif>Cimalaka</option>
                     <option value="2" @if (old('cabang') == "2") {{ 'selected' }} @endif>Tanjungkerta</option>

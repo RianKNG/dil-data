@@ -2,8 +2,9 @@
 
 function duka($angka){
     // $angka = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,31,40);
-    $cabang= array(1=>'','Sumedang Utara','Tanjungkerta','Darmaraja','Situraja','Jatinangor','Tanjungsari','Paseh','Cimalaka',
-                'Tomo','Ujungjaya','Wado','Cisitu','Pamulihan','Cimanggung','','','','','','','','','','','','','','','','Sumedang Selatan','','','','','','','','','Mol Pelayan Publik');
+    $cabang= array('','','Tanjungkerta','','Situraja','Jatinangor','Tanjungsari','Paseh','Cimalaka',
+                'Tomo','Ujungjaya','Wado','Cisitu','Pamulihan','Cimanggung','','','','','','','','','','','','','','','','',
+                'Sumedang Selatan','','','','','','','','','Mol Pelayan Publik','Darmaraja','Sumedang Utara');
     
    $duka =$cabang[(int)($angka)];
     return $duka;
@@ -24,6 +25,13 @@ function mrk($angka){
     
    $mrk =$merek[(int)($angka)];
     return $mrk;
+}
+function sts($angka){
+    // $angka = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,31,40);
+    $status= array('','aktip','tidak aktip');
+    
+   $sts =$status[(int)($angka)];
+    return $sts;
 }
     
 ?>

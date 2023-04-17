@@ -63,7 +63,7 @@ class DilController extends Controller
     {
         // dd($request->all()); 
         $this->validate($request,[
-          'id' => 'required|unique:tbl_dil,id|min:10|max:10',
+          'id' => 'required|unique:tbl_dil,id|max:10',
           'status' => 'required',
           'cabang'=>'required',
           'no_rekening' => 'required|unique:tbl_dil,no_rekening|min:5|max:5',
@@ -159,7 +159,7 @@ class DilController extends Controller
         $data = DilModel::select('status')->where('id',$id)->first();
         // dd($data);
         if ($data->status == 1) {
-            $status = 0;
+            $status = 2;
         } else {
             $status = 1;
         }
@@ -186,7 +186,29 @@ class DilController extends Controller
    public function exportpdf()
    {
         $data = DilModel::select('*')
+        // ->where('status', 1)
+        ->get();
+        // return $data;
+        view()->share('data', $data);
+        $pdf = PDF::loadView('coba');
+        return $pdf->download('dataDIL.pdf');
+      
+   }
+   public function exportpdfa()
+   {
+        $data = DilModel::select('*')
         ->where('status', 1)
+        ->get();
+        // return $data;
+        view()->share('data', $data);
+        $pdf = PDF::loadView('coba');
+        return $pdf->download('dataDIL.pdf');
+      
+   }
+   public function exportpdfn()
+   {
+        $data = DilModel::select('*')
+        ->where('status', 2)
         ->get();
         // return $data;
         view()->share('data', $data);

@@ -11,6 +11,8 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {
+  
+               
        
         $dil = DB::table('tbl_dil as a')
         ->leftJoin('merek as b','b.id','=','a.id_merek')
@@ -19,15 +21,69 @@ class ReportController extends Controller
         ->leftJoin('sambung as e','e.id_dil','=','a.id')
 
         ->select([
-            'a.id','a.cabang','b.merek','c.tanggal_tutup','d.tanggal_ganti','e.tanggal_sambung'
+            'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.blok','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+            'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+            'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
         ])
-        
-        ->get();
        
+        ->get();
+    //     if($request->cabang)
+    //   {
+    //     $dil = DB::table('tbl_dil as a')
+    //     ->leftJoin('merek as b','b.id','=','a.id_merek')
+    //     ->leftJoin('penutupan as c','c.id_dil','=','a.id')
+    //     ->leftJoin('ganti as d','d.id_dil','=','a.id')
+    //     ->leftJoin('sambung as e','e.id_dil','=','a.id')
+
+    //     ->select([
+    //         'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.blok','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+    //         'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+    //         'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
+    //     ])
+    //     ->where('a.cabang','Like','%' .$request->cabang. '%')
+    //     ->get();
+    //   }
+       //search By status
+       if($request->status)
+       {
+        $dil = DB::table('tbl_dil as a')
+        ->leftJoin('merek as b','b.id','=','a.id_merek')
+        ->leftJoin('penutupan as c','c.id_dil','=','a.id')
+        ->leftJoin('ganti as d','d.id_dil','=','a.id')
+        ->leftJoin('sambung as e','e.id_dil','=','a.id')
+
+        ->select([
+            'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.blok','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+            'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+            'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
+        ])
+        ->where('a.status','Like','%' .$request->status. '%')
+        ->get();
+       }
+       if($request->cabang && $request->status)
+       {
+        $dil = DB::table('tbl_dil as a')
+        ->leftJoin('merek as b','b.id','=','a.id_merek')
+        ->leftJoin('penutupan as c','c.id_dil','=','a.id')
+        ->leftJoin('ganti as d','d.id_dil','=','a.id')
+        ->leftJoin('sambung as e','e.id_dil','=','a.id')
+
+        ->select([
+            'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.blok','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+            'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+            'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
+        ])
+        ->where('a.cabang','Like','%' .$request->cabang. '%')
+        ->where('a.status','Like','%' .$request->status. '%')
+        ->get();
+       }
+    //   dd($dil);
+   
         return view('report.index',compact('dil'));
     }
     public function search(Request $request){
-        $cabang = $request->cabang;
+       
+       
         $dil = DB::table('tbl_dil as a')
         ->leftJoin('merek as b','b.id','=','a.id_merek')
         ->leftJoin('penutupan as c','c.id_dil','=','a.id')
@@ -35,35 +91,69 @@ class ReportController extends Controller
         ->leftJoin('sambung as e','e.id_dil','=','a.id')
 
         ->select([
-            'a.id','a.cabang','b.merek','c.tanggal_tutup','d.tanggal_ganti','e.tanggal_sambung'
+            'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.blok','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+            'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+            'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
         ])
+       
         ->get();
-        $dilCount = $dil->count();
-        if ($request->cabang==31) {
-            $dil = DB::table('tbl_dil as a')
+      //search By Id
+      if($request->cabang)
+    
+      {
+        $dil = DB::table('tbl_dil as a')
         ->leftJoin('merek as b','b.id','=','a.id_merek')
         ->leftJoin('penutupan as c','c.id_dil','=','a.id')
         ->leftJoin('ganti as d','d.id_dil','=','a.id')
         ->leftJoin('sambung as e','e.id_dil','=','a.id')
 
         ->select([
-            'a.id','a.cabang','b.merek','c.tanggal_tutup','d.tanggal_ganti','e.tanggal_sambung'
+            'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.blok','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+            'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+            'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
         ])
-        ->where('cabang','=',31)
+        ->where('a.cabang','Like','%' .$request->cabang. '%')
         ->get();
-        $dilCount = $dil->count();
-        } elseif($request->cabang==3) {
-            $dil = DB::table('tbl_dil as a')->leftJoin('merek as b','b.id','=','a.id_merek')->leftJoin('penutupan as c','c.id_dil','=','a.id')->leftJoin('ganti as d','d.id_dil','=','a.id')
-            ->leftJoin('sambung as e','e.id_dil','=','a.id')
-            ->select([
-                'a.id','a.cabang','b.merek','c.tanggal_tutup','d.tanggal_ganti','e.tanggal_sambung'
-            ])
-            ->where('cabang','=',3)
-            
-            ->get();
-            $dilCount = $dil->count();
-        }
-        return view('report.index',compact('dil','cabang','dilCount'));
+      }
+       //search By status
+       if($request->status)
+       {
+        $dil = DB::table('tbl_dil as a')
+        ->leftJoin('merek as b','b.id','=','a.id_merek')
+        ->leftJoin('penutupan as c','c.id_dil','=','a.id')
+        ->leftJoin('ganti as d','d.id_dil','=','a.id')
+        ->leftJoin('sambung as e','e.id_dil','=','a.id')
+
+        ->select([
+            'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.blok','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+            'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+            'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
+        ])
+        ->where('a.status','Like','%' .$request->status. '%')
+        ->get();
+       }
+     
+       //search By  dan cabang
+       if($request->cabang && $request->status)
+       {
+        $dil = DB::table('tbl_dil as a')
+        ->leftJoin('merek as b','b.id','=','a.id_merek')
+        ->leftJoin('penutupan as c','c.id_dil','=','a.id')
+        ->leftJoin('ganti as d','d.id_dil','=','a.id')
+        ->leftJoin('sambung as e','e.id_dil','=','a.id')
+
+        ->select([
+            'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.blok','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+            'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+            'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
+        ])
+        ->where('a.cabang','Like','%' .$request->cabang. '%')
+        ->where('a.status','Like','%' .$request->status. '%')
+        ->get();
+       }
+    //   dd($dil);
+      return view('report.index',compact('dil'));
     }
-   
 }
+   
+

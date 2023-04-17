@@ -128,6 +128,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/importexcel', [DilController::class,'importexcel'])->name('importexcel');
     //import
     Route::get('/exportpdf', [DilController::class,'exportpdf'])->name('exportpdf');
+    Route::get('/exportpdfa', [DilController::class,'exportpdfa'])->name('exportpdfa');
+    Route::get('/exportpdfn', [DilController::class,'exportpdfn'])->name('exportpdfn');
 
 });
 //DIL

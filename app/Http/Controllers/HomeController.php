@@ -184,7 +184,7 @@ class HomeController extends Controller
          
        //untuk Pelanggan Non Aktip
        $datanon = DB::table('tbl_dil as a')
-       ->whereStatus('0')
+       ->whereStatus('2')
          ->get();
            $jumlahnon = $datanon->count();
 

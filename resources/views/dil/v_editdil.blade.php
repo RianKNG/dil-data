@@ -37,7 +37,7 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>status</label>
-                        <option  class="form-control" name="status"  value="{{ $data->no_rekening }}" disabled>Aktip</option>
+                        <option  class="form-control" name="status"  value="{{ $data->status }}" disabled>Aktip</option>
                       </div>
                     </div>
                   </div>
