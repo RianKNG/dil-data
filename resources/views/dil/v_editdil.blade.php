@@ -94,6 +94,12 @@
                         <input type="text" class="form-control" name="dusun" value="{{ $data->dusun }}">
                       </div>
                     </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Desa</label>
+                        <input type="text" class="form-control" name="desa" value="{{ $data->desa }}">
+                      </div>
+                    </div>
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>Kecamatan</label>
@@ -230,7 +236,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <!-- Select multiple-->
                       <div class="form-group">
                         <label>Merek Warter Meter</label>
@@ -242,6 +248,15 @@
                           {{-- <input type="text" name="id_merek" class="form-control" value="{{ $data->id_merek }}"> --}}
                          
                         </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>No Seri</label>
+                        <input type="no_seri" class="form-control" name="no_seri" value="{{ $data->no_seri }}">
+                        @error('no_seri')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>

@@ -504,8 +504,10 @@
                         <td>{{ $k->id }}</td>
                         <td>{{ $k->id_dil }}</td> 
                         <td>{{ $k->nama_sekarang }}</td>
-                        <td>{{ $k->status }}</td>
-                     
+                        <td>{{ sts($k->status) }}</td>
+                        <td>{{ $k->sumber_lain }}</td>
+                        <td>{{ $k->jenisusaha }}</td>
+                        <td>{{ $k->no_rekening }}</td>
                         <td>{{ bulankita($k->tanggal_bbn) }}</td>
                      
                     </tr> 
@@ -535,7 +537,7 @@
        let c =  {!! json_encode($grafik3) !!};
        let d =  {!! json_encode($grafik4) !!};
        let e =  {!! json_encode($grafik5) !!};
-       let f =  {!! json_encode($grafik5) !!};
+       let f =  {!! json_encode($grafik6) !!};
        let g =  {!! json_encode($grafik7) !!};
        let h =  {!! json_encode($grafik8) !!};
        let i =  {!! json_encode($grafik9) !!};
@@ -612,8 +614,8 @@
                 },
 
                     xAxis: {
-                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                      categories: ['Jan', 'Peb', 'Mar', 'Apr', 'Mei', 'Jun',
+                          'Jul', 'Agust', 'Sep', 'Okt', 'Nov', 'Des'],
                       accessibility: {
                           description: 'Months of the year'
                       }

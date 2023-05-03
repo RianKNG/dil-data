@@ -34,9 +34,9 @@ class DilController extends Controller
     // ini contoh 2 sudaj oke dengan query
     $dataquery = DB::table('tbl_dil as d')
     ->select([
-            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
             'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
-            'm.merek'
+            'm.merek','d.no_seri',
         ])
             ->join('merek as m',function($join){
                 $join->on('m.id','=','d.id_merek');
@@ -66,7 +66,7 @@ class DilController extends Controller
           'id' => 'required|unique:tbl_dil,id|max:10',
           'status' => 'required',
           'cabang'=>'required',
-          'no_rekening' => 'required|unique:tbl_dil,no_rekening|min:5|max:5',
+          'no_rekening' => 'required|unique:tbl_dil,no_rekening|max:6',
           'nama_sekarang' => 'required',
           'nama_pemilik' => 'required',
           'no_rumah' => 'required',
@@ -74,6 +74,7 @@ class DilController extends Controller
           'rw' => 'required|numeric',
           'blok' => 'required',
           'dusun' => 'required',
+          'desa'=>'required',
           'kecamatan' => 'required',
           'status_milik' => 'required',
           'jml_jiwa_tetap' => 'required|numeric',
@@ -89,6 +90,7 @@ class DilController extends Controller
           'sumber_lain' => 'required',
           'jenisusaha' => 'required',
           'id_merek' => 'required',
+          'no_seri' => 'required',
 
         ]);
   
@@ -105,6 +107,7 @@ class DilController extends Controller
           'rw' => $request->rw,
           'blok' => $request->blok,
           'dusun' => $request->dusun,
+          'desa' => $request->desa,
           'kecamatan' => $request->kecamatan,
           'status_milik' => $request->status_milik,
           'jml_jiwa_tetap' => $request->jml_jiwa_tetap,
@@ -120,6 +123,7 @@ class DilController extends Controller
           'sumber_lain' => $request->sumber_lain,
           'jenisusaha' => $request->jenisusaha,
           'id_merek' => $request->id_merek,
+          'no_seri' => $request->no_seri,
         ]);
        
         return redirect()->route('dil')->with('success','data berhasil ditambahkan');
@@ -244,9 +248,9 @@ class DilController extends Controller
     
    
      ->select([
-            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
             'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
-            'm.merek'
+            'm.merek','d.no_seri'
         ])
             ->join('merek as m',function($join){
                 $join->on('m.id','=','d.id_merek');

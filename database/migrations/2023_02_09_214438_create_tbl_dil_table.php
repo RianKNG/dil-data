@@ -25,6 +25,7 @@ class CreateTblDilTable extends Migration
             $table->integer('rw');
             $table->string('blok');
             $table->string('dusun'); 
+            $table->string('desa'); 
             $table->string('kecamatan');
             $table->string('status_milik')->nullable();
             $table->integer('jml_jiwa_tetap');
@@ -39,6 +40,7 @@ class CreateTblDilTable extends Migration
             $table->string('box')->nullable();
             $table->string('sumber_lain');
             $table->string('jenisusaha');
+            $table->string('no_seri'); 
             $table->timestamps();
         });
     }

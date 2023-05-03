@@ -32,20 +32,20 @@
                 <select name="cabang" class="form-control">
                   <option value="cabang">Semua</option> 
                   <option value="10">Ujungjaya</option>
-                  <option value="41">Darmaraja</option>
+                  <option value=41>Darmaraja</option>
                   <option value="12">Cisitu</option>
                   <option value="14">Cimanggung</option>
                   <option value="6">Tanjungsari</option>
                   <option value="13">Pamulihan</option>
-                  <option value="42">Sumedang Utara</option>
+                  <option value=42>Sumedang Utara</option>
                   <option value="7">Paseh</option>
                   <option value="8">Cimalaka</option>
                   <option value="2">Tanjungkerta</option>
-                  <option value="4">Situraja</option>
+                  <option value="43">Situraja</option>
                   <option value="11">Wado</option>
                   <option value="31">Sumedang Selatan</option>
                   <option value="5">Jatinangor</option>
-                  <option value="40">Mol Pelayan Publik</option>
+                  <option value=40>Mol Pelayan Publik</option>
                 </select>
               </div>
               <div class="col-sm-6 col-md-3">
@@ -56,7 +56,14 @@
                   <option value=2 @if (old('status') == 2) {{ 'selected' }} @endif>Non</option>
                 </select>
               </div>
-
+              <div class="col-sm-6 col-md-3">
+                <label>Status Milik</label>
+                <select name="status_milik" class="form-control">
+                  <option value="">--status milik--</option> 
+                  <option value="sewa" @if (old('status_milik') == "sewa") {{ 'selected' }} @endif>Sewa</option>
+                  <option value="Hak Milik" @if (old('status_milik') == "Hak Milik") {{ 'selected' }} @endif>Hak Milik</option>
+                </select>
+              </div>
               <div class="col-sm-6 col-md-3">
                 <button type="submit" class="btn btn-success">Cari Bosku</button>
                 <a href="/report" class="btn btn-primary">Refresh</a>
@@ -78,6 +85,7 @@
                 <td>Tanggal Sambung</td>
                 <td>Dusun</td>
                 <td>Kecamatan</td>
+                <td>Status Milik</td>
                 <td>Jml Jiwa</td>
                 <td>Check</td>
                 <td>Kopling</td>
@@ -113,7 +121,7 @@
                 <td>{{ $k->tanggal_file }}</td>
                 <td>{{ $k->dusun }}</td>
                 <td>{{ $k->kecamatan }}</td>
-               
+                <td>{{ $k->status_milik }}</td>
                 <td>{{ $k->jml_jiwa_tetap }}</td>
                 <td>{{ ($k->segel == 'ada') ? 'ada' : 'tidak ada' }}</td>
                 <td>{{ ($k->stop_kran == 'ada') ? 'ada' : 'tidak ada' }}</td>
@@ -127,6 +135,7 @@
            
           </tbody>
         </table>
+        <h3 class="btn btn-warning">Jumlah Data : {{ $count }}</h3>
 
       </div>
       <!-- /.card-body -->

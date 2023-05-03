@@ -140,7 +140,16 @@
               @enderror
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-2">
+            <div class="form-group">
+              <label>Desa</label>
+              <input type="text" class="form-control" name="desa" value="{{ old('desa') }}">
+              @error('desa')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            </div>
+          </div>
+          <div class="col-sm-2">
             <div class="form-group">
               <label>Kecamatan</label>
               <input type="text" class="form-control" name="kecamatan" value="{{ old('kecamatan') }}">
@@ -340,7 +349,7 @@
         </div>
       
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
             <!-- Select multiple-->
             <div class="form-group">
             <label>Merek Warter Meter</label>
@@ -353,6 +362,15 @@
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror  
             </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>No Seri</label>
+              <input type="no_seri" class="form-control" name="no_seri" value="{{ old('no_seri') }}">
+              @error('no_seri')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
           </div>
         </div>

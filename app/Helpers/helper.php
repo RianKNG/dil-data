@@ -2,9 +2,9 @@
 
 function duka($angka){
     // $angka = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,31,40);
-    $cabang= array('','','Tanjungkerta','','Situraja','Jatinangor','Tanjungsari','Paseh','Cimalaka',
+    $cabang= array('','','Tanjungkerta','','','Jatinangor','Tanjungsari','Paseh','Cimalaka',
                 'Tomo','Ujungjaya','Wado','Cisitu','Pamulihan','Cimanggung','','','','','','','','','','','','','','','','',
-                'Sumedang Selatan','','','','','','','','','Mol Pelayan Publik','Darmaraja','Sumedang Utara');
+                'Sumedang Selatan','','','','','','','','','Mol Pelayan Publik','Darmaraja','Sumedang Utara','situraja');
     
    $duka =$cabang[(int)($angka)];
     return $duka;
