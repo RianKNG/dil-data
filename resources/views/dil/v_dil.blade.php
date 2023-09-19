@@ -30,19 +30,20 @@
                     <th>Rek</th>
                     <th>Nama Sekarang</th>
                     <th>Nama Pemilik</th>
+                    <th>Nama Setelah BBN</th>
                     {{-- <th>No Rumah</th>
                     <th>Rt</th>
                     <th>Rw</th>
                     <th>Blok</th>
                     <th>Dusun</th> --}}
-                    {{-- <th>Kecamatan</th> 
+                    {{-- <th>Kecamatan</th>  --}}
                     <th>Status Milik</th>
-                    <th>Jiwa Tetap</th> --}}
+                    {{-- <th>Jiwa Tetap</th> --}}
                     <th>Jiwa Tidak Tetap</th>
                     <th>Tanggal Pasang</th>
                     <th>Tanggal File</th>
                     <th>Id Merek</th>
-                    {{-- <th>Segel</th> --}}
+                    {{-- <th>####</th> --}}
                     
                     {{-- <th>Stop Kran</th> 
                     <th>Ceck Valve</th>
@@ -71,14 +72,21 @@
                     <td>{{ $k->no_rekening }}</td>
                     <td>{{ $k->nama_sekarang }}</td>
                     <td>{{ $k->nama_pemilik }}</td>
+                    <td>
+                      @if(empty($k->nama_baru))
+                          <p>__</p>
+                      @else
+                          <p>{{ $k->nama_baru }}</p>
+                      @endif
+                    </td>
                     {{-- <td>{{ $k->no_rumah }}</td>
                     <td>{{ $k->rt }}</td>
                     <td>{{ $k->rw }}</td>
                     <td>{{ $k->blok }}</td>
                     <td>{{ $k->dusun }}</td> --}}
-                    {{-- <td>{{ $k->kecamatan}}</td>
+                    {{-- <td>{{ $k->kecamatan}}</td> --}}
                     <td>{{ $k->status_milik }}</td>
-                    <td>{{ $k->jml_jiwa_tetap }}</td> --}}
+                    {{-- <td>{{ $k->jml_jiwa_tetap }}</td> --}}
                     <td>{{ $k->jml_jiwa_tidak_tetap}}</td>
                     <td>{{ bulankita($k->tanggal_pasang) }}</td>
                     <td>{{ bulankita($k->tanggal_file) }}</td>

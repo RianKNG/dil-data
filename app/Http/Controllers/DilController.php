@@ -3,60 +3,128 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Merek;
-use App\Models\DilModel;
 use PDF;
+use App\Models\Merek;
+
+use App\Models\DilModel;
+use App\Models\Golongan;
 use App\Exports\DilExport;
 use App\Imports\DilImport;
 use Illuminate\Http\Request;
-use Carbon;
+
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 
 class DilController extends Controller
 {
+    protected $user;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            return $next($request);
+          });
+    }
+    
     public function index(Request $request)
    
     {
+        
+        $username = $this->user->name;
+        if($username == 'admin') {
+            $data = DB::table('tbl_dil AS d')
+        ->select([
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+            'm.merek',
+            'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru'
+        ])
+        ->Join('merek as m','d.id_merek','=','m.id')
+        ->Join('golongan as g','d.id_golongan','=','g.id')
+        ->leftJoin('bbn as s','s.id_dil','=','d.id')
+        ->where('cabang',11)
+        ->get();
+        return view('dil.v_dil', compact('data'));
+        }elseif($username == 'rian'){
+            $data = DB::table('tbl_dil AS d')
+        ->select([
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+            'm.merek',
+            'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru'
+        ])
+        ->Join('merek as m','d.id_merek','=','m.id')
+        ->Join('golongan as g','d.id_golongan','=','g.id')
+        ->leftJoin('bbn as s','s.id_dil','=','d.id')
+        ->where('cabang',12)
+        ->get();
+        return view('dil.v_dil', compact('data'));
+        }else{
+            $data = DB::table('tbl_dil as d')
+            // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_file) as tanggal_file'),'tanggal_file')
+            // ->whereMonth('tanggal_file', Carbon::now()->month)
+            // ->groupBy('cabang')
+            // ->groupBy('tanggal_file')
+            // ->get();
+               
+        ->select([
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+            'm.merek',
+            'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru'
+        ])
+        ->Join('merek as m','d.id_merek','=','m.id')
+        ->Join('golongan as g','d.id_golongan','=','g.id')
+        ->leftJoin('bbn as s','s.id_dil','=','d.id')
+        ->get();
+        return view('dil.v_dil', compact('data'));
+        }
+    
+       
+    
         // ini contoh 1 sudaj oke id paren jangan dibawa ke ID master karena kan tertimpah id oleh ID chil
-        // $data = DB::table('tbl_dil AS d')
-        // ->select([
-        //     'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
-        //     'd.ceck_valve','d.kopling','d.plugran','d.box','d.bln_billing','d.thn_billing','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
-        //     'm.merek'
-        // ])
-        // ->leftJoin('merek as m','d.id_merek','=','m.id')
+        
         // ->where('cabang','=','2')
         // ->leftJoin('merek as m','m.id','m.merek','d.id','=','m.id_merek')
 
     // ini contoh 2 sudaj oke dengan query
-    $dataquery = DB::table('tbl_dil as d')
-    ->select([
-            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
-            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
-            'm.merek','d.no_seri',
-        ])
-            ->join('merek as m',function($join){
-                $join->on('m.id','=','d.id_merek');
-                // ->where('d.cabang','=',2);
-            })
-            ->get();
+    // $dataquery = DB::table('tbl_dil as d')
+    // ->select([
+    //     'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+    //     'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+    //     'm.merek',
+    //     'd.id_golongan','g.nama_golongan','g.kode'
+    // ])
+    //         ->leftJoin('merek as m',function($join){
+    //             $join->on('m.id','=','d.id_merek');
+    //             // ->where('d.cabang','=',2);
+    //         })
+            
+    //         ->leftJoin('golongan as g',function($join){
+    //             $join->on('g.id','=','d.id_golongan');
+    //             // ->where('d.cabang','=',2);
+    //         })
+            
             // dd($dataquery);
             // 
 //  $data = $dataquery->where('cabang','=',4);
- $data = $dataquery->all();
+//  $data = $dataquery->all();
 
 
 
            
-        return view('dil.v_dil', compact('data'));
+      
     }
     public function add()
     {
         $mer = Merek::all();
-        return view('dil.v_dil_tambah',compact('mer'));
+        $gol = Golongan::all();
+        return view('dil.v_dil_tambah',compact('mer','gol'));
 
     }
     public function insert(Request $request)
@@ -72,7 +140,6 @@ class DilController extends Controller
           'no_rumah' => 'required',
           'rt' => 'required|numeric',
           'rw' => 'required|numeric',
-          'blok' => 'required',
           'dusun' => 'required',
           'desa'=>'required',
           'kecamatan' => 'required',
@@ -90,10 +157,12 @@ class DilController extends Controller
           'sumber_lain' => 'required',
           'jenisusaha' => 'required',
           'id_merek' => 'required',
+          'id_golongan' => 'required',
           'no_seri' => 'required',
 
         ]);
-  
+        
+        
         DilModel::create([
           
           'id' => $request->id,
@@ -105,7 +174,6 @@ class DilController extends Controller
           'no_rumah' => $request->no_rumah,
           'rt' => $request->rt,
           'rw' => $request->rw,
-          'blok' => $request->blok,
           'dusun' => $request->dusun,
           'desa' => $request->desa,
           'kecamatan' => $request->kecamatan,
@@ -123,9 +191,10 @@ class DilController extends Controller
           'sumber_lain' => $request->sumber_lain,
           'jenisusaha' => $request->jenisusaha,
           'id_merek' => $request->id_merek,
+          'id_golongan' => $request->id_golongan,
           'no_seri' => $request->no_seri,
         ]);
-       
+        
         return redirect()->route('dil')->with('success','data berhasil ditambahkan');
       }  
         // ini cara lama
@@ -135,9 +204,10 @@ class DilController extends Controller
     {
        // ini cara baru
        $mer = Merek::all();
+       $gol = Golongan::all();
         $data = DilModel::find($id);
         // dd($data);
-        return view('dil.v_editdil',compact('data','mer'));
+        return view('dil.v_editdil',compact('data','mer','gol'));
     }
     public function update(Request $request,$id)
     {
@@ -248,7 +318,7 @@ class DilController extends Controller
     
    
      ->select([
-            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.blok','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
             'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
             'm.merek','d.no_seri'
         ])

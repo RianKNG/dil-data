@@ -82,12 +82,12 @@
                         <input type="integer" class="form-control" name="rw" value="{{ $data->rw }}">
                       </div>
                     </div>
-                    <div class="col-sm-2">
+                    {{-- <div class="col-sm-2">
                       <div class="form-group">
                         <label>Blok</label>
                         <input type="text" class="form-control" name="blok" value="{{ $data->blok }}">
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="col-sm-2">
                       <div class="form-group">
                         <label>Dusun</label>

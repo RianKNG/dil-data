@@ -66,7 +66,7 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <p class="card-text"><span class="text-muted">Nama : {{ $dataz->blok }}</span></p>
+              {{-- <p class="card-text"><span class="text-muted">Nama : {{ $dataz->blok }}</span></p> --}}
               <p class="card-text"><span class="text-muted">Dusun : {{ $dataz->dusun }}</span></p>
               <p class="card-text"><span class="text-muted">Kecamatan : {{ $dataz->kecamatan }}</span></p>
               <p class="card-text"><span class="text-muted">Status Milik : {{ $dataz->status_milik }}</span></p>

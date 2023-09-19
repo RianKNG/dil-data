@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Bbn;
-use App\Models\Ganti;
-use App\Models\Merek;
 use App\Models\Sambung;
 use App\Models\Penutupan;
+use App\Models\Bbn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // use App\Helpers\Helper;
@@ -35,8 +33,6 @@ class HomeController extends Controller
       Penutupan::all();
       Sambung::all();
      Bbn::all();
-     Ganti::all();
-     Merek::all();
             
       $coba = Sambung::all();
       $categories = [];
@@ -45,7 +41,6 @@ class HomeController extends Controller
 
       }
       //data DIL baru
-      $tanggak = Carbon::now()->format('Y');
        $databill = DB::table('tbl_dil as a')
         // ->where('status','=',1) 
         ->whereMonth('tanggal_pasang', Carbon::now()->month)
@@ -59,47 +54,52 @@ class HomeController extends Controller
         ->GroupBy(DB::raw("Month(tanggal_file)"))
         ->whereYear('tanggal_file',Carbon::now()->format('Y'))
         ->pluck('cabang');
-        $tdatabill = DB::table('tbl_dil as d')
-        ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_file) as tanggal_file'),'tanggal_file')
-        // ->whereMonth('tanggal_file', Carbon::now()->month)
-        // ->whereDate('tanggal_file','<=', Carbon::now())
-        ->whereYear('tanggal_file','<=', Carbon::now())
-        ->groupBy('cabang')
-        ->groupBy('tanggal_file')
-        ->get()->toArray();
-        // dd($tdatabill);
-        // $ttdatabill = DB::table('tbl_dil as a')
-        // ->select(DB::raw("count(a.tanggal_file)  as `cabang` "))
-        // ->groupBy(DB::raw("cabang"))
-        // ->GroupBy(DB::raw("Month(tanggal_file)"))
-        // ->whereYear('tanggal_file',Carbon::now()->format('Y'))
-        // ->pluck('cabang');
-        // // dd($ttdatabill);
-        // $tttdatabill = DB::table('tbl_dil')
-        // ->select(DB::raw("MonthName(tanggal_file) as bulan "))
-        // ->GroupBy(DB::raw("cabang"))
-        // ->GroupBy(DB::raw("MonthName(tanggal_file)"))
-        // ->whereYear('tanggal_file',Carbon::now()->format('Y'))
-        // ->pluck('bulan');
+        $ttdatabill = DB::table('tbl_dil as a')
+        ->select(DB::raw("count(a.tanggal_file)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_file)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('cabang');
+        $tttdatabill = DB::table('tbl_dil')
+        ->select(DB::raw("MonthName(tanggal_file) as bulan "))
+        ->GroupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("MonthName(tanggal_file)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('bulan');
 
       //data penutupan
-      $jumlahtutupmodal = DB::table('penutupan as a')
+      $jumlahtutup = DB::table('penutupan as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
         ->select('a.*','b.*')
         ->whereMonth('tanggal_tutup', Carbon::now()->month)
         ->get();
-        $datatutupjumlah = $jumlahtutupmodal
+        $datatutupjumlah = $jumlahtutup
         ->count();
-      $jumlahtutup = DB::table('penutupan as a')
-      ->join('tbl_dil as b','a.id_dil','=','b.id')
-      ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')
-        // ->select('a.*','b.*')
-        // ->whereMonth('tanggal_tutup', Carbon::now()->month)
-        ->whereYear('tanggal_tutup','<=', Carbon::now())
-        ->groupBy('cabang')
-        ->groupBy('tanggal_tutup')
-        ->get()->toArray();
+        //untuk tabel Penutupan
+        $pdatabill = DB::table('penutupan as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("(b.cabang)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_tutup)"))
+        ->whereYear('tanggal_tutup',Carbon::now()->format('Y'))
+        ->pluck('cabang');
+       
+        $ppdatabill = DB::table('penutupan as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("count(a.tanggal_tutup)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_tutup)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('cabang');
       
+        $pppdatabill =  DB::table('penutupan as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("MonthName(tanggal_tutup) as bulan "))
+        ->GroupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("MonthName(tanggal_tutup)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('bulan');
+        
       //data Penyambungan
       $datahitungp = DB::table('sambung as t')
         ->join('tbl_dil as h','h.id','=','t.id_dil')
@@ -109,16 +109,30 @@ class HomeController extends Controller
       $dataz = $datahitungp
           ->count();
            //untuk tabel Penyambungan
+        $sdatabill = DB::table('sambung as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("(b.cabang)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_sambung)"))
+        ->whereYear('tanggal_sambung',Carbon::now()->format('Y'))
+        ->pluck('cabang');
        
-           $jumlahsambung = DB::table('sambung as a')
-           ->join('tbl_dil as b','a.id_dil','=','b.id')
-           ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_sambung) as tanggal_sambung'),'tanggal_sambung')
-             // ->select('a.*','b.*')
-             // ->whereMonth('tanggal_sambung', Carbon::now()->month)
-             ->whereYear('tanggal_sambung','<=', Carbon::now())
-             ->groupBy('cabang')
-             ->groupBy('tanggal_sambung')
-             ->get()->toArray();
+        $ssdatabill = DB::table('sambung as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("count(a.tanggal_sambung)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_sambung)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('cabang');
+      
+        $sssdatabill =  DB::table('sambung as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("MonthName(tanggal_sambung) as bulan "))
+        ->GroupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("MonthName(tanggal_sambung)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('bulan');
+        
       //data Penggantian
       $datahitunganganti = DB::table('ganti as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
@@ -129,21 +143,29 @@ class HomeController extends Controller
           ->count();
           
       //untuk tabel Penggantian
-      $jumlahganti = DB::table('ganti as a')
-      ->join('tbl_dil as b','a.id_dil','=','b.id')
-      ->join('merek as m','a.id_merek','=','m.id')
-      // ->select('a.*','b.*','m.*')
-      ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_ganti) as tanggal_ganti'))
+        $gdatabill = DB::table('ganti as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("(b.cabang)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_ganti)"))
+        ->whereYear('tanggal_ganti',Carbon::now()->format('Y'))
+        ->pluck('cabang');
        
-        // ->select('a.*','b.*')
-        // ->whereMonth('tanggal_ganti', Carbon::now()->month)
-        ->whereYear('tanggal_ganti','<=', Carbon::now())
-        // ->groupBy('no_wmbaru')
-        ->groupBy('cabang')
-        ->groupBy('tanggal_ganti')
-        ->get()->toArray();
-        // dd( $jumlahganti);
-
+        $ggdatabill = DB::table('ganti as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("count(a.tanggal_ganti)  as `cabang` "))
+        ->groupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("Month(tanggal_ganti)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('cabang');
+       
+        $gggdatabill =  DB::table('ganti as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        ->select(DB::raw("MonthName(tanggal_ganti) as bulan "))
+        ->GroupBy(DB::raw("cabang"))
+        ->GroupBy(DB::raw("MonthName(tanggal_ganti)"))
+        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        ->pluck('bulan');
         
       //untuk BBN
       $datahitungan = DB::table('bbn as h')
@@ -239,17 +261,16 @@ class HomeController extends Controller
                 'grafik1', 'grafik2', 'grafik3','grafik4','grafik5','grafik6','grafik7','grafik8','grafik9','grafik10','grafik11','grafik12',
                 //tutup
                 'tutup1','tutup2','tutup3','tutup4','tutup5','tutup6','tutup7','tutup8','tutup9','tutup10','tutup11','tutup12',
-                // 'pdatabill','ppdatabill','pppdatabill',
+                'pdatabill','ppdatabill','pppdatabill',
                 //samubng
                 'sambung1','sambung2','sambung3','sambung4','sambung5','sambung6','sambung7','sambung8','sambung9','sambung10','sambung11','sambung12',
-                'jumlahsambung',
+                'sdatabill','ssdatabill','sssdatabill',
                  //ganti
                  'ganti1','ganti2','ganti3','ganti4','ganti5','ganti6','ganti7','ganti8','ganti9','ganti10','ganti11','ganti12',
-                 'jumlahganti',
-                
+                 'gdatabill','ggdatabill','gggdatabill',
                  //lainnya
-                  'databill','databilling','jumlahtutup','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
-                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah'));
+                  'databill','databilling','jumlahtutup','datatutupjumlah','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
+                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','ttdatabill','tttdatabill','jmlt','jmltt'));
                  
                  
     }

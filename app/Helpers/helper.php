@@ -2,9 +2,50 @@
 
 function duka($angka){
     // $angka = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,31,40);
-    $cabang= array('','','Tanjungkerta','','','Jatinangor','Tanjungsari','Paseh','Cimalaka',
-                'Tomo','Ujungjaya','Wado','Cisitu','Pamulihan','Cimanggung','','','','','','','','','','','','','','','','',
-                'Sumedang Selatan','','','','','','','','','Mol Pelayan Publik','Darmaraja','Sumedang Utara','situraja');
+    $cabang= [
+        'Pusat',
+        'Sumedang Utara',
+        'Tanjungkerta',
+        'Darmaraja',
+        'situraja',
+        'Jatinangor',
+        'Tanjungsari',
+        'Paseh',
+        'Cimalaka',
+        'Tomo',
+        'Ujungjaya',
+        'Wado',
+        'Cisitu',
+        'Pamulihan',
+        'Cimanggung',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        'Sumedang Selatan',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        'Mol Pelayan Publik',
+    ];
+    
     
    $duka =$cabang[(int)($angka)];
     return $duka;
@@ -33,5 +74,6 @@ function sts($angka){
    $sts =$status[(int)($angka)];
     return $sts;
 }
+
     
 ?>

@@ -10,9 +10,10 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Tabel Report Pencarian Pelanggan</h3>
-          
   
           <div class="card-tools">
+          
+
             {{-- <div class="input-group input-group-sm" style="width: 150px;">
               <input type="search" name="search" class="form-control float-right" placeholder="search">
               <form action="/penutupan" method="GET">
@@ -20,15 +21,19 @@
               </form>
             </div> --}}
           </div>
+          
         </div>
+        
         <!-- /.card-header -->
         <!-- /.filtering data -->
         <div>
+         
         <form action="/report/search" method="POST">
           @csrf
           <div class="row filter-row">
+           
               <div class="col-sm-6 col-md-3">
-                <label>Test Cabang</label>
+                <label>Cabang</label>
                 <select name="cabang" class="form-control">
                   <option value="cabang">Semua</option> 
                   <option value="10">Ujungjaya</option>

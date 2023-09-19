@@ -28,7 +28,7 @@
         <a href="/dil" class="nav-link">
           <i class="nav-icon far fa-circle text-danger"></i>
           <p class="btn-xs">
-            Master DIL
+            Master DIL  {{ Auth::user()->name }}
           </p>
         </a>
       </li>
@@ -45,6 +45,14 @@
           <i class="nav-icon far fa-circle text-warning"></i>
           <p class="btn-xs">
             Master WM
+          </p>
+        </a>
+      </li>
+      <li class="{{ Request::is('/golongan')? "active":"" }}">
+        <a href="/golongan" class="nav-link">
+          <i class="nav-icon far fa-circle text-warning"></i>
+          <p class="btn-xs">
+            Master Golongan
           </p>
         </a>
       </li>
@@ -101,7 +109,7 @@
           </p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="{{ Request::is('/layanan')? "active":"" }}">
         <a href="/report" class="nav-link">
           <i class="nav-icon fas fa-user"></i>
           <p class="btn-xs">

@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\PenutupanController;
 use App\Http\Controllers\AccesoriesController;
 use App\Http\Controllers\PenggantianController;
@@ -131,9 +132,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/exportpdfa', [DilController::class,'exportpdfa'])->name('exportpdfa');
     Route::get('/exportpdfn', [DilController::class,'exportpdfn'])->name('exportpdfn');
 
+      //Golongan
+    Route::get('/golongan', [GolonganController::class,'index'])->name('golongan');
+    Route::post('/golongan/insert', [GolonganController::class,'insert']);
+    Route::get('/golongan/edit/{id}', [GolonganController::class,'edit']);
+    Route::post('/golongan/update/{id}',[GolonganController::class,'update']);
+    Route::get('/golongan/hapus/{id}', [GolonganController::class,'hapus']);
 });
-//DIL
-// Route::get('/', [HomeController::class,'index'])->name('guru');
+
 
 
 

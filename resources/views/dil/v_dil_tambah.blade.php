@@ -122,25 +122,17 @@
               @enderror
             </div>
           </div>
+
           <div class="col-sm-2">
             <div class="form-group">
-              <label>Blok</label>
-              <input type="text" class="form-control" name="blok" value="{{ old('blok') }}">
-              @error('blok')
-              <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="form-group">
-              <label>Dusun</label>
+              <label>Blok/Dusun</label>
               <input type="text" class="form-control" name="dusun" value="{{ old('dusun') }}">
               @error('dusun')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-3">
             <div class="form-group">
               <label>Desa</label>
               <input type="text" class="form-control" name="desa" value="{{ old('desa') }}">
@@ -149,7 +141,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-3">
             <div class="form-group">
               <label>Kecamatan</label>
               <input type="text" class="form-control" name="kecamatan" value="{{ old('kecamatan') }}">
@@ -349,7 +341,7 @@
         </div>
       
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <!-- Select multiple-->
             <div class="form-group">
             <label>Merek Warter Meter</label>
@@ -364,7 +356,22 @@
             </select>
             </div>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-4">
+            <!-- Select multiple-->
+            <div class="form-group">
+            <label>Golongan Tarip</label>
+            <select name="id_golongan" class="form-control">
+              <option value="">--- Golongan ---</option>
+              @foreach($gol as $item)
+                  <option value="{{ $item->id }}" @if (old('id_golongan') == "{{ $item->id }}") {{ 'selected' }} @endif>{{ $item->nama_golongan }}</option>
+              @endforeach  
+              @error('id_golongan')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror  
+            </select>
+            </div>
+          </div>
+          <div class="col-sm-4">
             <div class="form-group">
               <label>No Seri</label>
               <input type="no_seri" class="form-control" name="no_seri" value="{{ old('no_seri') }}">
@@ -374,7 +381,6 @@
             </div>
           </div>
         </div>
-
     
         <div class="form-group">
           <button class="btn btn-primary">simpan</button>

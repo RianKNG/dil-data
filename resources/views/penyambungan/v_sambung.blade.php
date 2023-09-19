@@ -179,8 +179,9 @@
                       <label>alasan</label>
                       <select name="alasan" class="form-control btn-xs">
                         <option selected>alasan ditutup</option>
-                        <option @if($k->alasan == "butuh") selected @endif>Butuh</option>
-                        <option @if($k->alasan == "sudah ada uang") selected @endif>sudah ada uang</option>
+                      
+                        <option value="1">Nunggak</option>
+                          <option value="2">Mengundurkan Diri</option>
                       </select>
                         @error('alasan')
                           <div class="alert alert-danger">{{ $message }}</div>
