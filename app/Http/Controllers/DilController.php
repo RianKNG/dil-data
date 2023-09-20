@@ -313,23 +313,44 @@ class DilController extends Controller
    public function detail(Request $request, $id)
    {
        
-    $dataz = DilModel::find($id);
-    $lain = DB::table('tbl_dil as d')
+    // $dataz = DilModel::find($id);
+    // $lain = DB::table('tbl_dil as d')
     
    
-     ->select([
-            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
-            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
-            'm.merek','d.no_seri'
-        ])
-            ->join('merek as m',function($join){
-                $join->on('m.id','=','d.id_merek');
-                // ->where('d.cabang','=',2);
-            })
-            ->get();
-        
-   
+    //  ->select([
+    //         'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.segel','d.stop_kran',
+    //         'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+    //         'm.merek','d.no_seri'
+    //     ])
+    //         ->join('merek as m',function($join){
+    //             $join->on('m.id','=','d.id_merek');
+    //             // ->where('d.cabang','=',2);
+    //         })
+    $lain = DB::table('tbl_dil as d')
+    // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_file) as tanggal_file'),'tanggal_file')
+    // ->whereMonth('tanggal_file', Carbon::now()->month)
+    // ->groupBy('cabang')
+    // ->groupBy('tanggal_file')
+    // ->get();
+       
+->select([
+    'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+    'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+    'm.merek',
+    'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru','t.tanggal_tutup','gan.tanggal_ganti'
+])
+->Join('merek as m','d.id_merek','=','m.id')
+->Join('golongan as g','d.id_golongan','=','g.id')
+->leftJoin('bbn as s','s.id_dil','=','d.id')
+->leftJoin('penutupan as t','t.id_dil','=','d.id')
+->Join('ganti as gan','gan.id_dil','=','d.id')
+->where('d.id', $id)
+->get();
 
-    return view('dil.v_detail',compact('dataz','lain'));
+    //   dd($lain);
+        
+//    dd($lain);
+
+    return view('dil.v_detail',compact('lain'));
    }
 }

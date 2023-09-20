@@ -69,9 +69,10 @@
                   <option value="Hak Milik" @if (old('status_milik') == "Hak Milik") {{ 'selected' }} @endif>Hak Milik</option>
                 </select>
               </div>
+              
               <div class="col-sm-6 col-md-3">
-                <button type="submit" class="btn btn-success">Cari Bosku</button>
-                <a href="/report" class="btn btn-primary">Refresh</a>
+                <button type="submit" class="btn btn-outline-success">Cari Bosku</button>
+                <a href="/report" class="btn btn-outline-primary">Refresh</a>
               </div>
           </div>
        </form>
