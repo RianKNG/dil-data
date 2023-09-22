@@ -55,7 +55,7 @@
       <br>
 
      <div class = "table">
-      <table border="1px" width="100%" cellpadding="5" cellspacing="0">
+      {{-- <table border="1px" width="100%" cellpadding="5" cellspacing="0">
             <tr width="100px">
                 <th rowspan="2">No</th>
                 <th colspan="4">DIL</th>
@@ -76,7 +76,7 @@
                 <td>81</td>
                 <td>81</td>
             </tr>
-        </table>
+        </table> --}}
 </div>
 </body>
 </html>

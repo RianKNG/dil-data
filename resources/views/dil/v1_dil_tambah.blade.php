@@ -165,7 +165,9 @@
                         <div class="form-check">
                           <label class="form-check-label"> <input class="form-check-input" name="status_milik" value="sewa" type="checkbox">sewa</label>
                           <div></div>
-                          <label class="form-check-label"> <input class="form-check-input" name="status_milik" value="hak_milik" type="checkbox">Hak Milik</label>
+                          <label class="form-check-label"> <input class="form-check-input" name="status_milik" value="hak_milik" type="checkbox">hak milik</label>
+                          <div></div>
+                          <label class="form-check-label"> <input class="form-check-input" name="status_milik" value="belum_terverifikasi" type="checkbox">belum terverifikasi</label>
                         </div>
                       </div>
                     </div>
@@ -272,6 +274,7 @@
                         <label class="form-check-label"> <input class="form-check-input" name="box" value="ada" type="checkbox">ada</label>
                         <div></div>
                         <label class="form-check-label"> <input class="form-check-input" name="box" value="tidak ada" type="checkbox">tidak ada</label>
+                        
                       </div>
                     </div>
                   </div>

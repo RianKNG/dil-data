@@ -59,11 +59,14 @@ class HomeController extends Controller
         ->GroupBy(DB::raw("Month(tanggal_file)"))
         ->whereYear('tanggal_file',Carbon::now()->format('Y'))
         ->pluck('cabang');
+        $date = Carbon::now()->format('Y');
         $tdatabill = DB::table('tbl_dil as d')
         ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_file) as tanggal_file'),'tanggal_file')
         // ->whereMonth('tanggal_file', Carbon::now()->month)
+        ->whereMonth('tanggal_file','<=',Carbon::now()->month)
+        ->whereYear('tanggal_file',$date)
         // ->whereDate('tanggal_file','<=', Carbon::now())
-        ->whereYear('tanggal_file','<=', Carbon::now())
+        // ->whereYear('tanggal_file','<=', Carbon::now())
         ->groupBy('cabang')
         ->groupBy('tanggal_file')
         ->get()->toArray();

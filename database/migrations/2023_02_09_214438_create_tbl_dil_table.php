@@ -29,8 +29,8 @@ class CreateTblDilTable extends Migration
             $table->string('status_milik')->nullable();
             $table->integer('jml_jiwa_tetap')->nullable();
             $table->integer('jml_jiwa_tidak_tetap')->nullable();
-            $table->date('tanggal_pasang')->nullable();
-            $table->date('tanggal_file')->nullable();;
+            $table->string('tanggal_pasang')->nullable();
+            $table->string('tanggal_file')->nullable();;
             $table->string('segel')->nullable();
             $table->string('stop_kran')->nullable();
             $table->string('ceck_valve')->nullable();

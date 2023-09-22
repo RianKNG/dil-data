@@ -89,14 +89,14 @@
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label class="btn-xs">No Merek Teregistrasi</label>
+                    <label class="btn-xs">Kode</label>
                     {{-- <input type="text" name="kode" class="form-control" value="{{ $kode }}" readonly> --}}
                     {{-- <input type="text" name="kode" class="form-control" readonly> --}}
-                    <input type="text" name="kode" class="form-control" placeholder="masukan nama golongan" required">
+                    <input type="text" name="kode" class="form-control" placeholder="Kode" required">
                   </div>
                   <div class="form-group">
                     <label class="btn-xs">Merek Water Meter</label>
-                    <input type="text" name="nama_golongan" class="form-control" placeholder="masukan nama golongan" required">
+                    <input type="text" name="nama_golongan" class="form-control" placeholder="golongan" required">
                   </div>
                 </div>
                 <!-- /.card-body -->

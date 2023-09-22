@@ -100,7 +100,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/exportbbn',[BbnController::class,'exportbbn'])->name('exportbbn');
     Route::post('/importbbn', [BbnController::class,'importbbn'])->name('importbbn');
 
-    Route::get('/coba',[CobaController::class,'index'])->name('coba');
+    Route::get('/coba',[CobaController::class,'index']);
     // bbn
     Route::get('/report',[ReportController::class,'index'])->name('report');
     Route::post('/report/search',[ReportController::class,'search'])->name('dilsearch');

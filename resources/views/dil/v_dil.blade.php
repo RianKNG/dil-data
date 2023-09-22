@@ -88,8 +88,8 @@
                     <td>{{ $k->status_milik }}</td>
                     {{-- <td>{{ $k->jml_jiwa_tetap }}</td> --}}
                     <td>{{ $k->jml_jiwa_tidak_tetap}}</td>
-                    <td>{{ bulankita($k->tanggal_pasang) }}</td>
-                    <td>{{ bulankita($k->tanggal_file) }}</td>
+                    <td>{{ $k->tanggal_pasang }}</td>
+                    <td>{{ $k->tanggal_file }}</td>
                     <td> {{ $k->merek}}</td>
                     {{-- <td>{{ $k->segel }}</td> --}}
                     {{-- <td>{{ $k->stop_kran }}</td>
@@ -132,7 +132,7 @@
               </tbody>
             
               </table>
-              
+              {{-- {{ $data->links() }} --}}
     {{-- *// ini adalah modal denger --}}
     @foreach ($data as $index => $k)
     <div class="modal fade" id="delete{{ $k->id }}">
@@ -161,7 +161,7 @@
 </div>
 </div>
 @endsection
-@section('script')
+{{-- @section('script')
 <script>
 $(document).ready(function () {
   $('#table').DataTable({
@@ -173,4 +173,19 @@ $(document).ready(function () {
   });
 });
 </script>
-@endsection
+@endsection --}}
+{{-- @endsection --}}
+
+@push('scripts')
+<script>
+  $(document).ready(function () {
+    $('#table').DataTable({
+      "responsive": true,"autoWidth": false,
+        // lengthMenu: [
+        //     [15, 25, 50,100, -1],
+        //     [15, 25, 50,100, 'All'],
+        // ],
+    });
+  });
+  </script>
+@endpush

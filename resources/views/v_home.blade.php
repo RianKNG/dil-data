@@ -45,7 +45,7 @@
     {{-- <div class="container"> --}}
         <!-- Info boxes -->
        
-        <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ bulankita($tanggal) }}</b></i></span></h6>
+        <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ $tanggal }}</b></i></span></h6>
         <div class="row">
           
           <div class="col-12 col-sm-6 col-md-3">
@@ -314,7 +314,7 @@
                         <td>{{ $k->sumber_lain }}</td>
                         <td>{{ $k->jenisusaha }}</td>
                         <td>{{ $k->no_rekening }}</td>
-                        <td>{{ bulankita($k->tanggal_file) }}</td>
+                        <td>{{ $k->tanggal_file }}</td>
                         {{-- <td>{{ $k->merek }}</td> --}}
                     </tr> 
                  @endforeach
@@ -368,7 +368,7 @@
                         <td>{{ $k->sumber_lain }}</td>
                         <td>{{ $k->jenisusaha }}</td>
                         <td>{{ $k->no_rekening }}</td>
-                        <td>{{ bulankita($k->tanggal_tutup) }}</td>
+                        <td>{{ $k->tanggal_tutup }}</td>
                         {{-- <td>{{ $k->merek }}</td> --}}
                     </tr> 
                  @endforeach
@@ -420,7 +420,7 @@
                         <td>{{ $k->sumber_lain }}</td>
                         <td>{{ $k->jenisusaha }}</td>
                         <td>{{ $k->no_rekening }}</td>
-                        <td>{{ bulankita($k->tanggal_sambung) }}</td>
+                        <td>{{$k->tanggal_sambung }}</td>
                         {{-- <td>{{ $k->merek }}</td> --}}
                     </tr> 
                  @endforeach
@@ -472,7 +472,7 @@
                         <td>{{ $k->sumber_lain }}</td>
                         <td>{{ $k->jenisusaha }}</td>
                         <td>{{ $k->no_rekening }}</td>
-                        <td>{{ bulankita($k->tanggal_ganti) }}</td>
+                        <td>{{ $k->tanggal_ganti }}</td>
                         {{-- <td>{{ $k->merek }}</td> --}}
                     </tr> 
                  @endforeach
@@ -523,7 +523,7 @@
                         <td>{{ $k->sumber_lain }}</td>
                         <td>{{ $k->jenisusaha }}</td>
                         <td>{{ $k->no_rekening }}</td>
-                        <td>{{ bulankita($k->tanggal_bbn) }}</td>
+                        <td>{{ $k->tanggal_bbn }}</td>
                      
                     </tr> 
                  @endforeach
@@ -1007,7 +1007,7 @@ Highcharts.chart('x', {
                       <div class="card-body">
                         <h5 class="card-title"></h5>
                        
-                        <table class="table table-bordered">
+                        <table id="table" class="table table-bordered table-striped">
                           <thead class="thead-danger text-white">
                             <th>No</th>
                              <th>Cabang</th>
@@ -1058,7 +1058,7 @@ Highcharts.chart('x', {
                         <div class="card-body">
                           <h5 class="card-title"></h5>
                          
-                          <table class="table table-bordered">
+                          <table id="table" class="table table-bordered table-striped">
                             <thead class="thead-danger text-white">
                               <th>No</th>
                                <th>Cabang</th>
@@ -1109,7 +1109,7 @@ Highcharts.chart('x', {
                                                   <div class="card-body">
                                                     <h5 class="card-title"></h5>
                                                    
-                                                    <table class="table table-bordered">
+                                                    <table id="table" class="table table-bordered table-striped">
                                                       <thead class="thead-danger text-white">
                                                         <th>No</th>
                                                          <th>Cabang</th>
@@ -1162,7 +1162,7 @@ Highcharts.chart('x', {
                                                                   <div class="card-body">
                                                                     <h5 class="card-title"></h5>
                                                                    
-                                                                    <table class="table table-bordered">
+                                                                    <table id="table" class="table table-bordered table-striped">
                                                                       <thead class="thead-danger text-white">
                                                                         <th>No</th>
                                                                          <th>Cabang</th>

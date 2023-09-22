@@ -134,7 +134,7 @@ class DilController extends Controller
           'id' => 'required|unique:tbl_dil,id|max:10',
           'status' => 'required',
           'cabang'=>'required',
-          'no_rekening' => 'required|unique:tbl_dil,no_rekening|max:6',
+          'no_rekening' => 'required|unique:tbl_dil,no_rekening|max:8',
           'nama_sekarang' => 'required',
           'nama_pemilik' => 'required',
           'no_rumah' => 'required',
@@ -343,7 +343,7 @@ class DilController extends Controller
 ->Join('golongan as g','d.id_golongan','=','g.id')
 ->leftJoin('bbn as s','s.id_dil','=','d.id')
 ->leftJoin('penutupan as t','t.id_dil','=','d.id')
-->Join('ganti as gan','gan.id_dil','=','d.id')
+->leftJoin('ganti as gan','gan.id_dil','=','d.id')
 ->where('d.id', $id)
 ->get();
 

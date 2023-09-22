@@ -164,7 +164,7 @@
       "responsive": true,"autoWidth": false,
         lengthMenu: [
             [15, 25, 50,100, -1],
-            [15, 25, 50,100, 'All'],
+            [15, 25, 50,100,],
         ],
     });
   });

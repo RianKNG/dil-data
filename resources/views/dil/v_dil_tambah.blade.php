@@ -162,7 +162,12 @@
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <div></div>
-               <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" value="Hak Milik" id="status_milik">Hak Milik</label>
+               <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" value="hak milik" id="status_milik">hak milik</label>
+               @error('status_milik')
+               <div class="alert alert-danger">{{ $message }}</div>
+               @enderror
+               <div></div>
+               <label class="form-check-label"><input class="form-check-input" type="checkbox" name="status_milik" value="belum terverifikasi" id="status_milik">belum terverifikasi</label>
                @error('status_milik')
                <div class="alert alert-danger">{{ $message }}</div>
                @enderror
