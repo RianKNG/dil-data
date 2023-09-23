@@ -120,8 +120,8 @@
 <script src="{{ asset('adminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('adminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 
-@yield('script')
+{{-- @yield('script') --}}
 @stack('scripts')
-
+@stack('kodescripts')
 </body>
 </html>

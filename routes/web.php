@@ -65,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/dil/update/{id}', [DilController::class,'update']);
     Route::get('/dil/hapus/{id}', [DilController::class,'hapus']);
     Route::get('/dil/status/{id}', [DilController::class,'status']);
+    Route::get('/dil/statustutup/{id}', [DilController::class,'statustutup']);
+    Route::get('/dil/statussambung/{id}', [DilController::class,'statussambung']);
     Route::get('/dil/jumlah', [DilController::class,'jumlah']);
     Route::get('/dil/detail/{id}', [DilController::class,'detail']);
 

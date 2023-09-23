@@ -81,12 +81,18 @@
             @foreach ($data as $index => $k)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td><label class=" badge {{ ($k->status == 1 ) ? 'badge-danger' : 'badge-success'}}">{{ ($k->status == 1 ) ? 'sudah disambung' : 'Non Aktip' }}</label></td>
+                <td>
+                  @if ($k->status == 2)
+                    <a href="/dil/statustutup/{{ $k->id_dil }}" class="btn btn-xs btn-danger">Non Aktip.</a>
+                  @else
+                    <a href="/dil/statustutup/{{ $k->id_dil }}" class="btn btn-xs btn-success">Aktip&nbsp;.</a>
+                  @endif
+                </td>
                 <td>{{ $k->id_dil }}</td>
                 <td>{{ $k->tanggal_tutup }}</td>
                 <td>{{ $k->nama_sekarang }}</td>
                 <td>{{ $k->alasan }}</td>
-                <td><label class=" badge {{ ($k->status == 1 ) ? 'badge-danger' : 'badge-success'}}">{{ ($k->status == 1 ) ? 'sudah disambung' : 'Non Aktip' }}</label></td>
+              
                
                 <td>
                   <a href="penutupan/edit/{{ $k->id }}" class="btn btn-success btn-xs">Edit</a>

@@ -90,9 +90,15 @@
                     <td>{{ $k->id_dil }}</td>
                     <td>{{ $k->nama_sekarang }}</td>
                     <td>{{ $k->alasan }}</td>
-                    <td>{{ bulankita($k->tanggal_sambung) }}</td>
+                    <td>{{ $k->tanggal_sambung }}</td>
 
-                    <td><label class=" badge {{ ($k->status == 0 ) ? 'badge-success badge-xs' : 'badge-danger badge-xs'}}">{{ ($k->status == 0 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
+                    <td>
+                      @if ($k->status == 2)
+                        <a href="/dil/statussambung/{{ $k->id_dil }}" class="btn btn-xs btn-danger">Non Aktip.</a>
+                      @else
+                        <a href="/dil/statussambung/{{ $k->id_dil }}" class="btn btn-xs btn-success">Aktip&nbsp;.</a>
+                      @endif
+                    </td>
                     <td>
                       {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}
                       

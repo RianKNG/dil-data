@@ -73,16 +73,23 @@ class DilController extends Controller
             // ->get();
                
         ->select([
-            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
             'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
             'm.merek',
-            'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru'
+            'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru','p.alasan'
         ])
         ->Join('merek as m','d.id_merek','=','m.id')
         ->Join('golongan as g','d.id_golongan','=','g.id')
         ->leftJoin('bbn as s','s.id_dil','=','d.id')
-        ->get();
-        return view('dil.v_dil', compact('data'));
+        ->leftJoin('penutupan as p','p.alasan','=','d.id')
+        // ->orderBy('d.status')
+        ->where('d.status',2)
+        ->paginate(100);
+        // ->chunk(10);
+        // dd($data);
+
+        
+        return view('dil.v_dil', compact('data'))->render(); 
         }
     
        
@@ -353,4 +360,36 @@ class DilController extends Controller
 
     return view('dil.v_detail',compact('lain'));
    }
+   public function statustutup($id)
+   {
+       
+       // $data = DilModel::find($id);
+       // $data = DilModel::all();
+       $data = DilModel::select('status')->where('id',$id)->first();
+       // dd($data);
+       if ($data->status == 1) {
+           $status = 2;
+       } else {
+           $status = 1;
+       }
+       DilModel::where('id',$id)->update(['status'=>$status]);
+       // return $data;
+       return redirect()->route('penutupan')->with('success','data penutupan berhasil dithapus');
+    }
+   public function statussambung($id)
+   {
+       
+       // $data = DilModel::find($id);
+       // $data = DilModel::all();
+       $data = DilModel::select('status')->where('id',$id)->first();
+       // dd($data);
+       if ($data->status == 1) {
+           $status = 2;
+       } else {
+           $status = 1;
+       }
+       DilModel::where('id',$id)->update(['status'=>$status]);
+       // return $data;
+        return redirect()->route('penyambungan')->with('success','data penutupan berhasil dithapus');
+    }
 }

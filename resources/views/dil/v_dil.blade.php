@@ -7,6 +7,12 @@
  {{ $message }}
 </div>
 @endif
+{{-- @push('style')
+<link rel="stylesheet"
+    href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet"
+    href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+@endpush --}}
 <div class="container-fluid btn-xs">
   <div class="row">
     <div class="col-md-12">
@@ -18,9 +24,11 @@
   <!-- /.card-header -->
   <div class="card-body">
           {{-- <div class="card-body"> --}}
-           
+            {{-- {{ $data->links() }} --}}
               <div class="card-body table-responsive p-0" style="height: 500px;">
-                <table id="table" class="table table-bordered table-striped">
+                {{-- @include('pagination_child') --}}
+                {{-- <table id="table" class="table table-bordered table-striped"> --}}
+                    <table id="table">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -61,13 +69,13 @@
                 </thead>
                 
                 <tbody>
-          
+                  
                   @foreach ($data as $index => $k)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     </td>
                     <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-success btn-xs' : 'btn-danger btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
-                    <td>{{ duka($k->cabang) }}
+                    <td>{{ duka($k->cabang) }}</td>  
                     <td>{{ $k->id }}</td>  
                     <td>{{ $k->no_rekening }}</td>
                     <td>{{ $k->nama_sekarang }}</td>
@@ -127,12 +135,16 @@
                     </td>
                   </tr>
                       
+            
               @endforeach
-                
               </tbody>
             
               </table>
-              {{-- {{ $data->links() }} --}}
+              {{$data->links("pagination::bootstrap-4")}}
+
+<p>
+    Menampilkan {{$data->count()}} of {{ $data->total() }} Dil.
+</p> 
     {{-- *// ini adalah modal denger --}}
     @foreach ($data as $index => $k)
     <div class="modal fade" id="delete{{ $k->id }}">
@@ -161,31 +173,11 @@
 </div>
 </div>
 @endsection
-{{-- @section('script')
-<script>
-$(document).ready(function () {
-  $('#table').DataTable({
-    "responsive": true,"autoWidth": false,
-      lengthMenu: [
-          [15, 25, 50,100, -1],
-          [15, 25, 50,100, 'All'],
-      ],
-  });
-});
-</script>
-@endsection --}}
-{{-- @endsection --}}
-
 @push('scripts')
 <script>
   $(document).ready(function () {
-    $('#table').DataTable({
-      "responsive": true,"autoWidth": false,
-        // lengthMenu: [
-        //     [15, 25, 50,100, -1],
-        //     [15, 25, 50,100, 'All'],
-        // ],
-    });
+    $('#table').DataTable({ info: false, ordering: false, paging: false });
   });
   </script>
 @endpush
+
