@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Invoice #</title>
+    <title>Invoice #{{ $order->invoice }}</title>
     <style>
         body{
             padding: 0;
@@ -56,25 +56,25 @@
 <body>
     <div class="header">
         <h3>Point of Sales Daengweb.id</h3>
-        <h4 style="line-height: 0px;">Invoice: #</h4>
-        <p><small style="opacity: 0.5;">#</small></p>
+        <h4 style="line-height: 0px;">Invoice: #{{ $order->invoice }}</h4>
+        <p><small style="opacity: 0.5;">{{ $order->created_at->format('d-m-Y H:i:s') }}</small></p>
     </div>
     <div class="customer">
         <table>
             <tr>
                 <th>Nama Pelanggan</th>
                 <td>:</td>
-                <td>#</td>
+                <td>{{ $order->customer->name }}</td>
             </tr>
             <tr>
                 <th>No Telp</th>
                 <td>:</td>
-                <td>#</td>
+                <td>{{ $order->customer->phone }}</td>
             </tr>
             <tr>
                 <th>Alamat</th>
                 <td>:</td>
-                <td>#</td>
+                <td>{{ $order->customer->address }}</td>
             </tr>
         </table>
     </div>
@@ -82,27 +82,46 @@
         <table class="layout display responsive-table">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Cabang</th>
+                    <th>#</th>
+                    <th>Produk</th>
+                    <th>Harga</th>
                     <th>Jumlah</th>
-                    <th>Tanggal</th>
+                    <th>Subtotal</th>
                 </tr>
             </thead>
-             <tbody>
-               @foreach ($data as $index => $k)
-             <tr>
-                 <td>{{  $loop->iteration }}</td>
-                 <td>{{  duka($k->cabang) }}</td>
-                 <td>{{ $k->jumlah }}( Konsumen )</td>
-                 <td>{{ $k->tanggal_tutup }}</td>
-             </tr>
-             @endforeach
+            <tbody>
+                @php 
+                    $no = 1;
+                    $totalPrice = 0;
+                    $totalQty = 0;
+                    $total = 0;
+                @endphp
+                @forelse ($order->order_detail as $row)
+                <tr>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $row->product->name }}</td>
+                    <td>Rp {{ number_format($row->price) }}</td>
+                    <td>{{ $row->qty }} Item</td>
+                    <td>Rp {{ number_format($row->price * $row->qty) }}</td>
+                </tr>
+​
+                @php
+                    $totalPrice += $row->price;
+                    $totalQty += $row->qty;
+                    $total += ($row->price * $row->qty);
+                @endphp
+                @empty
+                <tr>
+                    <td colspan="5" class="text-center">Tidak ada data</td>
+                </tr>
+                @endforelse
             </tbody>
             <tfoot>
                 <tr>
                     <th colspan="2">Total</th>
-                    <td>#</td>
-                    <td>#</td>
+                    <td>Rp {{ number_format($totalPrice) }}</td>
+                    <td>{{ number_format($totalQty) }} Item</td>
+                    <td>Rp {{ number_format($total) }}</td>
                 </tr>
             </tfoot>
         </table>

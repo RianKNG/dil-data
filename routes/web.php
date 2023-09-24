@@ -69,6 +69,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dil/statussambung/{id}', [DilController::class,'statussambung']);
     Route::get('/dil/jumlah', [DilController::class,'jumlah']);
     Route::get('/dil/detail/{id}', [DilController::class,'detail']);
+    Route::get('/dil/cetaklaporan', [DilController::class,'cetaklaporan']);
+    Route::get('/pagination/fetch_data', [DilController::class,'fetch_data']);
 
     //Penutupan
     Route::get('/penutupan', [PenutupanController::class,'index'])->name('penutupan');

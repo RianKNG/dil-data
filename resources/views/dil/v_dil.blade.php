@@ -20,6 +20,31 @@
 <div class="card-outline card-primary">
   <div class="card-header">
     <h3 class="card-title">Data Dil</h3>
+    <br>
+    <div class="card-body">
+      <div class="mx-auto pull-right">
+          <div class="">
+              <form action="{{ route('dil') }}" method="GET" role="search">
+
+                  <div class="input-group">
+                    <span class="input-group-btn mr-2 mt-0">
+                      <button class="btn btn-info" type="submit" title="Search projects">
+                          <span class="fas fa-search"></span>
+                      </button>
+                  </span>
+                  <input type="text" class="form-control mr-2" name="term" placeholder="Search projects" id="term">
+                  <a href="{{ route('dil') }}" class=" mt-0">
+                      <span class="input-group-btn">
+                          <button class="btn btn-danger" type="button" title="Refresh page">
+                              <span class="fas fa-sync-alt"></span>
+                          </button>
+                      </span>
+                      </a>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
@@ -140,11 +165,16 @@
               </tbody>
             
               </table>
-              {{$data->links("pagination::bootstrap-4")}}
+              @if ($data->links()->paginator->hasPages())
+              <div class="mt-4 p-4 box has-text-centered">
+                  {{ $data->links() }}
+              </div>
+          @endif
+              {{-- {{$data->links("pagination::bootstrap-4")}}
 
 <p>
     Menampilkan {{$data->count()}} of {{ $data->total() }} Dil.
-</p> 
+</p>  --}}
     {{-- *// ini adalah modal denger --}}
     @foreach ($data as $index => $k)
     <div class="modal fade" id="delete{{ $k->id }}">
@@ -173,11 +203,11 @@
 </div>
 </div>
 @endsection
-@push('scripts')
+{{-- @push('scripts')
 <script>
   $(document).ready(function () {
     $('#table').DataTable({ info: false, ordering: false, paging: false });
   });
   </script>
-@endpush
+@endpush --}}
 

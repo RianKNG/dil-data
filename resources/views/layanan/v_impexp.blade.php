@@ -53,6 +53,16 @@
             </div>
         </div>
         <div class="col-md-4">
+            <div class="card card-outline card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Expor Data Pdf Aktip</h3>
+            </div>
+            <div class="card-body">
+                <a href="/dil/cetaklaporan" class="btn btn-danger">vvvvvvvvvvv</a>     
+            </div>
+            </div>
+        </div>
+        <div class="col-md-4">
             <div class="card card-outline card-primary">
             <div class="card-header">
                 <h3 class="card-title">Expor Data Pdf Non Aktip</h3>
@@ -61,6 +71,15 @@
                 <a href="/exportpdfn" class="btn btn-primary">Download Pdf Non Aktip</a>     
             </div>
             </div>
+        </div>
+        <div class="my-2">
+            <form action="/dil/cetaklaporan" method="GET">
+                <div class="input-group mb-3">
+                    <input type="date" class="form-control" name="start_date">
+                    <input type="date" class="form-control" name="end_date">
+                    <button class="btn btn-primary" type="submit">GET</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -102,4 +121,5 @@
         </div>
     </div>
   </div>
+
 @endsection

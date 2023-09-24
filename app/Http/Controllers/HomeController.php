@@ -84,7 +84,7 @@ class HomeController extends Controller
         // ->GroupBy(DB::raw("MonthName(tanggal_file)"))
         // ->whereYear('tanggal_file',Carbon::now()->format('Y'))
         // ->pluck('bulan');
-
+// dd($tdatabill);
       //data penutupan
       $jumlahtutupmodal = DB::table('penutupan as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
@@ -95,14 +95,19 @@ class HomeController extends Controller
         ->count();
       $jumlahtutup = DB::table('penutupan as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
-      ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')
+      // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
+      ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup' , Carbon::now()->month))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
+      // ->where(DB::raw('(tanggal_tutup)'), Carbon::today()->month)
         // ->select('a.*','b.*')
         // ->whereMonth('tanggal_tutup', Carbon::now()->month)
-        ->whereYear('tanggal_tutup','<=', Carbon::now())
+        // ->whereYear('tanggal_tutup','<=', Carbon::now())
+        // ->where('tanggal_tutup',Carbon::now()->month)
         ->groupBy('cabang')
-        ->groupBy('tanggal_tutup')
+        // ->groupBy('tanggal_tutup')
         ->get()->toArray();
-      
+      // dd($jumlahtutup);
+    
+ 
       //data Penyambungan
       $datahitungp = DB::table('sambung as t')
         ->join('tbl_dil as h','h.id','=','t.id_dil')

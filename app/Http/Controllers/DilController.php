@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 
+
 class DilController extends Controller
 {
     protected $user;
@@ -82,14 +83,39 @@ class DilController extends Controller
         ->Join('golongan as g','d.id_golongan','=','g.id')
         ->leftJoin('bbn as s','s.id_dil','=','d.id')
         ->leftJoin('penutupan as p','p.alasan','=','d.id')
-        // ->orderBy('d.status')
-        ->where('d.status',2)
-        ->paginate(100);
+        ->orderBy('d.cabang','desc')
+        // ->where('d.status',2)
+        ->simplePaginate(100);
+        // ->get();
         // ->chunk(10);
         // dd($data);
-
-        
+        if (request('term')) {
+            $data = DB::table('tbl_dil as d')
+            // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_file) as tanggal_file'),'tanggal_file')
+            // ->whereMonth('tanggal_file', Carbon::now()->month)
+            // ->groupBy('cabang')
+            // ->groupBy('tanggal_file')
+            // ->get();
+               
+        ->select([
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+            'm.merek',
+            'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru','p.alasan'
+        ])
+        ->Join('merek as m','d.id_merek','=','m.id')
+        ->Join('golongan as g','d.id_golongan','=','g.id')
+        ->leftJoin('bbn as s','s.id_dil','=','d.id')
+        ->leftJoin('penutupan as p','p.alasan','=','d.id')
+        // ->orderBy('d.rt','asc')
+        ->where('d.cabang', 'Like', '%' . request('term') . '%')
+        ->orWhere('d.id', 'Like', '%' . request('term') . '%')
+        ->simplePaginate(100);
+           
+        }
         return view('dil.v_dil', compact('data'))->render(); 
+       
+    
         }
     
        
@@ -266,11 +292,13 @@ class DilController extends Controller
    }
    public function exportpdf()
    {
-        $data = DilModel::select('*')
-        // ->where('status', 1)
+    $data=DB::table('tbl_dil')
+        // $data = DilModel::select('*')
+        ->where('status', 2)
         ->get();
         // return $data;
-        view()->share('data', $data);
+        dd($data);
+        view($data)->share('data', $data);
         $pdf = PDF::loadView('coba');
         return $pdf->download('dataDIL.pdf');
       
@@ -392,4 +420,34 @@ class DilController extends Controller
        // return $data;
         return redirect()->route('penyambungan')->with('success','data penutupan berhasil dithapus');
     }
+    public function cetaklaporan()
+   {
+    if (request()->start_date || request()->end_date) {
+        $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
+        $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
+        $data = DB::table('penutupan as a')
+        ->join('tbl_dil as b','a.id_dil','=','b.id')
+        // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
+        ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
+        // ->where(DB::raw('(tanggal_tutup)'), Carbon::today()->month)
+          // ->select('a.*','b.*')
+          ->whereBetween('tanggal_tutup',[$start_date,$end_date])
+        //   ->whereMonth('tanggal_tutup', Carbon::now()->month)
+          // ->whereYear('tanggal_tutup','<=', Carbon::now())
+          // ->where('tanggal_tutup',Carbon::now()->month)
+          ->groupBy('cabang')
+        //   ->groupBy('tanggal_tutup')
+          ->get();
+            // return $data;
+            view()->share('data', $data);
+            $pdf = PDF::loadView('coba2');
+             return $pdf->download('laporan.pdf');
+    } 
+  
+   
+        // view()->share('data', $data);
+        // $pdf = PDF::loadView('coba');
+        // return $pdf->download('dataDIL.pdf');
+} 
+   
 }
