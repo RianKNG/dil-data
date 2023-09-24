@@ -150,7 +150,7 @@ class HomeController extends Controller
         ->groupBy('cabang')
         ->groupBy('tanggal_ganti')
         ->get()->toArray();
-        // dd( $jumlahganti);
+       
 
         
       //untuk BBN
