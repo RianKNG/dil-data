@@ -292,15 +292,21 @@ class DilController extends Controller
    }
    public function exportpdf()
    {
-    $data=DB::table('tbl_dil')
-        // $data = DilModel::select('*')
-        ->where('status', 2)
-        ->get();
-        // return $data;
-        dd($data);
-        view($data)->share('data', $data);
-        $pdf = PDF::loadView('coba');
-        return $pdf->download('dataDIL.pdf');
+    $s=DB::table('tbl_dil as d')
+    ->select([
+                'd.id','d.cabang','d.status',
+              
+            ])
+        // ->where('status', 2)
+        // ->get();
+        ->paginate(10);
+        
+      
+        // dd($s);
+        // view()->share('naha');
+
+        $pdf = PDF::loadView('coba', array('s' => $s));
+    return $pdf->download('xx.pdf');
       
    }
    public function exportpdfa()
@@ -428,22 +434,41 @@ class DilController extends Controller
         $data = DB::table('penutupan as a')
         ->join('tbl_dil as b','a.id_dil','=','b.id')
         // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
-        ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
+        ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'))
+        
+        // DB::raw('sum(cabang) as total'))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
+       
         // ->where(DB::raw('(tanggal_tutup)'), Carbon::today()->month)
           // ->select('a.*','b.*')
           ->whereBetween('tanggal_tutup',[$start_date,$end_date])
+        
         //   ->whereMonth('tanggal_tutup', Carbon::now()->month)
           // ->whereYear('tanggal_tutup','<=', Carbon::now())
           // ->where('tanggal_tutup',Carbon::now()->month)
           ->groupBy('cabang')
+        
         //   ->groupBy('tanggal_tutup')
           ->get();
+        $sum = $data->sum(function ($item) {
+            return $item->jumlah;
+        });
+        $diltotal=DB::table('penutupan as a')
+        ->rightJoin('tbl_dil as b','a.id_dil','=','b.id')
+        ->where('status',1)
+        ->count();
+        
+        
+         
+        // ->get();
+        
+        //   dd($data);
             // return $data;
-            view()->share('data', $data);
-            $pdf = PDF::loadView('coba2');
-             return $pdf->download('laporan.pdf');
-    } 
-  
+            // view()->share('data', $data);
+            // $pdf = PDF::loadView('coba2');
+            //  return $pdf->download('laporan.pdf');
+            $pdf = PDF::loadView('coba2', array('data' => $data,'sum'=>$sum,'diltotal'=>$diltotal));
+    return $pdf->download('invoice.pdf');
+    }
    
         // view()->share('data', $data);
         // $pdf = PDF::loadView('coba');

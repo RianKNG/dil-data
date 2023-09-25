@@ -55,24 +55,24 @@
 </head>
 <body>
     <div class="header">
-        <h3>Point of Sales Daengweb.id</h3>
-        <h4 style="line-height: 0px;">Invoice: #</h4>
-        <p><small style="opacity: 0.5;">#</small></p>
+        <h3>Laporan. #</h3>
+        <h4 style="line-height: 0px;">Tanggal: #</h4>
+        <p><small style="opacity: 0.5;"> Bagian: #</small></p>
     </div>
     <div class="customer">
         <table>
             <tr>
-                <th>Nama Pelanggan</th>
+                <th>Jumlah DIL</th>
+                <td>:</td>
+                <td>{{ $diltotal }}</td>
+            </tr>
+            <tr>
+                <th> Jumlah Pelanggal Aktip</th>
                 <td>:</td>
                 <td>#</td>
             </tr>
             <tr>
-                <th>No Telp</th>
-                <td>:</td>
-                <td>#</td>
-            </tr>
-            <tr>
-                <th>Alamat</th>
+                <th>Jumlah Pelanggan Non Akip</th>
                 <td>:</td>
                 <td>#</td>
             </tr>
@@ -85,7 +85,7 @@
                     <th>No</th>
                     <th>Cabang</th>
                     <th>Jumlah</th>
-                    <th>Tanggal</th>
+                    {{-- <th>Tanggal</th> --}}
                 </tr>
             </thead>
              <tbody>
@@ -94,15 +94,21 @@
                  <td>{{  $loop->iteration }}</td>
                  <td>{{  duka($k->cabang) }}</td>
                  <td>{{ $k->jumlah }}( Konsumen )</td>
-                 <td>{{ $k->tanggal_tutup }}</td>
+                 {{-- <td>{{ $k->tanggal_tutup }}</td> --}}
              </tr>
              @endforeach
             </tbody>
+            {{-- @php
+            $item=0;
+            @endphp --}}
             <tfoot>
                 <tr>
                     <th colspan="2">Total</th>
-                    <td>#</td>
-                    <td>#</td>
+                    <td>
+                        {{$data->sum('jumlah')}}
+                    </td>
+                    {{-- <td>{{ $sum }}</td> --}}
+                  
                 </tr>
             </tfoot>
         </table>

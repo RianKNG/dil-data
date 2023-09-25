@@ -75,13 +75,13 @@
   @php
       $no=1;
   @endphp
- @foreach ($data as $index => $k)
+ @foreach ($s as $index => $k)
 <tr >  
 </td>
 <td>{{ $k->cabang }}</td>
 <td><label class=" btn {{ ($k->status == 1 ) ? 'btn-success btn-xs' : 'btn-danger btn-xs'}}">{{ ($k->status == 1 ) ? 'Aktip' : 'Non Aktip' }}</label></td>
 <td>{{ $k->id }}</td>  
-<td>{{ $k->no_rekening }}</td>
+{{-- <td>{{ $k->no_rekening }}</td>
 <td>{{ $k->nama_sekarang }}</td>
 <td>{{ $k->nama_pemilik }}</td>
 <td>{{ $k->no_rumah }}</td>
@@ -104,9 +104,9 @@
 <td>{{ $k->bln_billing }}</td>
 <td>{{ $k->thn_billing }}</td>
 <td>{{ $k->sumber_lain}}</td>
-<td>{{ $k->jenis_usaha }}</td>
+<td>{{ $k->jenis_usaha }}</td> --}}
 
-<td>{{ $k->timestamp}}</td>
+{{-- <td>{{ $k->timestamp}}</td> --}}
 
 </tr>  
     

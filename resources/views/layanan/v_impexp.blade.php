@@ -53,16 +53,6 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-outline card-danger">
-            <div class="card-header">
-                <h3 class="card-title">Expor Data Pdf Aktip</h3>
-            </div>
-            <div class="card-body">
-                <a href="/dil/cetaklaporan" class="btn btn-danger">vvvvvvvvvvv</a>     
-            </div>
-            </div>
-        </div>
-        <div class="col-md-4">
             <div class="card card-outline card-primary">
             <div class="card-header">
                 <h3 class="card-title">Expor Data Pdf Non Aktip</h3>
