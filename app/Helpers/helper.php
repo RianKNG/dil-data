@@ -62,8 +62,36 @@ function duka($angka){
 // }
 function mrk($angka){
     // $angka = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,31,40);
-    $merek= array('','Linflow','Barindo','Bestini');
-    
+    $merek= [
+        '',
+        '',
+        '',
+        'LINFLOW',
+        'KENT',
+        'AQUA',
+        'SAE SEOUL',
+        'B & R',
+        'ASAHI',
+        'BOSCO',
+        'KIMON',
+        'N.B',
+        'I.V.Z',
+        'MAGDALENA',
+        'ITRON',
+        'BARINDO',
+        'BESTINI',
+        'AG',
+        'MR',
+        'AMICO',
+        'ONDA',
+        'HILANG',
+        'MULTIMAG',
+        'MULTIMAG',
+        'SHINHAN',
+        'CS',
+        'AICHI TOKAI',
+        'AKURAT',
+    ];
    $mrk =$merek[(int)($angka)];
     return $mrk;
 }
