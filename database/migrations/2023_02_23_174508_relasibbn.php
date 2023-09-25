@@ -15,7 +15,7 @@ class Relasibbn extends Migration
     {
         Schema::table('bbn', function (Blueprint $table) {
             $table->unsignedInteger('id_dil');
-            $table->foreign('id_dil')->references('id')->on('tbl_dil')->onDelete('Cascade');   
+            $table ->foreign('id_dil')->references('id')->on('tbl_dil')->onDelete('Cascade');
         });
     }
 

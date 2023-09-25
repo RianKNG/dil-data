@@ -17,7 +17,7 @@ class CreateTblDilTable extends Migration
             $table->increments('id');
             $table->string('status')->nullable();
             $table->string('cabang');
-            $table->integer('no_rekening');
+            $table->string('no_rekening');
             $table->string('nama_sekarang')->nullable();
             $table->string('nama_pemilik')->nullable();
             $table->string('no_rumah')->nullable();

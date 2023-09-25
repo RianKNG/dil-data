@@ -288,6 +288,7 @@ class DilController extends Controller
    public function exportexcel()
    {
      return Excel::download(new DilExport, 'datadil.xlsx');
+     
       
    }
    public function exportpdf()
