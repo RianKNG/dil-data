@@ -411,6 +411,7 @@ class DilController extends Controller
        // return $data;
        return redirect()->route('penutupan')->with('success','data penutupan berhasil dithapus');
     }
+    
    public function statussambung($id)
    {
        
@@ -427,6 +428,106 @@ class DilController extends Controller
        // return $data;
         return redirect()->route('penyambungan')->with('success','data penutupan berhasil dithapus');
     }
+    public function cetaklaporanpenggantian()
+    {
+        if (request()->start_date || request()->end_date) {
+            $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
+            $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
+            $data = DB::table('ganti as a')
+            ->join('tbl_dil as b','a.id_dil','=','b.id')
+            
+            // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
+            ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_ganti) as tanggal_ganti'))
+            
+            // DB::raw('sum(cabang) as total'))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
+           
+            // ->where(DB::raw('(tanggal_tutup)'), Carbon::today()->month)
+              // ->select('a.*','b.*')
+              ->whereBetween('tanggal_ganti',[$start_date,$end_date])
+            
+            //   ->whereMonth('tanggal_tutup', Carbon::now()->month)
+              // ->whereYear('tanggal_tutup','<=', Carbon::now())
+              // ->where('tanggal_tutup',Carbon::now()->month)
+              ->groupBy('cabang')
+            
+            //   ->groupBy('tanggal_tutup')
+              ->get();
+            //   dd($data);
+        //     $sum = $data->sum(function ($item) {
+        //         return $item->jumlah;
+    
+                $sum = $data->sum(function ($item) {
+                    return $item->jumlah;
+                });
+            $diltotal=DB::table('ganti as a')
+            ->rightJoin('tbl_dil as b','a.id_dil','=','b.id')
+            ->where('status',1)
+            ->count();
+            // dd($data);
+            
+             
+            // ->get();
+            
+            //   dd($data);
+                // return $data;
+                // view()->share('data', $data);
+                // $pdf = PDF::loadView('coba2');
+                //  return $pdf->download('laporan.pdf');
+                $pdf = PDF::loadView('coba2', array('data' => $data,'sum'=>$sum,'diltotal'=>$diltotal));
+        return $pdf->download('invoice.pdf');
+    }
+}
+    
+    public function cetaklaporanpenyambungan()
+    {
+        if (request()->start_date || request()->end_date) {
+            $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
+            $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
+            $data = DB::table('sambung as a')
+            ->join('tbl_dil as b','a.id_dil','=','b.id')
+            
+            // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
+            ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_sambung) as tanggal_sambung'))
+            
+            // DB::raw('sum(cabang) as total'))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
+           
+            // ->where(DB::raw('(tanggal_tutup)'), Carbon::today()->month)
+              // ->select('a.*','b.*')
+              ->whereBetween('tanggal_sambung',[$start_date,$end_date])
+            
+            //   ->whereMonth('tanggal_tutup', Carbon::now()->month)
+              // ->whereYear('tanggal_tutup','<=', Carbon::now())
+              // ->where('tanggal_tutup',Carbon::now()->month)
+              ->groupBy('cabang')
+            
+            //   ->groupBy('tanggal_tutup')
+              ->get();
+            //   dd($data);
+        //     $sum = $data->sum(function ($item) {
+        //         return $item->jumlah;
+    
+                $sum = $data->sum(function ($item) {
+                    return $item->jumlah;
+                });
+            $diltotal=DB::table('sambung as a')
+            ->rightJoin('tbl_dil as b','a.id_dil','=','b.id')
+            ->where('status',1)
+            ->count();
+            
+            
+             
+            // ->get();
+            
+            //   dd($data);
+                // return $data;
+                // view()->share('data', $data);
+                // $pdf = PDF::loadView('coba2');
+                //  return $pdf->download('laporan.pdf');
+                $pdf = PDF::loadView('coba2', array('data' => $data,'sum'=>$sum,'diltotal'=>$diltotal));
+        return $pdf->download('invoice.pdf');
+    }
+}
+
     public function cetaklaporan()
    {
     if (request()->start_date || request()->end_date) {
@@ -434,6 +535,7 @@ class DilController extends Controller
         $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
         $data = DB::table('penutupan as a')
         ->join('tbl_dil as b','a.id_dil','=','b.id')
+        
         // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
         ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'))
         
@@ -450,9 +552,13 @@ class DilController extends Controller
         
         //   ->groupBy('tanggal_tutup')
           ->get();
-        $sum = $data->sum(function ($item) {
-            return $item->jumlah;
-        });
+    //       dd($data);
+    //     $sum = $data->sum(function ($item) {
+    //         return $item->jumlah;
+
+            $sum = $data->sum(function ($item) {
+                return $item->jumlah;
+            });
         $diltotal=DB::table('penutupan as a')
         ->rightJoin('tbl_dil as b','a.id_dil','=','b.id')
         ->where('status',1)
@@ -471,9 +577,7 @@ class DilController extends Controller
     return $pdf->download('invoice.pdf');
     }
    
-        // view()->share('data', $data);
-        // $pdf = PDF::loadView('coba');
-        // return $pdf->download('dataDIL.pdf');
-} 
-   
+    } 
+    
 }
+

@@ -70,6 +70,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dil/jumlah', [DilController::class,'jumlah']);
     Route::get('/dil/detail/{id}', [DilController::class,'detail']);
     Route::get('/dil/cetaklaporan', [DilController::class,'cetaklaporan']);
+    Route::get('/dil/cetaklaporanpenyambungan', [DilController::class,'cetaklaporanpenyambungan']);
+    Route::get('/dil/cetaklaporanpenggantian', [DilController::class,'cetaklaporanpenggantian']);
     Route::get('/pagination/fetch_data', [DilController::class,'fetch_data']);
 
     //Penutupan

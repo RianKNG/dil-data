@@ -144,7 +144,8 @@
               <div class="info-box-content">
                 <span class="info-box-text"> Total Pelanggan Aktip</span>
                 <span class="info-box-number"></span>
-                  <h3 class="btn btn-info"><span>{{ $jumlahdil }}</span></h3>
+                  <h3 class="btn btn-info"><span>({{ number_format($jumlahdil ,0,",",".") }})</span></h3>
+                  {{-- <h3>({{ number_format($rtidakada ,0,",",".") }})<sup style="font-size: 20px"></sup></h3> --}}
 
               </div>
               <!-- /.info-box-content -->
@@ -163,7 +164,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Total Pelanggan Non aktip</span>
                 <span class="info-box-number"></span>
-                <h3 class="btn btn-info"><span>{{ $jumlahnon }}</span></h3>
+                <h3 class="btn btn-info"><span>({{ number_format($jumlahnon ,0,",",".") }})</span></h3>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -176,7 +177,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Total DIL</span>
                 <span class="info-box-number"></span>
-                <h3 class="btn btn-info"><span>{{ $totdilcount }}</span></h3>
+                <h3 class="btn btn-info"><span>({{ number_format($totdilcount ,0,",",".") }})</span></span></h3>
 
               </div>
               <!-- /.info-box-content -->
@@ -190,7 +191,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Total Jumlah Jiwa Tetap</span>
                 <span class="info-box-number"></span>
-                <h3 class="btn btn-info"><span>{{ $jmlt }}</span></h3>
+                <h3 class="btn btn-info"><span><span>({{ number_format($jmlt ,0,",",".") }})</span></span></h3>
 
               </div>
               <!-- /.info-box-content -->
@@ -204,7 +205,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Total Jumlah Jiwa Tidak Tetap</span>
                 <span class="info-box-number"></span>
-                <h3 class="btn btn-info"><span>{{ $jmltt }}</span></h3>
+                <h3 class="btn btn-info"><span><span>({{ number_format($jmltt ,0,",",".") }})</span></span></h3>
 
               </div>
               <!-- /.info-box-content -->
@@ -231,7 +232,7 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-8">
                     <p class="text-center">
                       {{-- <strong>{{ $tanggal }}</strong> --}}
                     </p>
@@ -243,7 +244,7 @@
                     <!-- /.chart-responsive -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <p class="text-center">
                       {{-- <strong>Goal Completion</strong> --}}
                     </p>
@@ -983,39 +984,55 @@ Highcharts.chart('x', {
 });
 </script> --}}
 {{-- //untuk Dil Baru --}}
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title">Rekap DIL Baru {{ $tahun }}</h5>
-              <div class="card-tools">
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header btn-danger">
+              <h5 class="card-title">Rekap DIL {{ $tahun }}</h5>
+              {{-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-tool" data-card-widget="remove">
                   <i class="fas fa-times"></i>
                 </button>
-              </div>
+              </div> --}}
             </div>
             <!-- /.card-header -->
-           
-            <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-12">
-                    
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title"></h5>
-                       
-                        <table id="table" class="table table-bordered table-striped">
-                          <thead class="thead-danger text-white">
-                            <th>No</th>
-                             <th>Cabang</th>
-                             <th>Jumlah</th>
-                             <th>Tanggal</th>
-                          </thead>
-                          <tbody>
-                            @foreach ($tdatabill as $index => $k)
+ {{-- //untuk Penyambungan --}}
+ <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">RekapDil Baru {{ $tahun }}</h5>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+     
+      <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"></h5>
+                 
+                  <table id="table" class="table table-bordered table-striped">
+                    <thead class="thead-danger text-white">
+                      <th>No</th>
+                       <th>Cabang</th>
+                       <th>Jumlah</th>
+                       <th>Tanggal</th>
+                    </thead>
+                    <tbody>
+                      @foreach ($tdatabill as $index => $k)
                           <tr>
                               <td>{{  $loop->iteration }}</td>
                               <td>{{  duka($k->cabang) }}</td>
@@ -1023,12 +1040,14 @@ Highcharts.chart('x', {
                               <td>{{ $k->tanggal_file }}</td>
                           </tr>
                           @endforeach
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+                    </tbody>
+                  </table>
                 </div>
+              </div>
+            </div>
+              </div>
+            </div>
+              </div>
 
           {{-- //untuk Penutupan --}}
         

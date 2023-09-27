@@ -4,17 +4,17 @@
 @section('content')
 <div class="col-md-4">
   <div class="card card-primary card-outline">
-    <div class="card-header">
+    {{-- <div class="card-header">
       <h3 class="card-title">Kebutuhan Data</h3>
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
         </button>
       </div>
-    </div>
+    </div> --}}
     <div class="card-body">
-      <a href="/exportexcelp" class="btn btn-info">Export Penutupan</a>
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
+      <a href="/exportexcelp" class="btn btn-info btn-sm">Export Penutupan</a>
+      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#import">
         Import Penutupan
     </button>
     </div>
@@ -63,7 +63,7 @@
     
         <!-- /.card-header -->
         <div class="card-body">
-          <table id="table" class="table table-bordered table-striped">
+        <table class="table table-head-fixed text-nowrap btn-xs">
             <thead>
             <tr>
               <th width="5%">No.</th>

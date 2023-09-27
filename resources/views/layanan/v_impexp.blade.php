@@ -62,14 +62,50 @@
             </div>
             </div>
         </div>
-        <div class="my-2">
-            <form action="/dil/cetaklaporan" method="GET">
-                <div class="input-group mb-3">
-                    <input type="date" class="form-control" name="start_date">
-                    <input type="date" class="form-control" name="end_date">
-                    <button class="btn btn-primary" type="submit">GET</button>
+        <div class="col-md-12">
+            <div class="card card-outline card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Cetak Laporan PenutupanSL</h3>
+            </div>
+            
+            <div class="my-0">
+                <form action="/dil/cetaklaporan" method="GET">
+                    <div class="input-group">
+                        <input type="date" class="form-control" name="start_date">
+                        <input type="date" class="form-control" name="end_date">
+                        <button class="btn btn-primary" type="submit">GET</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card card-outline card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Cetak Laporan PenyambunganSL</h3>
+            </div>
+            
+            <div class="my-0">
+                <form action="/dil/cetaklaporanpenyambungan" method="GET">
+                    <div class="input-group">
+                        <input type="date" class="form-control" name="start_date">
+                        <input type="date" class="form-control" name="end_date">
+                        <button class="btn btn-primary" type="submit">GET</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card card-outline card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Cetak Laporan Ganti SL</h3>
                 </div>
-            </form>
+                
+                <div class="my-0">
+                    <form action="/dil/cetaklaporanpenggantian" method="GET">
+                        <div class="input-group">
+                            <input type="date" class="form-control" name="start_date">
+                            <input type="date" class="form-control" name="end_date">
+                            <button class="btn btn-primary" type="submit">GET</button>
+                        </div>
+                    </form>
+                </div>
         </div>
     </div>
 </div>
