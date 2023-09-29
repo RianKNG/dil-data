@@ -48,28 +48,43 @@ class HomeController extends Controller
       $tanggak = Carbon::now()->format('Y');
        $databill = DB::table('tbl_dil as a')
         // ->where('status','=',1) 
-        ->whereMonth('tanggal_pasang', Carbon::now()->month)
+        ->whereMonth('a.tanggal_file', Carbon::now()->month)
+        ->whereYear('a.tanggal_file', Carbon::now()->year)
         ->get();
         $databilling =  $databill
         ->count();
         //untuk tabel Dil Baru
+        //  $date = Carbon::now()->format('M');
+        //  dd($date);
         $tdatabill = DB::table('tbl_dil as a')
-        ->select(DB::raw("(a.cabang)  as `cabang` "))
-        ->groupBy(DB::raw("cabang"))
-        ->GroupBy(DB::raw("Month(tanggal_file)"))
-        ->whereYear('tanggal_file',Carbon::now()->format('Y'))
-        ->pluck('cabang');
-        $date = Carbon::now()->format('Y');
-        $tdatabill = DB::table('tbl_dil as d')
-        ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_file) as tanggal_file'),'tanggal_file')
-        // ->whereMonth('tanggal_file', Carbon::now()->month)
-        ->whereMonth('tanggal_file','<=',Carbon::now()->month)
-        ->whereYear('tanggal_file',$date)
-        // ->whereDate('tanggal_file','<=', Carbon::now())
-        // ->whereYear('tanggal_file','<=', Carbon::now())
-        ->groupBy('cabang')
+        ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('SUM(a.tanggal_file) as tanggal_file'),'tanggal_file')
+        ->whereMonth('a.tanggal_file', Carbon::now()->month)
+        ->whereYear('a.tanggal_file', Carbon::now()->year)
+        ->groupBy('a.cabang')
         ->groupBy('tanggal_file')
-        ->get()->toArray();
+        ->get();
+        // dd($tdatabill);
+      //   $tdatabill->map(function($q) {
+      //     $q->jumlah = explode(',', $q->jumlah);
+      //     return $q;
+      // });
+     
+        // ->select(DB::raw("(a.cabang)  as `cabang` "))
+        // ->groupBy(DB::raw("cabang"))
+        // ->GroupBy(DB::raw("Month(tanggal_file)"))
+        // ->whereYear('tanggal_file',Carbon::now()->format('Y'))
+        // ->pluck('cabang');
+        // $date = Carbon::now()->format('Y');
+        // $tdatabill = DB::table('tbl_dil as d')
+        // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_file) as tanggal_file'),'tanggal_file')
+        // // ->whereMonth('tanggal_file', Carbon::now()->month)
+        // ->whereMonth('tanggal_file','<=',Carbon::now()->month)
+        // ->whereYear('tanggal_file',$date)
+        // // ->whereDate('tanggal_file','<=', Carbon::now())
+        // // ->whereYear('tanggal_file','<=', Carbon::now())
+        // ->groupBy('cabang')
+        // ->groupBy('tanggal_file')
+        // ->get()->toArray();
         // dd($tdatabill);
         // $ttdatabill = DB::table('tbl_dil as a')
         // ->select(DB::raw("count(a.tanggal_file)  as `cabang` "))
@@ -164,10 +179,11 @@ class HomeController extends Controller
         
       //untuk Pelanggan Aktip
       $datajum = DB::table('tbl_dil as a')
+      // ->whereMonth('tanggal_pasang', Carbon::now()->month)
       ->whereStatus('1')
         ->get();
           $jumlahdil = $datajum->count();
-         
+        //  dd($jumlahdil);
        //untuk Pelanggan Non Aktip
        $datanon = DB::table('tbl_dil as a')
        ->whereStatus('2')
@@ -175,10 +191,21 @@ class HomeController extends Controller
            $jumlahnon = $datanon->count();
 
       //untuk Total Dil
-       $totdil = DB::table('tbl_dil as a')
+       $totdil = DB::table('tbl_dil as d')
+       ->select([
+        'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+        'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+     
+    ])
+        ->whereMonth('d.tanggal_file', Carbon::now()->month)
+        ->whereYear('d.tanggal_file', Carbon::now()->year)
+        // ->groupBy('d.tanggal_file', Carbon::now()->month)
+
          ->get();
+        //  dd($totdil);
            $totdilcount = $totdil->count();
             //jumlah Jiwa Dil
+            // dd( $totdilcount);
        $jmlt = DB::table('tbl_dil')
        ->sum('jml_jiwa_tetap');
        $jmltt = DB::table('tbl_dil')

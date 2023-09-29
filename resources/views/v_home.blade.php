@@ -1027,7 +1027,7 @@ Highcharts.chart('x', {
                   <table id="table" class="table table-bordered table-striped">
                     <thead class="thead-danger text-white">
                       <th>No</th>
-                       <th>Cabang</th>
+                       <th>CabangTset</th>
                        <th>Jumlah</th>
                        <th>Tanggal</th>
                     </thead>
@@ -1040,6 +1040,18 @@ Highcharts.chart('x', {
                               <td>{{ $k->tanggal_file }}</td>
                           </tr>
                           @endforeach
+                          <tr>
+                            <tfoot>
+                              <tr>
+                                  <th colspan="2">Total</th>
+                                  <td colspan="2" class="text-center">
+                                      {{$tdatabill->sum('jumlah')}} (Konsumen)
+                                  </td>
+                                  {{-- <td>{{ $sum }}</td> --}}
+                                
+                              </tr>
+                          </tfoot>
+                        </tr>
                     </tbody>
                   </table>
                 </div>

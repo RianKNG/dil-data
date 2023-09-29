@@ -20,5 +20,14 @@ class DilModel extends Model
 
     //     return $this->belongsTo(Merek::class);
     // }
-
+    // public function getTanggalPasangAttribute()
+    // {
+    //     return \Carbon\Carbon::parse($this->attributes['tanggal_pasang'])
+    //        ->format('d M Y ');
+    // }
+    // public function getTanggalFileAttribute()
+    // {
+    //     return \Carbon\Carbon::parse($this->attributes['tanggal_file'])
+    //        ->format('d M Y ');
+    // }
 }

@@ -162,7 +162,8 @@ class DilController extends Controller
     }
     public function insert(Request $request)
     {
-        // dd($request->all()); 
+        $dateinit = \Carbon\Carbon::parse($request->tanggal_file);
+        $datefim = \Carbon\Carbon::parse($request->pasang);
         $this->validate($request,[
           'id' => 'required|unique:tbl_dil,id|max:11',
           'status' => 'required',
@@ -213,8 +214,8 @@ class DilController extends Controller
           'status_milik' => $request->status_milik,
           'jml_jiwa_tetap' => $request->jml_jiwa_tetap,
           'jml_jiwa_tidak_tetap' => $request->jml_jiwa_tidak_tetap,
-          'tanggal_pasang' => $request->tanggal_pasang,
-          'tanggal_file' => $request->tanggal_file,
+          'tanggal_pasang' => $dateinit,
+          'tanggal_file' => $datefim,
           'segel' => $request->segel,
           'stop_kran' => $request->stop_kran,
           'ceck_valve' => $request->ceck_valve,
@@ -334,9 +335,18 @@ class DilController extends Controller
    }
    public function importexcel(Request $request)
    {
+    // $dateinit = \Carbon\Carbon::parse($request->tanggal_pasang);
+    // $datefim = \Carbon\Carbon::parse($request->tanggal_file);
     $this->validate($request, [
-        'file' => 'required|mimes:csv,xls,xlsx'
+       
+        'file' => 'required|mimes:csv,xls,xlsx',
+        // 'tanggal_pasang'=>  $dateinit->format('dd-mm-YYYY'),
+        // 'tanggal_file'=>   $datefim->format('dd-mm-YYYY'),
+        'tanggal_pasang'=>  Carbon::now()->format('YYYY-MM-MM'),
+        'tanggal_file'=>  Carbon::now()->format('YYYY-MM-MM')
+
     ]);
+    // dd($request->all());
     $data = $request->file('file');
     $namafile = $data->getClientOriginalName();
     $data->move('Pelanggan',$namafile);

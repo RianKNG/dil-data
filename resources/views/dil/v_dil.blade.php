@@ -73,7 +73,7 @@
                     <th>Status Milik</th>
                     {{-- <th>Jiwa Tetap</th> --}}
                     <th>Jiwa Tidak Tetap</th>
-                    <th>Tanggal Pasang</th>
+                    {{-- <th>Tanggal Dil</th> --}}
                     <th>Tanggal File</th>
                     <th>Id Merek</th>
                     {{-- <th>####</th> --}}
@@ -83,10 +83,10 @@
                     <th>Kopling</th>
                     <th>Plug Kran</th>
                     <th>Bulan Billing</th>
-                    <th>Tahun Billing</th>
+                    <th>Tahun Billing</th> --}}
                     <th>Sumber Lain</th>
-                    <th>Jenis Usaha</th> --}}
-                    <th>Aktip/Non Aktipkan</th>
+                    <th>Jenis Usaha</th>
+                    {{-- <th>Aktip/Non Aktipkan</th> --}}
                     <th width="15%">Aksi</th>
                     
                   
@@ -103,13 +103,21 @@
                     <td>{{ duka($k->cabang) }}</td>  
                     <td>{{ $k->id }}</td>  
                     <td>{{ $k->no_rekening }}</td>
-                    <td>{{ $k->nama_sekarang }}</td>
-                    <td>{{ $k->nama_pemilik }}</td>
+                    <td class="text-warning">{{ $k->nama_sekarang }}</td>
+                    <td>
+                      @if(empty($k->nama_pemilik))
+                      
+                          <p class="text-white">__</p>
+                      @else
+                          <p class="text-danger">{{ $k->nama_pemilik }}</p>
+                      @endif
+                    </td>
                     <td>
                       @if(empty($k->nama_baru))
-                          <p>__</p>
+                      
+                          <p class="text-success">__</p>
                       @else
-                          <p>{{ $k->nama_baru }}</p>
+                          <p class="text-danger">{{ $k->nama_baru }}</p>
                       @endif
                     </td>
                     {{-- <td>{{ $k->no_rumah }}</td>
@@ -121,7 +129,7 @@
                     <td>{{ $k->status_milik }}</td>
                     {{-- <td>{{ $k->jml_jiwa_tetap }}</td> --}}
                     <td>{{ $k->jml_jiwa_tidak_tetap}}</td>
-                    <td>{{ $k->tanggal_pasang }}</td>
+                    {{-- <td>{{ $k->tanggal_pasang }}</td> --}}
                     <td>{{ $k->tanggal_file }}</td>
                     <td> {{ $k->merek}}</td>
                     {{-- <td>{{ $k->segel }}</td> --}}
@@ -131,20 +139,20 @@
                     <td>{{ $k->plugran }}</td> --}}
                     {{-- <td>{{ $k->box }}</td> --}}
                     {{-- <td>{{ $k->bln_billing }}</td>
-                    <td>{{ $k->thn_billing }}</td>
+                    <td>{{ $k->thn_billing }}</td> --}}
                     <td>{{ $k->sumber_lain}}</td>
-                    <td>{{ $k->jenis_usaha }}</td> --}}
+                    <td>{{ $k->jenisusaha }}</td>
                     
                     {{-- <td>{{ $k->timestamp}}</td> --}}
                   
                     
-                      <td>
+                      {{-- <td>
                         @if ($k->status == 1)
                           <a href="/dil/status/{{ $k->id }}" class="btn btn-xs btn-danger">Non Aktip.</a>
                         @else
                           <a href="/dil/status/{{ $k->id }}" class="btn btn-xs btn-success">Aktip Kan&nbsp;.</a>
                         @endif
-                      </td>
+                      </td> --}}
                       <td>
                         <a href="dil/edit/{{ $k->id }}" class="btn btn-warning btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>
                         </a>
