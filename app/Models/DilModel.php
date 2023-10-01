@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DilModel extends Model
 {
     use HasFactory;
+    // protected $dateFormat='m-d-Y';
     protected $guarded = [];
     protected $table = 'tbl_dil';
     protected $tableKey = ['id'];

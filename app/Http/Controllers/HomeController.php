@@ -45,29 +45,40 @@ class HomeController extends Controller
 
       }
       //data DIL baru
+      $tanggal1= Carbon::now()->startOfMonth()->subMonth(1);
       $tanggak = Carbon::now()->format('Y');
        $databill = DB::table('tbl_dil as a')
+       ->select('a.*')
         // ->where('status','=',1) 
-        ->whereMonth('a.tanggal_file', Carbon::now()->month)
+        ->whereMonth('a.tanggal_file',$tanggal1)
         ->whereYear('a.tanggal_file', Carbon::now()->year)
+        // ->whereNo_Rekening('a.no_rekening',$nama)
         ->get();
+      //   ->select(DB::raw("MONTH(a.tanggal_file) month"),DB::raw("count('a.tanggal_file') as vistors_count"))
+      //  ->groupby('month')
+      //  ->get();
+        // dd($databill);
         $databilling =  $databill
         ->count();
         //untuk tabel Dil Baru
         //  $date = Carbon::now()->format('M');
-        //  dd($date);
+         
         $tdatabill = DB::table('tbl_dil as a')
         ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('SUM(a.tanggal_file) as tanggal_file'),'tanggal_file')
-        ->whereMonth('a.tanggal_file', Carbon::now()->month)
+        // ->select('a.*')
+        // ->where('status','=',1) 
+        ->whereMonth('a.tanggal_file',$tanggal1)
         ->whereYear('a.tanggal_file', Carbon::now()->year)
         ->groupBy('a.cabang')
         ->groupBy('tanggal_file')
         ->get();
-        // dd($tdatabill);
+        // ->sum('jumlah');
+       
       //   $tdatabill->map(function($q) {
       //     $q->jumlah = explode(',', $q->jumlah);
       //     return $q;
       // });
+      // dd($tdatabill);
      
         // ->select(DB::raw("(a.cabang)  as `cabang` "))
         // ->groupBy(DB::raw("cabang"))

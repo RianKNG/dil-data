@@ -335,15 +335,15 @@ class DilController extends Controller
    }
    public function importexcel(Request $request)
    {
-    // $dateinit = \Carbon\Carbon::parse($request->tanggal_pasang);
-    // $datefim = \Carbon\Carbon::parse($request->tanggal_file);
+    $birthday = \Carbon\Carbon::parse($request->tanggal_pasang);
+    $ulang = \Carbon\Carbon::parse($request->tanggal_file);
     $this->validate($request, [
        
         'file' => 'required|mimes:csv,xls,xlsx',
         // 'tanggal_pasang'=>  $dateinit->format('dd-mm-YYYY'),
         // 'tanggal_file'=>   $datefim->format('dd-mm-YYYY'),
-        'tanggal_pasang'=>  Carbon::now()->format('YYYY-MM-MM'),
-        'tanggal_file'=>  Carbon::now()->format('YYYY-MM-MM')
+        'tanggal_pasang'=>  Carbon::parse($birthday),
+        'tanggal_file'=>   Carbon::parse($ulang),
 
     ]);
     // dd($request->all());
@@ -590,4 +590,3 @@ class DilController extends Controller
     } 
     
 }
-
