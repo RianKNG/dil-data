@@ -191,7 +191,7 @@ class HomeController extends Controller
       //untuk Pelanggan Aktip
       $datajum = DB::table('tbl_dil as a')
       // ->whereMonth('tanggal_pasang', Carbon::now()->month)
-      ->whereStatus('1')
+      ->whereStatus('2')
         ->get();
           $jumlahdil = $datajum->count();
         //  dd($jumlahdil);
@@ -208,8 +208,8 @@ class HomeController extends Controller
         'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
      
     ])
-        ->whereMonth('d.tanggal_file', Carbon::now()->month)
-        ->whereYear('d.tanggal_file', Carbon::now()->year)
+        // ->whereMonth('d.tanggal_file', Carbon::now()->month)
+        // ->whereYear('d.tanggal_file', Carbon::now()->year)
         // ->groupBy('d.tanggal_file', Carbon::now()->month)
 
          ->get();

@@ -38,11 +38,12 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
+ 
   <!-- Content Wrapper. Contains page content -->
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    <marquee>!!! Mohon Maaf Apabila masih Kesalahan !!!</marquee>
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-0">
@@ -61,7 +62,7 @@
     </div>
     </div>
     <!-- /.content-header -->
-
+    
     <!-- Main content -->
     <section class="content">
         @yield('content')
