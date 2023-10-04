@@ -88,7 +88,7 @@
                 <td>Cabang</td>
                 <td>Status</td>
                 <td>No Rekening</td>
-                <td>Tanggal Sambung</td>
+                {{-- <td>Tanggal Sambung</td> --}}
                 <td>Dusun</td>
                 <td>Kecamatan</td>
                 <td>Status Milik</td>
@@ -124,7 +124,7 @@
                 <td>{{ duka($k->cabang) }}</td>
                 <td>{{ sts($k->status) }}</td>
                 <td>{{ $k->no_rekening }}</td>
-                <td>{{ $k->tanggal_file }}</td>
+                {{-- <td>{{ $k->tanggal_file }}</td> --}}
                 <td>{{ $k->dusun }}</td>
                 <td>{{ $k->kecamatan }}</td>
                 <td>{{ $k->status_milik }}</td>

@@ -40,10 +40,12 @@
   </aside>
  
   <!-- Content Wrapper. Contains page content -->
-
+  
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <marquee>!!! Mohon Maaf Apabila masih Kesalahan !!!</marquee>
+
+   <i class="text-warning"><marquee> <i>!!! Mohon Maaf Apabila Tim Kami dalam Pembuatan DIL ini masih Banyak Kekurangan karena masih dalam pengembangan !!!</i></marquee></i>
+    
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-0">

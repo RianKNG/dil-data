@@ -51,6 +51,7 @@
                   @foreach ($data as $index => $k)
                   <tr>
                     <td>{{ $loop->iteration }}</td> 
+                    <td hidden="hidden">{{ $k->id }}</td>
                     <td>{{ $k->kode }}</td> 
                     <td>{{ $k->merek }}</td>
                       <td>
@@ -74,6 +75,7 @@
             
               </table>
 
+              
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -93,6 +95,10 @@
             <form action="/watermeter/insert" method="post">
                 @csrf
                 <div class="card-body">
+                  <div class="form-group">
+                    <label class="btn-xs">Id WM</label>
+                    <input type="text" name="id" class="form-control" value="{{ $k->id }}">
+                  </div>
                   <div class="form-group">
                     <label class="btn-xs">No Merek Teregistrasi</label>
                     <input type="text" name="kode" class="form-control" value="{{ $kode }}" readonly>

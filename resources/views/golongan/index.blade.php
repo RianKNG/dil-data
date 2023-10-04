@@ -51,6 +51,7 @@
                   @foreach ($data as $index => $k)
                   <tr>
                     <td>{{ $loop->iteration }}</td> 
+                    <td hidden="hidden">{{ $k->id }}</td> 
                     <td>{{ $k->kode }}</td> 
                     <td>{{ $k->nama_golongan }}</td>
                       <td>
@@ -68,7 +69,12 @@
               </tbody>
             
               </table>
-
+              @if ($data->links()->paginator->hasPages())
+              <div class="mt-4 p-4 box has-text-centered">
+                  {{ $data->links() }}
+              </div>
+          @endif
+              
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -88,6 +94,12 @@
             <form action="/golongan/insert" method="post">
                 @csrf
                 <div class="card-body">
+                  <div class="form-group">
+                    <label class="btn-xs">Id</label>
+                    <input type="nuber" name="id" class="form-control" value="{{ $k->id }}">
+                    {{-- <input type="text" name="kode" class="form-control" readonly> --}}
+                   
+                  </div>
                   <div class="form-group">
                     <label class="btn-xs">Kode</label>
                     {{-- <input type="text" name="kode" class="form-control" value="{{ $kode }}" readonly> --}}

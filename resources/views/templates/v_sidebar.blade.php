@@ -26,7 +26,7 @@
       <a href="/dil" class="nav-link">
         <i class="nav-icon far fa-circle text-danger"></i>
         <p class="btn-xs">
-          Master DIL  {{ Auth::user()->name }}
+          Master DIL  
         </p>
       </a>
     </li>
@@ -104,6 +104,7 @@
         </p>
       </a>
     </li>
+    @if (auth()->user()->level =="admin")
     <li>
       <label for="">Managenent User</label>
     </li>
@@ -116,7 +117,7 @@
         </a>
       </li>
      
-     
+     @endif
       <li>
         <label for="">Laporan</label>
       </li>

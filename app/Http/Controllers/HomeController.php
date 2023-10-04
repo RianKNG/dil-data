@@ -20,6 +20,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+    
     public function __construct()
     {
         $this->middleware('auth');
@@ -117,8 +118,10 @@ class HomeController extends Controller
         ->select('a.*','b.*')
         ->whereMonth('tanggal_tutup', Carbon::now()->month)
         ->get();
+        // dd($jumlahtutupmodal)
         $datatutupjumlah = $jumlahtutupmodal
         ->count();
+        
       $jumlahtutup = DB::table('penutupan as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
       // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
@@ -129,7 +132,7 @@ class HomeController extends Controller
         // ->whereYear('tanggal_tutup','<=', Carbon::now())
         // ->where('tanggal_tutup',Carbon::now()->month)
         ->groupBy('cabang')
-        // ->groupBy('tanggal_tutup')
+        ->groupBy('tanggal_tutup')
         ->get()->toArray();
       // dd($jumlahtutup);
     
@@ -191,7 +194,7 @@ class HomeController extends Controller
       //untuk Pelanggan Aktip
       $datajum = DB::table('tbl_dil as a')
       // ->whereMonth('tanggal_pasang', Carbon::now()->month)
-      ->whereStatus('2')
+      ->whereStatus('1')
         ->get();
           $jumlahdil = $datajum->count();
         //  dd($jumlahdil);
@@ -295,7 +298,7 @@ class HomeController extends Controller
                 
                  //lainnya
                   'databill','databilling','jumlahtutup','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
-                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah'));
+                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah','jumlahtutup'));
                  
                  
     }

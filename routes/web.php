@@ -35,12 +35,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth'])->group(function () {
+Route::group(['middleware'=>['user','user:admin,user']], function () {
     Route::get('/dil', [DilController::class,'index'])->name('dil');  
     Route::get('/', [HomeController::class,'index']);
     Route::get('/test', [HomeController::class,'test']);
     
-    Route::get('/user', [UserController::class,'index']);
+    Route::resource('user', UserController::class);
     // Route::get('/', [HomeController::class,'index'])->name('guru');
     Route::get('/test', [AccesoriesController::class,'index']);
     Route::get('/test/ada', [AccesoriesController::class,'ada']);
@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dil/cetaklaporan', [DilController::class,'cetaklaporan']);
     Route::get('/dil/cetaklaporanpenyambungan', [DilController::class,'cetaklaporanpenyambungan']);
     Route::get('/dil/cetaklaporanpenggantian', [DilController::class,'cetaklaporanpenggantian']);
+    Route::get('/dil/cetaklaporansl', [DilController::class,'cetaklaporansl']);
     Route::get('/pagination/fetch_data', [DilController::class,'fetch_data']);
 
     //Penutupan

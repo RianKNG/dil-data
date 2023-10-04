@@ -110,6 +110,11 @@
            
           </tbody>
         </table>
+        @if ($data->links()->paginator->hasPages())
+        <div class="mt-4 p-4 box has-text-centered">
+            {{ $data->links() }}
+        </div>
+    @endif
         
         @foreach ($data as $index => $k)
         <div class="modal fade" id="delete{{ $k->id }}">

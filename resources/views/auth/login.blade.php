@@ -41,7 +41,7 @@
                            <input type="password" class="input" name="password">
             	   </div>
             	</div>
-            	<a href="{{ route('register') }}">Register?</a>
+            	{{-- <a href="{{ route('register') }}">Register?</a> --}}
             	 <button type="submit" class="btn btn-primary btn-block">Log In</button>
             </form>
         </div>

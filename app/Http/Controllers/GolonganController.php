@@ -11,8 +11,8 @@ class GolonganController extends Controller
     public function index()
     {
         $data = DB::table('golongan')
-        ->get();
-        return view('golongan.index',compact('data'));
+        ->simplePaginate(100);
+        return view('golongan.index',compact('data'))->render();
     }
     public function insert(Request $request)
     {

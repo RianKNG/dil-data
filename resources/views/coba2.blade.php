@@ -53,11 +53,21 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <h3>Laporan. #</h3>
-        <h4 style="line-height: 0px;">Tanggal: #</h4>
-        <p><small style="opacity: 0.5;"> Bagian: #</small></p>
+        <h3>Laporan Data Induk Pelanggan </h3>
+        <h4 style="line-height: 0px;">Tanggal: 
+            @php
+            // Tanggal hari ini
+           
+             
+            
+             
+            echo date('d F Y'); 
+            @endphp
+        </h4>
+        <p><small style="opacity: 0.5;"> Bagian: V.D.P.R</small></p>
     </div>
     <div class="customer">
         <table>
@@ -69,12 +79,12 @@
             <tr>
                 <th> Jumlah Pelanggal Aktip</th>
                 <td>:</td>
-                <td>#</td>
+                <td>{{ $totaldilaktip }}</td>
             </tr>
             <tr>
                 <th>Jumlah Pelanggan Non Akip</th>
                 <td>:</td>
-                <td>#</td>
+                <td>{{ $totaldilnonaktip }}</td>
             </tr>
         </table>
     </div>

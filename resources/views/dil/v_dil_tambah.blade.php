@@ -200,7 +200,7 @@
             <!-- checkbox -->
             <div class="form-group">
               <div class="form-input">
-               <label>Tanggal Pasang</label>
+               <label>Tanggal Penetapan Dil</label>
                 <input type="date" class="form-control" name="tanggal_pasang" value="{{ old('tanggal_pasang') }}">
                 @error('tanggal_pasang')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -213,7 +213,7 @@
             <!-- checkbox -->
             <div class="form-group">
               <div class="form-input">
-               <label>Tanggal File</label>
+               <label>Tanggal Pasang</label>
                 <input type="date" class="form-control" name="tanggal_file" value="{{ old('tanggal_file') }}">
                 @error('tanggal_file')
                 <div class="alert alert-danger">{{ $message }}</div>

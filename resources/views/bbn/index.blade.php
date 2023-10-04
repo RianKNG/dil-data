@@ -64,7 +64,7 @@
         </div>
       </div>
       <!-- /.card-header -->
-      <div class="card-body table-responsive p-0" style="height: 300px;">
+      <div class="card-body">
         <table class="table table-head-fixed text-nowrap btn-xs">
           <thead>
             <tr>
@@ -109,7 +109,11 @@
            
           </tbody>
         </table>
-        
+        @if ($data->links()->paginator->hasPages())
+        <div class="mt-4 p-4 box has-text-centered">
+            {{ $data->links() }}
+        </div>
+    @endif
         @foreach ($data as $index => $k)
         <div class="modal fade" id="delete{{ $k->id }}">
           <div class="modal-dialog">

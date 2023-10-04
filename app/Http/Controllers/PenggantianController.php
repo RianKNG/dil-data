@@ -25,7 +25,7 @@ class PenggantianController extends Controller
                 'd.id','d.tanggal_ganti','d.no_wmbaru','d.id_dil','d.id_merek','n.cabang'
             ])
             ->where('id_dil','LIKE','%'.$request->search.'%')
-            ->get();
+            ->simplePaginate(100);
                    
         } else {
             $mer = Merek::all();
@@ -36,7 +36,7 @@ class PenggantianController extends Controller
                 'd.id','d.tanggal_ganti','d.no_wmbaru','d.id_dil','d.id_merek','n.cabang'
             ])
     
-            ->get();
+            ->simplePaginate(100);
         }
         
         // $data = DB::table('ganti as a')
@@ -50,7 +50,7 @@ class PenggantianController extends Controller
         //         ->get();
     
 
-        return view('penggantian.v_index',compact('data','mer'));
+        return view('penggantian.v_index',compact('data','mer'))->render();
     }
     public function add()
     {

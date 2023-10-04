@@ -34,7 +34,8 @@ if ($request->has('end_date'))
 {
        $data->where('tanggal_sambung', '<=', $end_date);
 }
-$data = $data->get();
+$data = $data
+->simplePaginate(100);
 //elequent
        
         // if (request()->start_date || request()->end_date) {
@@ -78,7 +79,7 @@ $data = $data->get();
         //         ->get();
                 // dd($data);
                 // ->get();
-        return view('penyambungan.v_sambung',compact('data')); 
+        return view('penyambungan.v_sambung',compact('data'))->render(); 
     }
     public function add()
     {

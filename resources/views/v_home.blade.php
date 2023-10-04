@@ -1081,14 +1081,14 @@ Highcharts.chart('x', {
                 <!-- /.card-header -->
                 
                 
-                <div class="card-body">
+                <div class="card-body">RekapSSMB
                   <div class="row">
                     <div class="col-sm-12">
                       
                       <div class="card">
                         <div class="card-body">
                           <h5 class="card-title"></h5>
-                         
+                          {{-- <table class="table table-head-fixed text-nowrap btn-xs"> --}}
                           <table id="table" class="table table-bordered table-striped">
                             <thead class="thead-danger text-white">
                               <th>No</th>
@@ -1220,5 +1220,18 @@ Highcharts.chart('x', {
 
    
 @endsection
+@push('scripts')
+<script>
+  $(document).ready(function () {
+    $('#table').DataTable({
+      "responsive": true,"autoWidth": false,
+        lengthMenu: [
+            [15, 25, 50,100, -1],
+            [15, 25, 50,100,],
+        ],
+    });
+  });
+  </script>
+@endpush
 
 

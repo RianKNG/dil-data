@@ -29,7 +29,7 @@ class BbnController extends Controller
        
         // ->leftJoin('tbl_dil as d','d.id','=','b.id_dil')
         // ->get();
-        ->get();
+        ->simplePaginate(100);
     
         // dd($data);
         
@@ -38,7 +38,7 @@ class BbnController extends Controller
         
        
 // dd($data);
-        return view ('bbn.index',compact('data'));
+        return view ('bbn.index',compact('data'))->render();
     }
 
     /**

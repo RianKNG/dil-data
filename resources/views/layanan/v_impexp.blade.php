@@ -77,7 +77,20 @@
                     </div>
                 </form>
             </div>
-
+            <div class="card card-outline card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Cetak SL Baru</h3>
+                </div>
+                
+                <div class="my-0">
+                    <form action="/dil/cetaklaporansl" method="GET">
+                        <div class="input-group">
+                            <input type="date" class="form-control" name="start_date">
+                            <input type="date" class="form-control" name="end_date">
+                            <button class="btn btn-primary" type="submit">GET</button>
+                        </div>
+                    </form>
+                </div>
             <div class="card card-outline card-primary">
             <div class="card-header">
                 <h3 class="card-title">Cetak Laporan PenyambunganSL</h3>
