@@ -52,7 +52,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Tabel Penyambungan</h3>
+        <h3 class="card-title">Tabel Penyambjhhkkungan</h3>
 
         <div class="card-tools">
           {{-- <div class="input-group input-group-sm" style="width: 150px;">
@@ -94,10 +94,10 @@
 
                     <td>
                       @if ($k->status == 2)
-                        <a href="/dil/statussambung/{{ $k->id_dil }}" class="btn btn-xs btn-danger">Non Aktip.</a>
-                      @else
-                        <a href="/dil/statussambung/{{ $k->id_dil }}" class="btn btn-xs btn-success">Aktip&nbsp;.</a>
-                      @endif
+                    <a href="/dil/statussambung/{{ $k->id_dil }}" class="fa fa-window-close"></a>
+                  @else
+                    <a href="/dil/statussambung/{{ $k->id_dil }}" class="fa fa-check"></a>
+                  @endif
                     </td>
                     <td>
                       {{-- <a href="penutupan/hapus/{{ $k->id }}" class="btn btn-primary btn-xs">Delete</a> --}}

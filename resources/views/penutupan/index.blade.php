@@ -83,9 +83,9 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                   @if ($k->status == 2)
-                    <a href="/dil/statustutup/{{ $k->id_dil }}" class="btn btn-xs btn-danger">Non</a>
+                    <a href="/dil/statustutup/{{ $k->id_dil }}" class="fa fa-window-close"></a>
                   @else
-                    <a href="/dil/statustutup/{{ $k->id_dil }}" class="btn btn-xs btn-success">Aktip</a>
+                    <a href="/dil/statustutup/{{ $k->id_dil }}" class="fa fa-check"></a>
                   @endif
                 </td>
                 <td>{{ $k->id_dil }}</td>
