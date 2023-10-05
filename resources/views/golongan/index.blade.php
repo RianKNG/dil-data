@@ -41,7 +41,7 @@
                     <th width="5%">No</th>
                     <th>Kode WM</th>
                     <th>Merek</th>
-                    <th width="25%">AAksi</th>
+                    <th width="25%">Aksi</th>
                     
                   
                   </tr>
@@ -107,7 +107,7 @@
                     <input type="text" name="kode" class="form-control" placeholder="Kode" required">
                   </div>
                   <div class="form-group">
-                    <label class="btn-xs">Merek Water Meter</label>
+                    <label class="btn-xs">Jenis Golongan</label>
                     <input type="text" name="nama_golongan" class="form-control" placeholder="golongan" required">
                   </div>
                 </div>

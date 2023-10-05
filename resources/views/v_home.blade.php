@@ -218,7 +218,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                Grafik DIL Baru||Penutupan||Penyambungan||Penggantian {{ $tahun }}
+                Grafik Update SL Baru||Penutupan||Penyambungan||Penggantian {{ $tahun }}
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>

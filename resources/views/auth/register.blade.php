@@ -73,11 +73,15 @@
                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
             	   </div>
             	</div>
-				{{-- <div class="div">
-					<h5>Nama</h5>
-					<input type="text" name="level">
-		  </div> --}}
-				
+				<div class="input-div pass">
+					<div class="i"> 
+						 <i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						 <h5>Level</h5>
+						 <input id="password-confirm" type="text" class="form-control" name="level" required autocomplete="new-password">
+				 </div>
+			  </div>
             	<a href="{{ route('login') }}">Log in?</a>
             	 <button type="submit" class="btn btn-primary btn-block">Register</button>
             </form>

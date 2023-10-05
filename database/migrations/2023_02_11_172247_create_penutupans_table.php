@@ -16,7 +16,7 @@ class CreatePenutupansTable extends Migration
         Schema::create('penutupan', function (Blueprint $table) {
             $table->increments('id');
             $table->date('tanggal_tutup')->nullable();
-            $table->enum('alasan', ['nunggak','mengundurkan diri'])->nullable();
+            $table->string('alasan')->nullable();
             $table->timestamps();
         });
     }

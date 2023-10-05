@@ -170,7 +170,7 @@
                     <div>
                     {{-- </div> --}}
                     <div class="form-group">
-                      <h6 for="tanggal_tutup" class="col-sm-8 col-form-label">tanggal_ditutup</h6>
+                      <h6 for="tanggal_tutup" class="col-sm-8 col-form-label">tanggal ditutup</h6>
                       <div class="col-sm-12">
                         <input
                         type="date" 
@@ -178,13 +178,12 @@
                         class="form-control">
                       </div>
                     </div> 
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label>cabang</label>
-                        <select name="alasan" class="form-control btn-xs">
-                          <option selected>alasan ditutup</option>
-                          <option value="1">Nunggak</option>
-                          <option value="2">Mengundurkan Diri</option>
+                    <div class="form-group">
+                      <h6 for="alasan" class="col-sm-8 col-form-label">Keterangan</h6>
+                      <div class="col-sm-12">
+                        <p><textarea name="alasan"></textarea>
+                      </div>
+                    </div> 
                         </select>
                           @error('alasan')
                             <div class="alert alert-danger">{{ $message }}</div>

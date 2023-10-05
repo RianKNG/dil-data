@@ -149,7 +149,7 @@
         <!-- Form Element sizes -->
         <div class="card card-warning">
           <div class="card-header btn-xs">
-            <h6 class="card-title"><span class="btn btn-small">Form Penggantian</span></h6>
+            <h6 class="card-title"><span class="btn btn-small">Form Balik Nama</span></h6>
             
           </div>
           <div class="card-body">
@@ -157,7 +157,7 @@
               @csrf
                 <!-- /.card-header -->
                   <div class="form-group">
-                      <h6 for="id_dil" class="col-sm-8 col-form-label">Masukkan No Sambungan</h6>
+                      <h6 for="id_dil" class="col-sm-8 col-form-label">No Sambungan Terdaftar</h6>
                       <div class="col-sm-12">
                         <input 
                         type="integer" 
@@ -168,7 +168,7 @@
                     <div>
                     {{-- </div> --}}
                     <div class="form-group">
-                      <h6 for="tanggal_bbn" class="col-sm-8 col-form-label">tanggal_bbn</h6>
+                      <h6 for="tanggal_bbn" class="col-sm-8 col-form-label">Tanggal BBN</h6>
                       <div class="col-sm-12">
                         <input
                         type="date" 

@@ -52,19 +52,12 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Tabel Penyambjhhkkungan</h3>
+        <h3 class="card-title">Tabel Penyambungan</h3>
 
         <div class="card-tools">
-          {{-- <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="search" name="search" class="form-control float-right" placeholder="search">
-            <form action="/penutupan" method="GET">
-              <input type="search" class="form-control" name="search" placeholder="Cari ">
-            </form>
-          </div> --}}
         </div>
       </div>
       <!-- /.card-header -->
-
         <!-- /.card-header -->
         <div class="card-body">
           <table class="table table-head-fixed text-nowrap btn-xs">
@@ -79,10 +72,6 @@
                   <th width="25%">Aksi</th>
                 </tr>
               </thead>
-              
-             
-              
-             
               <tbody>
                 @foreach ($data as $index => $k)
                 <tr>
@@ -157,7 +146,7 @@
       <!-- Form Element sizes -->
       <div class="card card-warning">
         <div class="card-header btn-xs">
-          <h6 class="card-title"><span class="btn btn-small">Form Penutupan</span></h6> 
+          <h6 class="card-title"><span class="btn btn-small">Form Penyambungan</span></h6> 
         </div>
         <div class="card-body">
           <form action="penyambungan/insert" method="post" enctype="multipart/form-data">
@@ -176,7 +165,7 @@
                   <div>
                   </div>
                   <div class="form-group">
-                    <h6 for="tanggal_sambung" class="col-sm-8 col-form-label">tanggal_sambung</h6>
+                    <h6 for="tanggal_sambung" class="col-sm-8 col-form-label">tanggal disambung</h6>
                     <div class="col-sm-12">
                       <input
                       type="date" 
@@ -184,31 +173,25 @@
                       class="form-control">
                     </div>
                   </div> 
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>alasan</label>
-                      <select name="alasan" class="form-control btn-xs">
-                        <option selected>alasan ditutup</option>
-                      
-                        <option value="1">Nunggak</option>
-                          <option value="2">Mengundurkan Diri</option>
+                  <div class="form-group">
+                    <h6 for="alasan" class="col-sm-8 col-form-label">Keterangan</h6>
+                    <div class="col-sm-12">
+                      <p><textarea name="alasan"></textarea>
+                    </div>
+                  </div> 
                       </select>
                         @error('alasan')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                    </div>
                   <div class="form-group">
                     <button class="btn btn-primary btn-small">simpan</button>
                    </div> 
                 </div>
-          <form>
-          </div>
-        </div>
-            
+           <form>
+          </div>  
         </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 @endsection

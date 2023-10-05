@@ -55,11 +55,6 @@
             <form action="/penggantian" method="GET">
               <input type="search" class="form-control" name="search" placeholder="Cari ">
             </form>
-            {{-- <div class="input-group-append">
-              <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
-              </button>
-            </div> --}}
           </div>
         </div>
       </div>
@@ -155,7 +150,7 @@
               @csrf
                 <!-- /.card-header -->
                   <div class="form-group">
-                      <h6 for="id_dil" class="col-sm-8 col-form-label">masukkan No Sambungan</h6>
+                      <h6 for="id_dil" class="col-sm-8 col-form-label">No Sambungan terdaftar</h6>
                       <div class="col-sm-12">
                         <input 
                         type="integer" 
@@ -166,7 +161,7 @@
                     <div>
                     {{-- </div> --}}
                     <div class="form-group">
-                      <h6 for="tanggal_ganti" class="col-sm-8 col-form-label">tanggal_ganti</h6>
+                      <h6 for="tanggal_ganti" class="col-sm-8 col-form-label">tanggal ganti</h6>
                       <div class="col-sm-12">
                         <input
                         type="date" 
@@ -188,7 +183,7 @@
                     
                     </div> 
                     <div class="form-group">
-                      <h6 for="no_wmbaru" class="col-sm-8 col-form-label">Noseri Baru</h6>
+                      <h6 for="no_wmbaru" class="col-sm-8 col-form-label">Nomor seri Baru</h6>
                       <div class="col-sm-12">
                         <input 
                         type="text" 
@@ -197,19 +192,7 @@
                       </div>
                     </div> 
                     <div>
-                      <div>
-                    {{-- <div class="col-sm-12">
-                      <div class="form-group">
-                        <label>cabang</label>
-                        <select name="alasan" class="form-control btn-xs">
-                          <option selected>alasan ditutup</option>
-                          <option value="1">Butuh</option>
-                          <option value="2">Sudah Ada Uang</option>
-                        </select>
-                          @error('alasan')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                          @enderror
-                      </div> --}}
+                  <div>
                     <div class="form-group">
                       <button class="btn btn-primary btn btn-sm">simpan</button>
                      </div> 
