@@ -57,6 +57,7 @@ Route::group(['middleware'=>['user','user:admin,user']], function () {
     Route::get('/test/bxtada', [AccesoriesController::class,'bxtada']);
     Route::get('/test/rada', [AccesoriesController::class,'rada']);
     Route::get('/test/rtada', [AccesoriesController::class,'rtada']);
+    Route::get('/test/all', [AccesoriesController::class,'all']);
 
     // Route::get('/dil', [DilController::class,'index'])->name('dil');
     Route::get('/dil/add', [DilController::class,'add']);

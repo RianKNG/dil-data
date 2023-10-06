@@ -28,8 +28,10 @@ class AccesoriesController extends Controller
              $btidakada = DB::table('tbl_dil')->where('box','tidak ada')->count();
              $rada = DB::table('tbl_dil')->where('status_milik','sewa')->count();
              $rtidakada = DB::table('tbl_dil')->where('status_milik','Hak Milik')->count();
+             $semuapelanggan = DB::table('tbl_dil')->count();
+             
 
-        return view('accesories.index',compact('rada','rtidakada','ada','tidakada','sada','stidakada','cada','ctidakada','kada','ktidakada','pada','ptidakada','bada','btidakada'));
+        return view('accesories.index',compact('rada','rtidakada','ada','tidakada','sada','stidakada','cada','ctidakada','kada','ktidakada','pada','ptidakada','bada','btidakada','semuapelanggan'));
     }
     public function tidakada(Request $request)
     {
@@ -285,7 +287,23 @@ class AccesoriesController extends Controller
             
         return view('accesories.indexrada',compact('segel','segel1'));
     }
-    
+    public function all(Request $request)
+    {
+       
+            $datacabang = DB::table('tbl_dil as a')
+            ->select(DB::raw("(a.cabang)  as `cabang` "))
+            ->groupBy(DB::raw("cabang"))
+                ->where('status',1)
+            ->pluck('cabang');
+        //     dd($datacabang);
+            $jumlahdatacabang = DB::table('tbl_dil as a')
+            ->select(DB::raw("count(*)  as `all` "))
+            ->groupBy(DB::raw("a.cabang"))
+                ->where('status',1)
+            ->pluck('all');
+        //     dd($jumlahdatacabang);
+        return view('accesories.all',compact('datacabang','jumlahdatacabang'));
+    }
     
 
 }

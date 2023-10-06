@@ -1067,7 +1067,7 @@ Highcharts.chart('x', {
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-title">Rekap TTP {{ $tahun }}</h5>
+                  <h5 class="card-title">Rekap Penutupan {{ $tahun }}</h5>
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                       <i class="fas fa-minus"></i>
@@ -1081,7 +1081,7 @@ Highcharts.chart('x', {
                 <!-- /.card-header -->
                 
                 
-                <div class="card-body">RekapSSMB
+                <div class="card-body">
                   <div class="row">
                     <div class="col-sm-12">
                       

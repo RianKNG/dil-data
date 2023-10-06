@@ -26,10 +26,15 @@ class DilController extends Controller
 
     public function __construct()
     {
+       
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
             return $next($request);
           });
+        //   $this->middleware(function ($request, $next) {
+        //     $this->user = Auth::admin();
+        //     return $next($request);
+        //   });
     }
     
     public function index(Request $request)
@@ -254,7 +259,7 @@ class DilController extends Controller
         // dd($data);
         if ($data->status == 1) {
             $status = 2;
-        } else {
+        }else{
             $status = 1;
         }
         DilModel::where('id',$id)->update(['status'=>$status]);

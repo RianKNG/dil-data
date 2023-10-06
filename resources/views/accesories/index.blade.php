@@ -134,7 +134,7 @@
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>({{ number_format($tidakada ,0,",",".") }})<sup style="font-size: 20px"></sup></h3>
+            <h3>({{ number_format($ktidakada ,0,",",".") }})<sup style="font-size: 20px"></sup></h3>
             {{-- <h3>{{ $ktidakada }}</h3> --}}
 
             <p><i>Pelanggan ada Kopling</i></p>
@@ -250,6 +250,22 @@
             <i class="ion ion-stats-bars"></i>
           </div>
           <a href="/test/rtada" class="small-box-footer"><i>Pelanggan Rumah Sewa Percabang</i> <i>info</i>  <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-12 col-12">
+        <!-- small box -->
+        <div class="small-box bg-primary">
+          <div class="inner">
+            
+            {{-- <h3>{{ $rada }}<sup style="font-size: 20px"></sup></h3> --}}
+            <h3>({{ number_format($semuapelanggan ,0,",",".") }})<sup style="font-size: 20px"></sup></h3>
+    
+            <p><i>DIL Semua Pelanggan</i></p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="/test/all" class="small-box-footer"><i>DIL Semua Pelanggan Percabang</i> <i>info</i>  <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
     

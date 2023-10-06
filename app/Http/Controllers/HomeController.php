@@ -46,7 +46,7 @@ class HomeController extends Controller
 
       }
       //data DIL baru
-      $tanggal1= Carbon::now()->startOfMonth()->subMonth(1);
+      $tanggal1= Carbon::now();
       $tanggak = Carbon::now()->format('Y');
        $databill = DB::table('tbl_dil as a')
        ->select('a.*')
@@ -112,6 +112,10 @@ class HomeController extends Controller
         // ->whereYear('tanggal_file',Carbon::now()->format('Y'))
         // ->pluck('bulan');
 // dd($tdatabill);
+// ->whereMonth('a.tanggal_file',$tanggal1)
+// ->whereYear('a.tanggal_file', Carbon::now()->year)
+// ->groupBy('a.cabang')
+// ->groupBy('tanggal_file')
       //data penutupan
       $jumlahtutupmodal = DB::table('penutupan as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
@@ -124,12 +128,15 @@ class HomeController extends Controller
         
       $jumlahtutup = DB::table('penutupan as a')
       ->join('tbl_dil as b','a.id_dil','=','b.id')
+      ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('SUM(a.tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')
       // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
-      ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup' , Carbon::now()->month))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
+      // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup' , Carbon::now()->month))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
       // ->where(DB::raw('(tanggal_tutup)'), Carbon::today()->month)
         // ->select('a.*','b.*')
         // ->whereMonth('tanggal_tutup', Carbon::now()->month)
         // ->whereYear('tanggal_tutup','<=', Carbon::now())
+        ->whereMonth('a.tanggal_tutup',$tanggal1)
+        ->whereYear('a.tanggal_tutup', Carbon::now()->year)
         // ->where('tanggal_tutup',Carbon::now()->month)
         ->groupBy('cabang')
         ->groupBy('tanggal_tutup')
@@ -193,7 +200,7 @@ class HomeController extends Controller
         
       //untuk Pelanggan Aktip
       $datajum = DB::table('tbl_dil as a')
-      // ->whereMonth('tanggal_pasang', Carbon::now()->month)
+      // ->whereMonth('tanggal_file', Carbon::now()->month)
       ->whereStatus('1')
         ->get();
           $jumlahdil = $datajum->count();
