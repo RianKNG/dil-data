@@ -261,6 +261,8 @@
                 <!-- /.row -->
               </div>
               <!-- ./card-body -->
+                 <!-- /.card-header -->
+
     
         <!-- Main row -->
         <div class="row">
@@ -280,6 +282,64 @@
         </div>
         <!-- /.row -->
       </div><!--/. container-fluid -->
+      {{-- //grafik dil --}}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              Grafik DIL {{ $tahun }}
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+               
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-center">
+                    {{-- <strong>{{ $tanggal }}</strong> --}}
+                  </p>
+
+                  <div class="chart">
+                    <!-- Sales Chart div -->
+                    <div id="dil" height="180" style="height: 300px;"></div>
+                  </div>
+                  <!-- /.chart-responsive -->
+                </div>
+                <!-- /.col -->
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- ./card-body -->
+               <!-- /.card-header -->
+
+  
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <div class="col-md-8">
+          <!-- MAP & BOX PANE -->
+          <!-- /.card -->
+  
+          <!-- /.row -->
+  
+          <!-- TABLE: LATEST ORDERS -->
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+  
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!--/. container-fluid -->
+    {{-- //grafik dil --}}
  <!-- Main content -->
  <div class="modal fade" id="modal-a">
   <div class="modal-dialog modal-xl">
@@ -541,6 +601,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+      
       <script src="https://code.highcharts.com/highcharts.js"></script>
       <script src="https://code.highcharts.com/highcharts-3d.js"></script>
       <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -676,77 +737,9 @@
                   });
 
                   
-                  
+             
 
 
-        
-// const chart = new Highcharts.Chart({
-//     chart: {
-//         renderTo: 'container',
-//         type: 'line',
-//         options3d: {
-//             enabled: true,
-//             alpha: 25,
-//             beta: 5,
-//             depth: 50,
-//             viewDistance: 25
-//         }
-//     },
-//     xAxis: {
-//         categories:['Januari','februari','Maret','April','mei','juni','juli','agustus','sep','okt','nov','des'],
-//     },
-//     yAxis: {
-//         title: {
-//             enabled: true
-//         }
-//     },
-//     tooltip: {
-//         headerFormat: '<b>{point.key}</b><br>',
-//         pointFormat: 'Jumlah: {point.y}'
-//     },
-//     title: {
-//         text: 'Grafik 3D DIL',
-//         align: 'center'
-//     },
-//     subtitle: {
-//         text: 'Sejatinya ' +
-//             'Tukang Ledeng' +
-//             'Sejati',
-//         align: 'center'
-//     },
-//     legend: {
-//         enabled: false
-//     },
-//     plotOptions: {
-//         column: {
-//             depth: 50
-//         }
-//     },
-//     series: [{
-//         name: 'Pemasangan Baru',
-//         data: [a,b,c,d,e,f,g,h,i,j,k,l],
-//         colorByPoint: true
-//     },{
-//       name: 'Test',
-//         data: [a,b,c,d,e,f,g,h,i,j,k,l],
-//         colorByPoint: true
-//     }],
-//     responsive: {
-//         rules: [{
-//             condition: {
-//                 maxWidth: 500
-//             },
-//             chartOptions: {
-//                 legend: {
-//                     layout: 'horizontal',
-//                     align: 'center',
-//                     verticalAlign: 'bottom'
-//                 }
-//             }
-//         }]
-//     }
-
-// });
 
 
 function showValues() {
@@ -834,155 +827,9 @@ Highcharts.chart('x', {
       ]
   }]
 });
-</script>  
+</script> 
+ 
 
-
-      {{-- <script src="https://code.highcharts.com/highcharts.js"></script>
-      <script src="https://code.highcharts.com/modules/series-label.js"></script>
-      <script src="https://code.highcharts.com/modules/exporting.js"></script>
-      <script src="https://code.highcharts.com/modules/export-data.js"></script>
-      <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    
-    <script type="text/javascript">
-    let a =  {!! json_encode($datas) !!};
-    let b =  {!! json_encode($cobacabang) !!};
-    let c =  {!! json_encode($coba) !!};
-    Highcharts.chart('container', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Grafik Batang'
-    },
-    subtitle: {
-        text: 'Sejatinya Tukang Ledeng Sejatirrrr'
-    },
-    xAxis: {
-        // categories: c,
-        categories: c,
-        crosshair: false
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Rainfall (mm)'
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: 'Penyambungan',
-        data: a
-    }]
-});
-</script>
-</script> --}}
-      {{-- <script src="https://code.highcharts.com/highcharts.js"></script>
-      <script src="https://code.highcharts.com/modules/series-label.js"></script>
-      <script src="https://code.highcharts.com/modules/exporting.js"></script>
-      <script src="https://code.highcharts.com/modules/export-data.js"></script>
-      <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    
-    <script type="text/javascript">
-    let a =  {!! json_encode($datas) !!};
-    let b =  {!! json_encode($cobacabang) !!};
-    let c =  {!! json_encode($coba) !!};
-    Highcharts.chart('container', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Grafik Batang'
-    },
-    subtitle: {
-        text: 'Sejatinya Tukang Ledeng Sejatirrrr'
-    },
-    xAxis: {
-        // categories: c,
-        categories: c,
-        crosshair: false
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Rainfall (mm)'
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: 'Penyambungan',
-        data: a
-    }]
-});
-</script> --}}
-    {{-- <script type="text/javascript">
-    let a =  {!! json_encode($datas) !!};
-    let b =  {!! json_encode($datac) !!};
-    let c =  {!! json_encode($coba) !!};
-    // let d =  {!! json_encode($datad) !!};
-    Highcharts.chart('x', {
-    chart: {
-        type: 'line'
-    },
-    title: {
-        text: 'Tahun {{ $tahun }}'
-    },
-    subtitle: {
-        text:
-            'Sejatinya tukang ledeng sejati'
-    },
-    xAxis: {
-        categories: c,
-        crosshair: true
-      
-    },
-    yAxis: {
-        title: {
-            text: 'Interval(0.25)'
-        }
-    },
-    plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true
-            },
-            enableMouseTracking: false
-        }
-    },
-    series: [{
-        name: 'Penyambungan',
-        data: a
-    },{
-        name: 'Penggantuann',
-        data: b
-    }]
-});
-</script> --}}
 {{-- //untuk Dil Baru --}}
 <div class="row">
   <div class="col-md-12">
@@ -1215,8 +1062,57 @@ Highcharts.chart('x', {
                                                                   </div>
                                                                 </div>
                                                               </div>
-       
+                                                              
 
+        
+   <script type="text/javascript">
+   var dila = {{ $grafikjan }};//dil aktip
+   var dilb = {{ $grafikpeb }};//dil aktip
+   var dilc = {{ $ganti1 }};//dil aktip
+   var dild = {{ $grafikapr }};//dil aktip
+   var dile = {{ $grafikmei }};//dil aktip
+   var dilf = {{ $grafikjun }};//dil aktip
+   var dilg = {{ $grafikjul }};//dil aktip
+   var dilh = {{ $grafikags }};//dil aktip
+   var dili = {{ $grafiksep }};//dil aktip
+   var dilj = {{ $grafikokt }};//dil aktip
+   var dilk = {{ $grafiknov }};//dil aktip
+   var dill = {{ $grafikdes }};//dil aktip
+       Highcharts.chart('dil', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Monthly Average Temperature'
+    },
+    subtitle: {
+        text: 'Source: ' +
+            '<a href="https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature" ' +
+            'target="_blank">Wikipedia.com</a>'
+    },
+    xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+        title: {
+            text: 'Temperature (°C)'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Reggane',
+        data: [dila,dilb,dilc,dild,dile,dilf,dilg,dilh,dili,dilj,dilk,dill]
+    }]
+});
+</script>
+                                                                                                           
 
    
 @endsection

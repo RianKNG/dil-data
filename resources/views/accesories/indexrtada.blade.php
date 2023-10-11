@@ -32,7 +32,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                Accesories {{ $tahun }}
+                Hak Milik {{ $tahun }}
                 <div class="card-tools">
                   <a href="/test"><span class ="fa fa-arrow-left">Kembali</span></a>
                 </div>

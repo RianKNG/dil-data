@@ -75,7 +75,7 @@
   @php
       $no=1;
   @endphp
- @foreach ($s as $index => $k)
+ @foreach ($data as $index => $k)
 <tr >  
 </td>
 <td>{{ $k->cabang }}</td>

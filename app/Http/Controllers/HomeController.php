@@ -73,7 +73,7 @@ class HomeController extends Controller
         ->groupBy('a.cabang')
         ->groupBy('tanggal_file')
         ->get();
-        // ->sum('jumlah');
+        // dd($tdatabill);
        
       //   $tdatabill->map(function($q) {
       //     $q->jumlah = explode(',', $q->jumlah);
@@ -288,6 +288,84 @@ class HomeController extends Controller
             $ganti11 = DB::table('ganti')->whereMonth('tanggal_ganti','11')->whereYear('tanggal_ganti',Carbon::now()->format('Y'))->count();
             $ganti12 = DB::table('ganti')->whereMonth('tanggal_ganti','12')->whereYear('tanggal_ganti',Carbon::now()->format('Y'))->count();
             
+
+            
+            $tahun=Carbon::now()->year;
+            $star = "2004-03-01";
+            $endjan = "$tahun-01-31";
+            $endpeb = "$tahun-02-31";
+            $endmar = "$tahun-03-31";
+            $endapr = "$tahun-04-31";
+            $endmei = "$tahun-05-31";
+            $endjun = "$tahun-06-31";
+            $endjul = "$tahun-07-31";
+            $endags = "$tahun-08-31";
+            $endsep = "$tahun-09-31";
+            $endokt = "$tahun-10-31";
+            $endnov = "$tahun-11-31";
+            $enddes = "$tahun-12-30";
+            $grafikdess = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $enddes])->get();
+          
+            foreach ($grafikdess as $keyresult) {
+              $grafikdes =  $keyresult->jumlah;
+            }
+        
+            $grafikjann = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endjan])->get()->toArray();
+            foreach ($grafikjann as $keyresult) {
+              $grafikjan =  $keyresult->jumlah;
+            }
+            $grafikpebb = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endpeb])->get()->toArray();
+          
+            foreach ( $grafikpebb as $keyresult) {
+              $grafikpeb =  $keyresult->jumlah;
+            }
+            $grafikmarr = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endmar])->get()->toArray();
+         
+            foreach ($grafikmarr as $keyresult) {
+              $grafikmar =  $keyresult->jumlah;
+            }
+            $grafikaprr = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endapr])->get()->toArray();
+           
+            foreach ($grafikaprr  as $keyresult) {
+              $grafikapr  =  $keyresult->jumlah;
+            }
+            $grafikmeii = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endmei])->get()->toArray();
+         
+            foreach ($grafikmeii as $keyresult) {
+              $grafikmei =  $keyresult->jumlah;
+            }
+            $grafikjuni = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endjun])->get()->toArray();
+           
+            foreach ($grafikjuni as $keyresult) {
+              $grafikjun =  $keyresult->jumlah;
+            }
+            $grafikjuli = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endjul])->get()->toArray();
+          
+            foreach ($grafikjuli as $keyresult) {
+              $grafikjul =  $keyresult->jumlah;
+            }
+            $grafikagst = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endags])->get()->toArray();
+          
+            foreach ($grafikagst as $keyresult) {
+              $grafikags =  $keyresult->jumlah;
+            }
+            $grafiksept = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endsep])->get()->toArray();
+          
+            foreach ($grafiksept as $keyresult) {
+              $grafiksep =  $keyresult->jumlah;
+            }
+            $grafikoktt = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endokt])->get()->toArray();
+          
+            foreach  ($grafikoktt as $keyresult) {
+              $grafikokt =  $keyresult->jumlah;
+            }
+            $grafiknove = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endnov])->get()->toArray();
+         
+            foreach ($grafiknove as $keyresult) {
+              $grafiknov =  $keyresult->jumlah;
+            }
+          
+         
              
               
 
@@ -305,8 +383,9 @@ class HomeController extends Controller
                 
                  //lainnya
                   'databill','databilling','jumlahtutup','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
-                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah','jumlahtutup'));
-                 
+                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah','jumlahtutup',
+                 //grafik dil
+                 'grafikjan','grafikpeb','grafikmar' ,'grafikapr','grafikmei','grafikjun','grafikjul','grafikags' ,'grafiksep' ,'grafikokt','grafiknov' ,'grafikdes'));
                  
     }
      public function test()

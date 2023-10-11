@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Siimple - Bootstrap Landing Page Template</title>
+  <title>Dil-Perumdam-Sumedang</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,6 +37,16 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<style>
+.img-rounded {
+    border-radius: 120px;
+    width: 120px;
+    /* height: 300px; */
+}.dunungan{
+	border-radius: 40px 40px 40px 40px;
+}
+ 
+</style>
 
 <body>
 
@@ -45,7 +55,8 @@
     <div class="container-fluid">
 
       <div class="logo">
-        <h1><img src="{{ asset('adminLTE') }}/templatedepan/img/logo.png" alt="..."></h1>
+        <h1 class="btn btn-dark"><img src="{{ asset('adminLTE') }}/templatedepan/img/logo.png" alt="..."></h1>
+       
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -68,8 +79,9 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
-      
-      <h1><p class="empat"><b>SELAMAT DATANG DI SIP DIL</b></p></h1>
+      <img src="{{ asset('adminLTE') }}/templatedepan/img/direktur.png" class="img-rounded" alt="...">
+      <li class="btn btn-primary dunungan">Direktur Utama. Moch Raden Taufik, SE</li>
+      <h1><p class="empat"><b>SELAMAT DATANG DI SIPDIL</b></p></h1>
       <style>
    p {
      /* width: 500px;
@@ -78,7 +90,7 @@
      margin: 10px; */
    }
    /* .empat {border-radius: 40px;} */
-   .empat {color: rgb(23, 7, 87);}
+   .empat {color: rgb(222, 219, 234);}
    .lima {color: rgb(232, 242, 242);}
    .enam {
      font-style: 'oblique';
@@ -265,11 +277,11 @@
     </section><!-- End Frequenty Asked Questions Section -->
 
     <!-- ======= Contact Us Section ======= -->
-    {{-- <section id="contact" class="contact section-bg">
+    <section id="contact" class="contact section-bg">
       <div class="container">
 
         <div class="section-title">
-          <h2>Contact Us</h2>
+          <h2>Kontak Kami</h2>
         </div>
 
         <div class="row justify-content-center">
@@ -278,17 +290,17 @@
             <div class="info">
               <div class="address">
                 <i class="bx bx-map"></i>
-                <p>A108 Adam Street<br>New York, NY 535022</p>
+                <p>Serang<br>Cimalaka, Kode Post 44452</p>
               </div>
 
               <div class="email">
                 <i class="bx bx-envelope"></i>
-                <p>info@example.com</p>
+                <p>pdamsumedang@gmail.com</p>
               </div>
 
               <div class="phone">
                 <i class="bx bx-phone-call"></i>
-                <p>+1 5589 55488 55s</p>
+                <p>+0852.0000.0000</p>
               </div>
             </div>
 
@@ -302,32 +314,13 @@
           </div>
 
           <div class="col-lg-5 col-md-7">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-              </div>
-              <div class="form-group mt-3">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+            <iframe src="https://www.google.com/maps/embed?pb=!4v1696940830108!6m8!1m7!1sZCDdkE1g7FsGcwkhhJQzZQ!2m2!1d-6.820814054166925!2d107.944990688378!3f62.77447867414154!4f-3.5543281248070997!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
 
         </div>
 
       </div>
-    </section><!-- End Contact Us Section --> --}}
+    </section><!-- End Contact Us Section -->
 
   </main><!-- End #main -->
 

@@ -55,6 +55,28 @@ class DilController extends Controller
         ->leftJoin('bbn as s','s.id_dil','=','d.id')
         ->where('cabang',11)
         ->simplePaginate(100);
+        if (request('term')) {
+            $data = DB::table('tbl_dil as d')
+            // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_file) as tanggal_file'),'tanggal_file')
+            // ->whereMonth('tanggal_file', Carbon::now()->month)
+            // ->groupBy('cabang')
+            // ->groupBy('tanggal_file')
+            // ->get();
+               
+        ->select([
+            'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+            'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+            'm.merek',
+            'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru','p.alasan'
+        ])
+        ->Join('merek as m','d.id_merek','=','m.id')
+        ->Join('golongan as g','d.id_golongan','=','g.id')
+        ->leftJoin('bbn as s','s.id_dil','=','d.id')
+        ->leftJoin('penutupan as p','p.alasan','=','d.id')
+        // ->orderBy('d.rt','asc')
+        ->where('d.cabang', 'Like', '%' . request('term') . '%')
+        ->orWhere('d.id', 'Like', '%' . request('term') . '%')
+        ->simplePaginate(100);
         return view('dil.v_dil', compact('data'));
         }else{
             $data = DB::table('tbl_dil as d')
@@ -141,7 +163,7 @@ class DilController extends Controller
 
 
 
-           
+    }    
       
     }
     public function add()
@@ -302,14 +324,30 @@ class DilController extends Controller
     return $pdf->download('xx.pdf');
       
    }
-   public function exportpdfa()
+   public function exportpdfa(Request $request)
    {
-        $data = DilModel::select('*')
-        ->where('status', 1)
-        ->get();
-        // return $data;
+       
+    if($request->cabang)
+    $data = DB::table('tbl_dil as a')
+    // ->leftJoin('merek as b','b.id','=','a.id_merek')
+    // ->leftJoin('penutupan as c','c.id_dil','=','a.id')
+    // ->leftJoin('ganti as d','d.id_dil','=','a.id')
+    // ->leftJoin('sambung as e','e.id_dil','=','a.id')
+
+    ->select([
+        'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
+        'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
+        // 'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
+    ])
+    ->where('a.cabang', 'Like', '%' . request('cabang') . '%')
+    ->get();
+    // dd($dil);
+        // ->where('status', 1)
+        // ->get();
+        // dd($request->data);
+        // // return $data;
         view()->share('data', $data);
-        $pdf = PDF::loadView('coba');
+        $pdf = PDF::loadView('reportdetail');
         return $pdf->download('dataDIL.pdf');
       
    }

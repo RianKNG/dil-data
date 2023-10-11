@@ -32,8 +32,9 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                Accesories {{ $tahun }}
+                Segel Tidak Ada {{ $tahun }}
                 <div class="card-tools">
+                  <a href="/test"><span class ="fa fa-arrow-left">Kembali</span></a>
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>

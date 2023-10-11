@@ -32,7 +32,7 @@
             </div>
             </div>
         </div>
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             <div class="card card-outline card-danger">
             <div class="card-header">
                 <h3 class="card-title">Download All Data Status Pdf</h3>
@@ -41,18 +41,43 @@
                 <a href="/exportpdf" class="btn btn-danger">Download Pdf All Data Status</a>     
             </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-md-4">
             <div class="card card-outline card-danger">
             <div class="card-header">
                 <h3 class="card-title">Expor Data Pdf Aktip</h3>
             </div>
+            {{-- <div class="col-sm-3">
+                <label for="" class="form-label">cari cabang</label>
+                <select name="cabang" id="" class="form-select">
+                    <option value="">-</option>
+                    <option value="11" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='11'}}">Cisitu</option>
+                    <option value="12" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='12'}}">Cimanggung</option>
+
+
+                </select>
+            </div> --}}
             <div class="card-body">
-                <a href="/exportpdfa" class="btn btn-danger">Download Pdf Aktip</a>     
+                {{-- <a href="/exportpdfa" class="btn btn-danger">Download Pdf Aktip</a>      --}}
+                <div class="my-0">
+                    <form action="/exportpdfa" method="GET">
+                        <div class="input-group">
+                            <label for="" class="form-label">cari cabang</label>
+                            <select name="cabang" id="" class="form-select">
+                                <option value="">-</option>
+                                <option value="11" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='11'}}">cISITU</option>
+                                <option value="12" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='12'}}">Cimanggung</option>
+            
+            
+                            </select>
+                            <button class="btn btn-primary" type="submit">GET</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             </div>
         </div>
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             <div class="card card-outline card-primary">
             <div class="card-header">
                 <h3 class="card-title">Expor Data Pdf Non Aktip</h3>
@@ -61,7 +86,7 @@
                 <a href="/exportpdfn" class="btn btn-primary">Download Pdf Non Aktip</a>     
             </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-md-12">
             <div class="card card-outline card-primary">
             <div class="card-header">
