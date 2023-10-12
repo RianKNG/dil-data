@@ -45,7 +45,7 @@
         <div class="col-md-4">
             <div class="card card-outline card-danger">
             <div class="card-header">
-                <h3 class="card-title">Expor Data Pdf Aktip</h3>
+                <h3 class="card-title">Download Berdasarkan Cabang</h3>
             </div>
             {{-- <div class="col-sm-3">
                 <label for="" class="form-label">cari cabang</label>
@@ -62,15 +62,29 @@
                 <div class="my-0">
                     <form action="/exportpdfa" method="GET">
                         <div class="input-group">
-                            <label for="" class="form-label">cari cabang</label>
+                            {{-- <label for="" class="form-label">cari cabang</label> --}}
                             <select name="cabang" id="" class="form-select">
                                 <option value="">-</option>
-                                <option value="11" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='11'}}">cISITU</option>
-                                <option value="12" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='12'}}">Cimanggung</option>
+                                <option value="1" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='1'}}">Sumedang Utara</option>
+                                <option value="2" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='2'}}">Tanjungkerta</option>
+                                <option value="3" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='3'}}">Datmaraja</option>
+                                <option value="4" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='4'}}">Situraja</option>
+                                <option value="5" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='5'}}">Jatinangor</option>
+                                <option value="6" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='6'}}">Tanjungsari</option>
+                                <option value="7" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='7'}}">Paseh</option>
+                                <option value="8" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='8'}}">Cimalaka</option>
+                                <option value="10" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='10'}}">Ujungjaya</option>
+                                <option value="11" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='11'}}">Wado</option>
+                                <option value="12" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='12'}}">Cisitu</option>
+                                <option value="13" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='13'}}">Pamulihan</option>
+                                <option value="14" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='14'}}">Cimanggung</option>
+                                <option value="31" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='31'}}">Sumeadang Selatan</option>
+                                <option value="42" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='42'}}">Sumedang Utara</option>
+                                <option value="40" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='40'}}">Mol Pelayanan Publik</option>
             
             
                             </select>
-                            <button class="btn btn-primary" type="submit">GET</button>
+                            <button class="btn btn-primary" type="submit">Ambil Data</button>
                         </div>
                     </form>
                 </div>
@@ -98,7 +112,7 @@
                     <div class="input-group">
                         <input type="date" class="form-control" name="start_date">
                         <input type="date" class="form-control" name="end_date">
-                        <button class="btn btn-primary" type="submit">GET</button>
+                        <button class="btn btn-primary" type="submit">Ambil Data</button>
                     </div>
                 </form>
             </div>
@@ -112,7 +126,7 @@
                         <div class="input-group">
                             <input type="date" class="form-control" name="start_date">
                             <input type="date" class="form-control" name="end_date">
-                            <button class="btn btn-primary" type="submit">GET</button>
+                            <button class="btn btn-primary" type="submit">Ambil Data</button>
                         </div>
                     </form>
                 </div>
@@ -126,7 +140,7 @@
                     <div class="input-group">
                         <input type="date" class="form-control" name="start_date">
                         <input type="date" class="form-control" name="end_date">
-                        <button class="btn btn-primary" type="submit">GET</button>
+                        <button class="btn btn-primary" type="submit">Ambil Data</button>
                     </div>
                 </form>
             </div>
@@ -140,7 +154,7 @@
                         <div class="input-group">
                             <input type="date" class="form-control" name="start_date">
                             <input type="date" class="form-control" name="end_date">
-                            <button class="btn btn-primary" type="submit">GET</button>
+                            <button class="btn btn-primary" type="submit">Ambil Data</button>
                         </div>
                     </form>
                 </div>

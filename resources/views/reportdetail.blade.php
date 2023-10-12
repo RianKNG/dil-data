@@ -44,31 +44,31 @@
   <tr>
     <th>cabang</th>
     <th>Status</label></th>
-    <th>No Rekening</th>  
-    <th>no_rekening</th>
-    <th>nama_sekarang</th>
-    <th>nama_pemilik</th>
-    <th>no_rumah</th>
-    <th>rt</th>
-    <th>rw</th>
-    <th>blok</th>
-    <th>dusun</th>
-    <th>kecamatan</th>
-    <th>status_milik</th>
-    <th>jml_jiwa_tetap</th>
-    <th>jml_jiwa_tidak_tetap</th>
-    <th>tanggal_pasang</th>
-    <th> merek</th>
-    <th>segel</th>
-    <th>stop_kran</th>
-    <th>ceck_valve</th>
-    <th>kopling</th>
-    <th>plugran</th>
+    <th>Rekening</th>  
+    {{-- <th>no_rekening</th> --}}
+    <th>Nama Sekarang</th>
+    <th>Nama Pemilik</th>
+    <th>No Rumah</th>
+    <th>RT</th>
+    <th>RW</th>
+    <th>Blok</th>
+    <th>Dusun</th>
+    <th>Kecamatan</th>
+    <th>Status Milik</th>
+    <th>JML Jiwa Tetap</th>
+    <th>JML Jiwa Tidak Tetap</th>
+    <th>Tanggal Pasang</th>
+    <th>Merek</th>
+    <th>Segel</th>
+    <th>Stop Kran</th>
+    <th>Cek Valve</th>
+    <th>Kopling</th>
+    <th>Plug</th>
     <th>box</th>
-    <th>bln_billing</th>
-    <th>thn_billing</th>
-    <th>sumber_lain</th>
-    <th>jenis_usaha</th>
+    <th>Tanggal Dil</th>
+    {{-- <th>thn_billing</th> --}}
+    <th>Sumber Lain</th>
+    <th>Jenis Usaha</th>
     
     <th>timestamp</th>
   </tr>

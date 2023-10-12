@@ -289,7 +289,8 @@ class HomeController extends Controller
             $ganti12 = DB::table('ganti')->whereMonth('tanggal_ganti','12')->whereYear('tanggal_ganti',Carbon::now()->format('Y'))->count();
             
 
-            
+            $categories=['jan','feb','mar','apr','mei','jun','jul','ags','sep','okt','nov','des'];
+            // dd(json_encode($categories));
             $tahun=Carbon::now()->year;
             $star = "2004-03-01";
             $endjan = "$tahun-01-31";
@@ -302,8 +303,20 @@ class HomeController extends Controller
             $endags = "$tahun-08-31";
             $endsep = "$tahun-09-31";
             $endokt = "$tahun-10-31";
+            // dd($endokt);
+            $filling_Date = Carbon::createFromFormat('Y-m-d', "$tahun-10-12")->format('Y-m');
+            // dd($filling_Date);
             $endnov = "$tahun-11-31";
             $enddes = "$tahun-12-30";
+            $test = "2022-10-31";
+            $testoke = Carbon::now()->format('Y-m');
+            // dd($testoke);
+            // if($testoke ==$filling_Date){
+            //   return('anda benar');
+            // }else{
+            //   return('salah -');
+            // }
+           
             $grafikdess = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $enddes])->get();
           
             foreach ($grafikdess as $keyresult) {
@@ -314,16 +327,19 @@ class HomeController extends Controller
             foreach ($grafikjann as $keyresult) {
               $grafikjan =  $keyresult->jumlah;
             }
+            
             $grafikpebb = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endpeb])->get()->toArray();
           
             foreach ( $grafikpebb as $keyresult) {
               $grafikpeb =  $keyresult->jumlah;
             }
+            // dd($grafikpebb);
             $grafikmarr = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endmar])->get()->toArray();
          
             foreach ($grafikmarr as $keyresult) {
               $grafikmar =  $keyresult->jumlah;
             }
+            // dd($grafikmar);
             $grafikaprr = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endapr])->get()->toArray();
            
             foreach ($grafikaprr  as $keyresult) {
@@ -364,8 +380,18 @@ class HomeController extends Controller
             foreach ($grafiknove as $keyresult) {
               $grafiknov =  $keyresult->jumlah;
             }
-          
-         
+           
+            if($testoke == $filling_Date){
+              $data=[$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes];
+            }else{
+              $data=[$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes];
+            }
+            // dd(json_encode($data));
+        //  if(){
+        //    elseif{
+
+        //    }
+        //  }
              
               
 
@@ -385,7 +411,7 @@ class HomeController extends Controller
                   'databill','databilling','jumlahtutup','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
                   'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah','jumlahtutup',
                  //grafik dil
-                 'grafikjan','grafikpeb','grafikmar' ,'grafikapr','grafikmei','grafikjun','grafikjul','grafikags' ,'grafiksep' ,'grafikokt','grafiknov' ,'grafikdes'));
+                 'grafikjan','grafikpeb','grafikmar' ,'grafikapr','grafikmei','grafikjun','grafikjul','grafikags' ,'grafiksep' ,'grafikokt','grafiknov' ,'grafikdes','categories','data'));
                  
     }
      public function test()

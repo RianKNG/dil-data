@@ -22,10 +22,12 @@
 
 @endsection
     @php
-      $tanggal = date('Y m d');
+      $tanggal = date('Y-m-d');
+      $newDateFormat = \Carbon\Carbon::createFromFormat('Y-m-d', $tanggal)->format('d F Y');
       $tahun = date('Y');
       $jam = date("h:i:sa");
     @endphp
+    
 @section('tabel')
 
      @php
@@ -45,7 +47,7 @@
     {{-- <div class="container"> --}}
         <!-- Info boxes -->
        
-        <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ $tanggal }}</b></i></span></h6>
+        <h6><span> <i><b>Update Konsolidasi D I L Bulan : {{ $newDateFormat }}</b></i></span></h6>
         <div class="row">
           
           <div class="col-12 col-sm-6 col-md-3">
@@ -669,7 +671,7 @@
       // }
   },
   title: {
-      text: 'Grafk Garis',
+      text: 'Pergerakan DIL',
       align: 'center'
   },
       
@@ -780,7 +782,7 @@ Highcharts.chart('x', {
       }
   },
   title: {
-      text: 'Grafk Lingkaran',
+      text: 'Penggunaan Merek WM',
       align: 'center'
   },
   subtitle: {
@@ -1068,7 +1070,7 @@ Highcharts.chart('x', {
    <script type="text/javascript">
    var dila = {{ $grafikjan }};//dil aktip
    var dilb = {{ $grafikpeb }};//dil aktip
-   var dilc = {{ $ganti1 }};//dil aktip
+   var dilc = {{ $grafikmar }};//dil aktip
    var dild = {{ $grafikapr }};//dil aktip
    var dile = {{ $grafikmei }};//dil aktip
    var dilf = {{ $grafikjun }};//dil aktip
@@ -1083,19 +1085,18 @@ Highcharts.chart('x', {
         type: 'line'
     },
     title: {
-        text: 'Monthly Average Temperature'
+        text: 'Pergerakan DIL'
     },
     subtitle: {
-        text: 'Source: ' +
-            '<a href="https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature" ' +
-            'target="_blank">Wikipedia.com</a>'
+        text: 'Interval: ' +
+            'Satu (1) Tahun Dalam Tahun Berjalan'
     },
     xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        categories: {!! json_encode($categories) !!},
     },
     yAxis: {
         title: {
-            text: 'Temperature (°C)'
+            text: 'Jarak Nilai'
         }
     },
     plotOptions: {
@@ -1107,8 +1108,8 @@ Highcharts.chart('x', {
         }
     },
     series: [{
-        name: 'Reggane',
-        data: [dila,dilb,dilc,dild,dile,dilf,dilg,dilh,dili,dilj,dilk,dill]
+        name: 'Dil Perumdam Sumedang',
+        data: {!! json_encode($data) !!},
     }]
 });
 </script>
