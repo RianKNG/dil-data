@@ -329,27 +329,30 @@ class DilController extends Controller
        
     if($request->cabang)
     $data = DB::table('tbl_dil as a')
-    // ->leftJoin('merek as b','b.id','=','a.id_merek')
-    // ->leftJoin('penutupan as c','c.id_dil','=','a.id')
-    // ->leftJoin('ganti as d','d.id_dil','=','a.id')
-    // ->leftJoin('sambung as e','e.id_dil','=','a.id')
+    ->leftJoin('merek as b','b.id','=','a.id_merek')
+    ->leftJoin('penutupan as c','c.id_dil','=','a.id')
+    ->leftJoin('ganti as d','d.id_dil','=','a.id')
+    ->leftJoin('sambung as e','e.id_dil','=','a.id')
 
     ->select([
         'a.id','a.status','a.cabang','a.no_rekening','a.nama_sekarang','a.dusun','a.kecamatan','a.status_milik','a.jml_jiwa_tetap','a.jml_jiwa_tidak_tetap','tanggal_file',
         'a.segel','a.stop_kran','a.ceck_valve','a.kopling','a.plugran','a.box','a.sumber_lain','a.jenisusaha','a.id_merek',
-        // 'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan'
+        'b.merek','c.tanggal_tutup','c.alasan','d.tanggal_ganti','d.no_wmbaru','e.tanggal_sambung','e.alasan','a.no_rumah','a.rt','a.rw'
     ])
     ->where('a.cabang', 'Like', '%' . request('cabang') . '%')
     ->get();
+    // dd($data);
     // dd($dil);
         // ->where('status', 1)
         // ->get();
         // dd($request->data);
         // // return $data;
-        view()->share('data', $data);
-        $pdf = PDF::loadView('reportdetail');
+        // $customPaper = array(0,0,720,1440);
+        // view()->share('data', $data);
+        // $pdf = PDF::loadView('reportdetail');
+        // return $pdf->download('dataDIL.pdf');
+        $pdf = PDF::loadView('reportdetail',compact('data'))->setPaper('a2', 'landscape');
         return $pdf->download('dataDIL.pdf');
-      
    }
    public function exportpdfn()
    {

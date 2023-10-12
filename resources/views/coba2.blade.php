@@ -59,7 +59,6 @@
         <h3>Laporan Data Induk Pelanggan </h3>
         <h4 style="line-height: 0px;">Tanggal: 
             @php
-            // Tanggal hari ini
             echo date('d F Y'); 
             @endphp
         </h4>

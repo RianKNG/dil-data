@@ -4,124 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Invoice #{{ $order->invoice }}</title>
+    <title>Invoice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         body{
-            padding: 0;
-            margin: 0;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color:#333;
+            text-align:left;
+            font-size:18px;
+            margin:0;
         }
-        .page{
-            max-width: 80em;
-            margin: 0 auto;
+        .container{
+            margin:0 auto;
+            margin-top:35px;
+            padding:40px;
+            width:750px;
+            height:auto;
+            background-color:#fff;
         }
-        table th,
-        table td{
-            text-align: left;
+        caption{
+            font-size:28px;
+            margin-bottom:15px;
         }
-        table.layout{
-            width: 100%;
-            border-collapse: collapse;
+        table{
+            border:1px solid #333;
+            border-collapse:collapse;
+            margin:0 auto;
+            width:740px;
         }
-        table.display{
-            margin: 1em 0;
+        td, tr, th{
+            padding:12px;
+            border:1px solid #333;
+            width:185px;
         }
-        table.display th,
-        table.display td{
-            border: 1px solid #B3BFAA;
-            padding: .5em 1em;
+        th{
+            background-color: #f0f0f0;
         }
-​
-        table.display th{ background: #D5E0CC; }
-        table.display td{ background: #fff; }
-​
-        table.responsive-table{
-            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-        }
-​
-        .listcust {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display:table;
-            border-spacing: 10px;
-            border-collapse: separate;
-            list-style-type: none;
-        }
-​
-        .customer {
-            padding-left: 600px;
+        h4, p{
+            margin:0px;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h3>Point of Sales Daengweb.id</h3>
-        <h4 style="line-height: 0px;">Invoice: #{{ $order->invoice }}</h4>
-        <p><small style="opacity: 0.5;">{{ $order->created_at->format('d-m-Y H:i:s') }}</small></p>
-    </div>
-    <div class="customer">
+    <div class="container">
         <table>
-            <tr>
-                <th>Nama Pelanggan</th>
-                <td>:</td>
-                <td>{{ $order->customer->name }}</td>
-            </tr>
-            <tr>
-                <th>No Telp</th>
-                <td>:</td>
-                <td>{{ $order->customer->phone }}</td>
-            </tr>
-            <tr>
-                <th>Alamat</th>
-                <td>:</td>
-                <td>{{ $order->customer->address }}</td>
-            </tr>
-        </table>
-    </div>
-    <div class="page">
-        <table class="layout display responsive-table">
+            <caption>
+                Daengweb Invoice App
+            </caption>
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Produk</th>
-                    <th>Harga</th>
-                    <th>Jumlah</th>
-                    <th>Subtotal</th>
+                    <th colspan="3">Invoice <strong>#{{ $invoice->id }}</strong></th>
+                    <th>{{ $invoice->created_at->format('D, d M Y') }}</th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h4>Perusahaan: </h4>
+                        <p>Daengweb.<br>
+                            Jl Sultan Hasanuddin Makassar<br>
+                            085343966997<br>
+                            support@daengweb.id
+                        </p>
+                    </td>
+                    <td colspan="2">
+                        <h4>Pelanggan: </h4>
+                        <p>{{ $invoice->customer->name }}<br>
+                        {{ $invoice->customer->address }}<br>
+                        {{ $invoice->customer->phone }} <br>
+                        {{ $invoice->customer->email }}
+                        </p>
+                    </td>
                 </tr>
             </thead>
             <tbody>
-                @php 
-                    $no = 1;
-                    $totalPrice = 0;
-                    $totalQty = 0;
-                    $total = 0;
-                @endphp
-                @forelse ($order->order_detail as $row)
                 <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $row->product->name }}</td>
+                    <th>Produk</th>
+                    <th>Harga</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                </tr>
+                @foreach ($invoice->detail as $row)
+                <tr>
+                    <td>{{ $row->product->title }}</td>
                     <td>Rp {{ number_format($row->price) }}</td>
-                    <td>{{ $row->qty }} Item</td>
-                    <td>Rp {{ number_format($row->price * $row->qty) }}</td>
+                    <td>{{ $row->qty }}</td>
+                    <td>Rp {{ $row->subtotal }}</td>
                 </tr>
-​
-                @php
-                    $totalPrice += $row->price;
-                    $totalQty += $row->qty;
-                    $total += ($row->price * $row->qty);
-                @endphp
-                @empty
+                @endforeach
                 <tr>
-                    <td colspan="5" class="text-center">Tidak ada data</td>
+                    <th colspan="3">Subtotal</th>
+                    <td>Rp {{ number_format($invoice->total) }}</td>
                 </tr>
-                @endforelse
+                <tr>
+                    <th>Pajak</th>
+                    <td></td>
+                    <td>2%</td>
+                    <td>Rp {{ number_format($invoice->tax) }}</td>
+                </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="2">Total</th>
-                    <td>Rp {{ number_format($totalPrice) }}</td>
-                    <td>{{ number_format($totalQty) }} Item</td>
-                    <td>Rp {{ number_format($total) }}</td>
+                    <th colspan="3">Total</th>
+                    <td>Rp {{ number_format($invoice->total_price) }}</td>
                 </tr>
             </tfoot>
         </table>
