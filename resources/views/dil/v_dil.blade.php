@@ -141,7 +141,17 @@
                     {{-- <td>{{ $k->bln_billing }}</td>
                     <td>{{ $k->thn_billing }}</td> --}}
                     <td>{{ $k->sumber_lain}}</td>
-                    <td>{{ $k->jenisusaha }}</td>
+                    <td>
+
+                      @if(empty($k->jenisusaha))
+                      
+                      <p class="text-success">__</p>
+                  @else
+                      <p class="text-danger">{{ $k->jenisusaha }}</p>
+                  @endif
+                    
+                    </td>
+                    
                     
                     {{-- <td>{{ $k->timestamp}}</td> --}}
                   

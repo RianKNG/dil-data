@@ -73,7 +73,7 @@ class DilController extends Controller
         ->Join('golongan as g','d.id_golongan','=','g.id')
         ->leftJoin('bbn as s','s.id_dil','=','d.id')
         ->leftJoin('penutupan as p','p.alasan','=','d.id')
-        // ->orderBy('d.rt','asc')
+        ->orderBy('d.status','desc')
         ->where('d.cabang', 'Like', '%' . request('term') . '%')
         ->orWhere('d.id', 'Like', '%' . request('term') . '%')
         ->simplePaginate(100);
@@ -96,7 +96,8 @@ class DilController extends Controller
         ->Join('golongan as g','d.id_golongan','=','g.id')
         ->leftJoin('bbn as s','s.id_dil','=','d.id')
         ->leftJoin('penutupan as p','p.alasan','=','d.id')
-        ->orderBy('d.cabang','desc')
+        // ->orderBy('d.cabang','desc')
+        ->orderBy('d.status','desc')
         // ->where('d.status',2)
         ->simplePaginate(100);
         // ->get();
@@ -120,7 +121,7 @@ class DilController extends Controller
         ->Join('golongan as g','d.id_golongan','=','g.id')
         ->leftJoin('bbn as s','s.id_dil','=','d.id')
         ->leftJoin('penutupan as p','p.alasan','=','d.id')
-        // ->orderBy('d.rt','asc')
+        ->orderBy('d.status','desc')
         ->where('d.cabang', 'Like', '%' . request('term') . '%')
         ->orWhere('d.id', 'Like', '%' . request('term') . '%')
         ->simplePaginate(100);
@@ -240,7 +241,9 @@ class DilController extends Controller
           'id_merek' => $request->id_merek,
           'id_golongan' => $request->id_golongan,
           'no_seri' => $request->no_seri,
-        ]);
+        ])
+        ->latest()
+        ->first();
         
         return redirect()->route('dil')->with('success','data berhasil ditambahkan');
       }  

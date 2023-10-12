@@ -49,7 +49,9 @@ class PenutupanController extends Controller
     public function insert(Request $request)
     {
         // ini cara baru tapi mau coba lama dulu
-       Penutupan::create($request->all());
+       Penutupan::create($request->all())
+       ->latest()
+        ->first();
      
         // ini cara lama
         // $data = new DilModel();
@@ -66,6 +68,7 @@ class PenutupanController extends Controller
     {
         $data = Penutupan::find($id);
         $data->update($request->all());
+
         return redirect()->route('penutupan')->with('success','data penutupan berhasil dirubah');
     }
     // public function hapus(Penutupan $penutupan)

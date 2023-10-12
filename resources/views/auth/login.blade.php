@@ -66,8 +66,8 @@
         <ul>
           <li class="active"><a href="#header" class="scrollto">Home</a></li>
           <li><a href="#about" class="scrollto">Visi Misi</a></li>
-          <li><a href="#why-us" class="scrollto">Kegatan</a></li>
-          <li><a href="#footer" class="scrollto">Pertanyaan</a></li>
+          <li><a href="#why-us" class="scrollto">Kegiatan</a></li>
+          <li><a href="#footer" class="scrollto">Footer</a></li>
           </li>
           {{-- <li><a href="#contact" class="scrollto">Contact Us</a></li> --}}
         </ul>
@@ -117,10 +117,10 @@
         <div class="row no-gutters">
           
           <div class="col-md-6 form-group pl-md-1">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Email Kamu" required>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
           </div>
 		  <div class="col-md-6 form-group pr-md-1">
-            <input type="password" name="password" class="form-control" id="name" placeholder="Nama Kamu" required>
+            <input type="password" name="password" class="form-control" id="name" placeholder="Nama" required>
           </div>
         </div>
 
@@ -228,7 +228,7 @@
             <a data-bs-toggle="collapse" data-bs-target="#faq3" class="collapsed">Dari Segi Kebutuhan? <i class="bx bx-down-arrow-alt icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq3" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Berusaha Memenuhi Keinginan Direksi dalam Kemudahan dalam Update dan akses data
+                Berusaha Memenuhi Keinginan Direksi dalam Kemudahan dalam Update data 
               </p>
             </div>
           </li>
@@ -236,7 +236,7 @@
             <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq1">Dari Segi Teknologi? <i class="bx bx-down-arrow-alt icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq1" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Memanfaatkan Tekhnologi untuk Memudahkan Pengolahan data Bagi cabang dan Unit sehingga dimanapun dapat dilakukan karena dapat dilakukan pengapdetan lewat HP dan Kompute.
+                Berusaha untuk memadukan antara Teknologi Informasi dengan Data, sehingga adanya keudahan dalam mengolah data secara realtime.
               </p>
             </div>
           </li>
@@ -245,18 +245,7 @@
             <a data-bs-toggle="collapse" data-bs-target="#faq2" class="collapsed">Dari Segi Laporan? <i class="bx bx-down-arrow-alt icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq2" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Dapat Dilihat dengan Mudah dibaca Karena Ditampilkan dalam Bentuk Grafik dan Tabel.
-              </p>
-            </div>
-          </li>
-
-          
-
-          <li>
-            <a data-bs-toggle="collapse" data-bs-target="#faq4" class="collapsed">Kekurangan? <i class="bx bx-down-arrow-alt icon-show"></i><i class="bx bx-x icon-close"></i></a>
-            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Mungkin Butuh Pengembangan dan harus sesuainya format data dan harus mengumpulkan data yang valid dan mungkin dalam perjalan menemukan masalah baru yang harus selesai sesuai target yang ditentukan.
+                Dapat Dilihat dengan Mudah dibaca Karena Ditampilkan dalam Bentuk Grafik dan Tabel sehingga ada laporan soft file dan hard file.
               </p>
             </div>
           </li>
@@ -265,7 +254,7 @@
             <a data-bs-toggle="collapse" data-bs-target="#faq5" class="collapsed">Harapan? <i class="bx bx-down-arrow-alt icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq5" class="collapse" data-bs-parent=".faq-list">
               <p>
-               Membuat Record falam bentuk Soft Cpy dan Hard Copy untuk mempercepat laporan
+               Dapat Dikembangkan dan mampu memenuhi kebutuhan perusahaan.
               </p>
             </div>
           </li>
@@ -290,17 +279,17 @@
             <div class="info">
               <div class="address">
                 <i class="bx bx-map"></i>
-                <p>Serang<br>Cimalaka, Kode Post 44452</p>
+                <p>Cimalaka<br>JL. Raya Sumedang-Cirebon, Km. 4, 5, Cimalaka, Kabupaten Sumedang</p>
               </div>
 
               <div class="email">
                 <i class="bx bx-envelope"></i>
-                <p>pdamsumedang@gmail.com</p>
+                <p>info@pdamsumedang.com</p>
               </div>
 
               <div class="phone">
                 <i class="bx bx-phone-call"></i>
-                <p>+0852.0000.0000</p>
+                <p> (0261) 202627</p>
               </div>
             </div>
 
@@ -308,7 +297,6 @@
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
 
           </div>

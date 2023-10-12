@@ -59,7 +59,9 @@ class PenggantianController extends Controller
     public function insert(Request $request)
     {
         
-        Ganti::create($request->all());
+        Ganti::create($request->all())
+        ->latest()
+        ->first();
         return redirect('penggantian')->with('success','data berhasil di tambahkan');
     }
     public function hapus($id)

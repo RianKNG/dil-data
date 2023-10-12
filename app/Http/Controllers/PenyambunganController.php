@@ -90,11 +90,13 @@ $data = $data
         $data = Sambung::find($id);
         $data->delete();
 
-        return redirect()->route('penyambungan')->with('success','data penutupan berhasil dithapus');
+        return redirect()->route('penyambungan')->with('success','data penutupan berhasil dihapus');
     }
     public function insert(Request $request)
     {
-        Sambung::create($request->all());
+        Sambung::create($request->all())
+        ->latest()
+        ->first();
         return redirect()->route('penyambungan')->with('success','data berhsil ditambahkan');
     }
     public function edit($id)

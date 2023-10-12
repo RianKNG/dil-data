@@ -294,34 +294,41 @@ class HomeController extends Controller
             $tahun=Carbon::now()->year;
             $star = "2004-03-01";
             $endjan = "$tahun-01-31";
+            $filling_Datejan = Carbon::createFromFormat('Y-m-d', "$tahun-01-12")->format('Y-m');
             $endpeb = "$tahun-02-31";
+            $filling_Datepeb = Carbon::createFromFormat('Y-m-d', "$tahun-02-12")->format('Y-m');
             $endmar = "$tahun-03-31";
+            $filling_Datemar = Carbon::createFromFormat('Y-m-d', "$tahun-03-12")->format('Y-m');
             $endapr = "$tahun-04-31";
+            $filling_Dateapr = Carbon::createFromFormat('Y-m-d', "$tahun-04-12")->format('Y-m');
             $endmei = "$tahun-05-31";
+            $filling_Datemei = Carbon::createFromFormat('Y-m-d', "$tahun-05-12")->format('Y-m');
             $endjun = "$tahun-06-31";
+            $filling_Datejun = Carbon::createFromFormat('Y-m-d', "$tahun-06-12")->format('Y-m');
             $endjul = "$tahun-07-31";
+            $filling_Datejul = Carbon::createFromFormat('Y-m-d', "$tahun-07-12")->format('Y-m');
             $endags = "$tahun-08-31";
+            $filling_Dateags = Carbon::createFromFormat('Y-m-d', "$tahun-08-12")->format('Y-m');
             $endsep = "$tahun-09-31";
+            $filling_Datesep = Carbon::createFromFormat('Y-m-d', "$tahun-09-12")->format('Y-m');
             $endokt = "$tahun-10-31";
             // dd($endokt);
-            $filling_Date = Carbon::createFromFormat('Y-m-d', "$tahun-10-12")->format('Y-m');
+            $filling_Dateokt = Carbon::createFromFormat('Y-m-d', "$tahun-10-12")->format('Y-m');
             // dd($filling_Date);
             $endnov = "$tahun-11-31";
+            $filling_Datenov = Carbon::createFromFormat('Y-m-d', "$tahun-11-12")->format('Y-m');
             $enddes = "$tahun-12-30";
+            $filling_Datedes = Carbon::createFromFormat('Y-m-d', "$tahun-12-12")->format('Y-m');
             $test = "2022-10-31";
             $testoke = Carbon::now()->format('Y-m');
             // dd($testoke);
-            // if($testoke ==$filling_Date){
+            // if($testoke ==$filling_Datenov){
             //   return('anda benar');
             // }else{
             //   return('salah -');
             // }
            
-            $grafikdess = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $enddes])->get();
-          
-            foreach ($grafikdess as $keyresult) {
-              $grafikdes =  $keyresult->jumlah;
-            }
+            
         
             $grafikjann = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endjan])->get()->toArray();
             foreach ($grafikjann as $keyresult) {
@@ -380,21 +387,39 @@ class HomeController extends Controller
             foreach ($grafiknove as $keyresult) {
               $grafiknov =  $keyresult->jumlah;
             }
-           
-            if($testoke == $filling_Date){
-              $data=[$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes];
-            }else{
-              $data=[$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes,$grafikdes];
+            $grafikdess = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $enddes])->get();
+          
+            foreach ($grafikdess as $keyresult) {
+              $grafikdes =  $keyresult->jumlah;
             }
-            // dd(json_encode($data));
-        //  if(){
-        //    elseif{
-
-        //    }
-        //  }
-             
-              
-
+           
+            if($testoke == $filling_Datejan){
+              $data=[$grafikjan];
+            }elseif($testoke == $filling_Datepeb){
+              $data=[$grafikjan,$grafikpeb];
+            }elseif($testoke == $filling_Datemar){
+              $data=[$grafikjan,$grafikpeb,$grafikmar];
+            }elseif($testoke == $filling_Dateapr){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr];
+            }elseif($testoke == $filling_Datemei){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei];
+            }elseif($testoke == $filling_Datejun){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun];
+            }elseif($testoke == $filling_Datejul){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul];
+            }elseif($testoke == $filling_Dateags){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags];
+            }elseif($testoke == $filling_Datesep){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep];
+            }elseif($testoke == $filling_Dateokt){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt];
+            }elseif($testoke == $filling_Datenov){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt,$grafiknov];
+            }elseif($testoke == $filling_Datedes){
+              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt,$grafiknov,$grafikdes];
+            }else{
+              echo"Data Yang anda Cari melebihi Batas Pencarian";
+            }
                return view('v_home',compact(
                 'grafik1', 'grafik2', 'grafik3','grafik4','grafik5','grafik6','grafik7','grafik8','grafik9','grafik10','grafik11','grafik12',
                 //tutup
@@ -411,7 +436,10 @@ class HomeController extends Controller
                   'databill','databilling','jumlahtutup','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
                   'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah','jumlahtutup',
                  //grafik dil
-                 'grafikjan','grafikpeb','grafikmar' ,'grafikapr','grafikmei','grafikjun','grafikjul','grafikags' ,'grafiksep' ,'grafikokt','grafiknov' ,'grafikdes','categories','data'));
+                 'grafikjan','grafikpeb','grafikmar' ,'grafikapr','grafikmei','grafikjun','grafikjul','grafikags' ,'grafiksep' ,'grafikokt','grafiknov' ,'grafikdes','categories','data',
+                //aktip/non
+                'jumlahdil','jumlahnon'));
+
                  
     }
      public function test()

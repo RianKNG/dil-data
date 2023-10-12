@@ -765,11 +765,11 @@ showValues();
 <script type="text/javascript">
                 var s = {{ $jumlahdil }};//dil aktip
                 var t = {{ $jumlahnon }};//Dil non
-                var u = {{ $databilling }};//dilbaru
+                // var u = {{ $databilling }};//dilbaru
             
-                var w = {{ $dataz }};//penyambungan
-                var x = {{ $datatest }};//penggantian
-                var y = {{ $datat }};//bbn
+                // var w = {{ $dataz }};//penyambungan
+                // var x = {{ $datatest }};//penggantian
+                // var y = {{ $datat }};//bbn
 
 
 Highcharts.chart('x', {
@@ -782,7 +782,7 @@ Highcharts.chart('x', {
       }
   },
   title: {
-      text: 'Penggunaan Merek WM',
+      text: 'Status Pelanggan',
       align: 'center'
   },
   subtitle: {
@@ -815,18 +815,14 @@ Highcharts.chart('x', {
       type: 'pie',
       name: 'DIL',
       data: [
-          ['Bbn', y],
-          // ['Jumlah Dil Non Aktip', t],
-          {
-              name: 'Dil Baru',
-              y: u,
-              sliced: true,
-              selected: true
-          },
-        
-          ['Penyambungan', w],
-          ['Penggantian', x],
-      ]
+            ['Jumlah Aktip', s],
+            {
+                name: 'Jumlah Non',
+                y: t,
+                sliced: true,
+                selected: true
+            },
+        ]
   }]
 });
 </script> 
@@ -969,7 +965,7 @@ Highcharts.chart('x', {
                                     <div class="col-md-12">
                                       <div class="card">
                                         <div class="card-header">
-                                          <h5 class="card-title">RekapSSMB {{ $tahun }}</h5>
+                                          <h5 class="card-title">Rekap Penyambungan {{ $tahun }}</h5>
                                           <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                               <i class="fas fa-minus"></i>
@@ -1022,7 +1018,7 @@ Highcharts.chart('x', {
                                                     <div class="col-md-12">
                                                       <div class="card">
                                                         <div class="card-header">
-                                                          <h5 class="card-title">RekapSSMB {{ $tahun }}</h5>
+                                                          <h5 class="card-title">Rekap Pengggantian {{ $tahun }}</h5>
                                                           <div class="card-tools">
                                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                               <i class="fas fa-minus"></i>

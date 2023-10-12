@@ -44,7 +44,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
-   <i class="text-warning"><marquee> <i>!!! Mohon Maaf Apabila Tim Kami dalam Pembuatan DIL ini masih Banyak Kekurangan karena masih dalam pengembangan !!!</i></marquee></i>
+   <i class="text-warning"><marquee> <i>!!! Mohon ma'af apabila Tim Kami dalam pembuatan Sistem ini masih Banyak Kekurangan Karena masih dalam Pengembangan sesui intruksi Pimpinan !!!</i></marquee></i>
     
     <div class="content-header">
       <div class="container-fluid">
