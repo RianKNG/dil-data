@@ -623,12 +623,13 @@
        let j =  {!! json_encode($grafik10) !!};
        let k =  {!! json_encode($grafik11) !!};
        let l =  {!! json_encode($grafik12) !!};
+
        let aa =  {!! json_encode($tutup1) !!};
        let bb =  {!! json_encode($tutup2) !!};
        let cc =  {!! json_encode($tutup3) !!};
        let dd =  {!! json_encode($tutup4) !!};
        let ee =  {!! json_encode($tutup5) !!};
-       let ff =  {!! json_encode($tutup5) !!};
+       let ff =  {!! json_encode($tutup6) !!};
        let gg =  {!! json_encode($tutup7) !!};
        let hh =  {!! json_encode($tutup8) !!};
        let ii =  {!! json_encode($tutup9) !!};
@@ -641,7 +642,7 @@
        let ccc =  {!! json_encode($sambung3) !!};
        let ddd =  {!! json_encode($sambung4) !!};
        let eee =  {!! json_encode($sambung5) !!};
-       let fff =  {!! json_encode($sambung5) !!};
+       let fff =  {!! json_encode($sambung6) !!};
        let ggg =  {!! json_encode($sambung7) !!};
        let hhh =  {!! json_encode($sambung8) !!};
        let iii =  {!! json_encode($sambung9) !!};
@@ -654,13 +655,14 @@
        let cccc =  {!! json_encode($ganti3) !!};
        let dddd =  {!! json_encode($ganti4) !!};
        let eeee =  {!! json_encode($ganti5) !!};
-       let ffff =  {!! json_encode($ganti5) !!};
+       let ffff =  {!! json_encode($ganti6) !!};
        let gggg =  {!! json_encode($ganti7) !!};
        let hhhh =  {!! json_encode($ganti8) !!};
        let iiii =  {!! json_encode($ganti9) !!};
        let jjjj =  {!! json_encode($ganti10) !!};
        let kkkk =  {!! json_encode($ganti11) !!};
        let llll =  {!! json_encode($ganti12) !!};
+
        Highcharts.chart('container', {
   chart: {
       type: 'line',
@@ -1081,7 +1083,7 @@ Highcharts.chart('x', {
         type: 'line'
     },
     title: {
-        text: 'Pergerakan DIL'
+        text: 'Pergerakan Status DIL'
     },
     subtitle: {
         text: 'Interval: ' +

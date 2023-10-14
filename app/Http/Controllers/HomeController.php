@@ -289,7 +289,8 @@ class HomeController extends Controller
             $ganti12 = DB::table('ganti')->whereMonth('tanggal_ganti','12')->whereYear('tanggal_ganti',Carbon::now()->format('Y'))->count();
             
 
-            $categories=['jan','feb','mar','apr','mei','jun','jul','ags','sep','okt','nov','des'];
+            // $categories=['jan','feb','mar','apr','mei','jun','jul','ags','sep','okt','nov','des'];
+            $categories=['agsustus','september','oktober','nopember','desember'];
             // dd(json_encode($categories));
             $tahun=Carbon::now()->year;
             $star = "2004-03-01";
@@ -330,64 +331,64 @@ class HomeController extends Controller
            
             
         
-            $grafikjann = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endjan])->get()->toArray();
+            $grafikjann = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endjan])->get()->toArray();
             foreach ($grafikjann as $keyresult) {
               $grafikjan =  $keyresult->jumlah;
             }
             
-            $grafikpebb = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endpeb])->get()->toArray();
+            $grafikpebb = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endpeb])->get()->toArray();
           
             foreach ( $grafikpebb as $keyresult) {
               $grafikpeb =  $keyresult->jumlah;
             }
             // dd($grafikpebb);
-            $grafikmarr = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endmar])->get()->toArray();
+            $grafikmarr = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endmar])->get()->toArray();
          
             foreach ($grafikmarr as $keyresult) {
               $grafikmar =  $keyresult->jumlah;
             }
             // dd($grafikmar);
-            $grafikaprr = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endapr])->get()->toArray();
+            $grafikaprr = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endapr])->get()->toArray();
            
             foreach ($grafikaprr  as $keyresult) {
               $grafikapr  =  $keyresult->jumlah;
             }
-            $grafikmeii = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endmei])->get()->toArray();
+            $grafikmeii = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endmei])->get()->toArray();
          
             foreach ($grafikmeii as $keyresult) {
               $grafikmei =  $keyresult->jumlah;
             }
-            $grafikjuni = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endjun])->get()->toArray();
+            $grafikjuni = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endjun])->get()->toArray();
            
             foreach ($grafikjuni as $keyresult) {
               $grafikjun =  $keyresult->jumlah;
             }
-            $grafikjuli = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endjul])->get()->toArray();
+            $grafikjuli = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endjul])->get()->toArray();
           
             foreach ($grafikjuli as $keyresult) {
               $grafikjul =  $keyresult->jumlah;
             }
-            $grafikagst = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endags])->get()->toArray();
+            $grafikagst = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endags])->get()->toArray();
           
             foreach ($grafikagst as $keyresult) {
               $grafikags =  $keyresult->jumlah;
             }
-            $grafiksept = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endsep])->get()->toArray();
+            $grafiksept = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endsep])->get()->toArray();
           
             foreach ($grafiksept as $keyresult) {
               $grafiksep =  $keyresult->jumlah;
             }
-            $grafikoktt = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endokt])->get()->toArray();
+            $grafikoktt = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endokt])->get()->toArray();
           
             foreach  ($grafikoktt as $keyresult) {
               $grafikokt =  $keyresult->jumlah;
             }
-            $grafiknove = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $endnov])->get()->toArray();
+            $grafiknove = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $endnov])->get()->toArray();
          
             foreach ($grafiknove as $keyresult) {
               $grafiknov =  $keyresult->jumlah;
             }
-            $grafikdess = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_file',[$star, $enddes])->get();
+            $grafikdess = DB::table('tbl_dil as a')->select(DB::raw("(COUNT('*')) as jumlah"))->whereBetween('a.tanggal_pasang',[$star, $enddes])->get();
           
             foreach ($grafikdess as $keyresult) {
               $grafikdes =  $keyresult->jumlah;
@@ -412,11 +413,14 @@ class HomeController extends Controller
             }elseif($testoke == $filling_Datesep){
               $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep];
             }elseif($testoke == $filling_Dateokt){
-              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt];
+              // $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt];
+              $data=[$grafikags,$grafiksep,$grafikokt];
             }elseif($testoke == $filling_Datenov){
-              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt,$grafiknov];
+              // $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt,$grafiknov];
+              $data=[$grafikags,$grafiksep,$grafikokt,$grafiknov];
             }elseif($testoke == $filling_Datedes){
-              $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt,$grafiknov,$grafikdes];
+              // $data=[$grafikjan,$grafikpeb,$grafikmar,$grafikapr,$grafikmei,$grafikjun,$grafikjul,$grafikags,$grafiksep,$grafikokt,$grafiknov,$grafikdes];
+               $data=[$grafikags,$grafiksep,$grafikokt,$grafiknov,$grafikdes];
             }else{
               echo"Data Yang anda Cari melebihi Batas Pencarian";
             }

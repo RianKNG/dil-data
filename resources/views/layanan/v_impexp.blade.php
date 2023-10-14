@@ -186,8 +186,34 @@
 <div class="modal fade" id="export" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-           
-            <form action="/importexcel" method="POST" enctype="multipart/form-data">
+            <form action="/exportexcel" method="GET">
+                <div class="input-group">
+                    {{-- <label for="" class="form-label">cari cabang</label> --}}
+                    <select name="cabang" id="" class="form-select">
+                        <option value="">-</option>
+                        <option value="1" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='1'}}">Sumedang Utara</option>
+                        <option value="2" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='2'}}">Tanjungkerta</option>
+                        <option value="3" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='3'}}">Datmaraja</option>
+                        <option value="4" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='4'}}">Situraja</option>
+                        <option value="5" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='5'}}">Jatinangor</option>
+                        <option value="6" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='6'}}">Tanjungsari</option>
+                        <option value="7" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='7'}}">Paseh</option>
+                        <option value="8" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='8'}}">Cimalaka</option>
+                        <option value="10" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='10'}}">Ujungjaya</option>
+                        <option value="11" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='11'}}">Wado</option>
+                        <option value="12" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='12'}}">Cisitu</option>
+                        <option value="13" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='13'}}">Pamulihan</option>
+                        <option value="14" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='14'}}">Cimanggung</option>
+                        <option value="31" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='31'}}">Sumeadang Selatan</option>
+                        <option value="42" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='42'}}">Sumedang Utara</option>
+                        <option value="40" selected="{{ isset($_GET['cabang']) && $_GET['cabang'] =='40'}}">Mol Pelayanan Publik</option>
+    
+    
+                    </select>
+                    <button class="btn btn-primary" type="submit">Ambil Data</button>
+                </div>
+            </form>
+            {{-- <form action="/importexcel" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -195,7 +221,7 @@
                         <a href="/exportexcel" class="btn btn-primary btn-md">Import</a>
                     </div>
                 </div>
-            </form>
+            </form> --}}
         </div>
     </div>
   </div>

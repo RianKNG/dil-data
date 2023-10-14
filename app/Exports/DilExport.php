@@ -12,7 +12,9 @@ class DilExport implements FromCollection
     */
     public function collection()
     {
-        return DilModel::all();
+        return DilModel::select('no_rekening','nama_sekarang')  
+        ->where('cabang', 'Like', '%' . request('cabang') . '%')
+        ->get();
        
     }
     

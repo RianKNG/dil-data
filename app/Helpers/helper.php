@@ -64,8 +64,6 @@ function mrk($angka){
     // $angka = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,31,40);
     $merek= [
         '',
-        '',
-        '',
         'LINFLOW',
         'KENT',
         'AQUA',
@@ -91,6 +89,13 @@ function mrk($angka){
         'CS',
         'AICHI TOKAI',
         'AKURAT',
+        'PKM',
+        'AKTARIS',
+        'AIR MAS',
+        'LOUIS VICTOR',
+        'NINGBO',
+        'SCHLUMBERGER',
+        'NULL',
     ];
    $mrk =$merek[(int)($angka)];
     return $mrk;

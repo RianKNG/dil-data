@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 
-use PDF;
+
 use App\Models\Merek;
 
 use App\Models\DilModel;
@@ -354,7 +355,9 @@ class DilController extends Controller
         // view()->share('data', $data);
         // $pdf = PDF::loadView('reportdetail');
         // return $pdf->download('dataDIL.pdf');
-        $pdf = PDF::loadView('reportdetail',compact('data'))->setPaper('a2', 'landscape');
+        // $pdf = PDF::loadView('reportdetail',compact('data'))->setPaper('a2', 'landscape');
+        // return $pdf->download('dataDIL.pdf');
+        $pdf = PDF::loadView('reportdetail',compact('data'));
         return $pdf->download('dataDIL.pdf');
    }
    public function exportpdfn()
