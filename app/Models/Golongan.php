@@ -14,4 +14,9 @@ class Golongan extends Model
 
     protected $tableKey = ['id'];
     protected $fillable = ['id','kode','nama_golongan','created_at','updated_at'];
+
+    public function golongan()
+    {
+        return $this->hasMany(DilModel::class,'id_golongan');
+    }
 }

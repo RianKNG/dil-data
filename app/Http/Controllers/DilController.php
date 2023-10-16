@@ -21,6 +21,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 
 
+
 class DilController extends Controller
 {
     protected $user;
@@ -303,10 +304,34 @@ class DilController extends Controller
        return view('v_home',compact('data'));
     }
 
-   public function exportexcel()
+   public function exportexcel(Request $request,$cabang)
+  
    {
-     return Excel::download(new DilExport, 'datadil.xlsx');
-     
+       
+    //  $dataquery = DB::table('tbl_dil as d')
+    // ->select([
+    //     'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+    //     'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+    //     'm.merek',
+    //     'd.id_golongan','g.nama_golongan','g.kode'
+    // ])
+    //         ->leftJoin('merek as m',function($join){
+    //             $join->on('m.id','=','d.id_merek');
+    //             // ->where('d.cabang','=',2);
+    //         })
+            
+    //         ->leftJoin('golongan as g',function($join){
+    //             $join->on('g.id','=','d.id_golongan');
+    //             // ->where('d.cabang','=',2);
+    //         });
+            
+           
+   
+    // dd( $dataquery );
+    
+    
+ 
+    return Excel::download(new DilExport($request->cabang), 'DilCabang.xlsx');
       
    }
    public function exportpdf()

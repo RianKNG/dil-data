@@ -23,7 +23,7 @@
         <div class="col-md-4">
             <div class="card card-outline card-warning">
             <div class="card-header">
-                <h3 class="card-title">Download DIL</h3>
+                <h3 class="card-title">Download DIL PerCabang XLS.</h3>
             </div>
             <div class="card-body">
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#export">
@@ -45,7 +45,7 @@
         <div class="col-md-4">
             <div class="card card-outline card-danger">
             <div class="card-header">
-                <h3 class="card-title">Download Berdasarkan Cabang</h3>
+                <h3 class="card-title">Download Rekap DIL Per Periode</h3>
             </div>
             {{-- <div class="col-sm-3">
                 <label for="" class="form-label">cari cabang</label>
@@ -186,7 +186,7 @@
 <div class="modal fade" id="export" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="/exportexcel" method="GET">
+            <form action="/exportexcel/{cabang}" method="GET">
                 <div class="input-group">
                     {{-- <label for="" class="form-label">cari cabang</label> --}}
                     <select name="cabang" id="" class="form-select">

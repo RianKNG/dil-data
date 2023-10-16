@@ -31,4 +31,12 @@ class DilModel extends Model
     //     return \Carbon\Carbon::parse($this->attributes['tanggal_file'])
     //        ->format('d M Y ');
     // }
+    public function merek()
+    {
+        return $this->belongsTo(Merek::class,'id_merek');
+    }
+    public function golongan()
+    {
+        return $this->belongsTo(Golongan::class,'id_golongan');
+    }
 }

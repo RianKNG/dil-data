@@ -21,4 +21,8 @@ class Merek extends Model
     //     return $this->hasMany(DilModel::class);
     // }
 
+    public function dilmodel()
+    {
+        return $this->hasMany(DilModel::class,'id_merek');
+    }
 }
