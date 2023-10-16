@@ -57,32 +57,23 @@
 
 <body>
     <div class="header">
-        <h3>Laporan Data Induk Pelanggan </h3>
-        <h4 style="line-height: 0px;">Tanggal: 
+        <h3>{{ $title }}</h3>
+        <br>
+        <h6 style="line-height: 0px;">Laporan Tanggal: 
             @php
             echo date('d F Y'); 
             @endphp
-        </h4>
-        <p><small style="opacity: 0.5;"> Bagian: V.D.P.R</small></p>
+        </h6>
+        <p class="text-primary"><small style="opacity: 0.5;"> Bagian: V.D.P.R</small></p>
     </div>
     <div class="customer">
-        <table>
+        {{-- <table>
+            
             <tr>
-                <th class="btn btn-primary">Jumlah DIL</th>
+                <th>Jumlah Pelanggan Non Akip</th>
                 <td>:</td>
-                <td>{{ $diltotal }}</td>
             </tr>
-            <tr>
-                <th class="btn btn-primary"> Jumlah Pelanggal Aktip</th>
-                <td>:</td>
-                <td>{{ $totaldilaktip }}</td>
-            </tr>
-            <tr>
-                <th class="btn btn-primary">Jumlah Pelanggan Non Akip</th>
-                <td>:</td>
-                <td>{{ $totaldilnonaktip }}</td>
-            </tr>
-        </table>
+        </table> --}}
     </div>
     <div class="page">
         <table class="layout display responsive-table">
@@ -95,14 +86,15 @@
                 </tr>
             </thead>
              <tbody>
-               @foreach ($data as $index => $k)
-             <tr>
-                 <td>{{  $loop->iteration }}</td>
-                 <td> <label class="btn btn-warning">{{  duka($k->cabang) }}</label></td>
-                 <td>{{ $k->jumlah }}( Konsumen )</td>
-                 {{-- <td>{{ $k->tanggal_tutup }}</td> --}}
-             </tr>
-             @endforeach
+                @foreach ($data as $index => $k)
+                <tr>
+                    <td>{{  $loop->iteration }}</td>
+                   
+                    <td> <label class="btn btn-success">{{  duka($k->cabang) }}</label></td>
+                    <td>{{ $k->jumlah }}( Konsumen )</td>
+                    {{-- <td>{{ $k->tanggal_tutup }}</td> --}}
+                </tr>
+                @endforeach
             </tbody>
             {{-- @php
             $item=0;
@@ -111,7 +103,7 @@
                 <tr>
                     <th colspan="2">Total</th>
                     <td>
-                        {{$data->sum('jumlah')}}
+                        {{$data->sum('jumlah')}} Konsumen
                     </td>
                     {{-- <td>{{ $sum }}</td> --}}
                   

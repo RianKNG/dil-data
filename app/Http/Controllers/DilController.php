@@ -179,7 +179,7 @@ class DilController extends Controller
     public function insert(Request $request)
     {
         $dateinit = \Carbon\Carbon::parse($request->tanggal_file);
-        $datefim = \Carbon\Carbon::parse($request->pasang);
+        $datefim = \Carbon\Carbon::parse($request->tanggal_pasang);
         $this->validate($request,[
           'id' => 'required|unique:tbl_dil,id|max:11',
           'status' => 'required',
@@ -263,6 +263,8 @@ class DilController extends Controller
     }
     public function update(Request $request,$id)
     {
+     
+       
         $data = DilModel::find($id);
         $data->update($request->all());
         // ini cara lama
@@ -614,6 +616,26 @@ class DilController extends Controller
         return $pdf->download('laporanPDVR.pdf');
     }
 }
+public function cetakperiode()
+{
+    
+// dd($data);
+$title='Laporan DIL Per Periode';
+ if (request()->start_date || request()->end_date) {
+     $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
+     $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
+     $data = DB::table('tbl_dil')
+     ->select(DB::raw("(COUNT(cabang)) as jumlah"),'cabang')
+       ->whereBetween('tanggal_pasang',[$start_date,$end_date])
+       ->groupBy('cabang')
+       ->where('status',1)
+       ->get();
+// dd($data);
+$pdf = PDF::loadView('periode', compact('data','title'));
+        //  $pdf = PDF::loadView('periode',compact($data));
+        return $pdf->download('laporanPerPeriodePDVR.pdf');
+ }
+ } 
 public function cetaklaporansl()
 {
     if (request()->start_date || request()->end_date) {
@@ -755,8 +777,6 @@ public function cetaklaporansl()
             $pdf = PDF::loadView('coba2', array('data' => $data,'sum'=>$sum,'diltotal'=>$diltotal,'totaldilaktip'=>$totaldilaktip,'totaldilnonaktip'=>$totaldilnonaktip,));
     return $pdf->download('laporanPDVR.pdf');
     }
-    
-   
     } 
     
 }

@@ -236,18 +236,19 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <!-- Select multiple-->
                       <div class="form-group">
-                        <label>Merek Warter Meter</label>
-                        <select class="form-control" name="id_merek">
-                          {{-- <option value="id_merek" {{($data->id_merek === 1) ? 'selected' : ''}}> Linflow </option>
-                          <option value="id_merek" {{($data->id_merek === 2) ? 'selected' : ''}}> Barindo </option> --}}
-                          <option value="{{$data->id_merek}}"{{ $data->id_merek == 1 ? 'selected' : '' }}> {{ $data->merek }}Linflow</option>
-                          <option value="{{$data->id_merek}}"{{ $data->id_merek == 2 ? 'selected' : '' }}> {{ $data->merek }}Barindo</option>
-                          {{-- <input type="text" name="id_merek" class="form-control" value="{{ $data->id_merek }}"> --}}
-                         
-                        </select>
+                      <label>Merek Warter Meter</label>
+                      <select name="id_merek" class="form-control">
+                        <option value="">--- Merek ---</option>
+                        @foreach($mer as $item)
+                            <option value="{{ $item->id }}" @if (old('id_merek') == "{{ $item->id }}") {{ 'selected' }} @endif>{{ $item->merek }}</option>
+                        @endforeach  
+                        @error('id_merek')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror  
+                      </select>
                       </div>
                     </div>
                     <div class="col-sm-6">
