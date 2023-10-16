@@ -199,18 +199,18 @@ class HomeController extends Controller
         ->count();
         
       //untuk Pelanggan Aktip
-      $datajum = DB::table('tbl_dil as a')
+      $datajum = DB::table('tbl_dil')
       // ->whereMonth('tanggal_file', Carbon::now()->month)
       ->whereStatus('1')
         ->get();
           $jumlahdil = $datajum->count();
-        //  dd($jumlahdil);
+         
        //untuk Pelanggan Non Aktip
-       $datanon = DB::table('tbl_dil as a')
+       $datanon = DB::table('tbl_dil')
        ->whereStatus('2')
          ->get();
-           $jumlahnon = $datanon->count();
-
+           $jumlahnonaktip = $datanon->count();
+// dd($jumlahnon);
       //untuk Total Dil
        $totdil = DB::table('tbl_dil as d')
        ->select([
@@ -438,11 +438,11 @@ class HomeController extends Controller
                 
                  //lainnya
                   'databill','databilling','jumlahtutup','datahitungp','dataz','datahitunganganti','datatest','datahitungan','totdil',
-                  'totdilcount','datanon','jumlahnon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah','jumlahtutup',
+                  'totdilcount','datanon','coba','datat','categories','jumlahdil' ,'tdatabill','jmlt','jmltt','jumlahtutupmodal','datatutupjumlah','jumlahtutup',
                  //grafik dil
                  'grafikjan','grafikpeb','grafikmar' ,'grafikapr','grafikmei','grafikjun','grafikjul','grafikags' ,'grafiksep' ,'grafikokt','grafiknov' ,'grafikdes','categories','data',
                 //aktip/non
-                'jumlahdil','jumlahnon'));
+                'jumlahdil','jumlahnonaktip'));
 
                  
     }

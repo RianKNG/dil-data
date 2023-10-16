@@ -166,7 +166,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Total Pelanggan Non aktip</span>
                 <span class="info-box-number"></span>
-                <h3 class="btn btn-info"><span>({{ number_format($jumlahnon ,0,",",".") }})</span></h3>
+                <h3 class="btn btn-info"><span>({{ number_format($jumlahnonaktip ,0,",",".") }})</span></h3>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -765,8 +765,8 @@ showValues();
 
 </script>
 <script type="text/javascript">
-                var s = {{ $jumlahdil }};//dil aktip
-                var t = {{ $jumlahnon }};//Dil non
+                let sas = {{ number_format($jumlahdil ,0,",",".") }};//dil aktip
+                let xax = {{ number_format($jumlahnonaktip ,0,",",".") }};//Dil non
                 // var u = {{ $databilling }};//dilbaru
             
                 // var w = {{ $dataz }};//penyambungan
@@ -774,58 +774,51 @@ showValues();
                 // var y = {{ $datat }};//bbn
 
 
-Highcharts.chart('x', {
-  chart: {
-      type: 'pie',
-      options3d: {
-          enabled: true,
-          alpha: 45,
-          beta: 0
-      }
-  },
-  title: {
-      text: 'Status Pelanggan',
-      align: 'center'
-  },
-  subtitle: {
-      text: '{{ $tanggal }}'  +
-          '' +
-          '',
-      align: 'center'
-  },
-  accessibility: {
-      point: {
-          valueSuffix: '%'
-      }
-  },
-  tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-  },
-  plotOptions: {
-      pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          depth: 35,
-          dataLabels: {
-              enabled: true,
-              format: '{point.name}'
-          }
-      }
-  },
-
-  series: [{
-      type: 'pie',
-      name: 'DIL',
-      data: [
-            ['Jumlah Aktip', s],
-            {
-                name: 'Jumlah Non',
-                y: t,
-                sliced: true,
-                selected: true
+                Highcharts.chart('x', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+    },
+    title: {
+        text: 'Status<br>Pelanggan',
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
             },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '75%'],
+            size: '110%'
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Status Pelanggan',
+        innerSize: '50%',
+        data: [
+            ['Aktip', sas],
+            ['Tidak Aktip', xax],
         ]
-  }]
+    }]
 });
 </script> 
  

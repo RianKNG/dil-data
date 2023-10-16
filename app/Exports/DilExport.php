@@ -24,7 +24,6 @@ class DilExport implements FromQuery,WithMapping,WithHeadings,WithEvents,ShouldA
     use Exportable;
     public function __construct($cabang,$from,$to)
     {
-        // $this->cabang = $cabang;
         $this->cabang = $cabang;
         $this->from = $from;
         $this->to = $to;
