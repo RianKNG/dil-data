@@ -331,9 +331,11 @@ class DilController extends Controller
    
     // dd( $dataquery );
     
-    
+    $from = Carbon::parse($request->get('from'));
+    $to = Carbon::parse($request->get('to'));
+
  
-    return Excel::download(new DilExport($request->cabang), 'DilCabang.xlsx');
+    return Excel::download(new DilExport($request->cabang,$from, $to), 'DilCabang.xlsx');
       
    }
    public function exportpdf()

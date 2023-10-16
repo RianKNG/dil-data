@@ -96,6 +96,8 @@ function mrk($angka){
         'NINGBO',
         'SCHLUMBERGER',
         'NULL',
+        'TIDAK TERVERIFIKASI',
+
     ];
    $mrk =$merek[(int)($angka)];
     return $mrk;

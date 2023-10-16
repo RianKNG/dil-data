@@ -168,6 +168,10 @@
     
     
                     </select>
+                    <input type="date" class="form-control" name="from">
+                    <input type="date" class="form-control" name="to">
+                    {{-- <input id="startDate" name="startDate"/>
+                    <input id="endDate"  name="endDate"/> --}}
                     <button class="btn btn-primary" type="submit">Ambil Data</button>
                 </div>
             </form>
