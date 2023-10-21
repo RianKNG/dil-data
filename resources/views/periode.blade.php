@@ -38,7 +38,6 @@
         table.responsive-table{
             box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
         }
-​
         .listcust {
             margin: 0;
             padding: 0;
@@ -48,7 +47,7 @@
             border-collapse: separate;
             list-style-type: none;
         }
-​
+
         .customer {
             padding-left: 600px;
         }
@@ -74,6 +73,7 @@
                 <td>:</td>
             </tr>
         </table> --}}
+        <th>Jumlah DIL Berdasarkan Cabang</th>
     </div>
     <div class="page">
         <table class="layout display responsive-table">
@@ -104,6 +104,44 @@
                     <th colspan="2">Total</th>
                     <td>
                         {{$data->sum('jumlah')}} Konsumen
+                    </td>
+                    {{-- <td>{{ $sum }}</td> --}}
+                  
+                </tr>
+            </tfoot>
+        </table>
+        <th>Jumlah DIL Berdasarkan Merek dan Cabang</th>
+        <table class="layout display responsive-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                   
+                    <th>Cabang</th>
+                    <th>Merek</th>
+                    <th>Jumlah</th>
+                    {{-- <th>Tanggal</th> --}}
+                </tr>
+            </thead>
+             <tbody>
+                @foreach ($datamerek as $index => $k)
+                <tr>
+                    <td>{{  $loop->iteration }}</td>
+                   
+                    <td> <label class="btn btn-success">{{  $k->merek }}</label></td>
+                    <td>{{  duka($k->cabang) }}</td>
+                  
+                    <td>{{ $k->jumlah }}( Konsumen )</td>
+                </tr>
+                @endforeach
+            </tbody>
+            {{-- @php
+            $item=0;
+            @endphp --}}
+            <tfoot>
+                <tr>
+                    <th colspan="3">Total</th>
+                    <td>
+                        {{$datamerek->sum('jumlah')}} Konsumen
                     </td>
                     {{-- <td>{{ $sum }}</td> --}}
                   

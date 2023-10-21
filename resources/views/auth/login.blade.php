@@ -80,7 +80,7 @@
   <section id="hero">
     <div class="hero-container">
       <img src="{{ asset('adminLTE') }}/templatedepan/img/direktur.png" class="img-rounded" alt="...">
-      <li class="btn btn-primary dunungan">Direktur Utama. Moch Raden Taufik, SE</li>
+      <li class="btn btn-primary dunungan">Rd. Moch.Taufik Suriakusumah, SE.</li>
       <h1><p class="empat"><b>SELAMAT DATANG DI SIPDIL</b></p></h1>
       <style>
    p {
@@ -129,7 +129,7 @@
           <div class="error-message"></div>
           <div class="sent-message">Terimakasih, Email kamu telah terkirim!</div>
         </div>
-		      <a href="{{ route('register') }}">Register?</a>
+		      {{-- <a href="{{ route('register') }}">Register?</a> --}}
         <div class="text-center"><button type="submit">Login</button></div>
       </form>
     </div>

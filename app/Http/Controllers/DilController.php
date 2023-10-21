@@ -627,13 +627,22 @@ $title='Laporan DIL Per Periode';
      $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
      $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
      $data = DB::table('tbl_dil')
+    ->Join('merek as m','tbl_dil.id_merek','=','m.id')
      ->select(DB::raw("(COUNT(cabang)) as jumlah"),'cabang')
        ->whereBetween('tanggal_pasang',[$start_date,$end_date])
        ->groupBy('cabang')
        ->where('status',1)
        ->get();
-// dd($data);
-$pdf = PDF::loadView('periode', compact('data','title'));
+       $datamerek = DB::table('tbl_dil')
+       ->Join('merek as m','tbl_dil.id_merek','=','m.id')
+       ->select(DB::raw("(COUNT(m.merek)) as jumlah"),'m.merek','cabang')
+       ->whereBetween('tanggal_pasang',[$start_date,$end_date])
+       ->groupBy('m.merek')
+       ->groupBy('cabang')
+       ->orderBy('cabang')
+       ->get();
+// dd($datamerek);
+$pdf = PDF::loadView('periode', compact('data','title','datamerek'));
         //  $pdf = PDF::loadView('periode',compact($data));
         return $pdf->download('laporanPerPeriodePDVR.pdf');
  }
