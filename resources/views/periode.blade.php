@@ -65,7 +65,7 @@
         </h6>
         <p class="text-primary"><small style="opacity: 0.5;"> Bagian: V.D.P.R</small></p>
     </div>
-    <div class="customer">
+    {{-- <div class="customer"> --}}
         {{-- <table>
             
             <tr>
@@ -73,9 +73,10 @@
                 <td>:</td>
             </tr>
         </table> --}}
-        <th>Jumlah DIL Berdasarkan Cabang</th>
-    </div>
+      
+    {{-- </div> --}}
     <div class="page">
+        <p>Jumlah DIL Berdasarkan Cabang</p>
         <table class="layout display responsive-table">
             <thead>
                 <tr>
@@ -91,7 +92,7 @@
                     <td>{{  $loop->iteration }}</td>
                    
                     <td> <label class="btn btn-success">{{  duka($k->cabang) }}</label></td>
-                    <td>{{ $k->jumlah }}( Konsumen )</td>
+                    <td>{{ $k->jumlah }}(Dil)</td>
                     {{-- <td>{{ $k->tanggal_tutup }}</td> --}}
                 </tr>
                 @endforeach
@@ -110,7 +111,7 @@
                 </tr>
             </tfoot>
         </table>
-        <th>Jumlah DIL Berdasarkan Merek dan Cabang</th>
+        <p>Jumlah DIL Berdasarkan Merek dan Cabang</p>
         <table class="layout display responsive-table">
             <thead>
                 <tr>
@@ -130,7 +131,7 @@
                     <td> <label class="btn btn-success">{{  $k->merek }}</label></td>
                     <td>{{  duka($k->cabang) }}</td>
                   
-                    <td>{{ $k->jumlah }}( Konsumen )</td>
+                    <td>{{ $k->jumlah }}(Dil)</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -141,7 +142,7 @@
                 <tr>
                     <th colspan="3">Total</th>
                     <td>
-                        {{$datamerek->sum('jumlah')}} Konsumen
+                        {{$datamerek->sum('jumlah')}} (Dil)
                     </td>
                     {{-- <td>{{ $sum }}</td> --}}
                   

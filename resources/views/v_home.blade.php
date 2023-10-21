@@ -824,23 +824,23 @@ showValues();
  
 
 {{-- //untuk Dil Baru --}}
-<div class="row">
+{{-- <div class="row">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header btn-danger">
               <h5 class="card-title">Rekap DIL {{ $tahun }}</h5>
-              {{-- <div class="card-tools">
+              <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-tool" data-card-widget="remove">
                   <i class="fas fa-times"></i>
                 </button>
-              </div> --}}
-            </div>
+              </div>
+            </div> --}}
             <!-- /.card-header -->
  {{-- //untuk Penyambungan --}}
- <div class="row">
+ {{-- <div class="row">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
@@ -889,7 +889,7 @@ showValues();
                                   </td>
                                   {{-- <td>{{ $sum }}</td> --}}
                                 
-                              </tr>
+                              {{-- </tr>
                           </tfoot>
                         </tr>
                     </tbody>
@@ -899,15 +899,66 @@ showValues();
             </div>
               </div>
             </div>
-              </div>
+              </div> --}} 
+                      <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">SL Baru {{ $tahun }}</h5>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- /.card-header -->
+                
+                
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title"></h5>
+                          {{-- <table class="table table-head-fixed text-nowrap btn-xs"> --}}
+                          <table id="table" class="table table-bordered table-striped">
+                            <thead class="thead-danger text-white">
+                              <th>No</th>
+                               <th>Cabang</th>
+                               <th>Jumlah</th>
+                               <th>Tanggal</th>
+                            </thead>
+                            <tbody>
+                              @foreach ($tdatabill as $index => $k)
 
+                            <tr>
+                                <td>{{  $loop->iteration }}</td>
+                                <td>{{  duka($k->cabang) }}</td>
+                                <td>{{ $k->jumlah }}( Konsumen )</td>
+                                <td>{{ $k->tanggal_file }}</td>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+     
           {{-- //untuk Penutupan --}}
         
           <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-title">Rekap Penutupan {{ $tahun }}</h5>
+                  <h5 class="card-title">SL Tutup {{ $tahun }}</h5>
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                       <i class="fas fa-minus"></i>
@@ -960,7 +1011,7 @@ showValues();
                                     <div class="col-md-12">
                                       <div class="card">
                                         <div class="card-header">
-                                          <h5 class="card-title">Rekap Penyambungan {{ $tahun }}</h5>
+                                          <h5 class="card-title">Sl Sambung {{ $tahun }}</h5>
                                           <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                               <i class="fas fa-minus"></i>
@@ -1013,7 +1064,7 @@ showValues();
                                                     <div class="col-md-12">
                                                       <div class="card">
                                                         <div class="card-header">
-                                                          <h5 class="card-title">Rekap Pengggantian {{ $tahun }}</h5>
+                                                          <h5 class="card-title">SL Ganti {{ $tahun }}</h5>
                                                           <div class="card-tools">
                                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                               <i class="fas fa-minus"></i>
