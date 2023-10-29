@@ -631,7 +631,7 @@ $title='Laporan DIL Berdasarkan Cabang Dan Golongan';
 // dd($datamerek);
 $pdf = PDF::loadView('periode', compact('data','title','datamerek'));
         //  $pdf = PDF::loadView('periode',compact($data));
-        return $pdf->download('laporanPerPeriodePDVR.pdf');
+        return $pdf->download('laporan DIL Berdasarkan Cabang dan Golongan.pdf');
  }
  } 
  public function cetakrt()
@@ -662,7 +662,7 @@ $title='Laporan DIL Berdasarkan Cabang Dan Merek';
 // dd($datagolongan);
 $pdf = PDF::loadView('periodegolongan', compact('data','title','datagolongan'));
         //  $pdf = PDF::loadView('periode',compact($data));
-        return $pdf->download('laporanDataGolonganPDVR.pdf');
+        return $pdf->download('laporan DIL Bedasarkan Cabang dan Merek.pdf');
  }
  } 
 public function cetaklaporansl()
