@@ -102,10 +102,7 @@
                   <div class="form-group">
                     <label class="btn-xs">No Merek Teregistrasi</label>
                     <input type="text" name="kode" class="form-control" value="{{ $kode }}" readonly>
-<<<<<<< HEAD
-=======
-                    {{-- <input type="text" name="kode" class="form-control" placeholder="ketikan disini" required"> --}}
->>>>>>> 7f21877 (perbaika laporan data dil)
+
                   </div>
                   <div class="form-group">
                     <label class="btn-xs">Merek Water Meter</label>

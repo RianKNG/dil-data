@@ -51,29 +51,29 @@
         <h3 class="card-title">Tabel Penutupan</h3>
 
         <div class="card-tools">
-          {{-- <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="search" name="search" class="form-control float-right" placeholder="search">
-            <form action="/penutupan" method="GET">
+          <div class="input-group input-group-sm" style="width: 150px;">
+            {{-- <input type="search" name="search" class="form-control float-right" placeholder="search"> --}}
+            {{-- <form action="/penutupan" method="GET">
               <input type="search" class="form-control" name="search" placeholder="Cari ">
-            </form>
-          </div> --}}
+            </form> --}}
+          </div>
         </div>
       </div>
       <!-- /.card-header -->
     
         <!-- /.card-header -->
         <div class="card-body">
-        <table class="table table-head-fixed text-nowrap btn-xs">
+          {{-- <table id="table" class="table table-bordered table-hover"> --}}
+        <table id="table" class="table table-head-fixed text-nowrap btn-xs">
             <thead>
             <tr>
               <th width="5%">No.</th>
               <th>Status</th>
+              <th>Cabang</th>
               <th>No Sambungan</th>
               <th>tanggal_tutup</th>
               <th>nama_sekarang</th>
               <th>alasan</th>
-              <th>Status</th>
-             
               <th width="20%">Aksi</th>
             </tr>
           </thead>
@@ -88,6 +88,7 @@
                     <a href="/dil/statustutup/{{ $k->id_dil }}" class="fa fa-check"></a>
                   @endif
                 </td>
+                <td>{{ duka($k->cabang) }}</td>
                 <td>{{ $k->id_dil }}</td>
                 <td>{{ $k->tanggal_tutup }}</td>
                 <td>{{ $k->nama_sekarang }}</td>

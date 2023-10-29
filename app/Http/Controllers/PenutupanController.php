@@ -28,12 +28,16 @@ class PenutupanController extends Controller
             ->simplePaginate(100);
         } else {
             $data = DB::table('penutupan')
+            // ->select([
+            //     'penutupan.id','penutupan.status','penutupan.nama_sekarang','penutupan.nama_pemilik','penutupan.cabang'
+            // ])
                    ->leftJoin('tbl_dil','penutupan.id_dil','=','tbl_dil.id')
                    // jangan select id parentnya karena akan terpanggil parent nya
                    // kalou manggil data all function makan callbact function null(*)
-                    ->select('penutupan.id','penutupan.tanggal_tutup','penutupan.alasan','penutupan.id_dil','tbl_dil.status','tbl_dil.nama_sekarang','tbl_dil.nama_pemilik','tbl_dil.id_merek','tbl_dil.segel')
+                    ->select('penutupan.id','penutupan.tanggal_tutup','penutupan.alasan','penutupan.id_dil','tbl_dil.status','tbl_dil.nama_sekarang','tbl_dil.nama_pemilik','tbl_dil.id_merek','tbl_dil.segel','tbl_dil.cabang')
                     ->orderBy('id','desc')
                     ->simplePaginate(100);
+                    // dd($request->all());
         }
         
        

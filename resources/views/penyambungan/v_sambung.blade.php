@@ -60,7 +60,7 @@
       <!-- /.card-header -->
         <!-- /.card-header -->
         <div class="card-body">
-          <table class="table table-head-fixed text-nowrap btn-xs">
+          <table id="table" class="table table-head-fixed text-nowrap btn-xs">
             <thead>
               <tr>
                   <th width="5%">No.</th>

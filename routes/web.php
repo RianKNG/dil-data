@@ -76,10 +76,8 @@ Route::group(['middleware'=>['user','user:admin,user']], function () {
     Route::get('/dil/cetaklaporansl', [DilController::class,'cetaklaporansl']);
     Route::get('/pagination/fetch_data', [DilController::class,'fetch_data']);
     Route::get('/dil/cetakperiode', [DilController::class,'cetakperiode']);
-<<<<<<< HEAD
-=======
     Route::get('/dil/cetakrt', [DilController::class,'cetakrt']);
->>>>>>> 7f21877 (perbaika laporan data dil)
+
 
     //Penutupan
     Route::get('/penutupan', [PenutupanController::class,'index'])->name('penutupan');
