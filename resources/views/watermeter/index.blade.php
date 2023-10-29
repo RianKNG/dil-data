@@ -115,7 +115,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <button type="submit" class="btn btn-primary">Simpan Data</button>
                 </div>
               </form>
             </div>
