@@ -76,11 +76,7 @@
       
     {{-- </div> --}}
     <div class="page">
-<<<<<<< HEAD
         <p>Jumlah DIL Berdasarkan Cabang</p>
-=======
-        <p>Rekap Jumlah DIL Berdasarkan Cabang</p>
->>>>>>> 7f21877 (perbaika laporan data dil)
         <table class="layout display responsive-table">
             <thead>
                 <tr>
@@ -95,11 +91,7 @@
                 <tr>
                     <td>{{  $loop->iteration }}</td>
                    
-<<<<<<< HEAD
-                    <td> <label class="btn btn-success">{{  duka($k->cabang) }}</label></td>
-=======
                     <td>{{  duka($k->cabang) }}</td>
->>>>>>> 7f21877 (perbaika laporan data dil)
                     <td>{{ $k->jumlah }}(Dil)</td>
                     {{-- <td>{{ $k->tanggal_tutup }}</td> --}}
                 </tr>
@@ -124,38 +116,29 @@
             <thead>
                 <tr>
                     <th>No</th>
-<<<<<<< HEAD
                    
-=======
                     <th>Kode</th>
->>>>>>> 7f21877 (perbaika laporan data dil)
+                    <th>Golongan</th>
                     <th>Cabang</th>
-                    <th>Merek</th>
                     <th>Jumlah</th>
                     {{-- <th>Tanggal</th> --}}
                 </tr>
             </thead>
+
              <tbody>
-                @foreach ($datamerek as $index => $k)
+                @foreach ($datagolongan as $index => $k)
                 <tr>
                     <td>{{  $loop->iteration }}</td>
-<<<<<<< HEAD
-                   
-                    <td> <label class="btn btn-success">{{  $k->merek }}</label></td>
-                    <td>{{  duka($k->cabang) }}</td>
+                    <td>{{  $k->kode }}</td>
                   
-=======
                     <td>
-                        @if ( $k->id == '33' )
-                        <label class="btn btn-danger">KD-{{  $k->id }}</label>
+                        @if ( $k->nama_golongan == 'MASIH PROSES' )
+                        <label class="btn btn-danger">{{  $k->nama_golongan }}</label>
                         @else
-                        <label>KD-{{  $k->id }}</label>  
+                        <label>{{  $k->nama_golongan }}</label>  
                         @endif
-
                     </td>
                     <td>{{  duka($k->cabang) }}</td>
-                    <td>{{  $k->merek }}</td>
->>>>>>> 7f21877 (perbaika laporan data dil)
                     <td>{{ $k->jumlah }}(Dil)</td>
                 </tr>
                 @endforeach
@@ -165,13 +148,9 @@
             @endphp --}}
             <tfoot>
                 <tr>
-<<<<<<< HEAD
-                    <th colspan="3">Total</th>
-=======
                     <th colspan="4">Total</th>
->>>>>>> 7f21877 (perbaika laporan data dil)
                     <td>
-                        {{$datamerek->sum('jumlah')}} (Dil)
+                        {{$datagolongan->sum('jumlah')}} (Dil)
                     </td>
                     {{-- <td>{{ $sum }}</td> --}}
                   

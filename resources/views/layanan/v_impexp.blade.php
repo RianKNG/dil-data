@@ -35,7 +35,11 @@
         <div class="col-md-4">
             <div class="card card-outline card-danger">
             <div class="card-header">
+<<<<<<< HEAD
                 <h3 class="card-title">Download Laporan Dil Per Periode</h3>
+=======
+                <h3 class="card-title">Download Laporan Dil Per Cabang dan Merek</h3>
+>>>>>>> 7f21877 (perbaika laporan data dil)
             </div>
             <div class="my-0">
                 <form action="/dil/cetakperiode" method="GET">
@@ -48,6 +52,25 @@
             </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+        <div class="col-md-4">
+            <div class="card card-outline card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Download Laporan Dil Per Cabang dan Golongan</h3>
+            </div>
+            <div class="my-0">
+                <form action="/dil/cetakrt" method="GET">
+                    <div class="input-group">
+                        <input type="date" class="form-control" name="start_date">
+                        <input type="date" class="form-control" name="end_date">
+                        <button class="btn btn-primary" type="submit">Ambil Data</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+>>>>>>> 7f21877 (perbaika laporan data dil)
         
         {{-- <div class="col-md-4">
             <div class="card card-outline card-primary">

@@ -6,8 +6,13 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Dil-Perumdam-Sumedang</title>
+<<<<<<< HEAD
   <meta content="" name="description">
   <meta content="" name="keywords">
+=======
+  {{-- <meta content="" name="description">
+  <meta content="" name="keywords"> --}}
+>>>>>>> 7f21877 (perbaika laporan data dil)
 
   <!-- Favicons -->
   {{-- <link rel="stylesheet" href="{{ asset('adminLTE') }}/plugins/fontawesome-free/css/all.min.css">

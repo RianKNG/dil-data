@@ -46,11 +46,19 @@ class DilController extends Controller
         $username = $this->user->name;
         if($username == 'admin') {
             $data = DB::table('tbl_dil AS d')
+<<<<<<< HEAD
         ->select([
             'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
             'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
             'm.merek',
             'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru'
+=======
+            ->select([
+                    'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+                    'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+                    'm.merek',
+                    'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru'
+>>>>>>> 7f21877 (perbaika laporan data dil)
         ])
         ->Join('merek as m','d.id_merek','=','m.id')
         ->Join('golongan as g','d.id_golongan','=','g.id')
@@ -64,7 +72,10 @@ class DilController extends Controller
             // ->groupBy('cabang')
             // ->groupBy('tanggal_file')
             // ->get();
+<<<<<<< HEAD
                
+=======
+>>>>>>> 7f21877 (perbaika laporan data dil)
         ->select([
             'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.desa','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
             'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
@@ -102,8 +113,11 @@ class DilController extends Controller
         ->orderBy('d.status','desc')
         // ->where('d.status',2)
         ->simplePaginate(100);
+<<<<<<< HEAD
         // ->get();
         // ->chunk(10);
+=======
+>>>>>>> 7f21877 (perbaika laporan data dil)
         // dd($data);
         if (request('term')) {
             $data = DB::table('tbl_dil as d')
@@ -375,11 +389,16 @@ class DilController extends Controller
     ->where('a.cabang', 'Like', '%' . request('cabang') . '%')
     ->get();
     // dd($data);
+<<<<<<< HEAD
     // dd($dil);
         // ->where('status', 1)
         // ->get();
         // dd($request->data);
         // // return $data;
+=======
+        // ->where('status', 1)
+        // ->get();
+>>>>>>> 7f21877 (perbaika laporan data dil)
         // $customPaper = array(0,0,720,1440);
         // view()->share('data', $data);
         // $pdf = PDF::loadView('reportdetail');
@@ -452,6 +471,7 @@ class DilController extends Controller
     // ->groupBy('tanggal_file')
     // ->get();
        
+<<<<<<< HEAD
 ->select([
     'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
     'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
@@ -469,6 +489,22 @@ class DilController extends Controller
     //   dd($lain);
         
 //    dd($lain);
+=======
+            ->select([
+                'd.id','d.cabang','d.status','d.no_rekening','d.nama_sekarang','d.nama_pemilik','d.no_rumah','d.rt','d.rw','d.dusun','d.kecamatan','d.status_milik','d.jml_jiwa_tetap','d.jml_jiwa_tidak_tetap','d.tanggal_pasang','d.tanggal_file','d.segel','d.stop_kran',
+                'd.ceck_valve','d.kopling','d.plugran','d.box','d.sumber_lain','d.jenisusaha','d.created_at','d.updated_at','d.id_merek',
+                'm.merek',
+                'd.id_golongan','g.nama_golongan','g.kode','s.nama_baru','t.tanggal_tutup','gan.tanggal_ganti'
+            ])
+        ->Join('merek as m','d.id_merek','=','m.id')
+        ->Join('golongan as g','d.id_golongan','=','g.id')
+        ->leftJoin('bbn as s','s.id_dil','=','d.id')
+        ->leftJoin('penutupan as t','t.id_dil','=','d.id')
+        ->leftJoin('ganti as gan','gan.id_dil','=','d.id')
+        ->where('d.id', $id)
+        ->get();
+
+>>>>>>> 7f21877 (perbaika laporan data dil)
 
     return view('dil.v_detail',compact('lain'));
    }
@@ -515,6 +551,7 @@ class DilController extends Controller
             
             // ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_tutup) as tanggal_tutup'),'tanggal_tutup')//Untuk Raw swmuanya
             ->select(DB::raw("(COUNT(*)) as jumlah"),'cabang', DB::raw('COUNT(tanggal_ganti) as tanggal_ganti'))
+<<<<<<< HEAD
             
             // DB::raw('sum(cabang) as total'))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
            
@@ -532,6 +569,22 @@ class DilController extends Controller
             //   dd($data);
         //     $sum = $data->sum(function ($item) {
         //         return $item->jumlah;
+=======
+            // DB::raw('sum(cabang) as total'))// Untuk Raw Bulanan ->groupBy('tanggal_tutup')ny  hilangkan
+            // ->where(DB::raw('(tanggal_tutup)'), Carbon::today()->month)
+            // ->select('a.*','b.*')
+              ->whereBetween('tanggal_ganti',[$start_date,$end_date])
+              // ->whereMonth('tanggal_tutup', Carbon::now()->month)
+              // ->whereYear('tanggal_tutup','<=', Carbon::now())
+              // ->where('tanggal_tutup',Carbon::now()->month)
+              ->groupBy('cabang')
+
+            //   ->groupBy('tanggal_tutup')
+              ->get();
+            //   dd($data);
+            //   $sum = $data->sum(function ($item) {
+            //   return $item->jumlah;
+>>>>>>> 7f21877 (perbaika laporan data dil)
     
                 $sum = $data->sum(function ($item) {
                     return $item->jumlah;
@@ -551,8 +604,12 @@ class DilController extends Controller
             ->count();
              
             // ->get();
+<<<<<<< HEAD
             
             //   dd($data);
+=======
+
+>>>>>>> 7f21877 (perbaika laporan data dil)
                 // return $data;
                 // view()->share('data', $data);
                 // $pdf = PDF::loadView('coba2');
@@ -635,8 +692,14 @@ $title='Laporan DIL Per Periode';
        ->get();
        $datamerek = DB::table('tbl_dil')
        ->Join('merek as m','tbl_dil.id_merek','=','m.id')
+<<<<<<< HEAD
        ->select(DB::raw("(COUNT(m.merek)) as jumlah"),'m.merek','cabang')
        ->whereBetween('tanggal_pasang',[$start_date,$end_date])
+=======
+       ->select(DB::raw("(COUNT(m.merek)) as jumlah"),'m.merek','cabang','m.id')
+       ->whereBetween('tanggal_pasang',[$start_date,$end_date])
+       ->groupBy('m.id')
+>>>>>>> 7f21877 (perbaika laporan data dil)
        ->groupBy('m.merek')
        ->groupBy('cabang')
        ->orderBy('cabang')
@@ -647,6 +710,40 @@ $pdf = PDF::loadView('periode', compact('data','title','datamerek'));
         return $pdf->download('laporanPerPeriodePDVR.pdf');
  }
  } 
+<<<<<<< HEAD
+=======
+ public function cetakrt()
+{
+    
+// dd($data);
+$title='Laporan DIL Per Periode';
+ if (request()->start_date || request()->end_date) {
+     $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
+     $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
+     $data = DB::table('tbl_dil')
+    ->Join('golongan as m','tbl_dil.id_golongan','=','m.id')
+     ->select(DB::raw("(COUNT(cabang)) as jumlah"),'cabang')
+       ->whereBetween('tanggal_pasang',[$start_date,$end_date])
+       ->groupBy('cabang')
+       ->where('status',1)
+       ->get();
+    //    dd($data);
+       $datagolongan = DB::table('tbl_dil')
+       ->Join('golongan as m','tbl_dil.id_golongan','=','m.id')
+       ->select(DB::raw("(COUNT(m.nama_golongan)) as jumlah"),'m.nama_golongan','m.kode','cabang')
+       ->whereBetween('tanggal_pasang',[$start_date,$end_date])
+       ->groupBy('m.nama_golongan')
+       ->groupBy('m.kode')
+       ->groupBy('cabang')
+       ->orderBy('cabang')
+       ->get();
+// dd($datagolongan);
+$pdf = PDF::loadView('periodegolongan', compact('data','title','datagolongan'));
+        //  $pdf = PDF::loadView('periode',compact($data));
+        return $pdf->download('laporanDataGolonganPDVR.pdf');
+ }
+ } 
+>>>>>>> 7f21877 (perbaika laporan data dil)
 public function cetaklaporansl()
 {
     if (request()->start_date || request()->end_date) {

@@ -17,15 +17,24 @@ class CreateTblDilTable extends Migration
             $table->increments('id');
             $table->string('status')->nullable();
             $table->string('cabang');
+<<<<<<< HEAD
             $table->string('no_rekening');
+=======
+            $table->string('no_rekening')->nullable();
+>>>>>>> 7f21877 (perbaika laporan data dil)
             $table->string('nama_sekarang')->nullable();
             $table->string('nama_pemilik')->nullable();
             $table->string('no_rumah')->nullable();
             $table->string('rt')->nullable();
             $table->string('rw')->nullable();
             $table->string('dusun')->nullable();
+<<<<<<< HEAD
             $table->string('desa'); 
             $table->string('kecamatan');
+=======
+            $table->string('desa')->nullable(); 
+            $table->string('kecamatan')->nullable();
+>>>>>>> 7f21877 (perbaika laporan data dil)
             $table->string('status_milik')->nullable();
             $table->integer('jml_jiwa_tetap')->nullable();
             $table->integer('jml_jiwa_tidak_tetap')->nullable();
