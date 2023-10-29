@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Invoice #</title>
+    <title>Dil Laporan</title>
     <style>
         body{
             padding: 0;
@@ -76,11 +76,7 @@
       
     {{-- </div> --}}
     <div class="page">
-<<<<<<< HEAD
-        <p>Jumlah DIL Berdasarkan Cabang</p>
-=======
         <p>Rekap Jumlah DIL Berdasarkan Cabang</p>
->>>>>>> 7f21877 (perbaika laporan data dil)
         <table class="layout display responsive-table">
             <thead>
                 <tr>
@@ -94,12 +90,7 @@
                 @foreach ($data as $index => $k)
                 <tr>
                     <td>{{  $loop->iteration }}</td>
-                   
-<<<<<<< HEAD
-                    <td> <label class="btn btn-success">{{  duka($k->cabang) }}</label></td>
-=======
                     <td>{{  duka($k->cabang) }}</td>
->>>>>>> 7f21877 (perbaika laporan data dil)
                     <td>{{ $k->jumlah }}(Dil)</td>
                     {{-- <td>{{ $k->tanggal_tutup }}</td> --}}
                 </tr>
@@ -124,11 +115,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-<<<<<<< HEAD
-                   
-=======
                     <th>Kode</th>
->>>>>>> 7f21877 (perbaika laporan data dil)
                     <th>Cabang</th>
                     <th>Merek</th>
                     <th>Jumlah</th>
@@ -139,12 +126,6 @@
                 @foreach ($datamerek as $index => $k)
                 <tr>
                     <td>{{  $loop->iteration }}</td>
-<<<<<<< HEAD
-                   
-                    <td> <label class="btn btn-success">{{  $k->merek }}</label></td>
-                    <td>{{  duka($k->cabang) }}</td>
-                  
-=======
                     <td>
                         @if ( $k->id == '33' )
                         <label class="btn btn-danger">KD-{{  $k->id }}</label>
@@ -155,7 +136,6 @@
                     </td>
                     <td>{{  duka($k->cabang) }}</td>
                     <td>{{  $k->merek }}</td>
->>>>>>> 7f21877 (perbaika laporan data dil)
                     <td>{{ $k->jumlah }}(Dil)</td>
                 </tr>
                 @endforeach
@@ -165,11 +145,7 @@
             @endphp --}}
             <tfoot>
                 <tr>
-<<<<<<< HEAD
-                    <th colspan="3">Total</th>
-=======
                     <th colspan="4">Total</th>
->>>>>>> 7f21877 (perbaika laporan data dil)
                     <td>
                         {{$datamerek->sum('jumlah')}} (Dil)
                     </td>

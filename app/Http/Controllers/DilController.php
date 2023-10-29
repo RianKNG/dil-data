@@ -608,7 +608,7 @@ public function cetakperiode()
 {
     
 // dd($data);
-$title='Laporan DIL Per Periode';
+$title='Laporan DIL Berdasarkan Cabang Dan Golongan';
  if (request()->start_date || request()->end_date) {
      $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
      $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
@@ -617,7 +617,7 @@ $title='Laporan DIL Per Periode';
      ->select(DB::raw("(COUNT(cabang)) as jumlah"),'cabang')
        ->whereBetween('tanggal_pasang',[$start_date,$end_date])
        ->groupBy('cabang')
-       ->where('status',1)
+    //    ->where('status',1)
        ->get();
        $datamerek = DB::table('tbl_dil')
        ->Join('merek as m','tbl_dil.id_merek','=','m.id')
@@ -638,7 +638,7 @@ $pdf = PDF::loadView('periode', compact('data','title','datamerek'));
 {
     
 // dd($data);
-$title='Laporan DIL Per Periode';
+$title='Laporan DIL Berdasarkan Cabang Dan Merek';
  if (request()->start_date || request()->end_date) {
      $start_date = Carbon::parse(request()->start_date)->toDateTimeString();
      $end_date = Carbon::parse(request()->end_date)->toDateTimeString();
@@ -647,7 +647,7 @@ $title='Laporan DIL Per Periode';
      ->select(DB::raw("(COUNT(cabang)) as jumlah"),'cabang')
        ->whereBetween('tanggal_pasang',[$start_date,$end_date])
        ->groupBy('cabang')
-       ->where('status',1)
+    //    ->where('status',1)
        ->get();
     //    dd($data);
        $datagolongan = DB::table('tbl_dil')
