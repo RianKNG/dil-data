@@ -617,7 +617,7 @@ $title='Laporan DIL Berdasarkan Cabang Dan Golongan';
      ->select(DB::raw("(COUNT(cabang)) as jumlah"),'cabang')
        ->whereBetween('tanggal_pasang',[$start_date,$end_date])
        ->groupBy('cabang')
-    //    ->where('status',1)
+       ->where('status',1)
        ->get();
        $datamerek = DB::table('tbl_dil')
        ->Join('merek as m','tbl_dil.id_merek','=','m.id')
@@ -647,7 +647,7 @@ $title='Laporan DIL Berdasarkan Cabang Dan Merek';
      ->select(DB::raw("(COUNT(cabang)) as jumlah"),'cabang')
        ->whereBetween('tanggal_pasang',[$start_date,$end_date])
        ->groupBy('cabang')
-    //    ->where('status',1)
+       ->where('status',1)
        ->get();
     //    dd($data);
        $datagolongan = DB::table('tbl_dil')

@@ -7,7 +7,7 @@ function duka($angka){
         'Sumedang Utara',
         'Tanjungkerta',
         'Darmaraja',
-        'situraja',
+        'Situraja',
         'Jatinangor',
         'Tanjungsari',
         'Paseh',
