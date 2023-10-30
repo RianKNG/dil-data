@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+     {{-- <img src="{{ asset('adminLTE/logo.png') }}" alt="" width="200" /> --}}
+    {{-- <img src="{{ public_path('dummy.jpg') }}" style="width: 200px; height: 200px"> --}}
     <title>Dil Laporan</title>
     <style>
         body{
@@ -55,16 +58,36 @@
 </head>
 
 <body>
-    <div class="header">
-        <h3>{{ $title }}</h3>
-        <br>
-        <h6 style="line-height: 0px;">Laporan Tanggal: 
-            @php
-            echo date('d F Y'); 
-            @endphp
-        </h6>
-        <p class="text-primary"><small style="opacity: 0.5;"> Bagian: V.D.P.R</small></p>
-    </div>
+    <table class="w-full">
+        <tr>
+            {{ $title }}
+            <td class="w-half">
+                <img src="{{ public_path('logo.png')}}" alt="BTDS" width="75" /> 
+            </td>
+            <td class="w-half">
+                <br>
+    
+                <h2><h6 style="line-height: 0px;">Laporan DIL Tanggal: 
+                    @php
+                    echo date('d F Y'); 
+                    @endphp
+                     
+                </h6>
+                <h4><small style="opacity: 0.5;"> Bagian: V.D.P.R</small></h4>
+                </h2>
+            </td>
+        </tr>
+    </table>
+    {{-- <div class="header">
+        <h3>
+            <img src="{{ public_path('logo.png')}}" alt="BTDS" width="100" /> {{ $title }}
+            <br>
+        
+       
+        </h3>
+        
+        
+    </div> --}}
     {{-- <div class="customer"> --}}
         {{-- <table>
             
@@ -76,7 +99,7 @@
       
     {{-- </div> --}}
     <div class="page">
-        <p>Jumlah DIL Berdasarkan Cabang</p>
+        <p>Jumlah DIL <ins>Berdasarkan Cabang</ins></p>
         <table class="layout display responsive-table">
             <thead>
                 <tr>
@@ -111,7 +134,7 @@
                 </tr>
             </tfoot>
         </table>
-        <p>Jumlah DIL Berdasarkan Merek dan Cabang</p>
+        <p>Jumlah DIL <ins>Berdasarkan Golongan dan Cabang</ins></p>
         <table class="layout display responsive-table">
             <thead>
                 <tr>

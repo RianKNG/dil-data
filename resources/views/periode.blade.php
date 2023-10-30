@@ -53,8 +53,27 @@
         }
     </style>
 </head>
+<table class="w-full">
+    <tr>
+        {{ $title }}
+        <td class="w-half">
+            <img src="{{ public_path('logo.png')}}" alt="BTDS" width="75" /> 
+        </td>
+        <td class="w-half">
+            <br>
 
-<body>
+            <h2><h6 style="line-height: 0px;">Laporan DIL Tanggal: 
+                @php
+                echo date('d F Y'); 
+                @endphp
+                 
+            </h6>
+            <h4><small style="opacity: 0.5;"> Bagian: V.D.P.R</small></h4>
+            </h2>
+        </td>
+    </tr>
+</table>
+{{-- <body>
     <div class="header">
         <h3>{{ $title }}</h3>
         <br>
@@ -64,7 +83,7 @@
             @endphp
         </h6>
         <p class="text-primary"><small style="opacity: 0.5;"> Bagian: V.D.P.R</small></p>
-    </div>
+    </div> --}}
     {{-- <div class="customer"> --}}
         {{-- <table>
             
@@ -76,7 +95,7 @@
       
     {{-- </div> --}}
     <div class="page">
-        <p>Rekap Jumlah DIL Berdasarkan Cabang</p>
+        <p>Rekap Jumlah DIL <ins>Berdasarkan Cabang</ins></p>
         <table class="layout display responsive-table">
             <thead>
                 <tr>
@@ -110,7 +129,7 @@
                 </tr>
             </tfoot>
         </table>
-        <p>Jumlah DIL Berdasarkan Merek dan Cabang</p>
+        <p>Jumlah DIL <ins>Berdasarkan Merek dan Cabang</ins></p>
         <table class="layout display responsive-table">
             <thead>
                 <tr>
